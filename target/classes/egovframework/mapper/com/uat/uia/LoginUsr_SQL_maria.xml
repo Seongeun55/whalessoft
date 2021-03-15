@@ -50,22 +50,7 @@
 			   AND mber_sttus = 'P'
 			
 		</if>
-		<!-- 기업회원 -->
-		<if test="userSe != null and userSe == 'ENT'">
-			
-			SELECT ENTRPRS_MBER_ID AS id
-			     , cmpny_nm AS name
-			     , entrprs_mber_password AS password
-			     , bizrno AS ihidNum
-			     , applcnt_email_adres AS email
-			     , 'ENT' AS userSe
-			     , '-' AS orgnztId
-			     , esntl_id AS uniqId
-			  FROM COMTNENTRPRSMBER
-			 WHERE ESNTL_ID = #{uniqId}
-			   AND entrprs_mber_sttus = 'P'
-			
-		</if>
+
 		<!-- 업무사용자 -->
 		<if test="userSe != null and userSe == 'USR'">
 			

@@ -41,19 +41,11 @@ function checkLogin(userSe) {
     if (userSe == "GNR") {
         document.loginForm.rdoSlctUsr[0].checked = true;
         document.loginForm.rdoSlctUsr[1].checked = false;
-        document.loginForm.rdoSlctUsr[2].checked = false;
         document.loginForm.userSe.value = "GNR";
-    // 기업회원
-    } else if (userSe == "ENT") {
-        document.loginForm.rdoSlctUsr[0].checked = false;
-        document.loginForm.rdoSlctUsr[1].checked = true;
-        document.loginForm.rdoSlctUsr[2].checked = false;
-        document.loginForm.userSe.value = "ENT";
-    // 업무사용자
+     // 업무사용자
     } else if (userSe == "USR") {
         document.loginForm.rdoSlctUsr[0].checked = false;
-        document.loginForm.rdoSlctUsr[1].checked = false;
-        document.loginForm.rdoSlctUsr[2].checked = true;
+        document.loginForm.rdoSlctUsr[1].checked = true;
         document.loginForm.userSe.value = "USR";
     }
 }
@@ -65,8 +57,6 @@ function actionLogin() {
         alert("<spring:message code="comUatUia.validate.passCheck" />"); <%-- 비밀번호를 입력하세요 --%>
     } else {
         document.loginForm.action="<c:url value='/uat/uia/actionLogin.do'/>";
-        //document.loginForm.j_username.value = document.loginForm.userSe.value + document.loginForm.username.value;
-        //document.loginForm.action="<c:url value='/j_spring_security_check'/>";
         document.loginForm.submit();
     }
 }
@@ -182,15 +172,12 @@ function fnInit() {
 function fnLoginTypeSelect(objName){
 
 		document.getElementById("typeGnr").className = "";
-		document.getElementById("typeEnt").className = "";
 		document.getElementById("typeUsr").className = "";
 		
 		document.getElementById(objName).className = "on";
 		
 		if(objName == "typeGnr"){ //일반회원
 			document.loginForm.userSe.value = "GNR";
-		}else if(objName == "typeEnt"){	//기업회원
-			 document.loginForm.userSe.value = "ENT";
 		}else if(objName == "typeUsr"){	//업무사용자
 			 document.loginForm.userSe.value = "USR";
 		}
@@ -226,7 +213,6 @@ function fnShowLogin(stat) {
 		<div class="login_type">
 			<ul id="ulLoginType">
 				<li><a href="javascript:fnLoginTypeSelect('typeGnr');" id="typeGnr" title=""><spring:message code="comUatUia.loginForm.GNR"/></a></li> <!-- 일반 -->
-				<li><a href="javascript:fnLoginTypeSelect('typeEnt');" id="typeEnt" title=""><spring:message code="comUatUia.loginForm.ENT"/></a></li> <!-- 기업 -->
 				<li><a href="javascript:fnLoginTypeSelect('typeUsr');" id="typeUsr" title=""><spring:message code="comUatUia.loginForm.USR"/></a></li> <!-- 업무 -->
 			</ul>
 		</div>
@@ -303,8 +289,6 @@ function fnShowLogin(stat) {
 </div>
 </form>
 <!-- login영역 //-->
-
-
 
 </body>
 </html>

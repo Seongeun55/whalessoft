@@ -3,6 +3,7 @@ package egovframework.com.cmm.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,7 +67,25 @@ public class ComUtlController {
 		
 		// 안전한 경로 문자열로 조치
 		link = EgovWebUtil.filePathBlackList(link);
-		
+		System.out.println("확인 : " + link);
+		return link;
+	}
+	
+	@RequestMapping(value = "/AdminPageLink.do")
+	public String moveToPage(@RequestParam("link") String linkPage, HttpSession session, @RequestParam(value = "menuNo", required = false) String menuNo) {
+		String link = linkPage;
+		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
+		if (linkPage == null || linkPage.equals("")) {
+			link = "admin/adminError";
+		} else {
+			if (link.indexOf(",") > -1) {
+				link = link.substring(0, link.indexOf(","));
+			}
+		}
+		// 선택된 메뉴정보를 세션으로 등록한다.
+		if (menuNo != null && !menuNo.equals("")) {
+			session.setAttribute("menuNo", menuNo);
+		}
 		return link;
 	}
 	

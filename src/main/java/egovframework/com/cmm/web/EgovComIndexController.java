@@ -46,6 +46,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class EgovComIndexController implements ApplicationContextAware, InitializingBean {
@@ -82,7 +83,6 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("loginVO", loginVO);
-
 		return "egovframework/com/cmm/EgovUnitContent";
 	}
 
@@ -161,5 +161,19 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		LOGGER.debug("EgovComIndexController index is called ");
 
 		return "egovframework/com/cmm/EgovUnitLeft";
+	}
+	//-----------------------------------추가--------------------------------------------------//
+
+	@RequestMapping("/AdminMain.do")
+	public String AdminMain(ModelMap model) {
+
+		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		model.addAttribute("loginVO", loginVO);
+		return "egovframework/com/admin/admin";
+	}
+	
+	@RequestMapping("/AdminLeft.do")
+	public String AdminMenu() {
+		return "egovframework/com/admin/include/header";
 	}
 }

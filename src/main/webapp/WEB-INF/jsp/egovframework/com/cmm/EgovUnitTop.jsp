@@ -19,5 +19,6 @@
 	<div style="margin-top:4px;"><strong class="top_title_strong"><spring:message code="comCmm.top.title"/></strong></div>
 	</div>
 </div>
+
 </body>
 </html>

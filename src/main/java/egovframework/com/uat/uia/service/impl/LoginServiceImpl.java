@@ -60,7 +60,7 @@ public class LoginServiceImpl extends EgovAbstractServiceImpl implements LoginSe
 	public LoginVO actionLoginByEsntlId(LoginVO vo) throws Exception {
 
     	LoginVO loginVO = loginDAO.actionLoginByEsntlId(vo);
-
+ 
     	// 3. 결과를 리턴한다.
     	if (loginVO != null && !loginVO.getId().equals("") && !loginVO.getPassword().equals("")) {
     		return loginVO;

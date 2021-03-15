@@ -1,107 +1,166 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>eGovFrame 공통 컴포넌트</title>
-<link href="<c:url value='/css/egovframework/com/cmm/main.css' />" rel="stylesheet" type="text/css">
-<style type="text/css">
-link { color: #666666; text-decoration: none; }
-link:hover { color: #000000; text-decoration: none; }
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>관리자 페이지</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="bootstrap/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="bootstrap/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="bootstrap/js/demo/chart-area-demo.js"></script>
+    <script src="bootstrap/js/demo/chart-pie-demo.js"></script></head>
+    
 </head>
-<body>
-<div id="lnb">
-<c:set var="isMai" value="false"/>
-<c:set var="isUat" value="false"/>
-<c:set var="isSec" value="false"/>
-<c:set var="isSts" value="false"/>
-<c:set var="isCop" value="false"/>
-<c:set var="isUss" value="false"/>
-<c:set var="isSym" value="false"/>
-<c:set var="isSsi" value="false"/>
-<c:set var="isDam" value="false"/>
-<c:set var="isCom" value="false"/>
-<c:set var="isExt" value="false"/>
-<ul class="lnb_title">
-	<c:forEach var="result" items="${resultList}" varStatus="status">
 	
-		<c:if test="${isMai == 'false' && result.gid == '0'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.mai.title"/></strong></strong><!-- 포털(예제) 메인화면 -->
-			</li>
-			<c:set var="isMai" value="true"/>
-		</c:if>
-		<c:if test="${isUat == 'false' && result.gid == '10'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.uat.title"/></strong></strong><!-- 사용자디렉토리/통합인증 -->
-			</li>
-			<c:set var="isUat" value="true"/>			
-		</c:if>
-		
-		<c:if test="${isSec == 'false' && result.gid == '20'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.sec.title"/></strong></strong><!-- 보안 -->
-			</li>
-			<c:set var="isSec" value="true"/>
-		</c:if>
-		<c:if test="${isSts == 'false' && result.gid == '30'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.sts.title"/></strong></strong><!-- 통계/리포팅 -->
-			</li>
-			<c:set var="isSts" value="true"/>
-		</c:if>
-		<c:if test="${isCop == 'false' && result.gid == '40'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.cop.title"/></strong></strong><!-- 협업 -->
-			</li>
-			<c:set var="isCop" value="true"/>
-		</c:if>
-		<c:if test="${isUss == 'false' && result.gid == '50'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.uss.title"/></strong></strong><!-- 사용자지원 -->
-			</li>
-			<c:set var="isUss" value="true"/>
-		</c:if>
-		<c:if test="${isSym == 'false' && result.gid == '60'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.sym.title"/></strong></strong><!-- 시스템관리 -->
-			</li>
-			<c:set var="isSym" value="true"/>
-		</c:if>
-		<c:if test="${isSsi == 'false' && result.gid == '70'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.ssi.title"/></strong></strong><!-- 시스템/서비스연계  -->
-			</li>
-			<c:set var="isSsi" value="true"/>
-		</c:if>
-		<c:if test="${isDam == 'false' && result.gid == '80'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.dam.title"/></strong></strong><!-- 디지털 자산 관리 -->
-			</li>
-			<c:set var="isDam" value="true"/>
-		</c:if>
-		<c:if test="${isCom == 'false' && result.gid == '90'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.com.title"/></strong></strong> <!-- 요소기술 -->
-			</li>
-			<c:set var="isCom" value="true"/>
-		</c:if>
-		<c:if test="${isExt == 'false' && result.gid == '100'}">
-			<li>
-				<strong class="left_title_strong"><strong class="top_title_strong"><spring:message code="comCmm.ext.title"/></strong></strong><!-- 외부 추가 컴포넌트 -->
-			</li>
-			<c:set var="isExt" value="true"/>
-		</c:if>
-	
-		<c:set var="componentMsgKey">comCmm.left.${result.order}</c:set>
-		<ul class="2depth">
-		<li><a href="${pageContext.request.contextPath}<c:out value="${result.listUrl}"/>" target="_content" class="link"> <c:out value="${result.order}"/>. <spring:message code="${componentMsgKey}"/><!-- <c:out value="${result.name}"/> --></a></li>
-		</ul>
-	</c:forEach>
-</ul>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath }/admin.do">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin Page</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/sym/mnu/mpm/MainMenuHome.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>사용자 화면</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manage
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-lock"></i>
+                    <span>권한관리</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/sec/rgm/AdminAuthorGroupList.do">사용자 권한관리</a>
+                        <a class="collapse-item" href="/sec/rmt/AdminRoleList.do">롤 관리</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-address-card"></i>
+                    <span>회원관리</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/uss/umt/AdminMberManage.do">일반회원 관리</a>
+                        <a class="collapse-item" href="/uss/umt/AdminUserManage.do">관리자 관리</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-file"></i>
+                    <span>게시판관리</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="login.html">게시판 등록</a>
+                        <a class="collapse-item" href="register.html">게시물 관리</a>
+                        <a class="collapse-item" href="forgot-password.html">템플릿 관리</a>
+                        <a class="collapse-item" href="forgot-password.html">만족도 관리</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+                    <i class="fas fa-image"></i>
+                    <span>배너 & 팝업관리</span>
+                </a>
+                <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/uss/ion/bnr/selectBannerList.do">배너 관리</a>
+                        <a class="collapse-item" href="/uss/ion/pwm/listPopup.do">팝업 관리</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
+                    <i class="fas fa-tasks"></i>
+                    <span>메뉴관리</span>
+                </a>
+                <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/sym/mnu/mcm/AdminMenuCreatManageSelect.do">메뉴 생성</a>
+                        <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuListSelect.do">메뉴 리스트</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
 
 </body>
 </html>
