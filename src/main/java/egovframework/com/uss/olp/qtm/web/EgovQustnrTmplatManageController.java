@@ -69,12 +69,12 @@ public class EgovQustnrTmplatManageController {
 
     @RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageMain.do")
     public String egovQustnrTmplatManageMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageMain";
+    	return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageMain";
     }
 
     @RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageLeft.do")
     public String egovQustnrTmplatManageLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageLeft";
+    	return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageLeft";
     }
 
     /**
@@ -85,7 +85,7 @@ public class EgovQustnrTmplatManageController {
      */
     @RequestMapping(value="/uss/olp/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/qtm/EgovMain";
+    	return "egovframework/com/admin/uss/olp/qtm/EgovMain";
     }
 
     /**
@@ -96,7 +96,7 @@ public class EgovQustnrTmplatManageController {
      */
     @RequestMapping(value="/uss/olp/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/qtm/EgovLeft";
+    	return "egovframework/com/admin/uss/olp/qtm/EgovLeft";
     }
 
 	/**
@@ -105,7 +105,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param commandMap
 	 * @param qustnrTmplatManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageList"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageList"
 	 * @throws Exception
 	 */
     @IncludedInfo(name="설문템플릿관리", order = 610 ,gid = 50)
@@ -148,7 +148,7 @@ public class EgovQustnrTmplatManageController {
         model.addAttribute("paginationInfo", paginationInfo);
 
 
-		return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageList";
+		return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageList";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param response
 	 * @param qustnrTmplatManageVO
 	 * @param commandMap
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageImg"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageImg"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -193,7 +193,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param qustnrTmplatManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageDetail"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageDetail.do")
@@ -225,7 +225,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param commandMap
 	 * @param qustnrTmplatManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageModify"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageModify"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -255,7 +255,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param qustnrTmplatManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageModifyActor"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageModifyActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageModifyActor.do")
@@ -272,7 +272,7 @@ public class EgovQustnrTmplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -283,7 +283,7 @@ public class EgovQustnrTmplatManageController {
 		if (bindingResult.hasErrors()){
 	        List<?> sampleList = egovQustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
 	        model.addAttribute("resultList", sampleList);
-			return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageModify";
+			return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageModify";
 		}
 
 		//아이디 설정
@@ -317,7 +317,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param commandMap
 	 * @param qustnrTmplatManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageRegist"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageRegist.do")
@@ -332,7 +332,7 @@ public class EgovQustnrTmplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -356,7 +356,7 @@ public class EgovQustnrTmplatManageController {
 	 * @param searchVO
 	 * @param qustnrTmplatManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qtm/EgovQustnrTmplatManageRegistActor"
+	 * @return "egovframework/com/admin/uss/olp/qtm/EgovQustnrTmplatManageRegistActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qtm/EgovQustnrTmplatManageRegistActor.do")
@@ -370,7 +370,7 @@ public class EgovQustnrTmplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

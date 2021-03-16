@@ -94,13 +94,13 @@ public class LoginController {
 		//권한체크시 에러 페이지 이동
 		String auth_error =  request.getParameter("auth_error") == null ? "" : (String)request.getParameter("auth_error");
 		if(auth_error != null && auth_error.equals("1")){
-			return "egovframework/com/cmm/error/accessDenied";
+			return "egovframework/com/admin/cmm/error/accessDenied";
 		}
 
 		String message = (String)request.getParameter("message");
 		if (message!=null) model.addAttribute("message", message);
 		
-		return "egovframework/com/uat/uia/EgovLoginUsr";
+		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	}
 
 	/**
@@ -125,20 +125,20 @@ public class LoginController {
 					}else if(sLoginIncorrectCode.equals("C")){
 						model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
 					}
-					return "egovframework/com/uat/uia/EgovLoginUsr";
+					return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 				}
 		    }else{
 		    	model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
-		    	return "egovframework/com/uat/uia/EgovLoginUsr";
+		    	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		    }
 		}
 		
 		// 2. 로그인 처리
 		LoginVO resultVO = loginService.actionLogin(loginVO);
-
+		
 		// 3. 일반 로그인 처리
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
-
+			
 			// 3-1. 로그인 정보를 세션에 저장
 			request.getSession().setAttribute("loginVO", resultVO);
 			// 2019.10.01 로그인 인증세션 추가
@@ -148,7 +148,7 @@ public class LoginController {
 
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 	}
 
@@ -165,70 +165,8 @@ public class LoginController {
 		String userIp = EgovClntInfo.getClntIP(request);
 		LOGGER.debug("User IP : {}", userIp);
 
-		/*
-		// 1. GPKI 인증
-		GPKIHttpServletResponse gpkiresponse = null;
-		GPKIHttpServletRequest gpkirequest = null;
-		String dn = "";
-		try{
-			gpkiresponse = new GPKIHttpServletResponse(response);
-		    gpkirequest = new GPKIHttpServletRequest(request);
-		    gpkiresponse.setRequest(gpkirequest);
-		    X509Certificate cert = null;
-
-		    byte[] signData = null;
-		    byte[] privatekey_random = null;
-		    String signType = "";
-		    String queryString = "";
-
-		    cert = gpkirequest.getSignerCert();
-		    dn = cert.getSubjectDN();
-
-		    java.math.BigInteger b = cert.getSerialNumber();
-		    b.toString();
-		    int message_type =  gpkirequest.getRequestMessageType();
-		    if( message_type == gpkirequest.ENCRYPTED_SIGNDATA || message_type == gpkirequest.LOGIN_ENVELOP_SIGN_DATA ||
-		        message_type == gpkirequest.ENVELOP_SIGNDATA || message_type == gpkirequest.SIGNED_DATA){
-		        signData = gpkirequest.getSignedData();
-		        if(privatekey_random != null) {
-		            privatekey_random   = gpkirequest.getSignerRValue();
-		        }
-		        signType = gpkirequest.getSignType();
-		    }
-		    queryString = gpkirequest.getQueryString();
-		}catch(Exception e){
-			return "cmm/egovError";
-		}
-
-		// 2. 업무사용자 테이블에서 dn값으로 사용자의 ID, PW를 조회하여 이를 일반로그인 형태로 인증하도록 함
-		if (dn != null && !dn.equals("")) {
-
-			loginVO.setDn(dn);
-			LoginVO resultVO = loginService.actionCrtfctLogin(loginVO);
-		    if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
-
-		    	//스프링 시큐리티패키지를 사용하는지 체크하는 로직
-		    	if(EgovComponentChecker.hasComponent("egovAuthorManageService")){
-		    		// 3-1. spring security 연동
-		            return "redirect:/j_spring_security_check?j_username=" + resultVO.getUserSe() + resultVO.getId() + "&j_password=" + resultVO.getUniqId();
-
-		    	}else{
-		    		// 3-2. 로그인 정보를 세션에 저장
-		        	request.getSession().setAttribute("loginVO", resultVO);
-		    		return "redirect:/uat/uia/actionMain.do";
-		    	}
-
-
-		    } else {
-		    	model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-		    	return "egovframework/com/uat/uia/EgovLoginUsr";
-		    }
-		} else {
-			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
-		}
-		*/
-		return "egovframework/com/uat/uia/EgovLoginUsr";
+		
+		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	}
 
 	/**
@@ -244,7 +182,7 @@ public class LoginController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		
@@ -279,7 +217,7 @@ public class LoginController {
 		request.getSession().setAttribute("loginVO", null);
 
 		//return "redirect:/egovDevIndex.jsp";
-		return "redirect:/EgovContent.do";
+		return "redirect:/AdminContent.do";
 	}
 
 	/**
@@ -297,7 +235,7 @@ public class LoginController {
 		List<?> code = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("pwhtCdList", code);
 
-		return "egovframework/com/uat/uia/EgovIdPasswordSearch";
+		return "egovframework/com/admin/uat/uia/EgovIdPasswordSearch";
 	}
 
 	/**
@@ -307,7 +245,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/uat/uia/egovGpkiIssu.do")
 	public String gpkiIssuView(ModelMap model) throws Exception {
-		return "egovframework/com/uat/uia/EgovGpkiIssu";
+		return "egovframework/com/admin/uat/uia/EgovGpkiIssu";
 	}
 
 	/**
@@ -321,7 +259,7 @@ public class LoginController {
 
 		if (loginVO == null || loginVO.getName() == null || loginVO.getName().equals("") && loginVO.getEmail() == null || loginVO.getEmail().equals("")
 				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 
 		// 1. 아이디 찾기
@@ -331,10 +269,10 @@ public class LoginController {
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
 
 			model.addAttribute("resultInfo", "아이디는 " + resultVO.getId() + " 입니다.");
-			return "egovframework/com/uat/uia/EgovIdPasswordResult";
+			return "egovframework/com/admin/uat/uia/EgovIdPasswordResult";
 		} else {
 			model.addAttribute("resultInfo", egovMessageSource.getMessage("fail.common.idsearch"));
-			return "egovframework/com/uat/uia/EgovIdPasswordResult";
+			return "egovframework/com/admin/uat/uia/EgovIdPasswordResult";
 		}
 	}
 
@@ -351,7 +289,7 @@ public class LoginController {
 		if (loginVO == null || loginVO.getId() == null || loginVO.getId().equals("") && loginVO.getName() == null || "".equals(loginVO.getName()) && loginVO.getEmail() == null
 				|| loginVO.getEmail().equals("") && loginVO.getPasswordHint() == null || "".equals(loginVO.getPasswordHint()) && loginVO.getPasswordCnsr() == null
 				|| "".equals(loginVO.getPasswordCnsr()) && loginVO.getUserSe() == null || "".equals(loginVO.getUserSe())) {
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 
 		// 1. 비밀번호 찾기
@@ -360,10 +298,10 @@ public class LoginController {
 		// 2. 결과 리턴
 		if (result) {
 			model.addAttribute("resultInfo", "임시 비밀번호를 발송하였습니다.");
-			return "egovframework/com/uat/uia/EgovIdPasswordResult";
+			return "egovframework/com/admin/uat/uia/EgovIdPasswordResult";
 		} else {
 			model.addAttribute("resultInfo", egovMessageSource.getMessage("fail.common.pwsearch"));
-			return "egovframework/com/uat/uia/EgovIdPasswordResult";
+			return "egovframework/com/admin/uat/uia/EgovIdPasswordResult";
 		}
 	}
 
@@ -406,38 +344,7 @@ public class LoginController {
 		String os = System.getProperty("os.arch");
 		LOGGER.debug("OS : {}", os);
 		
-		//String virusReturn = null;
-
-		/*
-		// 브라우저 이름을 받기위한 처리
-		String webKind = EgovClntInfo.getClntWebKind(request);
-		String[] ss = webKind.split(" ");
-		String browser = ss[1];
-		model.addAttribute("browser",browser);
-		// -- 여기까지
-		if (os.equalsIgnoreCase("x86")) {
-		    //Local Host TEST 진행중
-		} else {
-		    if (browser.equalsIgnoreCase("Explorer")) {
-		GPKIHttpServletResponse gpkiresponse = null;
-		GPKIHttpServletRequest gpkirequest = null;
-
-		try {
-		    gpkiresponse = new GPKIHttpServletResponse(response);
-		    gpkirequest = new GPKIHttpServletRequest(request);
-
-		    gpkiresponse.setRequest(gpkirequest);
-		    model.addAttribute("challenge", gpkiresponse.getChallenge());
-
-		    return "egovframework/com/uat/uia/EgovGpkiRegist";
-
-		} catch (Exception e) {
-		    return "egovframework/com/cmm/egovError";
-		}
-		}
-		}
-		*/
-		return "egovframework/com/uat/uia/EgovGpkiRegist";
+		return "egovframework/com/admin/uat/uia/EgovGpkiRegist";
 	}
 
 	/**
@@ -462,38 +369,27 @@ public class LoginController {
 		String[] ss = webKind.split(" ");
 		String browser = ss[1];
 		model.addAttribute("browser", browser);
-		/*
-		// -- 여기까지
-		if (os.equalsIgnoreCase("x86")) {
-			// Local Host TEST 진행중
-		} else {
-			if (browser.equalsIgnoreCase("Explorer")) {
-				GPKIHttpServletResponse gpkiresponse = null;
-				GPKIHttpServletRequest gpkirequest = null;
-				try {
-					gpkiresponse = new GPKIHttpServletResponse(response);
-					gpkirequest = new GPKIHttpServletRequest(request);
-					gpkiresponse.setRequest(gpkirequest);
-					X509Certificate cert = null;
-
-					// byte[] signData = null;
-					// byte[] privatekey_random = null;
-					// String signType = "";
-					// String queryString = "";
-
-					cert = gpkirequest.getSignerCert();
-					dn = cert.getSubjectDN();
-
-					model.addAttribute("dn", dn);
-					model.addAttribute("challenge", gpkiresponse.getChallenge());
-
-					return "egovframework/com/uat/uia/EgovGpkiRegist";
-				} catch (Exception e) {
-					return "egovframework/com/cmm/egovError";
-				}
-			}
-		}
-		*/
-		return "egovframework/com/uat/uia/EgovGpkiRegist";
+	
+		return "egovframework/com/admin/uat/uia/EgovGpkiRegist";
 	}
+	
+	/* --------------------------------------------추가-----------------------------------*/
+	
+	/**
+	 * 시큐리티 로그인을 처리한다
+	 * @param vo - 아이디, 비밀번호가 담긴 LoginVO
+	 * @param request - 세션처리를 위한 HttpServletRequest
+	 * @return result - 로그인결과(세션정보)
+	 * @exception Exception
+	 */
+	@RequestMapping(value = "/uat/uia/LoginProcess.do")
+	public String securityLogin(@ModelAttribute("loginVO") LoginVO loginVO, HttpServletRequest request, ModelMap model) throws Exception {
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		if(user.getUserSe().equals("USR")) {
+			return "egovframework/com/admin/index";
+		}else {
+			return "egovframework/com/web/afterLogin";
+		}	
+	}
+	
 }

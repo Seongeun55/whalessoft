@@ -87,7 +87,7 @@ public class EgovArticleCommentController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 		
 		model.addAttribute("sessionUniqId", user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -120,7 +120,7 @@ public class EgovArticleCommentController {
 		
 		commentVO.setCommentCn("");	// 등록 후 댓글 내용 처리
 	
-		return "egovframework/com/cop/cmt/EgovArticleCommentList";
+		return "egovframework/com/admin/cop/cmt/EgovArticleCommentList";
     }
     
     
@@ -220,7 +220,7 @@ public class EgovArticleCommentController {
     Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
     if(!isAuthenticated) {
-        return "egovframework/com/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     }
 
 	CommentVO articleCommentVO = new CommentVO();
@@ -254,7 +254,7 @@ public class EgovArticleCommentController {
 	model.addAttribute("articleCommentVO", articleCommentVO);
 	
 	
-	return "egovframework/com/cop/cmt/EgovArticleCommentList";
+	return "egovframework/com/admin/cop/cmt/EgovArticleCommentList";
     }
     
     

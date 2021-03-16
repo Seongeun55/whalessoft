@@ -84,7 +84,7 @@ public class AdminRoleManageController {
 	 */
 	@RequestMapping("/sec/rmt/EgovRoleListView.do")
 	public String selectRoleListView() throws Exception {
-		return "egovframework/com/sec/rmt/EgovRoleManage";
+		return "egovframework/com/admin/sec/rmt/EgovRoleManage";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class AdminRoleManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sec/rmt/EgovRoleManage";
+		return "egovframework/com/admin/sec/rmt/EgovRoleManage";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class AdminRoleManageController {
 		model.addAttribute("authorManageList", authorManageVO.getAuthorManageList());
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(), "COM029"));
 
-		return "egovframework/com/sec/rmt/EgovRoleUpdate";
+		return "egovframework/com/admin/sec/rmt/EgovRoleUpdate";
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class AdminRoleManageController {
 		model.addAttribute("authorManageList", authorManageVO.getAuthorManageList());
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(), "COM029"));
 
-		return "egovframework/com/sec/rmt/EgovRoleInsert";
+		return "egovframework/com/admin/sec/rmt/EgovRoleInsert";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class AdminRoleManageController {
 		beanValidator.validate(roleManage, bindingResult); // validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/rmt/EgovRoleInsert";
+			return "egovframework/com/admin/sec/rmt/EgovRoleInsert";
 		} else {
 			String roleTyp = roleManage.getRoleTyp();
 			if ("method".equals(roleTyp))// KISA 보안약점 조치 (2018-10-29, 윤창원)
@@ -208,7 +208,7 @@ public class AdminRoleManageController {
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 			model.addAttribute("roleManage", RoleManageService.insertRole(roleManage, roleManageVO));
 
-			// return "egovframework/com/sec/rmt/EgovRoleUpdate";
+			// return "egovframework/com/admin/sec/rmt/EgovRoleUpdate";
 			return "forward:/sec/rmt/AdminRoleList.do";
 		}
 	}
@@ -226,7 +226,7 @@ public class AdminRoleManageController {
 
 		beanValidator.validate(roleManage, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/rmt/EgovRoleUpdate";
+			return "egovframework/com/admin/sec/rmt/EgovRoleUpdate";
 		} else {
 			RoleManageService.updateRole(roleManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));

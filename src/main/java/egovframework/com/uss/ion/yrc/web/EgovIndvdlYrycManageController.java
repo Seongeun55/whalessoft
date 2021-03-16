@@ -60,7 +60,7 @@ public class EgovIndvdlYrycManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	indvdlYrycManage.setMberId(user.getUniqId());
@@ -68,7 +68,7 @@ public class EgovIndvdlYrycManageController {
     	List<?> indvdlYrycManageList = egovIndvdlYrycManageService.selectIndvdlYrycManageList(indvdlYrycManage);
 		model.addAttribute("resultList", indvdlYrycManageList);
 
-		return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycManageList";
+		return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycManageList";
 	}
     /**
 	 * 개인별연차관리 등록 화면으로 이동한다.
@@ -90,7 +90,7 @@ public class EgovIndvdlYrycManageController {
 		model.addAttribute("resultList", indvdlYrycManageList);
 		model.addAttribute("totCnt", totCnt);
 
-		return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycRegist";
+		return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycRegist";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class EgovIndvdlYrycManageController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManage", indvdlYrycManage);
-			return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycRegist";
+			return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycRegist";
 		} else {
 			LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 			indvdlYrycManage.setMberId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -124,7 +124,7 @@ public class EgovIndvdlYrycManageController {
 			model.addAttribute("resultList", indvdlYrycManageList);
 			model.addAttribute("totCnt", totCnt);
 
-			return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycManageList";
+			return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycManageList";
 		}
 	}
 
@@ -145,7 +145,7 @@ public class EgovIndvdlYrycManageController {
 			egovIndvdlYrycManageService.deleteIndvdlYrycManage(indvdlYrycManage);
 		}
 
-		return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycManageList";
+		return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycManageList";
 	}
 
 }

@@ -79,7 +79,7 @@ public class EgovProxySvcController {
 	 */
 	@RequestMapping(value="/utl/sys/pxy/selectProxySvcListView.do")
 	public String selectProxySvcListView() throws Exception {
-		return "egovframework/com/utl/sys/pxy/EgovProxySvcList";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcList";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class EgovProxySvcController {
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/utl/sys/pxy/EgovProxySvcList";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcList";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EgovProxySvcController {
 		proxySvcVO = egovProxySvcService.selectProxySvc(proxySvcVO);
 		model.addAttribute("proxySvc", proxySvcVO);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/utl/sys/pxy/EgovProxySvcDetail";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcDetail";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class EgovProxySvcController {
 
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM072"));
 		model.addAttribute("proxySvc", proxySvcVO);
-		return "egovframework/com/utl/sys/pxy/EgovProxySvcRegist";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcRegist";
 	}
 
 	/**
@@ -159,14 +159,14 @@ public class EgovProxySvcController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("proxySvcVO", proxySvcVO);
-			return "egovframework/com/utl/sys/pxy/EgovProxySvcRegist";
+			return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcRegist";
 		} else {
 			LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 			
 			Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 	        if(!isAuthenticated) {
-	            return "egovframework/com/uat/uia/EgovLoginUsr";
+	            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	        }
 			proxySvc.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
 			proxySvc.setProxyId(egovProxySvcIdGnrService.getNextStringId());
@@ -175,7 +175,7 @@ public class EgovProxySvcController {
 			proxySvc.setSvcIp(EgovWebUtil.filePathBlackList(proxySvc.getSvcIp()));
 			model.addAttribute("proxySvc", egovProxySvcService.insertProxySvc(proxySvcVO, proxySvc));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/utl/sys/pxy/EgovProxySvcDetail";
+			return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcDetail";
 		}
 	}
 
@@ -194,7 +194,7 @@ public class EgovProxySvcController {
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM072"));
 		model.addAttribute("proxySvc", egovProxySvcService.selectProxySvc(proxySvcVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/utl/sys/pxy/EgovProxySvcUpdt";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcUpdt";
 	}
 
 	/**
@@ -213,14 +213,14 @@ public class EgovProxySvcController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("proxySvcVO", proxySvc);
-    		return "egovframework/com/utl/sys/pxy/EgovProxySvcUpdt";
+    		return "egovframework/com/admin/utl/sys/pxy/EgovProxySvcUpdt";
     	} else {
     		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     		
     		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
             if(!isAuthenticated) {
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
     		proxySvc.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
     		
@@ -262,7 +262,7 @@ public class EgovProxySvcController {
 
 		model.addAttribute("pmProxyLogVO", proxyLogVO);
 
-		return "egovframework/com/utl/sys/pxy/EgovProxyLogList";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxyLogList";
 	}
 
 	/**
@@ -303,7 +303,7 @@ public class EgovProxySvcController {
         pmProxyLogVO.setStrEndDate(EgovStringUtil.addMinusChar(proxyLogVO.getStrEndDate()));
         model.addAttribute("pmProxyLogVO", pmProxyLogVO);
 
-		return "egovframework/com/utl/sys/pxy/EgovProxyLogList";
+		return "egovframework/com/admin/utl/sys/pxy/EgovProxyLogList";
 	}
 
     /**

@@ -187,6 +187,6 @@ public class EgovBbsStatsController {
 			model.addAttribute("statsInfo", statsVO);
 		}
 
-        return "egovframework/com/sts/bst/EgovBbsStats";
+        return "egovframework/com/admin/sts/bst/EgovBbsStats";
 	}
 }

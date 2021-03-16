@@ -64,7 +64,7 @@ public class EgovDtaUseStatsContoller {
 		dtaUseStatsVO.setPmToDate(EgovDateUtil.getToday());
 		model.addAttribute("pmDtaUseStats", dtaUseStatsVO);
 		
-		return "egovframework/com/sts/dst/EgovDtaUseStatsList";
+		return "egovframework/com/admin/sts/dst/EgovDtaUseStatsList";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EgovDtaUseStatsContoller {
 /*		dtaUseStatsVO.setPmFromDate(EgovDateUtil.addMonth(EgovDateUtil.getToday(), -1));//2011.09.19
 		dtaUseStatsVO.setPmToDate(EgovDateUtil.getToday());//2011.09.19
 */		
-		return "egovframework/com/sts/dst/EgovDtaUseStatsList";
+		return "egovframework/com/admin/sts/dst/EgovDtaUseStatsList";
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class EgovDtaUseStatsContoller {
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 		
-		return "egovframework/com/sts/dst/EgovDtaUseStatsDetail";
+		return "egovframework/com/admin/sts/dst/EgovDtaUseStatsDetail";
 	}
 
 

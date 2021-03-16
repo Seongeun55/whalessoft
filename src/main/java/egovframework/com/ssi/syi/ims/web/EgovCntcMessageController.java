@@ -106,7 +106,7 @@ public class EgovCntcMessageController {
 	 * @param cntcMessage
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/ims/EgovCcmCntcMessageRegist"
+	 * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmCntcMessageRegist"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/ims/addCntcMessage.do")
@@ -126,7 +126,7 @@ public class EgovCntcMessageController {
             List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
             model.addAttribute("cntcMessageList", cntcMessageList);
 
-            return "egovframework/com/ssi/syi/ims/EgovCntcMessageRegist";
+            return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageRegist";
     	} else if (sCmd.equals("Regist")) {
 
 	    	beanValidator.validate(cntcMessage, bindingResult);
@@ -140,7 +140,7 @@ public class EgovCntcMessageController {
 	            List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
 	            model.addAttribute("cntcMessageList", cntcMessageList);
 
-				return "egovframework/com/ssi/syi/ims/EgovCntcMessageRegist";
+				return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageRegist";
 			}
 
 	    	// 로그인VO에서  사용자 정보 가져오기
@@ -165,7 +165,7 @@ public class EgovCntcMessageController {
 	 * @param cntcMessageItem
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/ims/EgovCcmCntcMessageRegist"
+	 * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmCntcMessageRegist"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/ims/addCntcMessageItem.do")
@@ -186,7 +186,7 @@ public class EgovCntcMessageController {
             List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
             model.addAttribute("cntcMessageList", cntcMessageList);
 
-            return "egovframework/com/ssi/syi/ims/EgovCntcMessageItemRegist";
+            return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageItemRegist";
     	} else if (sCmd.equals("Regist")) {
 
 	    	beanValidator.validate(cntcMessageItem, bindingResult);
@@ -200,7 +200,7 @@ public class EgovCntcMessageController {
 	            List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
 	            model.addAttribute("cntcMessageList", cntcMessageList);
 
-				return "egovframework/com/ssi/syi/ims/EgovCntcMessageItemRegist";
+				return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageItemRegist";
 			}
 
 	    	// 로그인VO에서  사용자 정보 가져오기
@@ -224,7 +224,7 @@ public class EgovCntcMessageController {
 	 * @param loginVO
 	 * @param cntcMessage
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/ims/EgovCcmCntcMessageDetail"
+	 * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmCntcMessageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/ssi/syi/ims/getCntcMessageDetail.do")
@@ -244,7 +244,7 @@ public class EgovCntcMessageController {
         List<?> cntcMessageItemList = cntcMessageService.selectCntcMessageItemList(cntcMessageItemVO);
         model.addAttribute("cntcMessageItemList", cntcMessageItemList);
 
-		return "egovframework/com/ssi/syi/ims/EgovCntcMessageDetail";
+		return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageDetail";
 	}
 
     /**
@@ -252,7 +252,7 @@ public class EgovCntcMessageController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/ssi/syi/ims/EgovCcmCntcMessageList"
+     * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmCntcMessageList"
      * @throws Exception
      */
 	@IncludedInfo(name="연계메시지관리", listUrl="/ssi/syi/ims/getCntcMessageList.do", order = 1230,gid = 70)
@@ -281,7 +281,7 @@ public class EgovCntcMessageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/ssi/syi/ims/EgovCntcMessageList";
+        return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageList";
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class EgovCntcMessageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/ims/EgovCcmAdministCodeModify"
+	 * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmAdministCodeModify"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/ims/updateCntcMessage.do")
@@ -314,7 +314,7 @@ public class EgovCntcMessageController {
             CntcMessage vo = cntcMessageService.selectCntcMessageDetail(cntcMessage);
     		model.addAttribute("cntcMessage", vo);
 
-    		return "egovframework/com/ssi/syi/ims/EgovCntcMessageUpdt";
+    		return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageUpdt";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(cntcMessage, bindingResult);
     		if (bindingResult.hasErrors()){
@@ -330,7 +330,7 @@ public class EgovCntcMessageController {
                 CntcMessage vo = cntcMessageService.selectCntcMessageDetail(cntcMessage);
         		model.addAttribute("cntcMessage", vo);
 
-        		return "egovframework/com/ssi/syi/ims/EgovCntcMessageUpdt";
+        		return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageUpdt";
     		}
 
 	    	// 로그인VO에서  사용자 정보 가져오기
@@ -352,7 +352,7 @@ public class EgovCntcMessageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/ims/EgovCcmAdministCodeModify"
+	 * @return "egovframework/com/admin/ssi/syi/ims/EgovCcmAdministCodeModify"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/ims/updateCntcMessageItem.do")
@@ -375,7 +375,7 @@ public class EgovCntcMessageController {
             CntcMessageItem vo = cntcMessageService.selectCntcMessageItemDetail(cntcMessageItem);
     		model.addAttribute("cntcMessageItem", vo);
 
-    		return "egovframework/com/ssi/syi/ims/EgovCntcMessageItemUpdt";
+    		return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageItemUpdt";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(cntcMessageItem, bindingResult);
     		if (bindingResult.hasErrors()){
@@ -391,7 +391,7 @@ public class EgovCntcMessageController {
                 CntcMessageItem vo = cntcMessageService.selectCntcMessageItemDetail(cntcMessageItem);
         		model.addAttribute("cntcMessageItem", vo);
 
-        		return "egovframework/com/ssi/syi/ims/EgovCntcMessageItemUpdt";
+        		return "egovframework/com/admin/ssi/syi/ims/EgovCntcMessageItemUpdt";
     		}
 
 	    	// 로그인VO에서  사용자 정보 가져오기

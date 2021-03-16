@@ -65,25 +65,25 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 	@RequestMapping("/index.do")
 	public String index(ModelMap model) {
-		return "egovframework/com/cmm/EgovUnitMain";
+		return "egovframework/com/web/MainPage";
 	}
 
 	@RequestMapping("/EgovTop.do")
 	public String top() {
-		return "egovframework/com/cmm/EgovUnitTop";
+		return "egovframework/com/admin/cmm/EgovUnitTop";
 	}
 
 	@RequestMapping("/EgovBottom.do")
 	public String bottom() {
-		return "egovframework/com/cmm/EgovUnitBottom";
+		return "egovframework/com/admin/cmm/EgovUnitBottom";
 	}
 
-	@RequestMapping("/EgovContent.do")
+	@RequestMapping("/AdminContent.do")		//수정 - EgovContent.do -> AdminContent.do
 	public String setContent(ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("loginVO", loginVO);
-		return "egovframework/com/cmm/EgovUnitContent";
+		return "egovframework/com/admin/cmm/EgovUnitContent";
 	}
 
 	@RequestMapping("/EgovLeft.do")
@@ -160,20 +160,17 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		
 		LOGGER.debug("EgovComIndexController index is called ");
 
-		return "egovframework/com/cmm/EgovUnitLeft";
+		return "egovframework/com/admin/cmm/EgovUnitLeft";
 	}
 	//-----------------------------------추가--------------------------------------------------//
-
-	@RequestMapping("/AdminMain.do")
-	public String AdminMain(ModelMap model) {
-
-		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("loginVO", loginVO);
-		return "egovframework/com/admin/admin";
-	}
 	
-	@RequestMapping("/AdminLeft.do")
-	public String AdminMenu() {
-		return "egovframework/com/admin/include/header";
-	}
+	@RequestMapping("/admin.do")
+	public String adminIndex(ModelMap model) {
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		String url = "egovframework/com/admin/cmm/error/accessDenied";
+		if(user.getUserSe().equals("USR")) {
+			return "egovframework/com/admin/index";
+		}
+		return url;
+	}	
 }

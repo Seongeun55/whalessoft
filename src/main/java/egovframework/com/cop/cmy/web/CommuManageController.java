@@ -100,7 +100,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		cmmntyVO.setEmplyrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -135,7 +135,7 @@ public class CommuManageController {
 		}
 		model.addAttribute("returnMsg", request.getParameter("returnMsg"));
 
-		return "egovframework/com/cop/cmy/EgovCommuMain";
+		return "egovframework/com/admin/cop/cmy/EgovCommuMain";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		cmmntyVO.setEmplyrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -204,7 +204,7 @@ public class CommuManageController {
 
 		model.addAttribute("articleList", target);
 
-		return "egovframework/com/cop/cmy/EgovCmmntyBaseTmplContents";
+		return "egovframework/com/admin/cop/cmy/EgovCmmntyBaseTmplContents";
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		String retVal = "";
@@ -277,7 +277,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인한 사용자가 관리자인지 확인한다.
@@ -336,7 +336,7 @@ public class CommuManageController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/cmy/EgovCommuUserList";
+		return "egovframework/com/admin/cop/cmy/EgovCommuUserList";
 	}
 
 	/**
@@ -354,7 +354,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인한 사용자가 관리자인지 확인한다.
@@ -386,7 +386,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인한 사용자가 관리자인지 확인한다.
@@ -417,7 +417,7 @@ public class CommuManageController {
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인한 사용자가 관리자인지 확인한다.
@@ -449,7 +449,7 @@ public class CommuManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인한 사용자가 관리자인지 확인한다.
@@ -563,7 +563,7 @@ public class CommuManageController {
 		}
 
 		LOGGER.debug("Template > WhiteList mismatch! Please check Admin page!");
-		return "egovframework/com/cmm/egovError";
+		return "egovframework/com/admin/cmm/egovError";
 	}
 
 	/**
@@ -622,7 +622,7 @@ public class CommuManageController {
 
 		model.addAttribute("preview", "true");
 
-		return "egovframework/com/cop/tpl/EgovCmmntyBaseTmplContents";
+		return "egovframework/com/admin/cop/tpl/EgovCmmntyBaseTmplContents";
 	}
 
 }

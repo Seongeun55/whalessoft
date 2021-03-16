@@ -76,7 +76,7 @@ public class EgovEventManageController {
     @RequestMapping("/uss/ion/evt/EgovEventReqstManageListView.do")
     public String selectEventManageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/evt/EgovEventReqstManageList";
+        return "egovframework/com/admin/uss/ion/evt/EgovEventReqstManageList";
     }
 
 	/**
@@ -121,7 +121,7 @@ public class EgovEventManageController {
 		model.addAttribute("yearList", yearList);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/evt/EgovEventReqstManageList";
+		return "egovframework/com/admin/uss/ion/evt/EgovEventReqstManageList";
 	}
 
 	/**
@@ -163,12 +163,12 @@ public class EgovEventManageController {
 	    	eventManage.setRceptBeginDe(     eventManageVO1.getRceptBeginDe()      );
 	    	eventManage.setRceptEndDe(       eventManageVO1.getRceptEndDe()        );
 	    	model.addAttribute("eventManage", eventManage);
-			return "egovframework/com/uss/ion/evt/EgovEventReqstUpdt";
+			return "egovframework/com/admin/uss/ion/evt/EgovEventReqstUpdt";
 		}else if(sCmd.equals("popup")){
 			model.addAttribute("check_popup", "Y");
-			return "egovframework/com/uss/ion/evt/EgovEventReqstDetail";
+			return "egovframework/com/admin/uss/ion/evt/EgovEventReqstDetail";
 		}else{
-			return "egovframework/com/uss/ion/evt/EgovEventReqstDetail";
+			return "egovframework/com/admin/uss/ion/evt/EgovEventReqstDetail";
 		}
 	}
 
@@ -186,7 +186,7 @@ public class EgovEventManageController {
         List<?> eventSeCodeList = cmmUseService.selectCmmCodeDetail(vo);
         model.addAttribute("eventSeCode", eventSeCodeList);
 
-    	return "egovframework/com/uss/ion/evt/EgovEventReqstRegist";
+    	return "egovframework/com/admin/uss/ion/evt/EgovEventReqstRegist";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class EgovEventManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("eventManageVO", eventManageVO);
-			return "egovframework/com/uss/ion/evt/EgovEventReqstRegist";
+			return "egovframework/com/admin/uss/ion/evt/EgovEventReqstRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	eventManage.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -232,7 +232,7 @@ public class EgovEventManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("eventManageVO", eventManage);
-			return "egovframework/com/uss/ion/evt/EgovEventReqstUpdt";
+			return "egovframework/com/admin/uss/ion/evt/EgovEventReqstUpdt";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	eventManage.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -297,7 +297,7 @@ public class EgovEventManageController {
 		eventManageVO.setSearchKeyword(eventManageVO.getSearchYear()+eventManageVO.getSearchMonth());
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	eventManageVO.setApplcntId(user.getUniqId());// 사용자UniqID
@@ -308,7 +308,7 @@ public class EgovEventManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/ion/evt/EgovEventRceptManageList";
+		return "egovframework/com/admin/uss/ion/evt/EgovEventRceptManageList";
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class EgovEventManageController {
     	model.addAttribute("eventManageVO", eventManageVO1);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-    	return "egovframework/com/uss/ion/evt/EgovEventRceptDetail";
+    	return "egovframework/com/admin/uss/ion/evt/EgovEventRceptDetail";
 	}
 
 	/**
@@ -363,7 +363,7 @@ public class EgovEventManageController {
     	model.addAttribute("eventManageVO", eventManageVO1);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-    	return "egovframework/com/uss/ion/evt/EgovEventRceptRegist";
+    	return "egovframework/com/admin/uss/ion/evt/EgovEventRceptRegist";
 	}
 
 	/**
@@ -425,7 +425,7 @@ public class EgovEventManageController {
 	        	model.addAttribute("eventManageVO", eventManageVO1);
 	        	model.addAttribute("errMessage", "정원초과");
 
-	        	return "egovframework/com/uss/ion/evt/EgovEventRceptRegist";
+	        	return "egovframework/com/admin/uss/ion/evt/EgovEventRceptRegist";
 			}
 		}
 	}
@@ -481,7 +481,7 @@ public class EgovEventManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	eventManageVO.setSanctnerId(user.getUniqId());// 승인권자UniqID
@@ -498,7 +498,7 @@ public class EgovEventManageController {
 		model.addAttribute("yearList", yearList);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/evt/EgovEventRceptConfm";
+		return "egovframework/com/admin/uss/ion/evt/EgovEventRceptConfm";
 	}
 
 	/**
@@ -548,7 +548,7 @@ public class EgovEventManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/evt/EgovEventReqstAtdrnList";
+		return "egovframework/com/admin/uss/ion/evt/EgovEventReqstAtdrnList";
 	}
 
 

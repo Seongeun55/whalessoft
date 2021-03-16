@@ -77,7 +77,7 @@ public class EgovWebLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/wlg/EgovWebLogList";
+		return "egovframework/com/admin/sym/log/wlg/EgovWebLogList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class EgovWebLogController {
 
 		WebLog vo = webLogService.selectWebLog(webLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/wlg/EgovWebLogDetail";
+		return "egovframework/com/admin/sym/log/wlg/EgovWebLogDetail";
 	}
 
 }

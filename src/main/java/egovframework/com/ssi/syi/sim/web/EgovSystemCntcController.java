@@ -100,7 +100,7 @@ public class EgovSystemCntcController {
 	 * @param systemCntc
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/sim/EgovCcmSystemCntcRegist"
+	 * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmSystemCntcRegist"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/sim/addSystemCntc.do")
@@ -163,13 +163,13 @@ public class EgovSystemCntcController {
             List<?> cntcProvdServiceList = cntcInsttService.selectCntcServiceList(searchCntcServiceVO);
             model.addAttribute("cntcProvdServiceList", cntcProvdServiceList);
 
-            return "egovframework/com/ssi/syi/sim/EgovSystemCntcRegist";
+            return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcRegist";
     	} else if (sCmd.equals("Regist")) {
 
 	    	beanValidator.validate(systemCntc, bindingResult);
 			if (bindingResult.hasErrors()){
 
-				return "egovframework/com/ssi/syi/sim/EgovSystemCntcRegist";
+				return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcRegist";
 			}
 
 	    	// 로그인VO에서  사용자 정보 가져오기
@@ -193,7 +193,7 @@ public class EgovSystemCntcController {
 	 * @param loginVO
 	 * @param systemCntc
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/sim/EgovCcmSystemCntcDetail"
+	 * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmSystemCntcDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/ssi/syi/sim/getSystemCntcDetail.do")
@@ -205,7 +205,7 @@ public class EgovSystemCntcController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	String selfUri = "/ssi/syi/sim/getSystemCntcDetail.do";
@@ -248,7 +248,7 @@ public class EgovSystemCntcController {
         List<?> cntcProvdServiceList = cntcInsttService.selectCntcServiceList(searchCntcServiceVO);
         model.addAttribute("cntcProvdServiceList", cntcProvdServiceList);
 
-		return "egovframework/com/ssi/syi/sim/EgovSystemCntcDetail";
+		return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcDetail";
 	}
 
     /**
@@ -256,7 +256,7 @@ public class EgovSystemCntcController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/ssi/syi/sim/EgovCcmSystemCntcList"
+     * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmSystemCntcList"
      * @throws Exception
      */
 	@IncludedInfo(name="시스템연계관리", listUrl="/ssi/syi/sim/getSystemCntcList.do", order = 1210,gid = 70)
@@ -269,7 +269,7 @@ public class EgovSystemCntcController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	String selfUri = "/ssi/syi/sim/getSystemCntcList.do";
@@ -296,7 +296,7 @@ public class EgovSystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/ssi/syi/sim/EgovSystemCntcList";
+        return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcList";
 	}
 
 	/**
@@ -306,7 +306,7 @@ public class EgovSystemCntcController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/sim/EgovCcmAdministCodeModify"
+	 * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmAdministCodeModify"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/sim/updateSystemCntc.do")
@@ -358,7 +358,7 @@ public class EgovSystemCntcController {
             List<?> cntcProvdServiceList = cntcInsttService.selectCntcServiceList(searchCntcServiceVO);
             model.addAttribute("cntcProvdServiceList", cntcProvdServiceList);
 
-    		return "egovframework/com/ssi/syi/sim/EgovSystemCntcUpdt";
+    		return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcUpdt";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(systemCntc, bindingResult);
     		if (bindingResult.hasErrors()){
@@ -403,7 +403,7 @@ public class EgovSystemCntcController {
                 List<?> cntcProvdServiceList = cntcInsttService.selectCntcServiceList(searchCntcServiceVO);
                 model.addAttribute("cntcProvdServiceList", cntcProvdServiceList);
 
-        		return "egovframework/com/ssi/syi/sim/EgovSystemCntcUpdt";
+        		return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcUpdt";
     		}
 
 	    	// 로그인VO에서  사용자 정보 가져오기
@@ -425,7 +425,7 @@ public class EgovSystemCntcController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/sim/EgovCcmAdministCodeModify"
+	 * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmAdministCodeModify"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/scm/getConfirmSystemCntcList.do")
@@ -438,7 +438,7 @@ public class EgovSystemCntcController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	String selfUri = "/ssi/syi/scm/getConfirmSystemCntcList.do";
@@ -465,7 +465,7 @@ public class EgovSystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/ssi/syi/sim/EgovSystemCntcList";
+        return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcList";
 	}
 
 	/**
@@ -473,7 +473,7 @@ public class EgovSystemCntcController {
 	 * @param loginVO
 	 * @param systemCntc
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/sim/EgovCcmSystemCntcDetail"
+	 * @return "egovframework/com/admin/ssi/syi/sim/EgovCcmSystemCntcDetail"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/ssi/syi/scm/getConfirmSystemCntcDetail.do")
@@ -487,7 +487,7 @@ public class EgovSystemCntcController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		String sCmd = commandMap.get("cmd") == null ? "" : (String)commandMap.get("cmd");
@@ -541,7 +541,7 @@ public class EgovSystemCntcController {
         List<?> cntcProvdServiceList = cntcInsttService.selectCntcServiceList(searchCntcServiceVO);
         model.addAttribute("cntcProvdServiceList", cntcProvdServiceList);
 
-		return "egovframework/com/ssi/syi/sim/EgovSystemCntcDetail";
+		return "egovframework/com/admin/ssi/syi/sim/EgovSystemCntcDetail";
 	}
 
     /**

@@ -76,7 +76,7 @@ public class EgovRecentSrchwrdController {
      * @param commandMap
      * @param recentSrchwrdVO
      * @param model
-     * @return "egovframework/com/uss/ion/rsm/EgovRecentSrchwrdList"
+     * @return "egovframework/com/admin/uss/ion/rsm/EgovRecentSrchwrdList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -113,7 +113,7 @@ public class EgovRecentSrchwrdController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/rsm/EgovRecentSrchwrdList";
+        return "egovframework/com/admin/uss/ion/rsm/EgovRecentSrchwrdList";
     }
 
     /**
@@ -153,7 +153,7 @@ public class EgovRecentSrchwrdController {
      * @param recentSrchwrdVO
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/uss/ion/rsm/EgovRecentSrchwrdUpdt"
+     * @return "egovframework/com/admin/uss/ion/rsm/EgovRecentSrchwrdUpdt"
      * @throws Exception
      */
     @RequestMapping(value = "/uss/ion/rsm/updtRecentSrchwrd.do")
@@ -165,7 +165,7 @@ public class EgovRecentSrchwrdController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -215,7 +215,7 @@ public class EgovRecentSrchwrdController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -251,7 +251,7 @@ public class EgovRecentSrchwrdController {
      * @param commandMap
      * @param recentSrchwrdVO
      * @param model
-     * @return "egovframework/com/uss/ion/rsm/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/ion/rsm/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -299,7 +299,7 @@ public class EgovRecentSrchwrdController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/rsm/EgovRecentSrchwrdResultList";
+        return "egovframework/com/admin/uss/ion/rsm/EgovRecentSrchwrdResultList";
     }
 
     /**

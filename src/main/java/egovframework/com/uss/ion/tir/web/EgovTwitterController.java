@@ -79,7 +79,7 @@ public class EgovTwitterController {
 	@IncludedInfo(name = "Twitter연동", order = 830, gid = 50)
 	@RequestMapping(value = "/uss/ion/tir/selectTwitterMain.do")
 	public String EgovTwitterMain(@RequestParam Map<?, ?> commandMap, ModelMap model) throws Exception {
-		return "egovframework/com/uss/ion/tir/EgovTwitterMain";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterMain";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class EgovTwitterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -115,7 +115,7 @@ public class EgovTwitterController {
 			model.addAttribute("consumerSecret", mapResult.get("CONSUMER_SECRET"));
 		}
 
-		return "egovframework/com/uss/ion/tir/EgovTwitterAccount";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterAccount";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class EgovTwitterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -177,7 +177,7 @@ public class EgovTwitterController {
 
 		model.addAttribute("reusltScript", ReusltScript);
 
-		return "egovframework/com/uss/ion/tir/EgovTwitterAccount";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterAccount";
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class EgovTwitterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -213,7 +213,7 @@ public class EgovTwitterController {
 			model.addAttribute("consumerSecret", mapResult.get("CONSUMER_SECRET"));
 		}
 
-		return "egovframework/com/uss/ion/tir/EgovTwitterPopup";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterPopup";
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class EgovTwitterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -265,7 +265,7 @@ public class EgovTwitterController {
 			egovTwitterTrnsmitService.deleteTwitterAccount(hmPram);
 		}
 
-		return "egovframework/com/uss/ion/tir/EgovTwitterPopupActor";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterPopupActor";
 	}
 
 	/**
@@ -276,7 +276,7 @@ public class EgovTwitterController {
 	 */
 	@RequestMapping(value = "/uss/ion/tir/selectTwitterPopupProcess.do")
 	public String EgovTwitterPopupProcess(ModelMap model) throws Exception {
-		return "egovframework/com/uss/ion/tir/EgovTwitterPopupProcess";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterPopupProcess";
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class EgovTwitterController {
 	public String EgovTwitterTrnsmitGet(ModelMap model) throws Exception {
 
 		model.addAttribute("twitterInfo", new TwitterInfo());
-		return "egovframework/com/uss/ion/tir/EgovTwitterTrnsmit";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterTrnsmit";
 	}
 
 	/**
@@ -401,6 +401,6 @@ public class EgovTwitterController {
 		twitter4j.Status status = egovTwitterTrnsmitService.twitterTrnsmitRegist(hmParam, twitterInfo.getTwitterText());
 		model.addAttribute("status", status);
 
-		return "egovframework/com/uss/ion/tir/EgovTwitterTrnsmitResult";
+		return "egovframework/com/admin/uss/ion/tir/EgovTwitterTrnsmitResult";
 	}
 }

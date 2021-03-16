@@ -72,7 +72,7 @@ public class EgovCpyrhtPrtcPolicyController {
      */
     @RequestMapping(value="/uss/sam/cpy/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/sam/cpy/EgovMain";
+    	return "egovframework/com/admin/uss/sam/cpy/EgovMain";
     }
 
     /**
@@ -83,7 +83,7 @@ public class EgovCpyrhtPrtcPolicyController {
      */
     @RequestMapping(value="/uss/sam/cpy/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/sam/cpy/EgovLeft";
+    	return "egovframework/com/admin/uss/sam/cpy/EgovLeft";
     }
 
     /**
@@ -118,7 +118,7 @@ public class EgovCpyrhtPrtcPolicyController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/sam/cpy/EgovCpyrhtPrtcPolicyListInqire";
+        return "egovframework/com/admin/uss/sam/cpy/EgovCpyrhtPrtcPolicyListInqire";
     }
 
     /**
@@ -155,7 +155,7 @@ public class EgovCpyrhtPrtcPolicyController {
 
         model.addAttribute("cpyrhtPrtcPolicyVO", new CpyrhtPrtcPolicyVO());
 
-        return "egovframework/com/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnRegist";
+        return "egovframework/com/admin/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnRegist";
 
     }
 
@@ -178,7 +178,7 @@ public class EgovCpyrhtPrtcPolicyController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnRegist";
+			return "egovframework/com/admin/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnRegist";
 
 		}
 
@@ -220,7 +220,7 @@ public class EgovCpyrhtPrtcPolicyController {
         // 변수명은 CoC 에 따라 JSTL사용을 위해
         model.addAttribute("cpyrhtPrtcPolicyVO", cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-        return "egovframework/com/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnUpdt";
+        return "egovframework/com/admin/uss/sam/cpy/EgovCpyrhtPrtcPolicyCnUpdt";
     }
 
    /**
@@ -243,7 +243,7 @@ public class EgovCpyrhtPrtcPolicyController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/olh/wor/EgovCpyrhtPrtcPolicyCnUpdt";
+			return "egovframework/com/admin/uss/olh/wor/EgovCpyrhtPrtcPolicyCnUpdt";
 
 		}
 

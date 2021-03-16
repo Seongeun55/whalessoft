@@ -79,7 +79,7 @@ public class EgovLeaderSchdulController {
 	 */
 	@RequestMapping("/cop/smt/lsm/selectEmplyrListPopup.do")
 	public String selectEmplyrListPopup(@ModelAttribute("searchVO") EmplyrVO emplyrVO, ModelMap model) throws Exception{
-		return "egovframework/com/cop/smt/lsm/EgovEmplyrListPopup";
+		return "egovframework/com/admin/cop/smt/lsm/EgovEmplyrListPopup";
 	}
 	
 	/**
@@ -115,7 +115,7 @@ public class EgovLeaderSchdulController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/lsm/EgovEmplyrList";
+		return "egovframework/com/admin/cop/smt/lsm/EgovEmplyrList";
 	}
 	
     /**
@@ -131,7 +131,7 @@ public class EgovLeaderSchdulController {
     	
 		model.addAttribute("leaderSchdulVO", leaderSchdulVO);
 
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSchdulList"; 
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSchdulList"; 
 	}
 	
 	/**
@@ -187,7 +187,7 @@ public class EgovLeaderSchdulController {
         List<LeaderSchdulVO> resultList = leaderSchdulService.selectLeaderSchdulList(leaderSchdulVO);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSchdulMonthList"; 
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSchdulMonthList"; 
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class EgovLeaderSchdulController {
 		List<LeaderSchdulVO> resultList = leaderSchdulService.selectLeaderSchdulList(leaderSchdulVO);
         model.addAttribute("resultList", resultList);
 		
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSchdulWeekList";
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSchdulWeekList";
 	}
 
 	/**
@@ -388,7 +388,7 @@ public class EgovLeaderSchdulController {
 		List<LeaderSchdulVO> resultList = leaderSchdulService.selectLeaderSchdulList(leaderSchdulVO);
         model.addAttribute("resultList", resultList);
         
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSchdulDailyList"; 
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSchdulDailyList"; 
 	}
 
 	/**
@@ -426,7 +426,7 @@ public class EgovLeaderSchdulController {
     	resultVO.setDay(leaderSchdulVO.getDay());
         model.addAttribute("leaderSchdulVO", resultVO);
         
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSchdulDetail"; 	
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSchdulDetail"; 	
 	}
 	
 	/**
@@ -445,7 +445,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
 		/*
@@ -517,7 +517,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	// 1. 로그인 객체 선언
@@ -576,7 +576,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
 		//로그인 객체 선언
@@ -615,7 +615,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
 		//로그인 객체 선언
@@ -652,7 +652,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		leaderSchdulService.deleteLeaderSchdul(leaderSchdulVO);
 		return "forward:/cop/smt/lsm/usr/selectLeaderSchdulList.do";
@@ -757,7 +757,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	/*
@@ -786,7 +786,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	LeaderSttusVO resultVO = leaderSchdulService.selectLeaderSttus(leaderSttusVO);
@@ -806,7 +806,7 @@ public class EgovLeaderSchdulController {
     	
         model.addAttribute("leaderSttusVO", resultVO);
         
-		return "egovframework/com/cop/smt/lsm/EgovLeaderSttusUpdt";
+		return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSttusUpdt";
 	}
 	
 	/**
@@ -825,7 +825,7 @@ public class EgovLeaderSchdulController {
 		if (bindingResult.hasErrors()) {
 			//LeaderSttus result = leaderSchdulService.selectLeaderSttus(leaderSttusVO);
 		    //model.addAttribute("leaderSttus", result);
-		    return "egovframework/com/cop/smt/lsm/EgovLeaderSttusUpdt";
+		    return "egovframework/com/admin/cop/smt/lsm/EgovLeaderSttusUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -849,7 +849,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
 		//로그인 객체 선언
@@ -891,7 +891,7 @@ public class EgovLeaderSchdulController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	leaderSchdulService.deleteLeaderSttus(leaderSttus);
 		return "forward:/cop/smt/lsm/mng/selectLeaderSttusList.do";

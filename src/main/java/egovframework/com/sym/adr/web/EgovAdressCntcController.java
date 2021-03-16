@@ -99,7 +99,7 @@ public class EgovAdressCntcController {
     @RequestMapping(value="/sym/adr/getAdressCntcInitPage.do")
     public String selectMainMenuHome() {
     	
-    	return "egovframework/com/sym/adr/EgovAdressCntc";
+    	return "egovframework/com/admin/sym/adr/EgovAdressCntc";
     }
 	
 }

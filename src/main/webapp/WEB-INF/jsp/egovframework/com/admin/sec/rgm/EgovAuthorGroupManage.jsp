@@ -222,18 +222,15 @@ function press() {
 				<select name="searchCondition" onchange="onSearchCondition()" title="<spring:message code="title.searchCondition" /> <spring:message code="input.cSelect" />">
 				<option value="1" <c:if test="${authorGroupVO.searchCondition == '1'}">selected</c:if> ><spring:message code="comCopSecRgm.searchCondition.userId" /></option><!-- 사용자 ID -->
 				<option value="2" <c:if test="${authorGroupVO.searchCondition == '2'}">selected</c:if> ><spring:message code="comCopSecRgm.searchCondition.userNm" /></option><!-- 사용자 명- -->
-				<option value="3" <c:if test="${authorGroupVO.searchCondition == '3'}">selected</c:if> ><spring:message code="comCopSecRgm.searchCondition.group" /></option><!-- 그룹 -->
 				</select>
 			</li>
 			<!-- 검색키워드 및 조회버튼 -->
 			<li>
 				<input class="s_input" name="searchKeyword" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchKeyword}"/>'  maxlength="155" >
-
-				<input type="button" class="s_btn" onClick="fncSelectAuthorGroupPop()" value="<spring:message code="comCopSecRgm.btn.groupInquire" />" title="<spring:message code="comCopSecRgm.btn.groupInquire" /> <spring:message code="input.button" />" /><!-- 그룹조회팝업 -->
 				<input type="button" class="s_btn" onClick="fncSelectAuthorGroupList('1')" value="<spring:message code="button.inquire" />" title="<spring:message code="button.inquire" /> <spring:message code="input.button" />" /><!-- 조회 -->
 				
 				<input type="button" class="s_btn" onClick="fncAuthorGroupDeleteList()" value="<spring:message code="title.delete" />" title="<spring:message code="title.delete" /> <spring:message code="input.button" />" /><!-- 삭제 -->
-				<input type="button" class="s_btn" onClick="fncAddAuthorGroupInsert()" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="button.create" />" /><!-- 등록 -->
+				<input type="button" class="s_btn" onClick="fncAddAuthorGroupInsert()" value="선택 수정" title="권한 수정" /><!-- 권한 수정 -->
 			</li>
 		</ul>
 	</div>

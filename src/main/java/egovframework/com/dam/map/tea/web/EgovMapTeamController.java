@@ -92,7 +92,7 @@ public class EgovMapTeamController {
 		int totCnt = mapTeamService.selectMapTeamTotCnt(searchVO);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
-		return "egovframework/com/dam/map/tea/EgovComDamMapTeamList";
+		return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamList";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class EgovMapTeamController {
 			) throws Exception {
 		MapTeam vo = mapTeamService.selectMapTeamDetail(mapTeam);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/map/tea/EgovComDamMapTeamDetail";
+		return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamDetail";
 	}
 
 	/**
@@ -126,12 +126,12 @@ public class EgovMapTeamController {
 			) throws Exception {
 		if (mapTeam.getOrgnztNm() == null
 				||mapTeam.getOrgnztNm().equals("")) {
-			return "egovframework/com/dam/map/tea/EgovComDamMapTeamRegist";
+			return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamRegist";
 		}
 
 		beanValidator.validate(mapTeam, bindingResult);
 		if (bindingResult.hasErrors()){
-			return "egovframework/com/dam/map/tea/EgovComDamMapTeamRegist";
+			return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamRegist";
 		}
 
 		mapTeam.setFrstRegisterId(loginVO.getUniqId());
@@ -157,11 +157,11 @@ public class EgovMapTeamController {
 		if (sCmd.equals("")) {
 			MapTeam vo = mapTeamService.selectMapTeamDetail(mapTeam);
 			model.addAttribute("mapTeam", vo);
-			return "egovframework/com/dam/map/tea/EgovComDamMapTeamModify";
+			return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamModify";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(mapTeam, bindingResult);
 			if (bindingResult.hasErrors()){
-				return "egovframework/com/dam/map/tea/EgovComDamMapTeamModify";
+				return "egovframework/com/admin/dam/map/tea/EgovComDamMapTeamModify";
 			}
 			mapTeam.setFrstRegisterId(loginVO.getUniqId());
 			mapTeamService.updateMapTeam(mapTeam);

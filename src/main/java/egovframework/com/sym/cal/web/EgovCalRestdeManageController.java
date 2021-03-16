@@ -83,19 +83,19 @@ public class EgovCalRestdeManageController {
 	/**
 	 * 달력 메인창을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalCalPopup"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalCalPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/callCalPopup.do")
  	public String callCalendar (ModelMap model
  			) throws Exception {
-		return "egovframework/com/sym/cal/EgovCalPopup";
+		return "egovframework/com/admin/sym/cal/EgovCalPopup";
 	}
 
 	/**
 	 * 달력을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalCalPopup"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalCalPopup"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -109,7 +109,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -194,26 +194,26 @@ public class EgovCalRestdeManageController {
 
         model.addAttribute("resultList", CalInfoList);
 
-		return "egovframework/com/sym/cal/EgovCalendar";
+		return "egovframework/com/admin/sym/cal/EgovCalendar";
 	}
 
 	/**
 	 * 일반달력 팝업 메인창을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalCalPopup"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalCalPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovNormalCalPopup.do")
  	public String callNormalCalPopup (ModelMap model
  			) throws Exception {
-		return "egovframework/com/sym/cal/EgovNormalCalPopup";
+		return "egovframework/com/admin/sym/cal/EgovNormalCalPopup";
 	}
 
 	/**
 	 * 일반달력 팝업 정보를 조회한다.
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovselectNormalCalendar.do")
@@ -226,7 +226,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -269,27 +269,27 @@ public class EgovCalRestdeManageController {
 
         model.addAttribute("resultList", CalInfoList);
 
-		return "egovframework/com/sym/cal/EgovNormalCalendar";
+		return "egovframework/com/admin/sym/cal/EgovNormalCalendar";
 	}
 
 
 	/**
 	 * 행정달력 팝업 메인창을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministCalPopup"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministCalPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovAdministCalPopup.do")
  	public String callAdministCalPopup (ModelMap model
  			) throws Exception {
-		return "egovframework/com/sym/cal/EgovAdministCalPopup";
+		return "egovframework/com/admin/sym/cal/EgovAdministCalPopup";
 	}
 
 	/**
 	 * 행정달력 팝업 정보를 조회한다.
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovselectAdministCalendar.do")
@@ -302,7 +302,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -345,14 +345,14 @@ public class EgovCalRestdeManageController {
 
         model.addAttribute("resultList", CalInfoList);
 
-		return "egovframework/com/sym/cal/EgovAdministCalendar";
+		return "egovframework/com/admin/sym/cal/EgovAdministCalendar";
 	}
 
 	/**
 	 * 일반달력 일간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalDayCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalDayCalendar"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("static-access")
@@ -366,7 +366,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -424,14 +424,14 @@ public class EgovCalRestdeManageController {
         model.addAttribute("resultList", CalInfoList);
         model.addAttribute("RestdeList", NormalWeekRestdeList);
 
-		return "egovframework/com/sym/cal/EgovNormalDayCalendar";
+		return "egovframework/com/admin/sym/cal/EgovNormalDayCalendar";
 	}
 
 	/**
 	 * 일반달력 주간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalWeekCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalWeekCalendar"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("static-access")
@@ -445,7 +445,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -597,14 +597,14 @@ public class EgovCalRestdeManageController {
 		List<?> CalInfoList = restdeManageService.selectNormalDayCal(restde);
         model.addAttribute("resultList", CalInfoList);
 
-        return "egovframework/com/sym/cal/EgovNormalWeekCalendar";
+        return "egovframework/com/admin/sym/cal/EgovNormalWeekCalendar";
 	}
 
 	/**
 	 * 일반달력 월간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalMonthCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalMonthCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovNormalMonthCalendar.do")
@@ -617,7 +617,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -664,14 +664,14 @@ public class EgovCalRestdeManageController {
         model.addAttribute("resultList", CalInfoList);
         model.addAttribute("RestdeList", NormalMonthRestdeList);
 
-        return "egovframework/com/sym/cal/EgovNormalMonthCalendar";
+        return "egovframework/com/admin/sym/cal/EgovNormalMonthCalendar";
 	}
 
 	/**
 	 * 일반달력 연간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovNormalYearCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovNormalYearCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovNormalYearCalendar.do")
@@ -684,7 +684,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -852,7 +852,7 @@ public class EgovCalRestdeManageController {
         model.addAttribute("RestdeList_11", NormalMonthRestdeList_11);
         model.addAttribute("RestdeList_12", NormalMonthRestdeList_12);
 
-        return "egovframework/com/sym/cal/EgovNormalYearCalendar";
+        return "egovframework/com/admin/sym/cal/EgovNormalYearCalendar";
 	}
 
 
@@ -860,7 +860,7 @@ public class EgovCalRestdeManageController {
 	 * 행정달력 일간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministDayCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministDayCalendar"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("static-access")
@@ -874,7 +874,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -932,7 +932,7 @@ public class EgovCalRestdeManageController {
         model.addAttribute("resultList", CalInfoList);
         model.addAttribute("RestdeList", AdministWeekRestdeList);
 
-		return "egovframework/com/sym/cal/EgovAdministDayCalendar";
+		return "egovframework/com/admin/sym/cal/EgovAdministDayCalendar";
 	}
 
 
@@ -940,7 +940,7 @@ public class EgovCalRestdeManageController {
 	 * 행정달력 주간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministWeekCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministWeekCalendar"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("static-access")
@@ -954,7 +954,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -1106,14 +1106,14 @@ public class EgovCalRestdeManageController {
 
         model.addAttribute("resultList", CalInfoList);
 
-		return "egovframework/com/sym/cal/EgovAdministWeekCalendar";
+		return "egovframework/com/admin/sym/cal/EgovAdministWeekCalendar";
 	}
 
 	/**
 	 * 행정달력 월간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministMonthCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministMonthCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovAdministMonthCalendar.do")
@@ -1126,7 +1126,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -1173,7 +1173,7 @@ public class EgovCalRestdeManageController {
         model.addAttribute("resultList", CalInfoList);
         model.addAttribute("RestdeList", AdministMonthRestdeList);
 
-        return "egovframework/com/sym/cal/EgovAdministMonthCalendar";
+        return "egovframework/com/admin/sym/cal/EgovAdministMonthCalendar";
 	}
 
 
@@ -1181,7 +1181,7 @@ public class EgovCalRestdeManageController {
 	 * 행정달력 연간
 	 * @param restde
 	 * @param model
-	 * @return "egovframework/com/sym/cal/EgovAdministYearCalendar"
+	 * @return "egovframework/com/admin/sym/cal/EgovAdministYearCalendar"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/cal/EgovAdministYearCalendar.do")
@@ -1194,7 +1194,7 @@ public class EgovCalRestdeManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/cmm/error/dataAccessFailure";
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 
 		}
 
@@ -1362,7 +1362,7 @@ public class EgovCalRestdeManageController {
         model.addAttribute("RestdeList_11", AdministMonthRestdeList_11);
         model.addAttribute("RestdeList_12", AdministMonthRestdeList_12);
 
-        return "egovframework/com/sym/cal/EgovAdministYearCalendar";
+        return "egovframework/com/admin/sym/cal/EgovAdministYearCalendar";
 	}
 
 
@@ -1390,7 +1390,7 @@ public class EgovCalRestdeManageController {
      * @param restde
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/sym/cal/EgovRestdeRegist"
+     * @return "egovframework/com/admin/sym/cal/EgovRestdeRegist"
      * @throws Exception
      */
     @RequestMapping(value="/sym/cal/EgovRestdeRegist.do")
@@ -1407,12 +1407,12 @@ public class EgovCalRestdeManageController {
             List<?> restdeCodeList = cmmUseService.selectCmmCodeDetail(vo);
             model.addAttribute("restdeCode", restdeCodeList);
 
-            return "egovframework/com/sym/cal/EgovRestdeRegist";
+            return "egovframework/com/admin/sym/cal/EgovRestdeRegist";
     	}
 
         beanValidator.validate(restde, bindingResult);
 		if (bindingResult.hasErrors()){
-            return "egovframework/com/sym/cal/EgovRestdeRegist";
+            return "egovframework/com/admin/sym/cal/EgovRestdeRegist";
 		}
 
     	restde.setRestdeNo(idgenService.getNextIntegerId()%1000000);
@@ -1428,7 +1428,7 @@ public class EgovCalRestdeManageController {
      * @param loginVO
      * @param restde
      * @param model
-     * @return "egovframework/com/sym/cal/EgovRestdeDetail"
+     * @return "egovframework/com/admin/sym/cal/EgovRestdeDetail"
      * @throws Exception
      */
 	@RequestMapping(value="/sym/cal/EgovRestdeDetail.do")
@@ -1439,7 +1439,7 @@ public class EgovCalRestdeManageController {
 		Restde vo = restdeManageService.selectRestdeDetail(restde);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/sym/cal/EgovRestdeDetail";
+		return "egovframework/com/admin/sym/cal/EgovRestdeDetail";
 	}
 
     /**
@@ -1447,7 +1447,7 @@ public class EgovCalRestdeManageController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/cal/EgovRestdeList"
+     * @return "egovframework/com/admin/sym/cal/EgovRestdeList"
      * @throws Exception
      */
 	@IncludedInfo(name="공휴일관리(달력)", listUrl="/sym/cal/EgovRestdeList.do", order = 1300 ,gid = 90)
@@ -1477,7 +1477,7 @@ public class EgovCalRestdeManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/cal/EgovRestdeList";
+        return "egovframework/com/admin/sym/cal/EgovRestdeList";
 	}
 
     /**
@@ -1487,7 +1487,7 @@ public class EgovCalRestdeManageController {
      * @param bindingResult
      * @param commandMap
      * @param model
-     * @return "egovframework/com/sym/cal/EgovRestdeModify"
+     * @return "egovframework/com/admin/sym/cal/EgovRestdeModify"
      * @throws Exception
      */
     @RequestMapping(value="/sym/cal/EgovRestdeModify.do")
@@ -1507,7 +1507,7 @@ public class EgovCalRestdeManageController {
             List<?> restdeCodeList = cmmUseService.selectCmmCodeDetail(CodeVO);
             model.addAttribute("restdeCode", restdeCodeList);
 
-            return "egovframework/com/sym/cal/EgovRestdeModify";
+            return "egovframework/com/admin/sym/cal/EgovRestdeModify";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(restde, bindingResult);
     		if (bindingResult.hasErrors()){
@@ -1516,7 +1516,7 @@ public class EgovCalRestdeManageController {
                 List<?> restdeCodeList = cmmUseService.selectCmmCodeDetail(CodeVO);
                 model.addAttribute("restdeCode", restdeCodeList);
 
-                return "egovframework/com/sym/cal/EgovRestdeModify";
+                return "egovframework/com/admin/sym/cal/EgovRestdeModify";
     		}
 
     		restde.setLastUpdusrId(loginVO.getUniqId());

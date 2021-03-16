@@ -67,7 +67,7 @@ public class AdminAuthorManageController {
 	 */
 	@RequestMapping("/sec/ram/EgovAuthorListView.do")
 	public String selectAuthorListView() throws Exception {
-		return "egovframework/com/sec/ram/EgovAuthorManage";
+		return "egovframework/com/admin/sec/ram/EgovAuthorManage";
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class AdminAuthorManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sec/ram/EgovAuthorManage";
+		return "egovframework/com/admin/sec/ram/EgovAuthorManage";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class AdminAuthorManageController {
 
 		model.addAttribute("authorManage", AuthorManageService.selectAuthor(authorManageVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/sec/ram/EgovAuthorUpdate";
+		return "egovframework/com/admin/sec/ram/EgovAuthorUpdate";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class AdminAuthorManageController {
 	 */
 	@RequestMapping("/sec/ram/AdminAuthorInsertView.do")
 	public String insertAuthorView(@ModelAttribute("authorManage") AuthorManage authorManage) throws Exception {
-		return "egovframework/com/sec/ram/EgovAuthorInsert";
+		return "egovframework/com/admin/sec/ram/EgovAuthorInsert";
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class AdminAuthorManageController {
 		beanValidator.validate(authorManage, bindingResult); // validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/ram/EgovAuthorInsert";
+			return "egovframework/com/admin/sec/ram/EgovAuthorInsert";
 		} else {
 			AuthorManageService.insertAuthor(authorManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
@@ -174,7 +174,7 @@ public class AdminAuthorManageController {
 		beanValidator.validate(authorManage, bindingResult); // validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/ram/EgovAuthorUpdate";
+			return "egovframework/com/admin/sec/ram/EgovAuthorUpdate";
 		} else {
 			AuthorManageService.updateAuthor(authorManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));
@@ -227,6 +227,6 @@ public class AdminAuthorManageController {
 	 */
 	@RequestMapping("/sec/ram/accessDenied.do")
 	public String accessDenied() throws Exception {
-		return "egovframework/com/sec/accessDenied";
+		return "egovframework/com/admin/sec/accessDenied";
 	}
 }

@@ -75,7 +75,7 @@ public class EgovIntnetSvcGuidanceController {
     @RequestMapping("/uss/ion/isg/selectIntnetSvcGuidanceListView.do")
     public String selectIntnetSvcGuidanceListView() throws Exception {
 
-        return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceList";
+        return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceList";
     }
 
 	/**
@@ -108,7 +108,7 @@ public class EgovIntnetSvcGuidanceController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceList";
+		return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceList";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class EgovIntnetSvcGuidanceController {
 		model.addAttribute("intnetSvcGuidance", egovIntnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
+		return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class EgovIntnetSvcGuidanceController {
 	@RequestMapping("/uss/ion/isg/addViewIntnetSvcGuidance.do")
     public String insertIntnetSvcGuidanceView(@ModelAttribute("intnetSvcGuidanceVO") IntnetSvcGuidanceVO intnetSvcGuidanceVO) throws Exception {
 
-        return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceRegist";
+        return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceRegist";
     }
 
 	/**
@@ -153,7 +153,7 @@ public class EgovIntnetSvcGuidanceController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("intnetSvcGuidanceVO", intnetSvcGuidanceVO);
-			return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceRegist";
+			return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 
@@ -164,7 +164,7 @@ public class EgovIntnetSvcGuidanceController {
 	    	model.addAttribute("intnetSvcGuidance", egovIntnetSvcGuidanceService.insertIntnetSvcGuidance(intnetSvcGuidance, intnetSvcGuidanceVO));
 	    	model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 
-//			return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
+//			return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
 			return "forward:/uss/ion/isg/selectIntnetSvcGuidanceList.do";
 		}
 	}
@@ -183,7 +183,7 @@ public class EgovIntnetSvcGuidanceController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("intnetSvcGuidanceVO", intnetSvcGuidance);
-			return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
+			return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceUpdt";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	intnetSvcGuidance.setUserId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -227,6 +227,6 @@ public class EgovIntnetSvcGuidanceController {
 
 		model.addAttribute("intnetSvcGuidanceList", intnetSvcGuidanceList);
 
-		return "egovframework/com/uss/ion/isg/EgovIntnetSvcGuidanceView";
+		return "egovframework/com/admin/uss/ion/isg/EgovIntnetSvcGuidanceView";
 	}
 }

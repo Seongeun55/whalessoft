@@ -80,7 +80,7 @@ public class EgovWebEditorImageController {
     @RequestMapping(value="/utl/wed/insertImage.do", method=RequestMethod.GET)
     public String goInsertImage() throws Exception {
 
-	return "egovframework/com/utl/wed/EgovInsertImage";
+	return "egovframework/com/admin/utl/wed/EgovInsertImage";
     }
 
     
@@ -96,7 +96,7 @@ public class EgovWebEditorImageController {
     public String imageUpload(MultipartHttpServletRequest request, Model model) throws Exception {
     	
     	uploadImageFiles(request, model);
-    	return "egovframework/com/utl/wed/EgovInsertImage";
+    	return "egovframework/com/admin/utl/wed/EgovInsertImage";
     }
     
     /**
@@ -113,7 +113,7 @@ public class EgovWebEditorImageController {
 		//List<EgovFormBasedFileVo> list = EgovFormBasedFileUtil.uploadFiles(request, uploadDir, maxFileSize);
     	model.addAttribute("ckEditorFuncNum", ckEditorFuncNum);
     	uploadImageFiles(request, model);
-		return "egovframework/com/utl/wed/EgovUploadImageComplete";
+		return "egovframework/com/admin/utl/wed/EgovUploadImageComplete";
     }
 
 	/**

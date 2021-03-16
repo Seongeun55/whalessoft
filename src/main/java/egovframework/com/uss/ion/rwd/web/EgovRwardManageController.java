@@ -91,7 +91,7 @@ public class EgovRwardManageController {
 		rwardCdCodeList = cmmUseService.selectCmmCodeDetail(vo);
         model.addAttribute("rwardCodeList",    rwardCdCodeList);
 
-        return "egovframework/com/uss/ion/rwd/EgovRwardManageList";
+        return "egovframework/com/admin/uss/ion/rwd/EgovRwardManageList";
     }
 
 	/**
@@ -130,7 +130,7 @@ public class EgovRwardManageController {
 		model.addAttribute("paginationInfo",   paginationInfo );
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/rwd/EgovRwardManageList";
+		return "egovframework/com/admin/uss/ion/rwd/EgovRwardManageList";
 	}
 
 	/**
@@ -172,9 +172,9 @@ public class EgovRwardManageController {
 			rwardCdCodeList = cmmUseService.selectCmmCodeDetail(vo);
 	        model.addAttribute("rwardCodeList",    rwardCdCodeList);
 			model.addAttribute("rwardManage", rwardManage_1);
-			return "egovframework/com/uss/ion/rwd/EgovRwardUpdt";
+			return "egovframework/com/admin/uss/ion/rwd/EgovRwardUpdt";
 		}else{
-			return "egovframework/com/uss/ion/rwd/EgovRwardDetail";
+			return "egovframework/com/admin/uss/ion/rwd/EgovRwardDetail";
 		}
 
 	}
@@ -192,7 +192,7 @@ public class EgovRwardManageController {
 		vo.setCodeId("COM055");
 		rwardCdCodeList = cmmUseService.selectCmmCodeDetail(vo);
         model.addAttribute("rwardCodeList",    rwardCdCodeList);
-    	return "egovframework/com/uss/ion/rwd/EgovRwardRegist";
+    	return "egovframework/com/admin/uss/ion/rwd/EgovRwardRegist";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class EgovRwardManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("rwardManageVO", rwardManageVO);
-			return "egovframework/com/uss/ion/rwd/EgovRwardRegist";
+			return "egovframework/com/admin/uss/ion/rwd/EgovRwardRegist";
 		} else {
 	    	// 첨부파일 관련 첨부파일ID 생성
 			List<FileVO> _result = null;
@@ -255,7 +255,7 @@ public class EgovRwardManageController {
     	if (bindingResult.hasErrors()) {
         	model.addAttribute("rwardManageVO", rwardManageVO);
 			model.addAttribute("rwardManage",   rwardManage);
-			return "egovframework/com/uss/ion/rwd/EgovRwardUpdt";
+			return "egovframework/com/admin/uss/ion/rwd/EgovRwardUpdt";
 		} else {
 	    	// 첨부파일 관련 ID 생성 start....
 			String _atchFileId = rwardManage.getAtchFileId();
@@ -341,7 +341,7 @@ public class EgovRwardManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	rwardManageVO.setSanctnerId(user.getUniqId()); //사용자가 승인권자인지 조건값 setting   selectRwardManageList
@@ -362,7 +362,7 @@ public class EgovRwardManageController {
 		model.addAttribute("rwardCodeList",    rwardCdCodeList);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/rwd/EgovRwardConfmList";
+		return "egovframework/com/admin/uss/ion/rwd/EgovRwardConfmList";
 	}
 
 	/**
@@ -394,7 +394,7 @@ public class EgovRwardManageController {
     	model.addAttribute("rwardManageVO", rwardManageVOTemp);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/rwd/EgovRwardConfm";
+		return "egovframework/com/admin/uss/ion/rwd/EgovRwardConfm";
     }
 
 	/**
@@ -414,12 +414,12 @@ public class EgovRwardManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("rwardManageVO", rwardManage);
-			return "egovframework/com/uss/ion/vct/EgovRwardConfm";
+			return "egovframework/com/admin/uss/ion/vct/EgovRwardConfm";
 		} else {
 
 	    	rwardManage.setSanctnerId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());

@@ -94,7 +94,7 @@ public class EgovDeptSchdulManageController {
      */
     @RequestMapping(value="/cop/smt/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/cop/smt/sdm/EgovMain";
+    	return "egovframework/com/admin/cop/smt/sdm/EgovMain";
     }
 
     /**
@@ -105,7 +105,7 @@ public class EgovDeptSchdulManageController {
      */
     @RequestMapping(value="/cop/smt/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/cop/smt/sdm/EgovLeft";
+    	return "egovframework/com/admin/cop/smt/sdm/EgovLeft";
     }
     
     
@@ -128,7 +128,7 @@ public class EgovDeptSchdulManageController {
     	 List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageAuthorGroupPopup(searchVO);
          model.addAttribute("resultList", resultList);
 
-    	return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageAuthorGroupPopup";
+    	return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageAuthorGroupPopup";
     }
 
     /**
@@ -149,7 +149,7 @@ public class EgovDeptSchdulManageController {
     	 List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageEmpLyrPopup(searchVO);
          model.addAttribute("resultList", resultList);
 
-    	return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageEmpLyrPopup";
+    	return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageEmpLyrPopup";
     }
     
 
@@ -157,7 +157,7 @@ public class EgovDeptSchdulManageController {
 	 * 메인페이지/부서일정관리조회
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageMainList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageMainList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sdm/EgovDeptSchdulManageMainList.do")
@@ -170,7 +170,7 @@ public class EgovDeptSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -185,7 +185,7 @@ public class EgovDeptSchdulManageController {
 
 		 model.addAttribute("resultList", reusltList);
 
-    	return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageMainList";
+    	return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageMainList";
 
 	}
 
@@ -195,7 +195,7 @@ public class EgovDeptSchdulManageController {
 	 * @param commandMap
 	 * @param deptSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/EgovDiaryManageList"
+	 * @return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -233,7 +233,7 @@ public class EgovDeptSchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageListPopup";
+		return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageListPopup";
 	}
 
 	/**
@@ -242,7 +242,7 @@ public class EgovDeptSchdulManageController {
 	 * @param commandMap
 	 * @param deptSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageDailyList"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageDailyList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sdm/EgovDeptSchdulManageDailyList.do")
@@ -298,7 +298,7 @@ public class EgovDeptSchdulManageController {
 		List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageDailyList";
+		return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageDailyList";
 	}
 
 	/**
@@ -307,7 +307,7 @@ public class EgovDeptSchdulManageController {
 	 * @param commandMap
 	 * @param deptSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageWeekList"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageWeekList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -441,7 +441,7 @@ public class EgovDeptSchdulManageController {
 		List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageWeekList";
+		return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageWeekList";
 	}
 
 	/**
@@ -450,7 +450,7 @@ public class EgovDeptSchdulManageController {
 	 * @param commandMap
 	 * @param deptSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageMonthList"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageMonthList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -502,7 +502,7 @@ public class EgovDeptSchdulManageController {
         List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageMonthList";
+		return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageMonthList";
 	}
 
 	/**
@@ -511,7 +511,7 @@ public class EgovDeptSchdulManageController {
 	 * @param commandMap
 	 * @param deptSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageList"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name="부서일정관리", order = 320 ,gid = 40)
@@ -527,7 +527,7 @@ public class EgovDeptSchdulManageController {
         List<?> resultList = egovDeptSchdulManageService.selectDeptSchdulManageList(searchVO);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageList";
+		return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageList";
 	}
 
 	/**
@@ -536,7 +536,7 @@ public class EgovDeptSchdulManageController {
 	 * @param deptSchdulManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageDetail"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sdm/EgovDeptSchdulManageDetail.do")
@@ -586,7 +586,7 @@ public class EgovDeptSchdulManageController {
 	 * @param deptSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageModify"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageModify"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -654,7 +654,7 @@ public class EgovDeptSchdulManageController {
 	 * @param deptSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageModify"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sdm/EgovDeptSchdulManageModifyActor.do")
@@ -672,7 +672,7 @@ public class EgovDeptSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -764,7 +764,7 @@ public class EgovDeptSchdulManageController {
 	 * @param deptSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sdm/EgovDeptSchdulManageRegist"
+	 * @return "egovframework/com/admin/cop/smt/sdm/EgovDeptSchdulManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sdm/EgovDeptSchdulManageRegist.do")
@@ -782,7 +782,7 @@ public class EgovDeptSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
      	//공통코드  중요도 조회
@@ -839,7 +839,7 @@ public class EgovDeptSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

@@ -69,7 +69,7 @@ public class EgovBatchResultController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		egovBatchResultService.deleteBatchResult(batchResult);
@@ -92,7 +92,7 @@ public class EgovBatchResultController {
 		model.addAttribute("resultInfo", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/bat/EgovBatchResultDetail";
+		return "egovframework/com/admin/sym/bat/EgovBatchResultDetail";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class EgovBatchResultController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/bat/EgovBatchResultList";
+		return "egovframework/com/admin/sym/bat/EgovBatchResultList";
 	}
 
 }

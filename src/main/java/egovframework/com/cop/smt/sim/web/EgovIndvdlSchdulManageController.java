@@ -88,7 +88,7 @@ public class EgovIndvdlSchdulManageController {
 	 * 메인페이지/일정관리조회
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageMainList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageMainList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageMainList.do")
@@ -101,7 +101,7 @@ public class EgovIndvdlSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -116,7 +116,7 @@ public class EgovIndvdlSchdulManageController {
 
 		 model.addAttribute("resultList", reusltList);
 
-    	return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageMainList";
+    	return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageMainList";
 
 	}
 
@@ -126,7 +126,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param commandMap
 	 * @param indvdlSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageDailyList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageDailyList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageDailyList.do")
@@ -182,7 +182,7 @@ public class EgovIndvdlSchdulManageController {
 		List<?> resultList = egovIndvdlSchdulManageService.selectIndvdlSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageDailyList";
+		return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageDailyList";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param commandMap
 	 * @param indvdlSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageWeekList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageWeekList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
@@ -322,7 +322,7 @@ public class EgovIndvdlSchdulManageController {
 		List resultList = egovIndvdlSchdulManageService.selectIndvdlSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageWeekList";
+		return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageWeekList";
 	}
 
 	/**
@@ -331,7 +331,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param commandMap
 	 * @param indvdlSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageMonthList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageMonthList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "rawtypes", "unused" })
@@ -383,7 +383,7 @@ public class EgovIndvdlSchdulManageController {
         List resultList = egovIndvdlSchdulManageService.selectIndvdlSchdulManageRetrieve(commandMap);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageMonthList";
+		return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageMonthList";
 	}
 
 	/**
@@ -392,7 +392,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param commandMap
 	 * @param indvdlSchdulManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageList"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name="일정관리", order = 330 ,gid = 40)
@@ -408,7 +408,7 @@ public class EgovIndvdlSchdulManageController {
         List<?> resultList = egovIndvdlSchdulManageService.selectIndvdlSchdulManageList(searchVO);
         model.addAttribute("resultList", resultList);
 
-		return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageList";
+		return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageList";
 	}
 
 	/**
@@ -417,7 +417,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param indvdlSchdulManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageDetail"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageDetail.do")
@@ -478,7 +478,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param indvdlSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageModify"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageModify"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -547,7 +547,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param indvdlSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageModifyActor"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageModifyActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageModifyActor.do")
@@ -565,7 +565,7 @@ public class EgovIndvdlSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -657,7 +657,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param indvdlSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageRegist"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageRegist.do")
@@ -675,7 +675,7 @@ public class EgovIndvdlSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
      	//공통코드  중요도 조회
@@ -716,7 +716,7 @@ public class EgovIndvdlSchdulManageController {
 	 * @param indvdlSchdulManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/sim/EgovIndvdlSchdulManageRegistActor"
+	 * @return "egovframework/com/admin/cop/smt/sim/EgovIndvdlSchdulManageRegistActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/sim/EgovIndvdlSchdulManageRegistActor.do")
@@ -732,7 +732,7 @@ public class EgovIndvdlSchdulManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

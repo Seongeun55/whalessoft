@@ -95,7 +95,7 @@ public class EgovNoteRecptnController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         //로그인 객체 선언
@@ -171,7 +171,7 @@ public class EgovNoteRecptnController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-    	return "egovframework/com/uss/ion/ntr/EgovNoteRecptnList";
+    	return "egovframework/com/admin/uss/ion/ntr/EgovNoteRecptnList";
 
     }
 
@@ -215,7 +215,7 @@ public class EgovNoteRecptnController {
         	model.addAttribute("resultRecptnEmp", resultRecptnEmp);
         }
 
-    	return "egovframework/com/uss/ion/ntr/EgovNoteRecptnDetail";
+    	return "egovframework/com/admin/uss/ion/ntr/EgovNoteRecptnDetail";
     }
 
 }

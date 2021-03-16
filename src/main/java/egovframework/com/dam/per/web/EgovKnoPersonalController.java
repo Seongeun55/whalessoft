@@ -109,7 +109,7 @@ public class EgovKnoPersonalController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         // 로그인 객체 선언
@@ -137,7 +137,7 @@ public class EgovKnoPersonalController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/dam/per/EgovComDamPersonalList";
+		return "egovframework/com/admin/dam/per/EgovComDamPersonalList";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class EgovKnoPersonalController {
 			) throws Exception {
 		KnoPersonal vo = knoPersonalService.selectKnoPersonal(knoPersonal);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/per/EgovComDamPersonalDetail";
+		return "egovframework/com/admin/dam/per/EgovComDamPersonalDetail";
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class EgovKnoPersonalController {
             List<?> MapMaterialList = mapMaterialService.selectMapMaterialList(searchMatVO);
             model.addAttribute("mapMaterialList", MapMaterialList);
 
-			return "egovframework/com/dam/per/EgovComDamPersonalRegist";
+			return "egovframework/com/admin/dam/per/EgovComDamPersonalRegist";
 
 		} else if (sCmd.equals("Regist")) {
 
@@ -232,7 +232,7 @@ public class EgovKnoPersonalController {
 	            List<?> MapMaterialList = mapMaterialService.selectMapMaterialList(searchMatVO);
 	            model.addAttribute("mapMaterialList", MapMaterialList);
 
-				return "egovframework/com/dam/per/EgovComDamPersonalRegist";
+				return "egovframework/com/admin/dam/per/EgovComDamPersonalRegist";
 			}
 
 			knoPersonalService.insertKnoPersonal(knoPersonal);
@@ -263,7 +263,7 @@ public class EgovKnoPersonalController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -327,7 +327,7 @@ public class EgovKnoPersonalController {
 			KnoPersonal vo = knoPersonalService.selectKnoPersonal(knoPersonal);
 			model.addAttribute("knoPersonal", vo);
 		}
-		return "egovframework/com/dam/per/EgovComDamPersonalModify";
+		return "egovframework/com/admin/dam/per/EgovComDamPersonalModify";
 	}
 
 	/**
@@ -352,7 +352,7 @@ public class EgovKnoPersonalController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		//로그인 객체 선언

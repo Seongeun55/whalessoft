@@ -95,7 +95,7 @@ public class EgovNoteManageController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
      	//수신구분
@@ -141,7 +141,7 @@ public class EgovNoteManageController {
     		model.addAttribute("noteManage", new NoteManageVO());
     	}
 
-    	return "egovframework/com/uss/ion/ntm/EgovNoteManage";
+    	return "egovframework/com/admin/uss/ion/ntm/EgovNoteManage";
 
     }
 
@@ -169,7 +169,7 @@ public class EgovNoteManageController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         //서버  validate 체크
@@ -258,7 +258,7 @@ public class EgovNoteManageController {
 	        paginationInfo.setTotalRecordCount(totCnt);
 	        model.addAttribute("paginationInfo", paginationInfo);
 
-    	return "egovframework/com/uss/ion/ntm/EgovNoteEmpList";
+    	return "egovframework/com/admin/uss/ion/ntm/EgovNoteEmpList";
     }
 
 

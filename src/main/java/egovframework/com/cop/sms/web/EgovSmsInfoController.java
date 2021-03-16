@@ -75,7 +75,7 @@ public class EgovSmsInfoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		smsVO.setUniqId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -102,7 +102,7 @@ public class EgovSmsInfoController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/sms/EgovSmsInfoList";
+		return "egovframework/com/admin/cop/sms/EgovSmsInfoList";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class EgovSmsInfoController {
 
 		model.addAttribute("sms", sms);
 
-		return "egovframework/com/cop/sms/EgovSmsInfoRegist";
+		return "egovframework/com/admin/cop/sms/EgovSmsInfoRegist";
 	}
 
 	/**
@@ -143,14 +143,14 @@ public class EgovSmsInfoController {
 
 		beanValidator.validate(sms, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/cop/sms/EgovSmsInfoRegist";
+			return "egovframework/com/admin/cop/sms/EgovSmsInfoRegist";
 		}
 
 		// 서버 점검 추가
 		/*
 		if (true) {
 		    model.addAttribute("msg", "서버와의 연결이 정상적이지 않습니다.");
-		    return "egovframework/com/cop/sms/EgovSmsInfoRegist";
+		    return "egovframework/com/admin/cop/sms/EgovSmsInfoRegist";
 		}
 		*/
 
@@ -178,7 +178,7 @@ public class EgovSmsInfoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		SmsVO vo = smsInfoService.selectSmsInf(smsVO);
@@ -186,6 +186,6 @@ public class EgovSmsInfoController {
 		model.addAttribute("sessionUniqId", user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/cop/sms/EgovSmsInfoDetail";
+		return "egovframework/com/admin/cop/sms/EgovSmsInfoDetail";
 	}
 }

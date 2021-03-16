@@ -98,7 +98,7 @@ public class EgovMapMaterialController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/dam/map/mat/EgovComDamMapMaterialList";
+		return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialList";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class EgovMapMaterialController {
 			) throws Exception {
 		MapMaterial vo = mapMaterialService.selectMapMaterial(mapMaterial);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/map/mat/EgovComDamMapMaterialDetail";
+		return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialDetail";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class EgovMapMaterialController {
             List<?> MapMaterialList = mapTeamService.selectMapTeamList(searchVO);
             model.addAttribute("mapTeam", MapMaterialList);
 
-			return "egovframework/com/dam/map/mat/EgovComDamMapMaterialRegist";
+			return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialRegist";
 		}
 
 		beanValidator.validate(mapMaterial, bindingResult);
@@ -156,7 +156,7 @@ public class EgovMapMaterialController {
             List<?> MapMaterialList = mapTeamService.selectMapTeamList(searchVO);
             model.addAttribute("mapTeam", MapMaterialList);
 
-			return "egovframework/com/dam/map/mat/EgovComDamMapMaterialRegist";
+			return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialRegist";
 		}
 
 		mapMaterial.setFrstRegisterId(loginVO.getUniqId());
@@ -182,13 +182,13 @@ public class EgovMapMaterialController {
 		if (sCmd.equals("")) {
 			MapMaterial vo = mapMaterialService.selectMapMaterial(mapMaterial);
 			model.addAttribute("mapMaterial", vo);
-			return "egovframework/com/dam/map/mat/EgovComDamMapMaterialModify";
+			return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialModify";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(mapMaterial, bindingResult);
 			if (bindingResult.hasErrors()){
 				MapMaterial vo = mapMaterialService.selectMapMaterial(mapMaterial);
 				model.addAttribute("mapMaterial", vo);
-				return "egovframework/com/dam/map/mat/EgovComDamMapMaterialModify";
+				return "egovframework/com/admin/dam/map/mat/EgovComDamMapMaterialModify";
 			}
 			mapMaterial.setFrstRegisterId(loginVO.getUniqId());
 			mapMaterialService.updateMapMaterial(mapMaterial);

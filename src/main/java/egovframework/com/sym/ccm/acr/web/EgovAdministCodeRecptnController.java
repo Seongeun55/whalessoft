@@ -63,7 +63,7 @@ public class EgovAdministCodeRecptnController {
 	 * @param administCode
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeRegist"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeRegist"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/sym/ccm/acr/addAdministCode.do")
@@ -77,7 +77,7 @@ public class EgovAdministCodeRecptnController {
 
 	    	administCodeManageService.insertAdministCodeRecptn();
 
-    		return "egovframework/com/sym/ccm/acr/EgovAdministCodeRegist_TEST";
+    		return "egovframework/com/admin/sym/ccm/acr/EgovAdministCodeRegist_TEST";
     	} else {
 	        return "forward:/sym/ccm/acr/getAdministCodeRecptnList.do";
     	}
@@ -88,7 +88,7 @@ public class EgovAdministCodeRecptnController {
 	 * @param loginVO
 	 * @param administCode
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeDetail"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/ccm/acr/getAdministCodeDetail.do")
@@ -122,7 +122,7 @@ public class EgovAdministCodeRecptnController {
         List<?> administCodeRecptnList = administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO);
         model.addAttribute("administCodeRecptnList", administCodeRecptnList);
 
-		return "egovframework/com/sym/ccm/acr/EgovAdministCodeDetail";
+		return "egovframework/com/admin/sym/ccm/acr/EgovAdministCodeDetail";
 	}
 
     /**
@@ -130,7 +130,7 @@ public class EgovAdministCodeRecptnController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeList"
+     * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeList"
      * @throws Exception
      */
 	@IncludedInfo(name="행정코드관리", listUrl="/sym/ccm/acr/getAdministCodeRecptnList.do", order = 1010 ,gid = 60)
@@ -159,7 +159,7 @@ public class EgovAdministCodeRecptnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/acr/EgovAdministCodeRecptnList";
+        return "egovframework/com/admin/sym/ccm/acr/EgovAdministCodeRecptnList";
 	}
 
     /**
@@ -167,7 +167,7 @@ public class EgovAdministCodeRecptnController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeList"
+     * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeList"
      * @throws Exception
      */
     @RequestMapping(value="/sym/ccm/acr/getAdministCodeRecptnMainList.do")
@@ -186,7 +186,7 @@ public class EgovAdministCodeRecptnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/acr/EgovAdministCodeRecptnMainList";
+        return "egovframework/com/admin/sym/ccm/acr/EgovAdministCodeRecptnMainList";
 	}
 
     /**

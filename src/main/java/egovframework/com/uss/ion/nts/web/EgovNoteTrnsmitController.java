@@ -87,7 +87,7 @@ public class EgovNoteTrnsmitController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         //로그인 객체 선언
@@ -164,7 +164,7 @@ public class EgovNoteTrnsmitController {
         model.addAttribute("paginationInfo", paginationInfo);
 
 
-    	return "egovframework/com/uss/ion/nts/EgovNoteTrnsmitList";
+    	return "egovframework/com/admin/uss/ion/nts/EgovNoteTrnsmitList";
 
     }
 
@@ -190,7 +190,7 @@ public class EgovNoteTrnsmitController {
     	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	    if (!isAuthenticated) {
     	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-    	        return "egovframework/com/uat/uia/EgovLoginUsr";
+    	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	    }
 
             //로그인 객체 선언
@@ -237,7 +237,7 @@ public class EgovNoteTrnsmitController {
             List<?> resultList = egovNoteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmit);
         	model.addAttribute("resultList", resultList);
 
-    		return "egovframework/com/uss/ion/nts/EgovNoteTrnsmitCnfirm";
+    		return "egovframework/com/admin/uss/ion/nts/EgovNoteTrnsmitCnfirm";
     }
 
 }

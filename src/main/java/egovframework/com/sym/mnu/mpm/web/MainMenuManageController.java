@@ -111,7 +111,7 @@ public class MainMenuManageController {
 			return "egovframework/com/EgovMainView";
 		} else {
 			// 오류 페이지 이동
-			return "egovframework/com/cmm/error/egovError";
+			return "egovframework/com/admin/cmm/error/egovError";
 		}
 	}
 
@@ -142,7 +142,7 @@ public class MainMenuManageController {
 			return "egovframework/com/main_head";
 		} else {
 			// 오류 페이지 이동
-			return "egovframework/com/cmm/error/egovError";
+			return "egovframework/com/admin/cmm/error/egovError";
 		}
 	}
 
@@ -230,11 +230,11 @@ public class MainMenuManageController {
 
 		if (!user.getId().equals("")) {
 			// 메인 페이지 이동
-			return "egovframework/com/EgovMainView";
+			return "egovframework/com/web/afterLogin";		//수정 
 
 		} else {
 			// 오류 페이지 이동
-			return "egovframework/com/cmm/error/egovError";
+			return "egovframework/com/admin/cmm/error/egovError";
 		}
 	}
 }

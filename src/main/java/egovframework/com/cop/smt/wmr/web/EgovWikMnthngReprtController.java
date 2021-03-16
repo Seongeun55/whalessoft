@@ -92,7 +92,7 @@ public class EgovWikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/selectReportrListPopup.do")
 	public String selectReportrListPopup(@ModelAttribute("searchVO") ReportrVO reportrVO, ModelMap model) throws Exception{
-		return "egovframework/com/cop/smt/wmr/EgovReportrListPopup";
+		return "egovframework/com/admin/cop/smt/wmr/EgovReportrListPopup";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class EgovWikMnthngReprtController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/wmr/EgovReportrList";
+		return "egovframework/com/admin/cop/smt/wmr/EgovReportrList";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class EgovWikMnthngReprtController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/wmr/EgovWikMnthngReprtList";
+		return "egovframework/com/admin/cop/smt/wmr/EgovWikMnthngReprtList";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class EgovWikMnthngReprtController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	// 1. 로그인 객체 선언
@@ -222,7 +222,7 @@ public class EgovWikMnthngReprtController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	String whiteListFileUploadExtensions = EgovProperties.getProperty("Globals.fileUpload.Extensions");
@@ -241,7 +241,7 @@ public class EgovWikMnthngReprtController {
         model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
         model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
 
-		return "egovframework/com/cop/smt/wmr/EgovWikMnthngReprtUpdt";
+		return "egovframework/com/admin/cop/smt/wmr/EgovWikMnthngReprtUpdt";
 	}
 
 
@@ -270,7 +270,7 @@ public class EgovWikMnthngReprtController {
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("uniqId", loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
 
-		return "egovframework/com/cop/smt/wmr/EgovWikMnthngReprtDetail";
+		return "egovframework/com/admin/cop/smt/wmr/EgovWikMnthngReprtDetail";
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class EgovWikMnthngReprtController {
 	        model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
 	        model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
 		    
-		    return "egovframework/com/cop/smt/wmr/EgovWikMnthngReprtUpdt";
+		    return "egovframework/com/admin/cop/smt/wmr/EgovWikMnthngReprtUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -347,7 +347,7 @@ public class EgovWikMnthngReprtController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -405,7 +405,7 @@ public class EgovWikMnthngReprtController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	// 첨부파일 삭제를 위한 ID 생성 start....

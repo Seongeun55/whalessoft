@@ -83,7 +83,7 @@ public class EgovDiaryManageController {
 	 * @param commandMap
 	 * @param diaryManageVO
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/EgovDiaryManageList"
+	 * @return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -127,7 +127,7 @@ public class EgovDiaryManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/dsm/EgovDiaryManageList";
+		return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageList";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class EgovDiaryManageController {
 	 * @param diaryManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/EgovDiaryManageDetail"
+	 * @return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/dsm/EgovDiaryManageDetail.do")
@@ -168,7 +168,7 @@ public class EgovDiaryManageController {
 	 * @param diaryManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/EgovDiaryManageModify"
+	 * @return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageModify"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -185,7 +185,7 @@ public class EgovDiaryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -215,7 +215,7 @@ public class EgovDiaryManageController {
 	 * @param diaryManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/EgovDiaryManageModifyActor"
+	 * @return "egovframework/com/admin/cop/smt/dsm/EgovDiaryManageModifyActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/dsm/EgovDiaryManageModifyActor.do")
@@ -232,7 +232,7 @@ public class EgovDiaryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -321,7 +321,7 @@ public class EgovDiaryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -347,7 +347,7 @@ public class EgovDiaryManageController {
 	 * @param diaryManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/cop/smt/dsm/DiaryManageRegistActor"
+	 * @return "egovframework/com/admin/cop/smt/dsm/DiaryManageRegistActor"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/cop/smt/dsm/EgovDiaryManageRegistActor.do")
@@ -364,7 +364,7 @@ public class EgovDiaryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

@@ -111,7 +111,7 @@ public class AdminBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "egovframework/com/cop/bbs/EgovBBSMasterRegist";
+		return "egovframework/com/admin/cop/bbs/EgovBBSMasterRegist";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class AdminBBSMasterController {
 			List<?> codeResult = cmmUseService.selectCmmCodeDetail(vo);
 			model.addAttribute("bbsTyCode", codeResult);
 
-			return "egovframework/com/cop/bbs/EgovBBSMasterRegist";
+			return "egovframework/com/admin/cop/bbs/EgovBBSMasterRegist";
 		}
 
 		if (isAuthenticated) {
@@ -193,7 +193,7 @@ public class AdminBBSMasterController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/bbs/EgovBBSMasterList";
+		return "egovframework/com/admin/cop/bbs/EgovBBSMasterList";
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) {
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -239,7 +239,7 @@ public class AdminBBSMasterController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/bbs/EgovBlogList";
+		return "egovframework/com/admin/cop/bbs/EgovBlogList";
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class AdminBBSMasterController {
 	@RequestMapping("/cop/bbs/insertBlogMasterView.do")
 	public String insertBlogMasterView(@ModelAttribute("searchVO") BlogVO blogVO, ModelMap model) throws Exception {
 		model.addAttribute("blogMasterVO", new BlogVO());
-		return "egovframework/com/cop/bbs/EgovBlogRegist";
+		return "egovframework/com/admin/cop/bbs/EgovBlogRegist";
 	}
 
 	/**
@@ -303,7 +303,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안약점 조치 (2018-12-10, 신용호)
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		blogVO.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -312,13 +312,13 @@ public class AdminBBSMasterController {
 		if (vo != null) {
 			model.addAttribute("blogMasterVO", new BlogVO());
 			model.addAttribute("message", egovMessageSource.getMessage("comCopBlog.validate.blogUserCheck"));
-			return "egovframework/com/cop/bbs/EgovBlogRegist";
+			return "egovframework/com/admin/cop/bbs/EgovBlogRegist";
 		}
 
 		beanValidator.validate(blog, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/cop/bbs/EgovBlogRegist";
+			return "egovframework/com/admin/cop/bbs/EgovBlogRegist";
 		}
 
 		String blogId = idgenServiceBlog.getNextStringId(); // 블로그 아이디 채번
@@ -370,7 +370,7 @@ public class AdminBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "egovframework/com/cop/bbs/EgovBBSMasterDetail";
+		return "egovframework/com/admin/cop/bbs/EgovBBSMasterDetail";
 	}
 
 	/**
@@ -409,7 +409,7 @@ public class AdminBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "egovframework/com/cop/bbs/EgovBBSMasterUpdt";
+		return "egovframework/com/admin/cop/bbs/EgovBBSMasterUpdt";
 	}
 
 	/**
@@ -440,7 +440,7 @@ public class AdminBBSMasterController {
 			List<?> codeResult = cmmUseService.selectCmmCodeDetail(comVo);
 			model.addAttribute("bbsTyCode", codeResult);
 
-			return "egovframework/com/cop/bbs/EgovBBSMasterUpdt";
+			return "egovframework/com/admin/cop/bbs/EgovBBSMasterUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -489,7 +489,7 @@ public class AdminBBSMasterController {
 
 		model.addAttribute("resultList", result);
 
-		return "egovframework/com/cop/bbs/EgovBlogListPortlet";
+		return "egovframework/com/admin/cop/bbs/EgovBlogListPortlet";
 	}
 
 	/**
@@ -507,7 +507,7 @@ public class AdminBBSMasterController {
 
 		model.addAttribute("resultList", result);
 
-		return "egovframework/com/cop/bbs/EgovBBSListPortlet";
+		return "egovframework/com/admin/cop/bbs/EgovBBSListPortlet";
 	}
 
 }

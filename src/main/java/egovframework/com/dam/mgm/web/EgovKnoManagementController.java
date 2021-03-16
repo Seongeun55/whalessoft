@@ -98,7 +98,7 @@ public class EgovKnoManagementController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/dam/mgm/EgovComDamManagementList";
+		return "egovframework/com/admin/dam/mgm/EgovComDamManagementList";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class EgovKnoManagementController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
         // 로그인 객체 선언
         LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -128,7 +128,7 @@ public class EgovKnoManagementController {
 
 		KnoManagement vo = knoManagementService.selectKnoManagement(knoManagement);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/mgm/EgovComDamManagementDetail";
+		return "egovframework/com/admin/dam/mgm/EgovComDamManagementDetail";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EgovKnoManagementController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
 		//로그인 객체 선언
@@ -180,7 +180,7 @@ public class EgovKnoManagementController {
 			System.out.println("knoManagement>"+knoManagement);
 			System.out.println("knoManagement>"+model.get("knoManagement"));
 
-			return "egovframework/com/dam/mgm/EgovComDamManagementModify";
+			return "egovframework/com/admin/dam/mgm/EgovComDamManagementModify";
 
 		} else if (sCmd.equals("Modify")) {
 
@@ -190,7 +190,7 @@ public class EgovKnoManagementController {
 		        knoManagement.setEmplyrId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
 				knoManagement = knoManagementService.selectKnoManagement(knoManagement);
 				model.addAttribute("knoManagement", knoManagement);
-				return "egovframework/com/dam/mgm/EgovComDamManagementModify";
+				return "egovframework/com/admin/dam/mgm/EgovComDamManagementModify";
 			}
 
 	        knoManagement.setEmplyrId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));

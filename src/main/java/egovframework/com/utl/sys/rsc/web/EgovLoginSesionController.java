@@ -46,7 +46,7 @@ public class EgovLoginSesionController {
 	@IncludedInfo(name="로그인세션정보체크", order = 2160 ,gid = 90)
 	@RequestMapping(value="/utl/sys/rsc/loginSessionView.do")
 	public String checkLoginSessionView() throws Exception {
-		return "egovframework/com/utl/sys/rsc/EgovLoginSesionCheck";
+		return "egovframework/com/admin/utl/sys/rsc/EgovLoginSesionCheck";
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class EgovLoginSesionController {
 	@RequestMapping(value="/utl/sys/rsc/checkLloginSession.do")
 	public String checkLoginSession() throws Exception {
 		egovLoginSesionCeckUtil.checkLoginSessionView();
-		return "egovframework/com/utl/sys/rsc/EgovLoginSesionCheck";
+		return "egovframework/com/admin/utl/sys/rsc/EgovLoginSesionCheck";
 	}
 
 

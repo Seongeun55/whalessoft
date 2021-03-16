@@ -93,7 +93,7 @@ public class EgovRecomendSiteController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/rec/EgovRecomendSiteList";
+        return "egovframework/com/admin/uss/ion/rec/EgovRecomendSiteList";
     }
     
     /**
@@ -128,7 +128,7 @@ public class EgovRecomendSiteController {
 
         model.addAttribute("recomendSiteVO", new RecomendSiteVO());
 
-        return "egovframework/com/uss/ion/rec/EgovRecomendSiteRegist";
+        return "egovframework/com/admin/uss/ion/rec/EgovRecomendSiteRegist";
 
     }
     
@@ -149,7 +149,7 @@ public class EgovRecomendSiteController {
 
     	beanValidator.validate(recomendSiteVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/rec/EgovRecomendSiteRegist";
+			return "egovframework/com/admin/uss/olh/rec/EgovRecomendSiteRegist";
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기
@@ -187,7 +187,7 @@ public class EgovRecomendSiteController {
         model.addAttribute("recomendSiteVO", egovRecomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
 
-        return "egovframework/com/uss/ion/rec/EgovRecomendSiteUpdt";
+        return "egovframework/com/admin/uss/ion/rec/EgovRecomendSiteUpdt";
     }
     
     /**
@@ -206,7 +206,7 @@ public class EgovRecomendSiteController {
     	// Validation
     	beanValidator.validate(recomendSiteVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/rec/EgovRecomendSiteUpdt";
+			return "egovframework/com/admin/uss/olh/rec/EgovRecomendSiteUpdt";
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기

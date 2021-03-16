@@ -73,7 +73,7 @@ public class EgovOnlinePollPartcptnController {
      * @param commandMap
      * @param onlinePollPartcptn
      * @param model
-     * @return "egovframework/com/uss/olp/opp/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/olp/opp/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -103,7 +103,7 @@ public class EgovOnlinePollPartcptnController {
         model.addAttribute("resultList", reusltList);
 
 
-        return "egovframework/com/uss/olp/opp/EgovOnlinePollPartcptnMainList";
+        return "egovframework/com/admin/uss/olp/opp/EgovOnlinePollPartcptnMainList";
     }
 
 
@@ -113,7 +113,7 @@ public class EgovOnlinePollPartcptnController {
      * @param commandMap
      * @param onlinePollPartcptn
      * @param model
-     * @return "egovframework/com/uss/olp/opp/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/olp/opp/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -150,7 +150,7 @@ public class EgovOnlinePollPartcptnController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olp/opp/EgovOnlinePollPartcptnList";
+        return "egovframework/com/admin/uss/olp/opp/EgovOnlinePollPartcptnList";
     }
 
     /**
@@ -175,7 +175,7 @@ public class EgovOnlinePollPartcptnController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -283,7 +283,7 @@ public class EgovOnlinePollPartcptnController {
         model.addAttribute("linkType", commandMap.get("linkType") == null ? "" : (String) commandMap.get("linkType"));
 
 
-        return "egovframework/com/uss/olp/opp/EgovOnlinePollPartcptnStatistics";
+        return "egovframework/com/admin/uss/olp/opp/EgovOnlinePollPartcptnStatistics";
     }
 
 }

@@ -97,7 +97,7 @@ public class EgovFileSysMntrngController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngList";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngList";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class EgovFileSysMntrngController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		return sLocationUrl;
@@ -134,7 +134,7 @@ public class EgovFileSysMntrngController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		FileSysMntrngVO resultVO = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
@@ -151,7 +151,7 @@ public class EgovFileSysMntrngController {
 
 		model.addAttribute("fileSysMntrngVO", resultVO);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngUpdt";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngUpdt";
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class EgovFileSysMntrngController {
 		}
 		model.addAttribute("fileSysMntrngVO", fileSysMntrng);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngDetail";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngDetail";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class EgovFileSysMntrngController {
 		if (bindingResult.hasErrors()) {
 			FileSysMntrng fileSysMntrng = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
 			model.addAttribute("fileSysMntrng", fileSysMntrng);
-			return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngUpdt";
+			return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -215,7 +215,7 @@ public class EgovFileSysMntrngController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		//로그인 객체 선언
@@ -252,7 +252,7 @@ public class EgovFileSysMntrngController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 		fileSysMntrngService.deleteFileSysMntrng(fileSysMntrngVO);
 		return "forward:/utl/sys/fsm/selectFileSysMntrngList.do";
@@ -278,7 +278,7 @@ public class EgovFileSysMntrngController {
 		model.addAttribute("fileSysMgValue", totalSpaceFileSys);
 		model.addAttribute("fileSysMntrngVO", fileSysMntrngVO);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngRegist";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngRegist";
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class EgovFileSysMntrngController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngLogList";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngLogList";
 	}
 
 	/**
@@ -362,7 +362,7 @@ public class EgovFileSysMntrngController {
 		}
 		model.addAttribute("fileSysMntrngLog", fileSysMntrngLog);
 
-		return "egovframework/com/utl/sys/fsm/EgovFileSysMntrngLogDetail";
+		return "egovframework/com/admin/utl/sys/fsm/EgovFileSysMntrngLogDetail";
 	}
 
 	/**

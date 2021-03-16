@@ -80,7 +80,7 @@ public class AdminPopupManageController {
 	 * 팝업창관리 목록을 조회한다.
 	 * @param popupManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/ion/pwm/listPopupManage"
+	 * @return "egovframework/com/admin/uss/ion/pwm/listPopupManage"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "팝업창관리", order = 720, gid = 50)
@@ -111,7 +111,7 @@ public class AdminPopupManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/ion/pwm/EgovPopupList";
+		return "egovframework/com/admin/uss/ion/pwm/EgovPopupList";
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class AdminPopupManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -222,7 +222,7 @@ public class AdminPopupManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 로그인 객체 선언
@@ -317,14 +317,14 @@ public class AdminPopupManageController {
         }
 		//System.out.println("===>>> "+popupWhiteList.size());
 		LOGGER.debug("Open Popup > WhiteList mismatch! Please check Admin page!");
-		return "egovframework/com/cmm/egovError";
+		return "egovframework/com/admin/cmm/egovError";
 	}
 
 	/**
 	 * 팝업창관리 메인 테스트 목록을 조회한다.
 	 * @param popupManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/ion/pwm/listMainPopup"
+	 * @return "egovframework/com/admin/uss/ion/pwm/listMainPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/listMainPopup.do")
@@ -333,7 +333,7 @@ public class AdminPopupManageController {
 		List<?> reusltList = PopupManageService.selectPopupMainList(popupManageVO);
 		model.addAttribute("resultList", reusltList);
 
-		return "egovframework/com/uss/ion/pwm/EgovPopupMainList";
+		return "egovframework/com/admin/uss/ion/pwm/EgovPopupMainList";
 	}
 
 	/**

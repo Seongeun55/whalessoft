@@ -76,7 +76,7 @@ public class AdminLoginLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/clg/EgovLoginLogList";
+		return "egovframework/com/admin/sym/log/clg/EgovLoginLogList";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class AdminLoginLogController {
 
 		LoginLog vo = loginLogService.selectLoginLog(loginLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/clg/EgovLoginLogDetail";
+		return "egovframework/com/admin/sym/log/clg/EgovLoginLogDetail";
 	}
 
 }

@@ -67,7 +67,7 @@ public class ComUtlController {
 		
 		// 안전한 경로 문자열로 조치
 		link = EgovWebUtil.filePathBlackList(link);
-		System.out.println("확인 : " + link);
+		
 		return link;
 	}
 	
@@ -96,7 +96,7 @@ public class ComUtlController {
 	 */
     @RequestMapping(value="/EgovModal.do")
     public String selectUtlJsonInquire()  throws Exception {
-        return "egovframework/com/cmm/EgovModal";
+        return "egovframework/com/admin/cmm/EgovModal";
     }
     
     /**
@@ -104,7 +104,7 @@ public class ComUtlController {
 	 */
 	@RequestMapping("/validator.do")
 	public String validate(){
-		return "egovframework/com/cmm/validator";
+		return "egovframework/com/admin/cmm/validator";
 	}
 
 }

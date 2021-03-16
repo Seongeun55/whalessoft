@@ -250,7 +250,7 @@ public class EgovOrgManageLdapController {
     @RequestMapping("/ext/ldapumt/dpt/selectDeptManageTreeView.do")
     public String selectDeptManageTreeView() throws Exception {
 
-        return "egovframework/com/ext/ldapumt/EgovDeptManageTree";
+        return "egovframework/com/admin/ext/ldapumt/EgovDeptManageTree";
     }
 
     /**
@@ -262,7 +262,7 @@ public class EgovOrgManageLdapController {
     @RequestMapping("/ext/ldapumt/dpt/selectDeptManageOrgChartView.do")
     public String selectDeptManageOrgChartView() throws Exception {
 
-    	return "egovframework/com/ext/ldapumt/EgovDeptManageOrgChart";
+    	return "egovframework/com/admin/ext/ldapumt/EgovDeptManageOrgChart";
     }
 
 }

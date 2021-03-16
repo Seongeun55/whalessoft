@@ -73,7 +73,7 @@ public class EgovOnlineManualController {
      * @param searchVO
      * @param onlineManual
      * @param model
-     * @return "egovframework/com/uss/olh/omn/EgovOnlineManualList"
+     * @return "egovframework/com/admin/uss/olh/omn/EgovOnlineManualList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -103,7 +103,7 @@ public class EgovOnlineManualController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualUserList";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualUserList";
     }
     
     /**
@@ -122,7 +122,7 @@ public class EgovOnlineManualController {
     	OnlineManualVO result = egovOnlineManualService.selectOnlineManualDetail(onlineManualVO);
         model.addAttribute("result", result);
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualUserDetail";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualUserDetail";
     }
     
     /**
@@ -130,7 +130,7 @@ public class EgovOnlineManualController {
      * @param searchVO
      * @param onlineManual
      * @param model
-     * @return "egovframework/com/uss/olh/omm/EgovOnlineManualList"
+     * @return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -160,7 +160,7 @@ public class EgovOnlineManualController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualList";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualList";
     }
     
     /**
@@ -179,7 +179,7 @@ public class EgovOnlineManualController {
     	OnlineManualVO result = egovOnlineManualService.selectOnlineManualDetail(onlineManualVO);
         model.addAttribute("result", result);
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualDetail";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualDetail";
     }
     
     /**
@@ -201,7 +201,7 @@ public class EgovOnlineManualController {
 
         model.addAttribute("onlineManualVO", new OnlineManualVO());
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualRegist";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualRegist";
 
     }
     
@@ -220,7 +220,7 @@ public class EgovOnlineManualController {
 
     	beanValidator.validate(onlineManualVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/omm/EgovOnlineManualRegist";
+			return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualRegist";
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기
@@ -261,7 +261,7 @@ public class EgovOnlineManualController {
 
         model.addAttribute("onlineManualVO", egovOnlineManualService.selectOnlineManualDetail(onlineManualVO));
 
-        return "egovframework/com/uss/olh/omm/EgovOnlineManualUpdt";
+        return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualUpdt";
     }
     
     /**
@@ -283,7 +283,7 @@ public class EgovOnlineManualController {
     	// Validation
     	beanValidator.validate(onlineManualVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/omm/EgovOnlineManualUpdt";
+			return "egovframework/com/admin/uss/olh/omm/EgovOnlineManualUpdt";
 		}
 		
 		//--------------------------------------------------------------------------------------------

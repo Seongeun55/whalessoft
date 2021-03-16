@@ -63,7 +63,7 @@ public class EgovDeptManageController {
 	public String selectDeptManageListView() throws Exception {
 
 		return "forward:/uss/umt/dpt/selectDeptManageList.do";
-//		return "egovframework/com/uss/umt/EgovDeptManageList";
+//		return "egovframework/com/admin/uss/umt/EgovDeptManageList";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class EgovDeptManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/umt/EgovDeptManageList";
+		return "egovframework/com/admin/uss/umt/EgovDeptManageList";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class EgovDeptManageController {
 
 		model.addAttribute("deptManage", egovDeptManageService.selectDeptManage(deptManageVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/umt/EgovDeptManageUpdt";
+		return "egovframework/com/admin/uss/umt/EgovDeptManageUpdt";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class EgovDeptManageController {
 	public String insertViewDeptManage(@ModelAttribute("deptManageVO") DeptManageVO deptManageVO, ModelMap model) throws Exception {
 
 		model.addAttribute("deptManage", deptManageVO);
-		return "egovframework/com/uss/umt/EgovDeptManageInsert";
+		return "egovframework/com/admin/uss/umt/EgovDeptManageInsert";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class EgovDeptManageController {
 		deptManageVO.setOrgnztId(egovDeptManageIdGnrService.getNextStringId());
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/umt/EgovDeptManageInsert";
+			return "egovframework/com/admin/uss/umt/EgovDeptManageInsert";
 		} else {
 			egovDeptManageService.insertDeptManage(deptManageVO);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
@@ -154,7 +154,7 @@ public class EgovDeptManageController {
 		beanValidator.validate(deptManageVO, bindingResult); //validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/umt/EgovDeptManageUpdt";
+			return "egovframework/com/admin/uss/umt/EgovDeptManageUpdt";
 		} else {
 			egovDeptManageService.updateDeptManage(deptManageVO);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));

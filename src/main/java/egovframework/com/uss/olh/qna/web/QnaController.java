@@ -114,7 +114,7 @@ public class QnaController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olh/qna/EgovQnaList";
+		return "egovframework/com/admin/uss/olh/qna/EgovQnaList";
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class QnaController {
 		
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/uss/olh/qna/EgovQnaDetail";
+		return "egovframework/com/admin/uss/olh/qna/EgovQnaDetail";
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class QnaController {
 
 		if (!isAuthenticated) {
 			model.addAttribute("qnaVO", qnaVO);
-			return "egovframework/com/uss/olh/qna/EgovQnaRegist";
+			return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
@@ -178,7 +178,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", qnaVO);
 
-		return "egovframework/com/uss/olh/qna/EgovQnaRegist";
+		return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
 
 	}
 	
@@ -197,7 +197,7 @@ public class QnaController {
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/qna/EgovQnaRegist";
+			return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
@@ -241,7 +241,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", vo);
 
-		return "egovframework/com/uss/olh/qna/EgovQnaUpdt";
+		return "egovframework/com/admin/uss/olh/qna/EgovQnaUpdt";
 	}
 	
 	/**
@@ -260,7 +260,7 @@ public class QnaController {
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/qna/EgovQnaUpdt";
+			return "egovframework/com/admin/uss/olh/qna/EgovQnaUpdt";
 		}
 		
     	//--------------------------------------------------------------------------------------------

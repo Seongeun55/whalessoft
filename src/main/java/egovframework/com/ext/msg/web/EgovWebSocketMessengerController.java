@@ -50,7 +50,7 @@ public class EgovWebSocketMessengerController {
 	@RequestMapping(value="/cop/msg/websocketMessengerView.do")
 	public String websocketMessengerView(HttpSession session, ModelMap model) {
 		model.addAttribute("loginVO", session.getAttribute("loginVO"));
-		return "egovframework/com/ext/msg/EgovMessenger";
+		return "egovframework/com/admin/ext/msg/EgovMessenger";
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class EgovWebSocketMessengerController {
 	@RequestMapping(value="/cop/msg/websocketMessengerMain.do")
 	public String websocketMessengerMain(HttpSession session, ModelMap model) {
 		model.addAttribute("loginVO", session.getAttribute("loginVO"));
-		return "egovframework/com/ext/msg/EgovMessengerMain";
+		return "egovframework/com/admin/ext/msg/EgovMessengerMain";
 	}
 
 	/**
@@ -80,6 +80,6 @@ public class EgovWebSocketMessengerController {
 		model.addAttribute("loginVO", session.getAttribute("loginVO"));
 		model.addAttribute("roomId", roomId);
 		model.addAttribute("username", username);
-		return "egovframework/com/ext/msg/popup/chatPopupBubble";
+		return "egovframework/com/admin/ext/msg/popup/chatPopupBubble";
 	}
 }

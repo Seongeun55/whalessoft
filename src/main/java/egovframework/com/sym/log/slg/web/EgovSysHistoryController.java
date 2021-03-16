@@ -96,7 +96,7 @@ public class EgovSysHistoryController {
 			vo.setCodeId("COM002");
 			List<?> _result = cmmUseService.selectCmmCodeDetail(vo);
 			model.addAttribute("resultList", _result);
-			return "egovframework/com/sym/log/slg/EgovSysHistRegist";
+			return "egovframework/com/admin/sym/log/slg/EgovSysHistRegist";
 		}
 
 		if(isAuthenticated){
@@ -131,7 +131,7 @@ public class EgovSysHistoryController {
 		vo.setCodeId("COM002");
 		List<?> _result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("resultList", _result);
-		return "egovframework/com/sym/log/slg/EgovSysHistRegist";
+		return "egovframework/com/admin/sym/log/slg/EgovSysHistRegist";
 	}
 
 
@@ -162,7 +162,7 @@ public class EgovSysHistoryController {
 			vo.setCodeId("COM002");
 			List<?> _result = cmmUseService.selectCmmCodeDetail(vo);
 			model.addAttribute("resultList", _result);
-			return "egovframework/com/sym/log/slg/EgovSysHistUpdt";
+			return "egovframework/com/admin/sym/log/slg/EgovSysHistUpdt";
 		}
 
 		if(isAuthenticated){
@@ -209,7 +209,7 @@ public class EgovSysHistoryController {
 		vo.setCodeId("COM002");
 		List<?> _result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("resultList", _result);
-		return "egovframework/com/sym/log/slg/EgovSysHistUpdt";
+		return "egovframework/com/admin/sym/log/slg/EgovSysHistUpdt";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class EgovSysHistoryController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/slg/EgovSysHistList";
+		return "egovframework/com/admin/sym/log/slg/EgovSysHistList";
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class EgovSysHistoryController {
 
 		SysHistoryVO vo = sysHistoryService.selectSysHistory(historyVO);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/slg/EgovSysHistInqire";
+		return "egovframework/com/admin/sym/log/slg/EgovSysHistInqire";
 	}
 
 }

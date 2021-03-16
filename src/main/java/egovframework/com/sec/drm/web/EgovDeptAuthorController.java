@@ -64,7 +64,7 @@ public class EgovDeptAuthorController {
 	 */
     @RequestMapping("/sec/drm/EgovDeptAuthorListView.do")
     public String selectDeptAuthorListView() throws Exception {
-        return "egovframework/com/sec/drm/EgovDeptAuthorManage";
+        return "egovframework/com/admin/sec/drm/EgovDeptAuthorManage";
     }    
 
 	/**
@@ -103,7 +103,7 @@ public class EgovDeptAuthorController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
         
-        return "egovframework/com/sec/drm/EgovDeptAuthorManage";
+        return "egovframework/com/admin/sec/drm/EgovDeptAuthorManage";
 	}
 	
 	/**
@@ -169,7 +169,7 @@ public class EgovDeptAuthorController {
 	 */
     @RequestMapping("/sec/drm/EgovDeptSearchView.do")
     public String selectDeptListView() throws Exception {
-        return "egovframework/com/sec/drm/EgovDeptSearch";
+        return "egovframework/com/admin/sec/drm/EgovDeptSearch";
     }    	
 	
 	/**
@@ -202,6 +202,6 @@ public class EgovDeptAuthorController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
         
-        return "egovframework/com/sec/drm/EgovDeptSearch";
+        return "egovframework/com/admin/sec/drm/EgovDeptSearch";
 	}
 }

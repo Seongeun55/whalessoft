@@ -70,7 +70,7 @@ public class EgovTroblProcessController {
 	 */
     @RequestMapping(value="/sym/tbm/tbp/selectTroblProcessListView.do")
 	public String selectTroblProcessListView() throws Exception {
-		return "egovframework/com/sym/tbm/tbp/EgovTroblProcessList";
+		return "egovframework/com/admin/sym/tbm/tbp/EgovTroblProcessList";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class EgovTroblProcessController {
         model.addAttribute("cmmCodeDetailList2", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM068"));
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/tbm/tbp/EgovTroblProcessList";
+		return "egovframework/com/admin/sym/tbm/tbp/EgovTroblProcessList";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class EgovTroblProcessController {
     	model.addAttribute("troblProcess", egovTroblProcessService.selectTroblProcess(troblProcessVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/tbm/tbp/EgovTroblProcessRegist";
+		return "egovframework/com/admin/sym/tbm/tbp/EgovTroblProcessRegist";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class EgovTroblProcessController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("troblProcessVO", troblProcess);
-    		return "egovframework/com/sym/tbm/tbp/EgovTroblProcess";
+    		return "egovframework/com/admin/sym/tbm/tbp/EgovTroblProcess";
     	} else {
     		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     		troblProcess.setTroblProcessTime(EgovStringUtil.removeMinusChar(troblProcess.getTroblProcessTime()));

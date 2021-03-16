@@ -87,7 +87,7 @@ public class EgovNewsController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/nws/EgovNewsList";
+        return "egovframework/com/admin/uss/ion/nws/EgovNewsList";
     }
 	
     /**
@@ -122,7 +122,7 @@ public class EgovNewsController {
 
         model.addAttribute("newsVO", new NewsVO());
 
-        return "egovframework/com/uss/ion/nws/EgovNewsRegist";
+        return "egovframework/com/admin/uss/ion/nws/EgovNewsRegist";
 
     }
     
@@ -158,7 +158,7 @@ public class EgovNewsController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/ion/nws/EgovNewsRegist";
+			return "egovframework/com/admin/uss/ion/nws/EgovNewsRegist";
 
 		}
 
@@ -196,7 +196,7 @@ public class EgovNewsController {
         model.addAttribute("newsVO", egovNewsService.selectNewsDetail(newsVO));
 
 
-        return "egovframework/com/uss/ion/nws/EgovNewsUpdt";
+        return "egovframework/com/admin/uss/ion/nws/EgovNewsUpdt";
     }
 	
     /**
@@ -217,7 +217,7 @@ public class EgovNewsController {
     	// Validation
     	beanValidator.validate(newsVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/nws/EgovNewsInfoUpdt";
+			return "egovframework/com/admin/uss/olh/nws/EgovNewsInfoUpdt";
 		}
 
 

@@ -95,7 +95,7 @@ public class EgovNtwrkSvcMntrngController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngList";
+		return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngList";
 	}
 
     /**
@@ -113,7 +113,7 @@ public class EgovNtwrkSvcMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	return sLocationUrl;
@@ -132,7 +132,7 @@ public class EgovNtwrkSvcMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	NtwrkSvcMntrngVO resultVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -156,7 +156,7 @@ public class EgovNtwrkSvcMntrngController {
 
         model.addAttribute("ntwrkSvcMntrngVO", resultVO);
 
-		return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngUpdt";
+		return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngUpdt";
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class EgovNtwrkSvcMntrngController {
 		model.addAttribute("ntwrkSvcMntrngVO", ntwrkSvcMntrng);
 
 
-		return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngDetail";
+		return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngDetail";
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class EgovNtwrkSvcMntrngController {
 		if (bindingResult.hasErrors()) {
 			NtwrkSvcMntrng ntwrkSvcMntrng = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 		    model.addAttribute("ntwrkSvcMntrng", ntwrkSvcMntrng);
-		    return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngUpdt";
+		    return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -239,7 +239,7 @@ public class EgovNtwrkSvcMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -292,7 +292,7 @@ public class EgovNtwrkSvcMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	ntwrkSvcMntrngService.deleteNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 		return "forward:/utl/sys/nsm/selectNtwrkSvcMntrngList.do";
@@ -358,7 +358,7 @@ public class EgovNtwrkSvcMntrngController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngLogList";
+		return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngLogList";
 	}
 
 	/**
@@ -379,7 +379,7 @@ public class EgovNtwrkSvcMntrngController {
 		model.addAttribute("ntwrkSvcMntrngLog", ntwrkSvcMntrngLog);
 
 
-		return "egovframework/com/utl/sys/nsm/EgovNtwrkSvcMntrngLogDetail";
+		return "egovframework/com/admin/utl/sys/nsm/EgovNtwrkSvcMntrngLogDetail";
 	}
 
 	/**

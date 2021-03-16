@@ -50,7 +50,7 @@ public class EgovInfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/selectSanctnerListPopup.do")
 	public String selectSanctnerListPopup(@ModelAttribute("searchVO") SanctnerVO sanctnerVO, ModelMap model) throws Exception{
-		return "egovframework/com/uss/ion/ism/EgovSanctnerListPopup";
+		return "egovframework/com/admin/uss/ion/ism/EgovSanctnerListPopup";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class EgovInfrmlSanctnController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/ion/ism/EgovSanctnerList";
+		return "egovframework/com/admin/uss/ion/ism/EgovSanctnerList";
 	}
 	
 	/**
@@ -122,7 +122,7 @@ public class EgovInfrmlSanctnController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/ion/ism/EgovSanctnerListNew";
+		return "egovframework/com/admin/uss/ion/ism/EgovSanctnerListNew";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class EgovInfrmlSanctnController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	if(infrmlSanctn.getInfrmlSanctnId() != null){
@@ -150,7 +150,7 @@ public class EgovInfrmlSanctnController {
 
     	model.addAttribute("infrmlSanctnVO", infrmlSanctnService.selectInfrmlSanctn(infrmlSanctn));
 
-		return "egovframework/com/uss/ion/ism/EgovInfrmlSanctnDetail";
+		return "egovframework/com/admin/uss/ion/ism/EgovInfrmlSanctnDetail";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EgovInfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/EgovReturnPopup.do")
 	public String selectReturnPopup() throws Exception{
-		return "egovframework/com/uss/ion/ism/EgovReturnPopup";
+		return "egovframework/com/admin/uss/ion/ism/EgovReturnPopup";
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class EgovInfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/EgovConfmPopup.do")
 	public String selectConfmPopup() throws Exception{
-		return "egovframework/com/uss/ion/ism/EgovConfmPopup";
+		return "egovframework/com/admin/uss/ion/ism/EgovConfmPopup";
 	}
 	
 	/**
@@ -186,7 +186,7 @@ public class EgovInfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/EgovReturnPopupNew.do")
 	public String selectReturnPopupNew() throws Exception{
-		return "egovframework/com/uss/ion/ism/EgovReturnPopupNew";
+		return "egovframework/com/admin/uss/ion/ism/EgovReturnPopupNew";
 	}
 	
 	
@@ -199,7 +199,7 @@ public class EgovInfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/EgovConfmPopupNew.do")
 	public String selectConfmPopupNew() throws Exception{
-		return "egovframework/com/uss/ion/ism/EgovConfmPopupNew";
+		return "egovframework/com/admin/uss/ion/ism/EgovConfmPopupNew";
 	}
 
 }

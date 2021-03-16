@@ -64,7 +64,7 @@ public class EgovInsttCodeRecptnController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/icr/EgovInsttCodeRegist_TEST"
+	 * @return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeRegist_TEST"
 	 * @return "forward:/sym/ccm/icr/getInsttCodeRecptnList.do"
 	 * @throws Exception
 	 */
@@ -78,7 +78,7 @@ public class EgovInsttCodeRecptnController {
     	if   (sCmd.equals("")) {
 	    	insttCodeManageService.insertInsttCodeRecptn();
 
-    		return "egovframework/com/sym/ccm/icr/EgovInsttCodeRegist_TEST";
+    		return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeRegist_TEST";
     	} else {
 	        return "forward:/sym/ccm/icr/getInsttCodeRecptnList.do";
     	}
@@ -123,14 +123,14 @@ public class EgovInsttCodeRecptnController {
         List<?> insttCodeRecptnList = insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO);
         model.addAttribute("insttCodeRecptnList", insttCodeRecptnList);
 
-		return "egovframework/com/sym/ccm/icr/EgovInsttCodeDetail";
+		return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeDetail";
 	}
 
     /**
      * 기관코드수신 목록을 조회한다.
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/ccm/icr/EgovInsttCodeRecptnList"
+     * @return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeRecptnList"
      * @throws Exception
      */
 	@IncludedInfo(name="기관코드수신", listUrl="/sym/ccm/icr/getInsttCodeRecptnList.do", order = 1020 ,gid = 60)
@@ -159,7 +159,7 @@ public class EgovInsttCodeRecptnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/icr/EgovInsttCodeRecptnList";
+        return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeRecptnList";
 	}
 
     /**
@@ -167,7 +167,7 @@ public class EgovInsttCodeRecptnController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/cmm/sym/ccm/EgovCcmInsttCodeList"
+     * @return "egovframework/com/admin/cmm/sym/ccm/EgovCcmInsttCodeList"
      * @throws Exception
      */
     @RequestMapping(value="/sym/ccm/icr/getInsttCodeRecptnMainList.do")
@@ -186,7 +186,7 @@ public class EgovInsttCodeRecptnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/icr/EgovInsttCodeRecptnMainList";
+        return "egovframework/com/admin/sym/ccm/icr/EgovInsttCodeRecptnMainList";
 	}
 
     /**

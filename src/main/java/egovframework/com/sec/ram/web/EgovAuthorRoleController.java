@@ -52,13 +52,13 @@ public class EgovAuthorRoleController {
 
     /**
 	 * 권한 롤 관계 화면 이동
-	 * @return "egovframework/com/sec/ram/EgovDeptAuthorList"
+	 * @return "egovframework/com/admin/sec/ram/EgovDeptAuthorList"
 	 * @exception Exception
 	 */
     @RequestMapping("/sec/ram/EgovAuthorRoleListView.do")
     public String selectAuthorRoleListView() throws Exception {
 
-        return "egovframework/com/sec/ram/EgovAuthorRoleManage";
+        return "egovframework/com/admin/sec/ram/EgovAuthorRoleManage";
     } 
 
 	/**
@@ -92,7 +92,7 @@ public class EgovAuthorRoleController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
         
-        return "egovframework/com/sec/ram/EgovAuthorRoleManage";
+        return "egovframework/com/admin/sec/ram/EgovAuthorRoleManage";
 	}
     
 	/**

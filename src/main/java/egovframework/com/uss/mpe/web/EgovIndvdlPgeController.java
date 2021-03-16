@@ -94,7 +94,7 @@ public class EgovIndvdlPgeController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/mpe/EgovIndvdlPgeList";
+        return "egovframework/com/admin/uss/mpe/EgovIndvdlPgeList";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EgovIndvdlPgeController {
 
          model.addAttribute("indvdlPgeVO", new IndvdlPgeVO());
 
-         return "egovframework/com/uss/mpe/EgovIndvdlPgeRegist";
+         return "egovframework/com/admin/uss/mpe/EgovIndvdlPgeRegist";
 
      }
      
@@ -145,7 +145,7 @@ public class EgovIndvdlPgeController {
 
       	beanValidator.validate(indvdlPgeVO, bindingResult);
   		if(bindingResult.hasErrors()){
-  			return "egovframework/com/uss/mpe/EgovIndvdlPgeRegist";
+  			return "egovframework/com/admin/uss/mpe/EgovIndvdlPgeRegist";
   		}
 
           egovIndvdlPgeService.insertIndvdlPge(indvdlPgeVO);
@@ -173,7 +173,7 @@ public class EgovIndvdlPgeController {
 
           model.addAttribute("indvdlPgeVO", egovIndvdlPgeService.selectIndvdlPgeDetail(indvdlPgeVO));
 
-          return "egovframework/com/uss/mpe/EgovIndvdlPgeUpdt";
+          return "egovframework/com/admin/uss/mpe/EgovIndvdlPgeUpdt";
       }
       
       /**
@@ -191,7 +191,7 @@ public class EgovIndvdlPgeController {
       	// Validation
       	beanValidator.validate(indvdlPgeVO, bindingResult);
   		if(bindingResult.hasErrors()){
-  			return "egovframework/com/uss/mpe/EgovIndvdlPgeUpdt";
+  			return "egovframework/com/admin/uss/mpe/EgovIndvdlPgeUpdt";
   		}
 
       	egovIndvdlPgeService.updateIndvdlPge(indvdlPgeVO);

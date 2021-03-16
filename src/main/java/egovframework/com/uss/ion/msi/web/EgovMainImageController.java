@@ -83,7 +83,7 @@ public class EgovMainImageController {
     @RequestMapping("/uss/ion/msi/selectMainImageListView.do")
     public String selectMainImageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/msi/EgovMainImageList";
+        return "egovframework/com/admin/uss/ion/msi/EgovMainImageList";
     }
 
 	/**
@@ -116,7 +116,7 @@ public class EgovMainImageController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-        return "egovframework/com/uss/ion/msi/EgovMainImageList";
+        return "egovframework/com/admin/uss/ion/msi/EgovMainImageList";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class EgovMainImageController {
     	model.addAttribute("mainImage", egovMainImageService.selectMainImage(mainImageVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-    	return "egovframework/com/uss/ion/msi/EgovMainImageUpdt";
+    	return "egovframework/com/admin/uss/ion/msi/EgovMainImageUpdt";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class EgovMainImageController {
 	 */
     @RequestMapping(value="/uss/ion/msi/addViewMainImage.do")
 	public String insertViewMainImage(@ModelAttribute("mainImageVO") MainImageVO mainImageVO) throws Exception {
-    	return "egovframework/com/uss/ion/msi/EgovMainImageRegist";
+    	return "egovframework/com/admin/uss/ion/msi/EgovMainImageRegist";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EgovMainImageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("mainImageVO", mainImageVO);
-			return "egovframework/com/uss/ion/msi/EgovMainImageRegist";
+			return "egovframework/com/admin/uss/ion/msi/EgovMainImageRegist";
 		} else {
 
 	    	List<FileVO> result = null;
@@ -199,7 +199,7 @@ public class EgovMainImageController {
 	    	model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 	    	model.addAttribute("mainImage", egovMainImageService.insertMainImage(mainImage, mainImageVO));
 
-//			return "egovframework/com/uss/ion/msi/EgovMainImageUpdt";
+//			return "egovframework/com/admin/uss/ion/msi/EgovMainImageUpdt";
 			return "forward:/uss/ion/msi/selectMainImageList.do";
 
 		}
@@ -221,7 +221,7 @@ public class EgovMainImageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("mainImageVO", mainImage);
-			return "egovframework/com/uss/ion/msi/EgovMainImageUpdt";
+			return "egovframework/com/admin/uss/ion/msi/EgovMainImageUpdt";
 		} else {
 
 	    	List<FileVO> result = null;
@@ -325,6 +325,6 @@ public class EgovMainImageController {
 		List<MainImageVO> fileList = egovMainImageService.selectMainImageResult(mainImageVO);
 		model.addAttribute("fileList", fileList);
 
-		return "egovframework/com/uss/ion/msi/EgovMainImageView";
+		return "egovframework/com/admin/uss/ion/msi/EgovMainImageView";
 	}
 }

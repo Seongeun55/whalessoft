@@ -80,7 +80,7 @@ public class EgovUserLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/ulg/EgovUserLogList";
+		return "egovframework/com/admin/sym/log/ulg/EgovUserLogList";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class EgovUserLogController {
 
 		UserLog vo = userLogService.selectUserLog(userLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/ulg/EgovUserLogDetail";
+		return "egovframework/com/admin/sym/log/ulg/EgovUserLogDetail";
 	}
 
 }

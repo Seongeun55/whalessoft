@@ -72,7 +72,7 @@ public class EgovSndngMailRegistController {
 	public String insertSndngMailView(@ModelAttribute("sndngMailVO") SndngMailVO sndngMailVO, ModelMap model) throws Exception {
 
 		model.addAttribute("resultInfo", sndngMailVO);
-		return "egovframework/com/cop/ems/EgovMailRegist";
+		return "egovframework/com/admin/cop/ems/EgovMailRegist";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class EgovSndngMailRegistController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		List<FileVO> _result = new ArrayList<FileVO>();
@@ -128,10 +128,10 @@ public class EgovSndngMailRegistController {
 				return "redirect:/cop/ems/selectSndngMailList.do";
 			} else {
 				model.addAttribute("closeYn", "Y");
-				return "egovframework/com/cop/ems/EgovMailRegist";
+				return "egovframework/com/admin/cop/ems/EgovMailRegist";
 			}
 		} else {
-			return "egovframework/com/cmm/error/egovError";
+			return "egovframework/com/admin/cmm/error/egovError";
 		}
 	}
 

@@ -86,6 +86,6 @@ public class EgovScrinStatsController {
 			model.addAttribute("scrinStats", scrinStats);
 			model.addAttribute("statsInfo", statsVO);
 		}
-        return "egovframework/com/sts/sst/EgovScrinStats";
+        return "egovframework/com/admin/sts/sst/EgovScrinStats";
 	}
 }

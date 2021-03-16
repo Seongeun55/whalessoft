@@ -80,7 +80,7 @@ public class EgovArticleScrapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 	
 		scrapVO.setUniqId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -106,7 +106,7 @@ public class EgovArticleScrapController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 	
-		return "egovframework/com/cop/scp/EgovArticleScrapList";
+		return "egovframework/com/admin/cop/scp/EgovArticleScrapList";
     }
 
     /**
@@ -124,7 +124,7 @@ public class EgovArticleScrapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 	
 		ScrapVO scrap = egovArticleScrapService.selectArticleScrapDetail(scrapVO);
@@ -141,7 +141,7 @@ public class EgovArticleScrapController {
 		model.addAttribute("articleVO", vo);
 		////-----------------------------------
 	
-		return "egovframework/com/cop/scp/EgovArticleScrapDetail";
+		return "egovframework/com/admin/cop/scp/EgovArticleScrapDetail";
     }
 
     /**
@@ -169,7 +169,7 @@ public class EgovArticleScrapController {
 		model.addAttribute("articleVO", vo);
 		////-----------------------------------
 	
-		return "egovframework/com/cop/scp/EgovArticleScrapRegist";
+		return "egovframework/com/admin/cop/scp/EgovArticleScrapRegist";
     }
 
 
@@ -201,7 +201,7 @@ public class EgovArticleScrapController {
 			model.addAttribute("articleScrapVO", scrap);
 		    model.addAttribute("articleVO", vo);
 	
-		    return "egovframework/com/cop/scp/EgovArticleScrapRegist";
+		    return "egovframework/com/admin/cop/scp/EgovArticleScrapRegist";
 		}
 	
 		if (isAuthenticated) {
@@ -259,7 +259,7 @@ public class EgovArticleScrapController {
 	    model.addAttribute("articleVO", boardVO);
 	
 	
-		return "egovframework/com/cop/scp/EgovArticleScrapUpdt";
+		return "egovframework/com/admin/cop/scp/EgovArticleScrapUpdt";
     }
 
     /**
@@ -286,7 +286,7 @@ public class EgovArticleScrapController {
 	
 		    model.addAttribute("result", vo);
 	
-		    return "egovframework/com/cop/scp/EgovArticleScrapUpdt";
+		    return "egovframework/com/admin/cop/scp/EgovArticleScrapUpdt";
 		}
 	
 		if (isAuthenticated) {
@@ -323,7 +323,7 @@ public class EgovArticleScrapController {
 //	model.addAttribute("resultList", map.get("resultList"));
 //	model.addAttribute("resultCnt", map.get("resultCnt"));
 //
-//	return "egovframework/com/cop/scp/EgovScrapMainList";
+//	return "egovframework/com/admin/cop/scp/EgovScrapMainList";
 //    }
 	
 }

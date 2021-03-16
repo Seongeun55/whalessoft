@@ -64,12 +64,12 @@ public class EgovMeetingManageController {
 
     @RequestMapping(value="/uss/olp/mgt/EgovMeetingManageMain.do")
     public String egovMeetingManageMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/mgt/EgovMeetingManageMain";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageMain";
     }
 
     @RequestMapping(value="/uss/olp/mgt/EgovMeetingManageLeft.do")
     public String egovMeetingManageLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/mgt/EgovMeetingManageLeft";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageLeft";
     }
 
 	/** EgovMessageSource Member Variable */
@@ -85,7 +85,7 @@ public class EgovMeetingManageController {
      */
     @RequestMapping(value="/uss/olp/mgt/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/mgt/EgovMain";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovMain";
     }
 
     /**
@@ -96,7 +96,7 @@ public class EgovMeetingManageController {
      */
     @RequestMapping(value="/uss/olp/mgt/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/mgt/EgovLeft";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovLeft";
     }
 
     /**
@@ -104,7 +104,7 @@ public class EgovMeetingManageController {
      * @param searchVO
      * @param commandMap
      * @param model
-     * @return "egovframework/com/uss/olp/mgt/EgovMeetingManageLisEmpLyrPopup"
+     * @return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageLisEmpLyrPopup"
      * @throws Exception
      */
     @RequestMapping(value="/uss/olp/mgt/EgovMeetingManageLisAuthorGroupPopup.do")
@@ -117,7 +117,7 @@ public class EgovMeetingManageController {
     	 List<?> resultList = egovMeetingManageService.egovMeetingManageLisAuthorGroupPopup(searchVO);
          model.addAttribute("resultList", resultList);
 
-    	return "egovframework/com/uss/olp/mgt/EgovMeetingManageLisAuthorGroupPopup";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageLisAuthorGroupPopup";
     }
 
     /**
@@ -138,7 +138,7 @@ public class EgovMeetingManageController {
     	 List<?> resultList = egovMeetingManageService.egovMeetingManageLisEmpLyrPopup(searchVO);
          model.addAttribute("resultList", resultList);
 
-    	return "egovframework/com/uss/olp/mgt/EgovMeetingManageLisEmpLyrPopup";
+    	return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageLisEmpLyrPopup";
     }
 
 	/**
@@ -147,7 +147,7 @@ public class EgovMeetingManageController {
 	 * @param commandMap
 	 * @param meetingManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/mgt/EgovMeetingManageList"
+	 * @return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageList"
 	 * @throws Exception
 	 */
     @IncludedInfo(name="회의관리", order = 650 ,gid = 50)
@@ -183,7 +183,7 @@ public class EgovMeetingManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/mgt/EgovMeetingManageList";
+		return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageList";
 
 	}
 
@@ -193,7 +193,7 @@ public class EgovMeetingManageController {
 	 * @param meetingManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/mgt/EgovMeetingManageDetail"
+	 * @return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/mgt/EgovMeetingManageDetail.do")
@@ -225,7 +225,7 @@ public class EgovMeetingManageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/mgt/EgovMeetingManageModify"
+	 * @return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/mgt/EgovMeetingManageModify.do")
@@ -241,7 +241,7 @@ public class EgovMeetingManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -279,7 +279,7 @@ public class EgovMeetingManageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/mgt/EgovMeetingManageRegist"
+	 * @return "egovframework/com/admin/uss/olp/mgt/EgovMeetingManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/mgt/EgovMeetingManageRegist.do")
@@ -294,7 +294,7 @@ public class EgovMeetingManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

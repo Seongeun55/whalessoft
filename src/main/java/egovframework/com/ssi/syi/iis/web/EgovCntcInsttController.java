@@ -128,7 +128,7 @@ public class EgovCntcInsttController {
 	 * @param cntcInstt
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcInsttRegist"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/addCntcInstt.do")
@@ -137,13 +137,13 @@ public class EgovCntcInsttController {
 		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 		if (sCmd.equals("")) {
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcInsttRegist";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttRegist";
 		} else if (sCmd.equals("Regist")) {
 
 			beanValidator.validate(cntcInstt, bindingResult);
 			if (bindingResult.hasErrors()) {
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcInsttRegist";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttRegist";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기
@@ -169,7 +169,7 @@ public class EgovCntcInsttController {
 	 * @param cntcSystem
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcSystemRegist"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/addCntcSystem.do")
@@ -186,7 +186,7 @@ public class EgovCntcInsttController {
 			List<?> cntcInsttList = cntcInsttService.selectCntcInsttList(searchCntcInsttVO);
 			model.addAttribute("cntcInsttList", cntcInsttList);
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcSystemRegist";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemRegist";
 		} else if (sCmd.equals("Regist")) {
 
 			beanValidator.validate(cntcSystem, bindingResult);
@@ -200,7 +200,7 @@ public class EgovCntcInsttController {
 				List<?> cntcInsttList = cntcInsttService.selectCntcInsttList(searchCntcInsttVO);
 				model.addAttribute("cntcInsttList", cntcInsttList);
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcSystemRegist";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemRegist";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기
@@ -225,7 +225,7 @@ public class EgovCntcInsttController {
 	 * @param cntcService
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcServiceRegist"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/addCntcService.do")
@@ -267,7 +267,7 @@ public class EgovCntcInsttController {
 			List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
 			model.addAttribute("cntcMessageList", cntcMessageList);
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcServiceRegist";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceRegist";
 		} else if (sCmd.equals("Regist")) {
 
 			beanValidator.validate(cntcService, bindingResult);
@@ -306,7 +306,7 @@ public class EgovCntcInsttController {
 				List<?> cntcMessageList = cntcMessageService.selectCntcMessageList(searchCntcMessageVO);
 				model.addAttribute("cntcMessageList", cntcMessageList);
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcServiceRegist";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceRegist";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기
@@ -330,7 +330,7 @@ public class EgovCntcInsttController {
 	 * @param loginVO
 	 * @param cntcInstt
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCcmCntcInsttDetail"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCcmCntcInsttDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/getCntcInsttDetail.do")
@@ -363,7 +363,7 @@ public class EgovCntcInsttController {
 		List<?> cntcServiceList = cntcInsttService.selectCntcServiceList(cntcServiceVO);
 		model.addAttribute("cntcServiceList", cntcServiceList);
 
-		return "egovframework/com/ssi/syi/iis/EgovCntcInsttDetail";
+		return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttDetail";
 	}
 
 	/**
@@ -371,7 +371,7 @@ public class EgovCntcInsttController {
 	 * @param loginVO
 	 * @param searchVO
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcInsttList"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "연계기관관리", listUrl = "/ssi/syi/iis/getCntcInsttList.do", order = 1240, gid = 70)
@@ -398,7 +398,7 @@ public class EgovCntcInsttController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/ssi/syi/iis/EgovCntcInsttList";
+		return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttList";
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class EgovCntcInsttController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcInsttUpdt"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttUpdt"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcInstt.do")
@@ -419,14 +419,14 @@ public class EgovCntcInsttController {
 			CntcInstt vo = cntcInsttService.selectCntcInsttDetail(cntcInstt);
 			model.addAttribute("cntcInstt", vo);
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcInsttUpdt";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttUpdt";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(cntcInstt, bindingResult);
 			if (bindingResult.hasErrors()) {
 				CntcInstt vo = cntcInsttService.selectCntcInsttDetail(cntcInstt);
 				model.addAttribute("cntcInstt", vo);
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcInsttUpdt";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcInsttUpdt";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기
@@ -448,7 +448,7 @@ public class EgovCntcInsttController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcSystemModify"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcSystem.do")
@@ -493,7 +493,7 @@ public class EgovCntcInsttController {
 			CntcSystem vo = cntcInsttService.selectCntcSystemDetail(cntcSystem);
 			model.addAttribute("cntcSystem", vo);
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcSystemUpdt";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemUpdt";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(cntcSystem, bindingResult);
 			if (bindingResult.hasErrors()) {
@@ -534,7 +534,7 @@ public class EgovCntcInsttController {
 				CntcSystem vo = cntcInsttService.selectCntcSystemDetail(cntcSystem);
 				model.addAttribute("cntcSystem", vo);
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcSystemUpdt";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcSystemUpdt";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기
@@ -556,7 +556,7 @@ public class EgovCntcInsttController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/ssi/syi/iis/EgovCntcServiceModify"
+	 * @return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcService.do")
@@ -601,7 +601,7 @@ public class EgovCntcInsttController {
 			CntcService vo = cntcInsttService.selectCntcServiceDetail(cntcService);
 			model.addAttribute("cntcService", vo);
 
-			return "egovframework/com/ssi/syi/iis/EgovCntcServiceUpdt";
+			return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceUpdt";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(cntcService, bindingResult);
 			if (bindingResult.hasErrors()) {
@@ -642,7 +642,7 @@ public class EgovCntcInsttController {
 				CntcService vo = cntcInsttService.selectCntcServiceDetail(cntcService);
 				model.addAttribute("cntcService", vo);
 
-				return "egovframework/com/ssi/syi/iis/EgovCntcServiceUpdt";
+				return "egovframework/com/admin/ssi/syi/iis/EgovCntcServiceUpdt";
 			}
 
 			// 로그인VO에서  사용자 정보 가져오기

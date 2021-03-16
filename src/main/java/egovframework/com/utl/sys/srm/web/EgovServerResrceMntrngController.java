@@ -74,7 +74,7 @@ public class EgovServerResrceMntrngController {
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
         
-		return "egovframework/com/utl/sys/srm/EgovMntrngServerList";
+		return "egovframework/com/admin/utl/sys/srm/EgovMntrngServerList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class EgovServerResrceMntrngController {
 		pmServerResrceMntrng.setStrEndDt(EgovStringUtil.addMinusChar(EgovDateUtil.getToday()));
 		model.addAttribute("pmServerResrceMntrng", pmServerResrceMntrng);
 		
-		return "egovframework/com/utl/sys/srm/EgovServerResrceMntrngList";
+		return "egovframework/com/admin/utl/sys/srm/EgovServerResrceMntrngList";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class EgovServerResrceMntrngController {
         pmServerResrceMntrng.setStrEndDt(EgovStringUtil.addMinusChar(serverResrceMntrngVO.getStrEndDt()));
         model.addAttribute("pmServerResrceMntrng", pmServerResrceMntrng);
 
-        return "egovframework/com/utl/sys/srm/EgovServerResrceMntrngList";
+        return "egovframework/com/admin/utl/sys/srm/EgovServerResrceMntrngList";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class EgovServerResrceMntrngController {
 		model.addAttribute("pmServerResrceMntrng", pmServerResrceMntrng);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 		
-		return "egovframework/com/utl/sys/srm/EgovServerResrceMntrngDetail";
+		return "egovframework/com/admin/utl/sys/srm/EgovServerResrceMntrngDetail";
 	}
 
 

@@ -87,7 +87,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param request
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/template/template"
+	 * @return "egovframework/com/admin/uss/olp/template/template"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qri/template/template")
@@ -144,7 +144,7 @@ public class EgovQustnrRespondInfoController {
         }
 		
 		LOGGER.debug("QustnrTmplat > WhiteList mismatch! Please check Admin page!");
-		return "egovframework/com/cmm/egovError";
+		return "egovframework/com/admin/cmm/egovError";
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param request
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qnn/EgovQustnrRespondInfoManageStatistics"
+	 * @return "egovframework/com/admin/uss/olp/qnn/EgovQustnrRespondInfoManageStatistics"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qnn/EgovQustnrRespondInfoManageStatistics.do")
@@ -198,7 +198,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param response
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qnn/EgovQustnrRespondInfoManageList"
+	 * @return "egovframework/com/admin/uss/olp/qnn/EgovQustnrRespondInfoManageList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name="설문조사", order = 600 ,gid = 50)
@@ -235,7 +235,7 @@ public class EgovQustnrRespondInfoController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/qnn/EgovQustnrRespondInfoManageList";
+		return "egovframework/com/admin/uss/olp/qnn/EgovQustnrRespondInfoManageList";
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param searchVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qnn/EgovQustnrRespondInfoManageRegist"
+	 * @return "egovframework/com/admin/uss/olp/qnn/EgovQustnrRespondInfoManageRegist"
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -259,7 +259,7 @@ public class EgovQustnrRespondInfoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -429,7 +429,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param commandMap
 	 * @param qustnrRespondInfoVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qri/EgovQustnrRespondInfoList"
+	 * @return "egovframework/com/admin/uss/olp/qri/EgovQustnrRespondInfoList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qri/EgovQustnrRespondInfoList.do")
@@ -445,7 +445,7 @@ public class EgovQustnrRespondInfoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -484,7 +484,7 @@ public class EgovQustnrRespondInfoController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/qri/EgovQustnrRespondInfoList";
+		return "egovframework/com/admin/uss/olp/qri/EgovQustnrRespondInfoList";
 	}
 
 	/**
@@ -527,7 +527,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param qustnrRespondInfoVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qri/EgovQustnrRespondInfoModify"
+	 * @return "egovframework/com/admin/uss/olp/qri/EgovQustnrRespondInfoModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qri/EgovQustnrRespondInfoModify.do")
@@ -544,7 +544,7 @@ public class EgovQustnrRespondInfoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -584,7 +584,7 @@ public class EgovQustnrRespondInfoController {
 	 * @param qustnrRespondInfoVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qri/EgovQustnrRespondInfoRegist"
+	 * @return "egovframework/com/admin/uss/olp/qri/EgovQustnrRespondInfoRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qri/EgovQustnrRespondInfoRegist.do")
@@ -600,7 +600,7 @@ public class EgovQustnrRespondInfoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

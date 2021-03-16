@@ -110,7 +110,7 @@ public class EgovKnoSpecialistController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/dam/spe/spe/EgovComDamSpecialistList";
+		return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistList";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class EgovKnoSpecialistController {
 			) throws Exception {
 		KnoSpecialist vo = knoSpecialistService.selectKnoSpecialist(knoSpecialist);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/spe/spe/EgovComDamSpecialistDetail";
+		return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistDetail";
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class EgovKnoSpecialistController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -181,7 +181,7 @@ public class EgovKnoSpecialistController {
             List<?> MapMaterialList = mapMaterialService.selectMapMaterialList(searchMatVO);
             model.addAttribute("mapMaterialList", MapMaterialList);
 
-			return "egovframework/com/dam/spe/spe/EgovComDamSpecialistRegist";
+			return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistRegist";
 
 		} else if (sCmd.equals("Regist")) {
 
@@ -210,7 +210,7 @@ public class EgovKnoSpecialistController {
 	            List<?> MapMaterialList = mapMaterialService.selectMapMaterialList(searchMatVO);
 	            model.addAttribute("mapMaterialList", MapMaterialList);
 
-				return "egovframework/com/dam/spe/spe/EgovComDamSpecialistRegist";
+				return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistRegist";
 			}
 
 
@@ -249,13 +249,13 @@ public class EgovKnoSpecialistController {
 		if (sCmd.equals("")) {
 			KnoSpecialist vo = knoSpecialistService.selectKnoSpecialist(knoSpecialist);
 			model.addAttribute("knoSpecialist", vo);
-			return "egovframework/com/dam/spe/spe/EgovComDamSpecialistModify";
+			return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistModify";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(knoSpecialist, bindingResult);
 			if (bindingResult.hasErrors()){
 				KnoSpecialist vo = knoSpecialistService.selectKnoSpecialist(knoSpecialist);
 				model.addAttribute("knoSpecialist", vo);
-				return "egovframework/com/dam/spe/spe/EgovComDamSpecialistModify";
+				return "egovframework/com/admin/dam/spe/spe/EgovComDamSpecialistModify";
 			}
 
         	// 아이디 설정

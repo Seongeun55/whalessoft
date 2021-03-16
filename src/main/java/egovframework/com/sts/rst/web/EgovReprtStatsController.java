@@ -88,7 +88,7 @@ public class EgovReprtStatsController {
     	reprtStatsVO.setPmToDate(EgovDateUtil.getToday());
     	model.addAttribute("pmReprtStats", reprtStatsVO);
 
-        return "egovframework/com/sts/rst/EgovReprtStatsList";
+        return "egovframework/com/admin/sts/rst/EgovReprtStatsList";
     }
 
 	/**
@@ -161,7 +161,7 @@ public class EgovReprtStatsController {
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sts/rst/EgovReprtStatsList";
+		return "egovframework/com/admin/sts/rst/EgovReprtStatsList";
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class EgovReprtStatsController {
 		model.addAttribute("reprtStats", egovReprtStatsService.selectReprtStats(reprtStatsVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 		
-		return "egovframework/com/sts/rst/EgovReprtStatsDetail";
+		return "egovframework/com/admin/sts/rst/EgovReprtStatsDetail";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class EgovReprtStatsController {
     	comDefaultCodeVO.setCodeId("COM040");
     	model.addAttribute("cmmCode040List", CmmUseService.selectCmmCodeDetail(comDefaultCodeVO));
 		
-		return "egovframework/com/sts/rst/EgovReprtStatsRegis";
+		return "egovframework/com/admin/sts/rst/EgovReprtStatsRegis";
 	}
 
 	/**

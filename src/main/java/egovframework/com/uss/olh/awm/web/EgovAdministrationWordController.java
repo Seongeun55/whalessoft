@@ -75,7 +75,7 @@ public class EgovAdministrationWordController {
      * @param searchVO
      * @param administrationWord
      * @param model
-     * @return "egovframework/com/uss/olh/awm/EgovAdministrationWordList"
+     * @return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -104,7 +104,7 @@ public class EgovAdministrationWordController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordList";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordList";
     }
     
     /**
@@ -124,14 +124,14 @@ public class EgovAdministrationWordController {
         AdministrationWordVO result = egovAdministrationWordService.selectAdministrationWordDetail(administrationWord);
         model.addAttribute("result", result);
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordDetail";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordDetail";
     }
     
     /**
      * 행정전문용어사전관리 목록을 조회한다.
      * @param searchVO
      * @param model
-     * @return "egovframework/com/uss/olh/awm/EgovAdministrationWordManageList"
+     * @return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordManageList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -159,7 +159,7 @@ public class EgovAdministrationWordController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordManageList";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordManageList";
     }
     
     /**
@@ -179,7 +179,7 @@ public class EgovAdministrationWordController {
         AdministrationWordVO result = egovAdministrationWordService.selectAdministrationWordDetail(administrationWord);
         model.addAttribute("result", result);
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordManageDetail";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordManageDetail";
     }
     
     /**
@@ -201,7 +201,7 @@ public class EgovAdministrationWordController {
 
         model.addAttribute("administrationWordVO", new AdministrationWordVO());
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordRegist";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordRegist";
 
     }
     
@@ -220,7 +220,7 @@ public class EgovAdministrationWordController {
 
     	beanValidator.validate(administrationWordVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/awm/EgovAdministrationWordRegist";
+			return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordRegist";
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기
@@ -261,7 +261,7 @@ public class EgovAdministrationWordController {
 
         model.addAttribute("administrationWordVO", egovAdministrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-        return "egovframework/com/uss/olh/awm/EgovAdministrationWordUpdt";
+        return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordUpdt";
     }
     
     /**
@@ -282,7 +282,7 @@ public class EgovAdministrationWordController {
     	// Validation
     	beanValidator.validate(administrationWordVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/awm/EgovAdministrationWordUpdt";
+			return "egovframework/com/admin/uss/olh/awm/EgovAdministrationWordUpdt";
 		}
 
     	LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();

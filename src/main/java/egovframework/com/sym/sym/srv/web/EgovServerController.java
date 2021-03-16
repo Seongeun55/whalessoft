@@ -80,7 +80,7 @@ public class EgovServerController {
 	 */
     @RequestMapping(value="/sym/sym/srv/selectServerEqpmnListView.do")
 	public String selectServerEqpmnListView() throws Exception {
-		return "egovframework/com/sym/sym/srv/EgovServerEqpmnList";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnList";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class EgovServerController {
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/srv/EgovServerEqpmnList";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnList";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class EgovServerController {
 		model.addAttribute("serverEqpmn", egovServerService.selectServerEqpmn(serverEqpmnVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/srv/EgovServerEqpmnDetail";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnDetail";
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class EgovServerController {
 			                             ModelMap model) throws Exception {
 
     	model.addAttribute("serverEqpmn", serverEqpmnVO);
-    	return "egovframework/com/sym/sym/srv/EgovServerEqpmnRegist";
+    	return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnRegist";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class EgovServerController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("serverEqpmnVO", serverEqpmnVO);
-    		return "egovframework/com/sym/sym/srv/EgovServerEqpmnRegist";
+    		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnRegist";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    serverEqpmn.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -173,7 +173,7 @@ public class EgovServerController {
 	   	    serverEqpmn.setServerEqpmnId(egovServerEqpmnIdGnrService.getNextStringId());
 	   	    model.addAttribute("serverEqpmn", egovServerService.insertServerEqpmn(serverEqpmn, serverEqpmnVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/sym/sym/srv/EgovServerEqpmnDetail";
+			return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnDetail";
 		}
 	}
 
@@ -190,7 +190,7 @@ public class EgovServerController {
     	serverEqpmnVO.setServerEqpmnId(serverEqpmnId);
 		model.addAttribute("serverEqpmn", egovServerService.selectServerEqpmn(serverEqpmnVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	return "egovframework/com/sym/sym/srv/EgovServerEqpmnUpdt";
+    	return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnUpdt";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class EgovServerController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("serverEqpmnVO", serverEqpmn);
-    		return "egovframework/com/sym/sym/srv/EgovServerEqpmnUpdt";
+    		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnUpdt";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    serverEqpmn.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -244,7 +244,7 @@ public class EgovServerController {
 	 */
     @RequestMapping(value="/sym/sym/srv/selectServerListView.do")
 	public String selectServerListView() throws Exception {
-		return "egovframework/com/sym/sym/srv/EgovServerList";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerList";
 	}
 
 	/**
@@ -278,7 +278,7 @@ public class EgovServerController {
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/srv/EgovServerList";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerList";
 	}
 
 	/**
@@ -299,7 +299,7 @@ public class EgovServerController {
 		model.addAttribute("serverEqpmnRelateDetailCount", egovServerService.selectServerEqpmnRelateDetailTotCnt(serverVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/srv/EgovServerDetail";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerDetail";
 	}
 
 	/**
@@ -313,7 +313,7 @@ public class EgovServerController {
 
     	model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM064"));
     	model.addAttribute("server", serverVO);
-    	return "egovframework/com/sym/sym/srv/EgovServerRegist";
+    	return "egovframework/com/admin/sym/sym/srv/EgovServerRegist";
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class EgovServerController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("serverVO", serverVO);
-    		return "egovframework/com/sym/sym/srv/EgovServerRegist";
+    		return "egovframework/com/admin/sym/sym/srv/EgovServerRegist";
     	} else {
     		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     		server.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -341,7 +341,7 @@ public class EgovServerController {
     		server.setServerId(egovServerIdGnrService.getNextStringId());
 	   	    model.addAttribute("server", egovServerService.insertServer(server, serverVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/sym/sym/srv/EgovServerDetail";
+			return "egovframework/com/admin/sym/sym/srv/EgovServerDetail";
     	}
 	}
 
@@ -359,7 +359,7 @@ public class EgovServerController {
 		model.addAttribute("server", egovServerService.selectServer(serverVO));
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM064"));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	return "egovframework/com/sym/sym/srv/EgovServerUpdt";
+    	return "egovframework/com/admin/sym/sym/srv/EgovServerUpdt";
 	}
 
 	/**
@@ -379,7 +379,7 @@ public class EgovServerController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("serverVO", server);
-    		return "egovframework/com/sym/sym/srv/EgovServerUpdt";
+    		return "egovframework/com/admin/sym/sym/srv/EgovServerUpdt";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    server.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -444,7 +444,7 @@ public class EgovServerController {
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/srv/EgovServerEqpmnRelateRegist";
+		return "egovframework/com/admin/sym/sym/srv/EgovServerEqpmnRelateRegist";
 	}
 
 	/**

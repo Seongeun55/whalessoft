@@ -77,7 +77,7 @@ public class EgovCcmAdministCodeManageController {
 	 * @param administCode
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeRegist"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeRegist"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/sym/ccm/adc/EgovCcmAdministCodeRegist.do")
@@ -94,12 +94,12 @@ public class EgovCcmAdministCodeManageController {
     		||administCode.getAdministZoneCode().equals("")
     		||sCmd.equals("")) {
 
-            return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeRegist";
+            return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeRegist";
     	} else if (sCmd.equals("Regist")) {
 	    	beanValidator.validate(administCode, bindingResult);
 
 			if (bindingResult.hasErrors()){
-				return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeRegist";
+				return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeRegist";
 			}
 
 			AdministCode vo = administCodeManageService.selectAdministCodeDetail(administCode);
@@ -107,7 +107,7 @@ public class EgovCcmAdministCodeManageController {
 				administCode.setAdministZoneNm("");
 				administCode.setAdministZoneCode("");
 				model.addAttribute("message", "이미 등록된 행정구역코드가 존재합니다.");
-				return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeRegist";
+				return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeRegist";
 			}
 
 			administCode.setFrstRegisterId(loginVO.getUniqId());
@@ -124,7 +124,7 @@ public class EgovCcmAdministCodeManageController {
 	 * @param loginVO
 	 * @param administCode
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeDetail"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/ccm/adc/EgovCcmAdministCodeDetail.do")
@@ -135,7 +135,7 @@ public class EgovCcmAdministCodeManageController {
     	AdministCode vo = administCodeManageService.selectAdministCodeDetail(administCode);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeDetail";
+		return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeDetail";
 	}
 
     /**
@@ -143,7 +143,7 @@ public class EgovCcmAdministCodeManageController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeList"
+     * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeList"
      * @throws Exception
      */
 	@IncludedInfo(name="행정코드관리", order = 1010  ,gid = 60)
@@ -173,19 +173,19 @@ public class EgovCcmAdministCodeManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeList";
+        return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeList";
 	}
 
 	/**
 	 * 일반달력 팝업 메인창을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodePopup"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodePopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sym/ccm/adc/EgovCcmAdministCodePopup.do")
  	public String callAdministCodePopup (ModelMap model
  			) throws Exception {
-		return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodePopup";
+		return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodePopup";
 	}
 
     /**
@@ -193,7 +193,7 @@ public class EgovCcmAdministCodeManageController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCode"
+     * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCode"
      * @throws Exception
      */
     @RequestMapping(value="/sym/ccm/adc/EgovCcmAdministCode.do")
@@ -222,7 +222,7 @@ public class EgovCcmAdministCodeManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/sym/ccm/adc/EgovCcmAdministCode";
+        return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCode";
 	}
 	/**
 	 * 행정코드를 수정한다.
@@ -231,7 +231,7 @@ public class EgovCcmAdministCodeManageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeModify"
+	 * @return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeModify"
 	 * @throws Exception
 	 */
     @RequestMapping(value="/sym/ccm/adc/EgovCcmAdministCodeModify.do")
@@ -246,14 +246,14 @@ public class EgovCcmAdministCodeManageController {
     		AdministCode vo = administCodeManageService.selectAdministCodeDetail(administCode);
     		model.addAttribute("administCode", vo);
 
-    		return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeModify";
+    		return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeModify";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(administCode, bindingResult);
     		if (bindingResult.hasErrors()){
         		AdministCode vo = administCodeManageService.selectAdministCodeDetail(administCode);
         		model.addAttribute("administCode", vo);
 
-        		return "egovframework/com/sym/ccm/adc/EgovCcmAdministCodeModify";
+        		return "egovframework/com/admin/sym/ccm/adc/EgovCcmAdministCodeModify";
     		}
 
     		administCode.setLastUpdusrId(loginVO.getUniqId());

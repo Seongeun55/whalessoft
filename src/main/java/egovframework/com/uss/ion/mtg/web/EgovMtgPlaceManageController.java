@@ -87,7 +87,7 @@ public class EgovMtgPlaceManageController {
     @RequestMapping("/uss/ion/mtg/selectMtgPlaceManageListView.do")
     public String selectMtgPlaceManageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/mtg/EgovMtgPlaceManageList";
+        return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceManageList";
     }
 
 	/**
@@ -122,7 +122,7 @@ public class EgovMtgPlaceManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/mtg/EgovMtgPlaceManageList";
+		return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceManageList";
 	}
 
 	/**
@@ -146,9 +146,9 @@ public class EgovMtgPlaceManageController {
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
 		if(sCmd.equals("update")){
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceUpdt";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceUpdt";
 		}else{
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceDetail";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceDetail";
 		}
 	}
 
@@ -167,7 +167,7 @@ public class EgovMtgPlaceManageController {
 
         model.addAttribute("lcSeCode",        lcSeCodeList);
 
-    	return "egovframework/com/uss/ion/mtg/EgovMtgPlaceRegist";
+    	return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceRegist";
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class EgovMtgPlaceManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("mtgPlaceManageVO", mtgPlaceManageVO);
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceRegist";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceRegist";
 		} else {
 	    	// 첨부파일 관련 첨부파일ID 생성
 			List<FileVO> _result = null;
@@ -231,7 +231,7 @@ public class EgovMtgPlaceManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("mtgPlaceManageVO", mtgPlaceManage);
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceUpdt";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceUpdt";
 		} else {
 
 	    	// 첨부파일 관련 ID 생성 start....
@@ -316,7 +316,7 @@ public class EgovMtgPlaceManageController {
     	model.addAttribute("mtgPlaceManage",  egovMtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/ion/mtg/EgovMtgPlaceImageDetail";
+		return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceImageDetail";
 	}
 
 	/**** 회의실 예약  ****/
@@ -365,7 +365,7 @@ public class EgovMtgPlaceManageController {
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveManageList";
+		return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveManageList";
 	}
 
 	/**
@@ -400,7 +400,7 @@ public class EgovMtgPlaceManageController {
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
     	model.addAttribute("mtgPlaceManageVO",  mtgPlaceManageVO_Temp);
-		return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveRegist";
+		return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveRegist";
 	}
 
 	/**
@@ -434,10 +434,10 @@ public class EgovMtgPlaceManageController {
 			mtgPlaceManageVO_Temp.setResveBeginTm(resveBeginTm);
 			mtgPlaceManageVO_Temp.setResveEndTm(resveEndTm);
 	    	model.addAttribute("mtgPlaceManageVO",  mtgPlaceManageVO_Temp);
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveDetail";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveDetail";
 		}else{
 		    model.addAttribute("mtgPlaceManageVO",  mtgPlaceManageVO_Temp);
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveUpdt";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveUpdt";
 		}
 	}
 
@@ -490,7 +490,7 @@ public class EgovMtgPlaceManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("mtgPlaceManageVO", mtgPlaceResve);
-			return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveUpdt";
+			return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveUpdt";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 
@@ -540,7 +540,7 @@ public class EgovMtgPlaceManageController {
     	mtgPlaceManageVO.setResveId(sTempResveId);
     	int dplactCeckCnt = egovMtgPlaceManageService.mtgPlaceResveDplactCeck(mtgPlaceManageVO);
     	model.addAttribute("dplactCeck", dplactCeckCnt);
-		return "egovframework/com/uss/ion/mtg/EgovMtgPlaceResveDplactCeck";
+		return "egovframework/com/admin/uss/ion/mtg/EgovMtgPlaceResveDplactCeck";
 	}
 
 

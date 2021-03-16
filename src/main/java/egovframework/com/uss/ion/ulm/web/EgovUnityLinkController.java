@@ -76,7 +76,7 @@ public class EgovUnityLinkController {
      * @param commandMap
      * @param unityLinkVO
      * @param model
-     * @return "egovframework/com/uss/ion/ulm/UnityLinkSample"
+     * @return "egovframework/com/admin/uss/ion/ulm/UnityLinkSample"
      * @throws Exception
      */
     @RequestMapping(value = "/uss/ion/ulm/listUnityLinkSample.do")
@@ -88,7 +88,7 @@ public class EgovUnityLinkController {
         List<?> reusltList = egovUnityLinkService.selectUnityLinkSample(unityLinkVO);
         model.addAttribute("resultList", reusltList);
 
-        return "egovframework/com/uss/ion/ulm/UnityLinkSample";
+        return "egovframework/com/admin/uss/ion/ulm/UnityLinkSample";
     }
 
     /**
@@ -97,7 +97,7 @@ public class EgovUnityLinkController {
      * @param commandMap
      * @param unityLinkVO
      * @param model
-     * @return "egovframework/com/uss/ion/ulm/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/ion/ulm/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -141,7 +141,7 @@ public class EgovUnityLinkController {
         List<?> listComCode = cmmUseService.selectCmmCodeDetail(voComCode);
         model.addAttribute("unityLinkSeCodeList", listComCode );
 
-        return "egovframework/com/uss/ion/ulm/EgovUnityLinkList";
+        return "egovframework/com/admin/uss/ion/ulm/EgovUnityLinkList";
     }
 
     /**
@@ -203,7 +203,7 @@ public class EgovUnityLinkController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -262,7 +262,7 @@ public class EgovUnityLinkController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언

@@ -85,6 +85,6 @@ public class EgovConectStatsController {
 				model.addAttribute("statsInfo", statsVO);
 			}
 		}
-        return "egovframework/com/sts/cst/EgovConectStats";
+        return "egovframework/com/admin/sts/cst/EgovConectStats";
 	}
 }

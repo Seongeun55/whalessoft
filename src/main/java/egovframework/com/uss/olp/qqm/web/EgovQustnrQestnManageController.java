@@ -76,7 +76,7 @@ public class EgovQustnrQestnManageController {
      * @param qustnrQestnManageVO
      * @param commandMap
      * @param model
-     * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageStatistics"
+     * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageStatistics"
      * @throws Exception
      */
     @RequestMapping(value="/uss/olp/qqm/EgovQustnrQestnManageStatistics.do")
@@ -120,7 +120,7 @@ public class EgovQustnrQestnManageController {
 	 * @param qustnrQestnManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageListPopup"
+	 * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageListPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qqm/EgovQustnrQestnManageListPopup.do")
@@ -160,7 +160,7 @@ public class EgovQustnrQestnManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageListPopup";
+		return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageListPopup";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class EgovQustnrQestnManageController {
 	 * @param qustnrQestnManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageList"
+	 * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageList"
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
@@ -185,7 +185,7 @@ public class EgovQustnrQestnManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -229,7 +229,7 @@ public class EgovQustnrQestnManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageList";
+		return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageList";
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class EgovQustnrQestnManageController {
 	 * @param qustnrQestnManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageDetail"
+	 * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qqm/EgovQustnrQestnManageDetail.do")
@@ -281,7 +281,7 @@ public class EgovQustnrQestnManageController {
 	 * @param qustnrQestnManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageModify"
+	 * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qqm/EgovQustnrQestnManageModify.do")
@@ -296,7 +296,7 @@ public class EgovQustnrQestnManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -333,7 +333,7 @@ public class EgovQustnrQestnManageController {
 
                 List<?> resultList = egovQustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO);
                 model.addAttribute("resultList", resultList);
-            	return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageModify";
+            	return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageModify";
     		}
 
     		//아이디 설정
@@ -362,7 +362,7 @@ public class EgovQustnrQestnManageController {
 	 * @param qustnrQestnManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageRegist"
+	 * @return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qqm/EgovQustnrQestnManageRegist.do")
@@ -377,7 +377,7 @@ public class EgovQustnrQestnManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -414,7 +414,7 @@ public class EgovQustnrQestnManageController {
             		model.addAttribute("qestnrInfo", egovQustnrQestnManageService.selectQustnrManageQestnrSj(mapQustnrManage));
             	}
 
-    			return "egovframework/com/uss/olp/qqm/EgovQustnrQestnManageRegist";
+    			return "egovframework/com/admin/uss/olp/qqm/EgovQustnrQestnManageRegist";
     		}
 
     		//아이디 설정

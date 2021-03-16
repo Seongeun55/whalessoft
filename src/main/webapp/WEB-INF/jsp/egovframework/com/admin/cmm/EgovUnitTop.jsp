@@ -14,7 +14,7 @@
 <div id="header">
 	<div class="header_box"> 
 	<h1>
-		<a href="<c:url value='/EgovContent.do' />" target="_content"><img src="<c:url value='/images/egovframework/com/cmm/main/top_logo.png' />" alt="eGovframe"></a>
+		<a href="<c:url value='/AdminContent.do' />" target="_content"><img src="<c:url value='/images/egovframework/com/cmm/main/top_logo.png' />" alt="eGovframe"></a>
 	</h1>
 	<div style="margin-top:4px;"><strong class="top_title_strong"><spring:message code="comCmm.top.title"/></strong></div>
 	</div>

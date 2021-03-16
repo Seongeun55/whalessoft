@@ -120,7 +120,7 @@ public class EgovSignupController {
 		LOGGER.debug("kakaoLogin.getOAuthURL() = "+kakaoLogin.getOAuthURL());
 		model.addAttribute("kakao_url", kakaoLogin.getOAuthURL());
 		
-		return "egovframework/com/uat/uia/EgovLoginUsrOauth";
+		return "egovframework/com/admin/uat/uia/EgovLoginUsrOauth";
 	}
 
 	@RequestMapping(value = "/auth/{oauthService}/callback", 
@@ -160,7 +160,7 @@ public class EgovSignupController {
 			
 		}
 		
-		return "egovframework/com/uat/uia/EgovLoginUsrOauthResult";
+		return "egovframework/com/admin/uat/uia/EgovLoginUsrOauthResult";
 	}
 	
 }

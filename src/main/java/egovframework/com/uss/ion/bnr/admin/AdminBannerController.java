@@ -83,7 +83,7 @@ public class AdminBannerController {
     @RequestMapping("/uss/ion/bnr/selectBannerListView.do")
     public String selectBannerListView() throws Exception {
 
-        return "egovframework/com/uss/ion/bnr/EgovBannerList";
+        return "egovframework/com/admin/uss/ion/bnr/EgovBannerList";
     }
 
 	/**
@@ -116,7 +116,7 @@ public class AdminBannerController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/bnr/EgovBannerList";
+		return "egovframework/com/admin/uss/ion/bnr/EgovBannerList";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class AdminBannerController {
 
     	model.addAttribute("banner", BannerService.selectBanner(bannerVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	return "egovframework/com/uss/ion/bnr/EgovBannerUpdt";
+    	return "egovframework/com/admin/uss/ion/bnr/EgovBannerUpdt";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class AdminBannerController {
 	public String insertViewBanner(@ModelAttribute("bannerVO") BannerVO bannerVO, ModelMap model) throws Exception {
 
     	model.addAttribute("banner", bannerVO);
-    	return "egovframework/com/uss/ion/bnr/EgovBannerRegist";
+    	return "egovframework/com/admin/uss/ion/bnr/EgovBannerRegist";
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class AdminBannerController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("bannerVO", bannerVO);
-			return "egovframework/com/uss/ion/bnr/EgovBannerRegist";
+			return "egovframework/com/admin/uss/ion/bnr/EgovBannerRegist";
 		} else {
 	    	List<FileVO> result = null;
 
@@ -196,7 +196,7 @@ public class AdminBannerController {
 	    	model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 	    	model.addAttribute("banner", BannerService.insertBanner(banner, bannerVO));
 
-//	    	return "egovframework/com/uss/ion/bnr/EgovBannerUpdt";
+//	    	return "egovframework/com/admin/uss/ion/bnr/EgovBannerUpdt";
 			return "forward:/uss/ion/bnr/selectBannerList.do";
 
 		}
@@ -216,7 +216,7 @@ public class AdminBannerController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("bannerVO", banner);
-			return "egovframework/com/uss/ion/bnr/EgovBannerUpdt";
+			return "egovframework/com/admin/uss/ion/bnr/EgovBannerUpdt";
 		} else {
 
 			List<FileVO> result = null;
@@ -314,7 +314,7 @@ public class AdminBannerController {
 		model.addAttribute("fileList", fileList);
 		model.addAttribute("resultType", bannerVO.getResultType());
 
-		return "egovframework/com/uss/ion/bnr/EgovBannerView";
+		return "egovframework/com/admin/uss/ion/bnr/EgovBannerView";
 	}
 
 	/**
@@ -341,6 +341,6 @@ public class AdminBannerController {
 
 		model.addAttribute("bannerList", bannerVO.getBannerList());
 
-		return "egovframework/com/uss/ion/bnr/EgovBannerMainList";
+		return "egovframework/com/admin/uss/ion/bnr/EgovBannerMainList";
 	}
 }

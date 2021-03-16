@@ -97,7 +97,7 @@ public class EgovSiteController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/sit/EgovSiteList";
+        return "egovframework/com/admin/uss/ion/sit/EgovSiteList";
     }
     
     /**
@@ -138,7 +138,7 @@ public class EgovSiteController {
 
          model.addAttribute("siteVO", new SiteVO());
 
-         return "egovframework/com/uss/ion/sit/EgovSiteRegist";
+         return "egovframework/com/admin/uss/ion/sit/EgovSiteRegist";
 
      }
      
@@ -159,7 +159,7 @@ public class EgovSiteController {
 
       	beanValidator.validate(siteVO, bindingResult);
   		if(bindingResult.hasErrors()){
-  			return "egovframework/com/uss/olh/sit/EgovSiteRegist";
+  			return "egovframework/com/admin/uss/olh/sit/EgovSiteRegist";
   		}
 
       	// 로그인VO에서  사용자 정보 가져오기
@@ -202,7 +202,7 @@ public class EgovSiteController {
 
           model.addAttribute("siteVO", egovSiteService.selectSiteDetail(siteVO));
 
-          return "egovframework/com/uss/ion/sit/EgovSiteUpdt";
+          return "egovframework/com/admin/uss/ion/sit/EgovSiteUpdt";
       }
       
       /**
@@ -220,7 +220,7 @@ public class EgovSiteController {
       	// Validation
       	beanValidator.validate(siteVO, bindingResult);
   		if(bindingResult.hasErrors()){
-  			return "egovframework/com/uss/ion/sit/EgovSiteUpdt";
+  			return "egovframework/com/admin/uss/ion/sit/EgovSiteUpdt";
   		}
 
       	// 로그인VO에서  사용자 정보 가져오기

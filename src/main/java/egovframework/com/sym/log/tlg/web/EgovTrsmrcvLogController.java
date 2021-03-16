@@ -85,7 +85,7 @@ public class EgovTrsmrcvLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/tlg/EgovTrsmrcvLogList";
+		return "egovframework/com/admin/sym/log/tlg/EgovTrsmrcvLogList";
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class EgovTrsmrcvLogController {
 
 		TrsmrcvLog vo = trsmrcvLogService.selectTrsmrcvLog(trsmrcvLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/tlg/EgovTrsmrcvLogInqire";
+		return "egovframework/com/admin/sym/log/tlg/EgovTrsmrcvLogInqire";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class EgovTrsmrcvLogController {
 		vo.setCodeId("COM002");
 		List<?> _result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("resultList", _result);
-		return "egovframework/com/sym/log/tlg/EgovTrsmrcvLogRegist";
+		return "egovframework/com/admin/sym/log/tlg/EgovTrsmrcvLogRegist";
 	}
 
 	/**

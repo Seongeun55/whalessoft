@@ -77,7 +77,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	     * @param loginVO
 	     * @param searchVO
 	     * @param model
-	     * @return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeList"
+	     * @return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeList"
 	     * @throws Exception
 	     */
 		@IncludedInfo(name="공통상세코드", listUrl="/sym/ccm/cde/SelectCcmCmmnDetailCodeList.do", order = 970 ,gid = 60)
@@ -107,7 +107,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 			paginationInfo.setTotalRecordCount(totCnt);
 	        model.addAttribute("paginationInfo", paginationInfo);
 
-	        return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeList";
+	        return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeList";
 		}
 		
 		/**
@@ -115,7 +115,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 		 * @param loginVO
 		 * @param cmmnDetailCodeVO
 		 * @param model
-		 * @return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeDetail"
+		 * @return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeDetail"
 		 * @throws Exception
 		 */
 		@RequestMapping(value="/sym/ccm/cde/SelectCcmCmmnDetailCodeDetail.do")
@@ -125,7 +125,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	    	CmmnDetailCode vo = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 			model.addAttribute("result", vo);
 
-			return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeDetail";
+			return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeDetail";
 		}
 		
 		/**
@@ -183,7 +183,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	        } 	
 	        
 	        
-			return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
+			return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
 		}
 		
 		/**
@@ -211,7 +211,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 				List<?> CmmnClCodeList = cmmnClCodeManageService.selectCmmnClCodeList(searchClCodeVO);
 				model.addAttribute("clCodeList", CmmnClCodeList);
 		        
-			    return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
+			    return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
 			}
 			
 			if(cmmnDetailCodeVO.getCodeId() != null){
@@ -223,7 +223,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 					List<?> CmmnClCodeList = cmmnClCodeManageService.selectCmmnClCodeList(searchClCodeVO);
 					model.addAttribute("clCodeList", CmmnClCodeList);
 			        
-				    return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
+				    return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeRegist";
 				}
 			}
 		
@@ -238,7 +238,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	     * 
 	     * @param cmmnDetailCodeVO
 	     * @param model
-	     * @return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt"
+	     * @return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt"
 	     * @throws Exception
 	     */
 	    @RequestMapping("/sym/ccm/cde/UpdateCcmCmmnDetailCodeView.do")
@@ -249,7 +249,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	    	CmmnDetailCode result = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 			model.addAttribute("cmmnDetailCodeVO", result);
 		
-			return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt";  
+			return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt";  
 	    }
 	    
 	    /**
@@ -257,7 +257,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	     * 
 	     * @param cmmnDetailCodeVO
 	     * @param model
-	     * @return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt", "/sym/ccm/cde/SelectCcmCmmnDetailCodeList.do"
+	     * @return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt", "/sym/ccm/cde/SelectCcmCmmnDetailCodeList.do"
 	     * @throws Exception
 	     */
 	    @RequestMapping("/sym/ccm/cde/UpdateCcmCmmnDetailCode.do")
@@ -272,7 +272,7 @@ public class EgovCcmCmmnDetailCodeManageController {
 	    	CmmnDetailCode result = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 	    	model.addAttribute("cmmnDetailCodeVO", result);
 	    	
-	    	return "egovframework/com/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt";
+	    	return "egovframework/com/admin/sym/ccm/cde/EgovCcmCmmnDetailCodeUpdt";
 	    	}
 	    	
 	    	cmmnDetailCodeVO.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());

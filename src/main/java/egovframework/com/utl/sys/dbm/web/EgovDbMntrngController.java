@@ -88,7 +88,7 @@ public class EgovDbMntrngController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		egovDbMntrngService.deleteDbMntrng(dbMntrng);
@@ -112,7 +112,7 @@ public class EgovDbMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -123,7 +123,7 @@ public class EgovDbMntrngController {
     	if (bindingResult.hasErrors()){
     		referenceData(model);
     		model.addAttribute("dbMntrng", dbMntrng);
-    		return "egovframework/com/utl/sys/dbm/EgovDbMntrngRegist";
+    		return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngRegist";
 		}else{
     		//아이디 설정
 			dbMntrng.setLastUpdusrId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
@@ -152,7 +152,7 @@ public class EgovDbMntrngController {
         model.addAttribute("resultInfo", result);
         LOGGER.debug(" 결과값 : {}", result);
 
-        return "egovframework/com/utl/sys/dbm/EgovDbMntrngDetail";
+        return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngDetail";
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class EgovDbMntrngController {
         model.addAttribute("resultInfo", result);
         LOGGER.debug(" 결과값 : {}", result);
 
-        return "egovframework/com/utl/sys/dbm/EgovDbMntrngLogDetail";
+        return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngLogDetail";
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class EgovDbMntrngController {
         referenceData(model);
         model.addAttribute("dbMntrng", dbMntrng);
 
-        return "egovframework/com/utl/sys/dbm/EgovDbMntrngRegist";
+        return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngRegist";
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class EgovDbMntrngController {
         model.addAttribute("dbMntrng", result);
         LOGGER.debug(" 결과값 : {}", result);
 
-      return "egovframework/com/utl/sys/dbm/EgovDbMntrngUpdt";
+      return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngUpdt";
 	}
 
 	/**
@@ -265,7 +265,7 @@ public class EgovDbMntrngController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/dbm/EgovDbMntrngList";
+		return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngList";
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class EgovDbMntrngController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/dbm/EgovDbMntrngLogList";
+		return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngLogList";
 	}
 
 	/**
@@ -328,7 +328,7 @@ public class EgovDbMntrngController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -337,7 +337,7 @@ public class EgovDbMntrngController {
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
 			model.addAttribute("dbMntrng", dbMntrng);
-		    return "egovframework/com/utl/sys/dbm/EgovDbMntrngUpdt";
+		    return "egovframework/com/admin/utl/sys/dbm/EgovDbMntrngUpdt";
 		}
 
 		// 정보 업데이트

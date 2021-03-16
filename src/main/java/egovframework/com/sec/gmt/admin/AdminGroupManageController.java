@@ -72,7 +72,7 @@ public class AdminGroupManageController {
 	 */
 	@RequestMapping("/sec/gmt/EgovGroupListView.do")
 	public String selectGroupListView() throws Exception {
-		return "egovframework/com/sec/gmt/EgovGroupManage";
+		return "egovframework/com/admin/sec/gmt/EgovGroupManage";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class AdminGroupManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sec/gmt/EgovGroupManage";
+		return "egovframework/com/admin/sec/gmt/EgovGroupManage";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class AdminGroupManageController {
 			@ModelAttribute("groupManage") GroupManage groupManage, ModelMap model) throws Exception {
 
 		model.addAttribute("groupManage", GroupManageService.selectGroup(groupManageVO));
-		return "egovframework/com/sec/gmt/EgovGroupUpdate";
+		return "egovframework/com/admin/sec/gmt/EgovGroupUpdate";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class AdminGroupManageController {
 	 */
 	@RequestMapping(value = "/sec/gmt/EgovGroupInsertView.do")
 	public String insertGroupView(@ModelAttribute("groupManage") GroupManage groupManage) throws Exception {
-		return "egovframework/com/sec/gmt/EgovGroupInsert";
+		return "egovframework/com/admin/sec/gmt/EgovGroupInsert";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class AdminGroupManageController {
 		beanValidator.validate(groupManage, bindingResult); // validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/gmt/EgovGroupInsert";
+			return "egovframework/com/admin/sec/gmt/EgovGroupInsert";
 		} else {
 			groupManage.setGroupId(egovGroupIdGnrService.getNextStringId());
 			groupManageVO.setGroupId(groupManage.getGroupId());
@@ -174,7 +174,7 @@ public class AdminGroupManageController {
 		beanValidator.validate(groupManage, bindingResult); // validation 수행
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sec/gmt/EgovGroupUpdate";
+			return "egovframework/com/admin/sec/gmt/EgovGroupUpdate";
 		} else {
 			GroupManageService.updateGroup(groupManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));
@@ -225,7 +225,7 @@ public class AdminGroupManageController {
 	 */
 	@RequestMapping("/sec/gmt/EgovGroupSearchView.do")
 	public String selectGroupSearchView() throws Exception {
-		return "egovframework/com/sec/gmt/EgovGroupSearch";
+		return "egovframework/com/admin/sec/gmt/EgovGroupSearch";
 	}
 
 	/**
@@ -255,6 +255,6 @@ public class AdminGroupManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sec/gmt/EgovGroupSearch";
+		return "egovframework/com/admin/sec/gmt/EgovGroupSearch";
 	}
 }

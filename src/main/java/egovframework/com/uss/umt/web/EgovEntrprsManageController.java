@@ -113,7 +113,7 @@ public class EgovEntrprsManageController {
 		model.addAttribute("entrprsSeCode_result", entrprsSeCode_result); //기업구분코드 목록
 		model.addAttribute("indutyCode_result", indutyCode_result); //업종코드목록
 
-		return "egovframework/com/uss/umt/EgovEntrprsMberInsert";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsMberInsert";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class EgovEntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/umt/EgovEntrprsMberInsert";
+			return "egovframework/com/admin/uss/umt/EgovEntrprsMberInsert";
 		} else {
 			if ((entrprsManageVO == null ? "" : EgovStringUtil.isNullToString(entrprsManageVO.getGroupId())).equals("")) {
 				entrprsManageVO.setGroupId(null);
@@ -197,7 +197,7 @@ public class EgovEntrprsManageController {
 		model.addAttribute("entrprsSeCode_result", entrprsSeCode_result); //기업구분코드 목록
 		model.addAttribute("indutyCode_result", indutyCode_result); //업종코드목록
 
-		return "egovframework/com/uss/umt/EgovEntrprsMberSelectUpdt";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsMberSelectUpdt";
 	}
 	
 	/**
@@ -321,7 +321,7 @@ public class EgovEntrprsManageController {
 		List<?> entrprsMberSttus_result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("entrprsMberSttus_result", entrprsMberSttus_result);//기업회원상태코드목록
 
-		return "egovframework/com/uss/umt/EgovEntrprsMberManage";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsMberManage";
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class EgovEntrprsManageController {
 		}
 		entrprsManageVO.setEntrprsMberSttus("DEFAULT");
 
-		return "egovframework/com/uss/umt/EgovEntrprsMberSbscrb";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsMberSbscrb";
 	}
 
 	/**
@@ -404,7 +404,7 @@ public class EgovEntrprsManageController {
 		model.addAttribute("stplatList", stplatList); //약관정보포함
 		model.addAttribute("sbscrbTy", sbscrbTy); //회원가입유형포함
 
-		return "egovframework/com/uss/umt/EgovStplatCnfirm";
+		return "egovframework/com/admin/uss/umt/EgovStplatCnfirm";
 	}
 
 	/**
@@ -464,7 +464,7 @@ public class EgovEntrprsManageController {
 		model.addAttribute("userSearchVO", userSearchVO);
 		model.addAttribute("resultMsg", resultMsg);
 
-		return "egovframework/com/uss/umt/EgovEntrprsPasswordUpdt";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsPasswordUpdt";
 	}
 
 	/**
@@ -491,7 +491,7 @@ public class EgovEntrprsManageController {
 
 		model.addAttribute("userSearchVO", userSearchVO);
 		model.addAttribute("entrprsManageVO", entrprsManageVO);
-		return "egovframework/com/uss/umt/EgovEntrprsPasswordUpdt";
+		return "egovframework/com/admin/uss/umt/EgovEntrprsPasswordUpdt";
 	}
 
 }

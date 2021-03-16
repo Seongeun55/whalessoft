@@ -104,6 +104,6 @@ public class EgovUserStatsController {
 			model.addAttribute("userStats", userStats);
 			model.addAttribute("statsInfo", statsVO);
 		}
-        return "egovframework/com/sts/ust/EgovUserStats";
+        return "egovframework/com/admin/sts/ust/EgovUserStats";
 	}
 }

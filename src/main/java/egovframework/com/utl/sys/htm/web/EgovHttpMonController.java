@@ -101,7 +101,7 @@ public class EgovHttpMonController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonList";
+        return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonList";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class EgovHttpMonController {
 		//System.out.println("SiteUrl============================컨트롤러 파라미터 확인========================>" + vo.getSiteUrl());
     	//model.addAttribute("siteUrl", HttpMntrngChecker.getPrductStatus(vo.getSiteUrl()));
 
-		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonDetail";
+		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonDetail";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class EgovHttpMonController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -151,12 +151,12 @@ public class EgovHttpMonController {
 
     	if   (httpMon.getWebKind() == null
     		||httpMon.getWebKind().equals("")) {
-    		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonRegist";
+    		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonRegist";
     	}
 
         beanValidator.validate(httpMon, bindingResult);
 		if (bindingResult.hasErrors()){
-    		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonRegist";
+    		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonRegist";
 		}
 
 		//아이디 설정
@@ -185,14 +185,14 @@ public class EgovHttpMonController {
     		HttpMon vo = egovHttpMonService.selectHttpMonDetail(httpMon);
     		model.addAttribute("httpMon", vo);
 
-    		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonModify";
+    		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonModify";
     	} else if (sCmd.equals("Modify")) {
             beanValidator.validate(httpMon, bindingResult);
     		if (bindingResult.hasErrors()){
     			HttpMon vo = egovHttpMonService.selectHttpMonDetail(httpMon);
         		model.addAttribute("httpMon", vo);
 
-        		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonModify";
+        		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonModify";
     		}
     		httpMon.setLastUpdusrId(loginVO.getUniqId());
     		egovHttpMonService.updateHttpMon(httpMon);
@@ -236,7 +236,7 @@ public class EgovHttpMonController {
     	model.addAttribute("httpMonVO", httpMonVO);
 
 
-		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonRegist";
+		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonRegist";
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class EgovHttpMonController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonLogList";
+        return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonLogList";
 
 	}
 
@@ -305,7 +305,7 @@ public class EgovHttpMonController {
 		HttpMonLog vo = egovHttpMonService.selectHttpMonDetailLog(httpMonLog);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/utl/sys/htm/EgovComUtlHttpMonDetailLog";
+		return "egovframework/com/admin/utl/sys/htm/EgovComUtlHttpMonDetailLog";
 	}
 
 	/**

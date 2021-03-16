@@ -97,7 +97,7 @@ public class EgovDeptJobController {
 	 */
 	@RequestMapping("/cop/smt/djm/selectChargerListPopup.do")
 	public String selectChargerListPopup(@ModelAttribute("searchVO") ChargerVO chargerVO, ModelMap model) throws Exception{
-		return "egovframework/com/cop/smt/djm/EgovChargerListPopup";
+		return "egovframework/com/admin/cop/smt/djm/EgovChargerListPopup";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class EgovDeptJobController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/djm/EgovChargerList";
+		return "egovframework/com/admin/cop/smt/djm/EgovChargerList";
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class EgovDeptJobController {
 	 */
 	@RequestMapping("/cop/smt/djm/selectDeptListPopup.do")
 	public String selectDeptListPopup(@ModelAttribute("searchVO") DeptVO deptVO, ModelMap model) throws Exception{
-		return "egovframework/com/cop/smt/djm/EgovDeptListPopup";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptListPopup";
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class EgovDeptJobController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/djm/EgovDeptList";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptList";
 	}
 
 
@@ -192,7 +192,7 @@ public class EgovDeptJobController {
 	 */
 	@RequestMapping("/cop/smt/djm/selectDeptJobBxListPopup.do")
 	public String selectDeptJobBxListPopup(@ModelAttribute("searchVO") DeptJobBxVO deptJobBxVO, ModelMap model) throws Exception{
-		return "egovframework/com/cop/smt/djm/EgovDeptJobBxListPopup";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobBxListPopup";
 	}
 
 
@@ -251,7 +251,7 @@ public class EgovDeptJobController {
 //		DeptJobBx deptJobBx = deptJobService.selectDeptJobBx(deptJobBxVO);
 //        model.addAttribute("deptJobBx", deptJobBx);
 //
-//		return "egovframework/com/cop/smt/djm/EgovDeptJobBxDetail";
+//		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobBxDetail";
 //	}
 
 	/**
@@ -271,7 +271,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	return sLocationUrl;
@@ -300,7 +300,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 
@@ -324,7 +324,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	DeptJobBxVO resultVO = deptJobService.selectDeptJobBx(deptJobBxVO);
@@ -335,7 +335,7 @@ public class EgovDeptJobController {
 		model.addAttribute("indictOrdrValue", resultVO.getIndictOrdr());
         model.addAttribute("deptJobBxVO", resultVO);
 
-		return "egovframework/com/cop/smt/djm/EgovDeptJobBxUpdt";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobBxUpdt";
 	}
 
 	/**
@@ -354,7 +354,7 @@ public class EgovDeptJobController {
 		if (bindingResult.hasErrors()) {
 			//DeptJobBx result = deptJobService.selectDeptJobBx(deptJobBxVO);
 		    //model.addAttribute("deptJobBx", result);
-		    return "egovframework/com/cop/smt/djm/EgovDeptJobBxUpdt";
+		    return "egovframework/com/admin/cop/smt/djm/EgovDeptJobBxUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -403,7 +403,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -445,7 +445,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	deptJobService.deleteDeptJobBx(deptJobBx);
 		return "forward:/cop/smt/djm/selectDeptJobBxList.do";
@@ -469,7 +469,7 @@ public class EgovDeptJobController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		deptJobVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -498,7 +498,7 @@ public class EgovDeptJobController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/djm/EgovDeptJobList";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobList";
 	}
 
 	/**
@@ -516,7 +516,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	deptJobVO.setDeptId(deptJobVO.getSearchDeptId());
@@ -546,7 +546,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		DeptJobVO resultVO = deptJobService.selectDeptJob(deptJobVO);
@@ -557,7 +557,7 @@ public class EgovDeptJobController {
 		resultVO.setPageIndex(deptJobVO.getPageIndex());
         model.addAttribute("deptJobVO", resultVO);
 
-		return "egovframework/com/cop/smt/djm/EgovDeptJobUpdt";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobUpdt";
 	}
 
 	/**
@@ -581,7 +581,7 @@ public class EgovDeptJobController {
     	List<CmmnDetailCode> listComCode = cmmUseService.selectCmmCodeDetail(voComCode);
     	model.addAttribute("priort", listComCode);
 
-		return "egovframework/com/cop/smt/djm/EgovDeptJobDetail";
+		return "egovframework/com/admin/cop/smt/djm/EgovDeptJobDetail";
 	}
 
 
@@ -599,14 +599,14 @@ public class EgovDeptJobController {
    	 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			DeptJob deptJob = deptJobService.selectDeptJob(deptJobVO);
 		    model.addAttribute("deptJob", deptJob);
-		    return "egovframework/com/cop/smt/djm/EgovDeptJobUpdt";
+		    return "egovframework/com/admin/cop/smt/djm/EgovDeptJobUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -656,7 +656,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -715,7 +715,7 @@ public class EgovDeptJobController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	// 첨부파일 삭제를 위한 ID 생성 start....

@@ -95,7 +95,7 @@ public class EgovCnsltManageController {
      */
     @RequestMapping(value="/uss/olp/cns/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/cns/EgovMain";
+    	return "egovframework/com/admin/uss/olp/cns/EgovMain";
     }
 
     /**
@@ -106,7 +106,7 @@ public class EgovCnsltManageController {
      */
     @RequestMapping(value="/uss/olp/cns/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/olp/cns/EgovLeft";
+    	return "egovframework/com/admin/uss/olp/cns/EgovLeft";
     }
 
 
@@ -158,7 +158,7 @@ public class EgovCnsltManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltListInqire";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltListInqire";
     }
 
     /**
@@ -230,7 +230,7 @@ public class EgovCnsltManageController {
 
         model.addAttribute("CnsltManageVO", new CnsltManageVO());
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltLoginRealnmChoice";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltLoginRealnmChoice";
     }
 
 
@@ -258,7 +258,7 @@ public class EgovCnsltManageController {
 
     		model.addAttribute("result", cnsltManageVO);
 
-    		return "egovframework/com/uss/olp/cns/EgovCnsltDtlsRegist";
+    		return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsRegist";
 
     	}
 
@@ -274,7 +274,7 @@ public class EgovCnsltManageController {
 
         model.addAttribute("result", cnsltManageVO);
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltDtlsRegist";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsRegist";
     }
 
     /**
@@ -301,7 +301,7 @@ public class EgovCnsltManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/olp/cns/EgovCnsltDtlsRegist";
+			return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsRegist";
 
 		}
 
@@ -355,7 +355,7 @@ public class EgovCnsltManageController {
 
         model.addAttribute("CnsltManageVO", new CnsltManageVO());
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltPasswordConfirm";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltPasswordConfirm";
     }
 
     /**
@@ -431,7 +431,7 @@ public class EgovCnsltManageController {
         // result에도 세팅(jstl 사용을 위해)
         model.addAttribute(selectCnsltListDetail("Y", cnsltManageVO, searchVO, model));
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltDtlsUpdt";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsUpdt";
     }
 
     /**
@@ -460,7 +460,7 @@ public class EgovCnsltManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/olp/cns/EgovCnsltDtlsUpdt";
+			return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsUpdt";
 
 		}
 
@@ -588,7 +588,7 @@ public class EgovCnsltManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltAnswerListInqire";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltAnswerListInqire";
     }
 
     /**
@@ -609,7 +609,7 @@ public class EgovCnsltManageController {
 
 		model.addAttribute("result", vo);
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltAnswerDetailInqire";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltAnswerDetailInqire";
     }
 
 
@@ -638,7 +638,7 @@ public class EgovCnsltManageController {
         // 변수명은 CoC 에 따라
         model.addAttribute(selectCnsltAnswerListDetail(cnsltManageVO, searchVO, model));
 
-        return "egovframework/com/uss/olp/cns/EgovCnsltDtlsAnswerUpdt";
+        return "egovframework/com/admin/uss/olp/cns/EgovCnsltDtlsAnswerUpdt";
     }
 
     /**

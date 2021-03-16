@@ -61,7 +61,7 @@ public class EgovSndngMailDetailController {
 	public String selectSndngMail(@ModelAttribute("sndngMailVO") SndngMailVO sndngMailVO, ModelMap model) throws Exception {
 
 		if (sndngMailVO == null || sndngMailVO.getMssageId() == null || sndngMailVO.getMssageId().equals("")) {
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 
 		// 1. 발송메일을 상세 조회한다.
@@ -71,10 +71,10 @@ public class EgovSndngMailDetailController {
 		model.addAttribute("resultInfo", resultMailVO);
 		if (!resultMailVO.getMssageId().equals("")) {
 			// 발송메일 상세조회 화면 이동
-			return "egovframework/com/cop/ems/EgovMailDetail";
+			return "egovframework/com/admin/cop/ems/EgovMailDetail";
 		} else {
 			// 오류 페이지 이동
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 	}
 
@@ -88,7 +88,7 @@ public class EgovSndngMailDetailController {
 	public String deleteSndngMail(@ModelAttribute("sndngMailVO") SndngMailVO sndngMailVO, ModelMap model) throws Exception {
 
 		if (sndngMailVO == null || sndngMailVO.getMssageId() == null || sndngMailVO.getMssageId().equals("")) {
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 
 		// 1. 발송메일을 삭제한다.

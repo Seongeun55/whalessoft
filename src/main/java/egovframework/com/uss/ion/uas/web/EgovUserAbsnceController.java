@@ -67,7 +67,7 @@ public class EgovUserAbsnceController {
     @RequestMapping("/uss/ion/uas/selectUserAbsnceListView.do")
     public String selectUserAbsnceListView() throws Exception {
 
-        return "egovframework/com/uss/ion/uas/EgovUserAbsnceList";
+        return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceList";
     }
 
 	/**
@@ -101,7 +101,7 @@ public class EgovUserAbsnceController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-        return "egovframework/com/uss/ion/uas/EgovUserAbsnceList";
+        return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceList";
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class EgovUserAbsnceController {
 		UserAbsnceVO vo = (UserAbsnceVO)model.get("userAbsnce");
 
 		if(vo.getRegYn().equals("N"))
-		    return "egovframework/com/uss/ion/uas/EgovUserAbsnceRegist";
+		    return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceRegist";
 		else
-			return "egovframework/com/uss/ion/uas/EgovUserAbsnceUpdt";
+			return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceUpdt";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class EgovUserAbsnceController {
     	model.addAttribute("userAbsnce", egovUserAbsnceService.selectUserAbsnce(userAbsnceVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-//		return "egovframework/com/uss/ion/uas/EgovUserAbsnceRegist";
+//		return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceRegist";
 		return "forward:/uss/ion/uas/selectUserAbsnceList.do";
 
 	}
@@ -159,7 +159,7 @@ public class EgovUserAbsnceController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("userAbsnceVO", userAbsnceVO);
-			return "egovframework/com/uss/ion/msi/EgovMainImageRegist";
+			return "egovframework/com/admin/uss/ion/msi/EgovMainImageRegist";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    userAbsnce.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -167,7 +167,7 @@ public class EgovUserAbsnceController {
 	   	    model.addAttribute("userAbsnce", egovUserAbsnceService.insertUserAbsnce(userAbsnce, userAbsnceVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 
-//			return "egovframework/com/uss/ion/uas/EgovUserAbsnceUpdt";
+//			return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceUpdt";
 			return "forward:/uss/ion/uas/selectUserAbsnceList.do";
 		}
 	}
@@ -184,7 +184,7 @@ public class EgovUserAbsnceController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("userAbsnceVO", userAbsnce);
-			return "egovframework/com/uss/ion/uas/EgovUserAbsnceUpdt";
+			return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceUpdt";
 		} else {
 
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -255,6 +255,6 @@ public class EgovUserAbsnceController {
 
 		model.addAttribute("userAbsnceList", userAbsnceVO.getUserAbsnceList());
 
-        return "egovframework/com/uss/ion/uas/EgovUserAbsnceMainList";
+        return "egovframework/com/admin/uss/ion/uas/EgovUserAbsnceMainList";
 	}
 }

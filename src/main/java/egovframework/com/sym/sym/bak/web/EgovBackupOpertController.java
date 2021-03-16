@@ -103,7 +103,7 @@ public class EgovBackupOpertController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		// 백업스케줄러에 스케줄정보반영
@@ -132,7 +132,7 @@ public class EgovBackupOpertController {
 	  	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	  	if(!isAuthenticated) {
 	  		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	      	return "egovframework/com/uat/uia/EgovLoginUsr";
+	      	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	  	}
 
 		//로그인 객체 선언
@@ -142,7 +142,7 @@ public class EgovBackupOpertController {
 		backupOpertValidator.validate(backupOpert, bindingResult);
 	  	if (bindingResult.hasErrors()){
 	  		referenceData(model);
-	  		return "egovframework/com/sym/sym/bak/EgovBackupOpertRegist";
+	  		return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertRegist";
 			}else{
 				backupOpert.setBackupOpertId(idgenService.getNextStringId());
 				//아이디 설정
@@ -177,7 +177,7 @@ public class EgovBackupOpertController {
 		model.addAttribute("resultInfo", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/sym/bak/EgovBackupOpertDetail";
+		return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertDetail";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class EgovBackupOpertController {
 
         model.addAttribute("backupOpert", backupOpert);
 
-        return "egovframework/com/sym/sym/bak/EgovBackupOpertRegist";
+        return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertRegist";
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class EgovBackupOpertController {
 		model.addAttribute("backupOpert", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-        return "egovframework/com/sym/sym/bak/EgovBackupOpertUpdt";
+        return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertUpdt";
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class EgovBackupOpertController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/sym/bak/EgovBackupOpertList";
+		return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertList";
 	}
 
 	/**
@@ -272,7 +272,7 @@ public class EgovBackupOpertController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -282,7 +282,7 @@ public class EgovBackupOpertController {
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
 			model.addAttribute("batchSchdul", backupOpert);
-		    return "egovframework/com/sym/sym/bak/EgovBackupOpertUpdt";
+		    return "egovframework/com/admin/sym/sym/bak/EgovBackupOpertUpdt";
 		}
 
 		// 정보 업데이트

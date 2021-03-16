@@ -96,7 +96,7 @@ public class EgovBatchSchdulController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		// 배치스케줄러에 스케줄정보반영
@@ -124,7 +124,7 @@ public class EgovBatchSchdulController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		//로그인 객체 선언
@@ -133,7 +133,7 @@ public class EgovBatchSchdulController {
 		beanValidator.validate(batchSchdul, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return "egovframework/com/sym/bat/EgovBatchSchdulRegist";
+			return "egovframework/com/admin/sym/bat/EgovBatchSchdulRegist";
 		} else {
 			batchSchdul.setBatchSchdulId(idgenService.getNextStringId());
 			//아이디 설정
@@ -167,7 +167,7 @@ public class EgovBatchSchdulController {
 		model.addAttribute("resultInfo", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/bat/EgovBatchSchdulDetail";
+		return "egovframework/com/admin/sym/bat/EgovBatchSchdulDetail";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class EgovBatchSchdulController {
 
 		model.addAttribute("batchSchdul", batchSchdul);
 
-		return "egovframework/com/sym/bat/EgovBatchSchdulRegist";
+		return "egovframework/com/admin/sym/bat/EgovBatchSchdulRegist";
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class EgovBatchSchdulController {
 		model.addAttribute("batchSchdul", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/bat/EgovBatchSchdulUpdt";
+		return "egovframework/com/admin/sym/bat/EgovBatchSchdulUpdt";
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class EgovBatchSchdulController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/bat/EgovBatchSchdulList";
+		return "egovframework/com/admin/sym/bat/EgovBatchSchdulList";
 	}
 
 	/**
@@ -304,7 +304,7 @@ public class EgovBatchSchdulController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
@@ -313,7 +313,7 @@ public class EgovBatchSchdulController {
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
 			model.addAttribute("batchSchdul", batchSchdul);
-			return "egovframework/com/sym/bat/EgovBatchSchdulUpdt";
+			return "egovframework/com/admin/sym/bat/EgovBatchSchdulUpdt";
 		}
 
 		// 정보 업데이트

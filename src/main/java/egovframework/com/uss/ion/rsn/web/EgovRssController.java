@@ -94,7 +94,7 @@ public class EgovRssController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-    	return "egovframework/com/uss/ion/rsn/EgovRssTagServiceList";
+    	return "egovframework/com/admin/uss/ion/rsn/EgovRssTagServiceList";
 
     }
 
@@ -126,7 +126,7 @@ public class EgovRssController {
 
     		}
 
-        	return "egovframework/com/uss/ion/rsn/EgovRssTagService";
+        	return "egovframework/com/admin/uss/ion/rsn/EgovRssTagService";
     }
 
 

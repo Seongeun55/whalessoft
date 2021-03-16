@@ -55,7 +55,7 @@ public class EgovAllSchdulManageController {
 	 * @param searchVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qrm/EgovAllSchdulManageList"
+	 * @return "egovframework/com/admin/uss/olp/qrm/EgovAllSchdulManageList"
 	 * @throws Exception
 	 */
     @SuppressWarnings("unused")
@@ -91,7 +91,7 @@ public class EgovAllSchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/sam/EgovAllSchdulManageList";
+		return "egovframework/com/admin/cop/smt/sam/EgovAllSchdulManageList";
 	}
 
 }

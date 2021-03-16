@@ -82,7 +82,7 @@ public class EgovSndngMailDtlsController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/cop/ems/EgovMailDtls";
+		return "egovframework/com/admin/cop/ems/EgovMailDtls";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class EgovSndngMailDtlsController {
 	public String deleteSndngMailList(@ModelAttribute("sndngMailVO") SndngMailVO sndngMailVO, ModelMap model) throws Exception {
 
 		if (sndngMailVO == null || sndngMailVO.getMssageId() == null || sndngMailVO.getMssageId().equals("")) {
-			return "egovframework/com/cmm/egovError";
+			return "egovframework/com/admin/cmm/egovError";
 		}
 
 		// 1. 발송메일을 삭제한다.

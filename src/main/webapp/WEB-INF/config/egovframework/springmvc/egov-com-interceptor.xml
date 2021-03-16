@@ -28,10 +28,10 @@
 	            <mvc:exclude-mapping path="/index.do" />
 	            <mvc:exclude-mapping path="/cmm/fms/getImage.do" /> <!-- 로그인화면이미지 -->
 	            <mvc:exclude-mapping path="/uss/ion/bnr/getBannerImage.do" /> <!-- 포털예제배너 -->
-	            <mvc:exclude-mapping path="/EgovLeft.do" />
+	            <mvc:exclude-mapping path="/AdminLeft.do" />
 	            <mvc:exclude-mapping path="/EgovContent.do" />
-	            <mvc:exclude-mapping path="/EgovTop.do" />
-	            <mvc:exclude-mapping path="/EgovBottom.do" />
+	            <mvc:exclude-mapping path="/AdminTop.do" />
+	            <mvc:exclude-mapping path="/AdminBottom.do" />
 	            <mvc:exclude-mapping path="/EgovModal.do" />
 	            <bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor">
 		           	<!-- 관리자 권한 Ant style Pattern List -->				

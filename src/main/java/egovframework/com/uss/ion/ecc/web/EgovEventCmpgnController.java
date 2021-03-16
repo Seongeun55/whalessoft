@@ -69,7 +69,7 @@ public class EgovEventCmpgnController {
 	 * @param searchVO
 	 * @param eventCmpgnVO
 	 * @param model
-	 * @return "egovframework/com/uss/ion/ecc/EgovEventCmpgnList
+	 * @return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnList
 	 * @throws Exception
 	 */
 	@IncludedInfo(name="행사/이벤트/캠페인", order = 710 ,gid = 50)
@@ -97,7 +97,7 @@ public class EgovEventCmpgnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/ion/ecc/EgovEventCmpgnList";
+		return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnList";
 
 	}
 	
@@ -106,7 +106,7 @@ public class EgovEventCmpgnController {
 	 * @param searchVO
 	 * @param eventCmpgnVO
 	 * @param model
-	 * @return "egovframework/com/uss/ion/ecc/EgovEventCmpgnList
+	 * @return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnList
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/ion/ecc/selectEventCmpgnListPopup.do")
@@ -133,7 +133,7 @@ public class EgovEventCmpgnController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/ion/ecc/EgovEventCmpgnListPopup";
+		return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnListPopup";
 
 	}
 	
@@ -178,7 +178,7 @@ public class EgovEventCmpgnController {
 
         model.addAttribute("eventCmpgnVO", new EventCmpgnVO());
 
-        return "egovframework/com/uss/ion/ecc/EgovEventCmpgnRegist";
+        return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnRegist";
 
     }
     
@@ -196,7 +196,7 @@ public class EgovEventCmpgnController {
 
      	beanValidator.validate(eventCmpgnVO, bindingResult);
  		if(bindingResult.hasErrors()){
- 			return "egovframework/com/uss/olh/ecc/EgovEventCmpgnRegist";
+ 			return "egovframework/com/admin/uss/olh/ecc/EgovEventCmpgnRegist";
  		}
 
      	// 로그인VO에서  사용자 정보 가져오기
@@ -239,7 +239,7 @@ public class EgovEventCmpgnController {
          model.addAttribute("eventCmpgnVO", egovEventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
 
 
-         return "egovframework/com/uss/ion/ecc/EgovEventCmpgnUpdt";
+         return "egovframework/com/admin/uss/ion/ecc/EgovEventCmpgnUpdt";
      }
      
      /**
@@ -258,7 +258,7 @@ public class EgovEventCmpgnController {
      	// Validation
      	beanValidator.validate(eventCmpgnVO, bindingResult);
  		if(bindingResult.hasErrors()){
- 			return "egovframework/com/uss/olh/ecc/EgovEventCmpgnUpdt";
+ 			return "egovframework/com/admin/uss/olh/ecc/EgovEventCmpgnUpdt";
  		}
 
      	// 로그인VO에서  사용자 정보 가져오기
@@ -292,7 +292,7 @@ public class EgovEventCmpgnController {
  	 * @param searchVO
  	 * @param tnextrlHrVO
  	 * @param model
- 	 * @return "egovframework/com/uss/ion/ecc/EgovTnextrlHrList
+ 	 * @return "egovframework/com/admin/uss/ion/ecc/EgovTnextrlHrList
  	 * @throws Exception
  	 */
  	@IncludedInfo(name="외부인사정보", order = 711 ,gid = 50)
@@ -320,7 +320,7 @@ public class EgovEventCmpgnController {
  		paginationInfo.setTotalRecordCount(totCnt);
          model.addAttribute("paginationInfo", paginationInfo);
 
- 		return "egovframework/com/uss/ion/ecc/EgovTnextrlHrList";
+ 		return "egovframework/com/admin/uss/ion/ecc/EgovTnextrlHrList";
 
  	}
  	
@@ -366,7 +366,7 @@ public class EgovEventCmpgnController {
 
         model.addAttribute("tnextrlHrVO", new TnextrlHrVO());
 
-        return "egovframework/com/uss/ion/ecc/EgovTnextrlHrRegist";
+        return "egovframework/com/admin/uss/ion/ecc/EgovTnextrlHrRegist";
 
     }
  	
@@ -384,7 +384,7 @@ public class EgovEventCmpgnController {
 
      	beanValidator.validate(tnextrlHrVO, bindingResult);
  		if(bindingResult.hasErrors()){
- 			return "egovframework/com/uss/olh/ecc/EgovTnextrlHrRegist";
+ 			return "egovframework/com/admin/uss/olh/ecc/EgovTnextrlHrRegist";
  		}
 
      	// 로그인VO에서  사용자 정보 가져오기
@@ -430,7 +430,7 @@ public class EgovEventCmpgnController {
          model.addAttribute("tnextrlHrVO", egovEventCmpgnService.selectTnextrlHrDetail(tnextrlHrVO));
 
 
-         return "egovframework/com/uss/ion/ecc/EgovTnextrlHrUpdt";
+         return "egovframework/com/admin/uss/ion/ecc/EgovTnextrlHrUpdt";
      }
     
      /**
@@ -449,7 +449,7 @@ public class EgovEventCmpgnController {
      	// Validation
      	beanValidator.validate(tnextrlHrVO, bindingResult);
  		if(bindingResult.hasErrors()){
- 			return "egovframework/com/uss/olh/ecc/EgovTnextrlHrUpdt";
+ 			return "egovframework/com/admin/uss/olh/ecc/EgovTnextrlHrUpdt";
  		}
 
      	// 로그인VO에서  사용자 정보 가져오기

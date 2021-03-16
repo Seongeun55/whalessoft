@@ -39,7 +39,7 @@
 			and a.role_ty = 'url'
 			order by a.role_sort"
 	    requestMatcherType="regex"
-		excludeList="/uat/uia/**, /index.do, /EgovLeft.do, /EgovContent.do, /EgovTop.do, /EgovBottom.do"
+		excludeList="/uat/uia/**, /index.do, /AdminLeft.do, /EgovContent.do, /AdminTop.do, /AdminBottom.do"
 	/>
 	<!--
 		* 예외 목록 URL
@@ -52,10 +52,10 @@
 		
 		처음화면 : /index.do
 		로그인화면이미지 : /cmm/fms/getImage.do
-		좌측메뉴 : /EgovLeft.do
+		좌측메뉴 : /AdminLeft.do
 		초기화면 : /EgovContent.do
-		상단메뉴 : /EgovTop.do
-		하단메뉴 : /EgovBottom.do
+		상단메뉴 : /AdminTop.do
+		하단메뉴 : /AdminBottom.do
 		모달팝업 : /EgovModal.do
 
 		만족도조사      : /cop/stf/selectSatisfactionList.do
@@ -63,8 +63,8 @@
 		댓글            : /cop/cmt/selectArticleCommentList.do
 		댓글 선택       : /cop/cmt/updateArticleCommentView.do
 		
-	    excludeList="/uat/uia/**, /index.do, /EgovLeft.do, /EgovContent.do, /EgovTop.do, /EgovBottom.do"
-		excludeList="/uat/uia/**, /uss/umt/**, /sec/rnc/**, /sym/ccm/zip/**, /uss/ion/lsi/**, /cmm/fms/getImage.do, /uss/ion/bnr/getBannerImage.do, /index.do, /EgovLeft.do, /EgovContent.do, /EgovTop.do, /EgovBottom.do, /EgovModal.do, /cop/cmt/selectArticleCommentList.do, /cop/stf/selectSatisfactionList.do, /cop/stf/selectSingleSatisfaction.do, /cop/cmt/updateArticleCommentView.do"
+	    excludeList="/uat/uia/**, /index.do, /AdminLeft.do, /EgovContent.do, /AdminTop.do, /AdminBottom.do"
+		excludeList="/uat/uia/**, /uss/umt/**, /sec/rnc/**, /sym/ccm/zip/**, /uss/ion/lsi/**, /cmm/fms/getImage.do, /uss/ion/bnr/getBannerImage.do, /index.do, /AdminLeft.do, /EgovContent.do, /AdminTop.do, /AdminBottom.do, /EgovModal.do, /cop/cmt/selectArticleCommentList.do, /cop/stf/selectSatisfactionList.do, /cop/stf/selectSingleSatisfaction.do, /cop/cmt/updateArticleCommentView.do"
 	 -->
 
 </beans>

@@ -66,7 +66,7 @@ public class EgovIndvdlInfoPolicyController {
      * @param commandMap
      * @param indvdlInfoPolicy
      * @param model
-     * @return "egovframework/com/uss/sam/ipm/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/sam/ipm/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -103,7 +103,7 @@ public class EgovIndvdlInfoPolicyController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/sam/ipm/EgovIndvdlInfoPolicyList";
+        return "egovframework/com/admin/uss/sam/ipm/EgovIndvdlInfoPolicyList";
     }
 
     /**
@@ -158,7 +158,7 @@ public class EgovIndvdlInfoPolicyController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -209,7 +209,7 @@ public class EgovIndvdlInfoPolicyController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언

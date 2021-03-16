@@ -69,7 +69,7 @@ public class EgovFacebookController {
 	@IncludedInfo(name="Facebook 연동",order = 831 ,gid = 50)
 	@RequestMapping(value = "/uss/ion/fbk/facebook.do", method = RequestMethod.GET)
 	public String home() {
-		return "egovframework/com/uss/ion/fbk/EgovFacebookHome";
+		return "egovframework/com/admin/uss/ion/fbk/EgovFacebookHome";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class EgovFacebookController {
 	@RequestMapping(value="/uss/ion/fbk/feed.do", method=RequestMethod.GET)
 	public String showFeed(Model model) {
 		model.addAttribute("feed", facebook.feedOperations().getFeed());
-		return "egovframework/com/uss/ion/fbk/EgovFacebookFeed";
+		return "egovframework/com/admin/uss/ion/fbk/EgovFacebookFeed";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class EgovFacebookController {
 	@RequestMapping(value="/uss/ion/fbk/albums.do", method=RequestMethod.GET)
 	public String showAlbums(Model model) {
 		model.addAttribute("albums", facebook.mediaOperations().getAlbums());
-		return "egovframework/com/uss/ion/fbk/EgovFacebookAlbums";
+		return "egovframework/com/admin/uss/ion/fbk/EgovFacebookAlbums";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class EgovFacebookController {
 	public String showAlbum(@PathVariable("albumId") String albumId, Model model) {
 		model.addAttribute("album", facebook.mediaOperations().getAlbum(albumId));
 		model.addAttribute("photos", facebook.mediaOperations().getPhotos(albumId));
-		return "egovframework/com/uss/ion/fbk/EgovFacebookAlbum";
+		return "egovframework/com/admin/uss/ion/fbk/EgovFacebookAlbum";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EgovFacebookController {
 		String [] fields = { "id", "email",  "first_name", "last_name" };
 		User userProfile = facebook.fetchObject("me", User.class, fields);
 		model.addAttribute("profile", userProfile);
-		return "egovframework/com/uss/ion/fbk/EgovFacebookProfile";
+		return "egovframework/com/admin/uss/ion/fbk/EgovFacebookProfile";
 	}
 
 }

@@ -95,7 +95,7 @@ public class EgovWordDicaryController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olh/wor/EgovWordDicaryList";
+		return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryList";
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class EgovWordDicaryController {
 
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/uss/olh/wor/EgovWordDicaryDetail";
+		return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryDetail";
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class EgovWordDicaryController {
 
 		model.addAttribute("wordDicaryVO", new WordDicaryVO());
 
-		return "egovframework/com/uss/olh/wor/EgovWordDicaryRegist";
+		return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryRegist";
 	}
 	
 	/**
@@ -146,7 +146,7 @@ public class EgovWordDicaryController {
 
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/wor/EgovWordDicaryRegist";
+			return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryRegist";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
@@ -177,7 +177,7 @@ public class EgovWordDicaryController {
 
 		model.addAttribute("wordDicaryVO", egovWordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return "egovframework/com/uss/olh/wor/EgovWordDicaryUpdt";
+		return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryUpdt";
 	}
 	
 	/**
@@ -196,7 +196,7 @@ public class EgovWordDicaryController {
 		// Validation
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/wor/EgovWordDicaryUpdt";
+			return "egovframework/com/admin/uss/olh/wor/EgovWordDicaryUpdt";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기

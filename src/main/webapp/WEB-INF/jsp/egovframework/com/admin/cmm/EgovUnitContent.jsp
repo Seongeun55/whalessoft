@@ -10,26 +10,9 @@
 <title>eGovFrame <spring:message code="comCmm.unitContent.1"/></title>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${loginVO != null}">
-			<c:choose>
-				<c:when test="${loginVO.userSe == 'USR'}">
-					<jsp:forward page="/AdminMain.do" />
-					<%--${loginVO.name }<spring:message code="comCmm.unitContent.2"/> <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do"><spring:message code="comCmm.unitContent.3"/></a>
-					<a href="${pageContext.request.contextPath }/admin.do">관리자페이지</a> --%>
-				</c:when>
-				
-				<c:otherwise>
-					${loginVO.name }<spring:message code="comCmm.unitContent.2"/> <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do"><spring:message code="comCmm.unitContent.3"/></a>
-				</c:otherwise>
-			</c:choose>
-		</c:when>
-		
-		<c:when test="${loginVO == null }">
-			<jsp:forward page="/uat/uia/LoginUsr.do"/>
-		</c:when>
-	</c:choose>
-	
+
+		관리자<spring:message code="comCmm.unitContent.2"/> <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do" target="_parent"><spring:message code="comCmm.unitContent.3"/></a>
+
 	<p/><p/><p/>
 	<b><spring:message code="comCmm.unitContent.4"/><br /><br/><!-- 실행 시 오류 사항이 있으시면 표준프레임워크센터로 연락하시기 바랍니다. -->
 	<b><img src="${pageContext.request.contextPath }/images/egovframework/com/cmm/icon/tit_icon.png"> <spring:message code="comCmm.unitContent.5"/></b><p/><!-- 화면 설명 -->

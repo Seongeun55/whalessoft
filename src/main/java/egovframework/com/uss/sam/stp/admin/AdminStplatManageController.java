@@ -70,7 +70,7 @@ public class AdminStplatManageController {
      */
     @RequestMapping(value="/uss/sam/stp/EgovMain.do")
     public String egovMain(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/sam/stp/EgovMain";
+    	return "egovframework/com/admin/uss/sam/stp/EgovMain";
     }
 
     /**
@@ -81,7 +81,7 @@ public class AdminStplatManageController {
      */
     @RequestMapping(value="/uss/sam/stp/EgovLeft.do")
     public String egovLeft(ModelMap model) throws Exception {
-    	return "egovframework/com/uss/sam/stp/EgovLeft";
+    	return "egovframework/com/admin/uss/sam/stp/EgovLeft";
     }
 
     /**
@@ -116,7 +116,7 @@ public class AdminStplatManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/sam/stp/EgovStplatListInqire";
+        return "egovframework/com/admin/uss/sam/stp/EgovStplatListInqire";
     }
 
     /**
@@ -149,7 +149,7 @@ public class AdminStplatManageController {
 
         model.addAttribute("stplatManageVO", new StplatManageVO());
 
-        return "egovframework/com/uss/sam/stp/EgovStplatCnRegist";
+        return "egovframework/com/admin/uss/sam/stp/EgovStplatCnRegist";
 
     }
 
@@ -169,7 +169,7 @@ public class AdminStplatManageController {
 
     	if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/sam/stp/EgovStplatCnRegist";
+			return "egovframework/com/admin/uss/sam/stp/EgovStplatCnRegist";
 
 		}
 
@@ -179,7 +179,7 @@ public class AdminStplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	String	frstRegisterId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());
@@ -215,7 +215,7 @@ public class AdminStplatManageController {
         // 변수명은 CoC 에 따라 JSTL사용을 위해
         model.addAttribute("stplatManageVO", stplatManageService.selectStplatDetail(stplatManageVO));
 
-        return "egovframework/com/uss/sam/stp/EgovStplatCnUpdt";
+        return "egovframework/com/admin/uss/sam/stp/EgovStplatCnUpdt";
     }
 
     /**
@@ -235,7 +235,7 @@ public class AdminStplatManageController {
 
 		if(bindingResult.hasErrors()){
 
-			return "egovframework/com/uss/sam/stp/EgovStplatCnUpdt";
+			return "egovframework/com/admin/uss/sam/stp/EgovStplatCnUpdt";
 
 		}
 
@@ -245,7 +245,7 @@ public class AdminStplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
         
     	String	lastUpdusrId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());

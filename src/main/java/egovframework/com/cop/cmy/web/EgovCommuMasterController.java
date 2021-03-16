@@ -97,7 +97,7 @@ public class EgovCommuMasterController {
 	model.addAttribute("resultCnt", map.get("resultCnt"));
 	model.addAttribute("paginationInfo", paginationInfo);
 
-	return "egovframework/com/cop/cmy/EgovCommuMasterList";
+	return "egovframework/com/admin/cop/cmy/EgovCommuMasterList";
     }
 
     /**
@@ -112,7 +112,7 @@ public class EgovCommuMasterController {
     public String insertCommuMasterView(@ModelAttribute("searchVO") CommunityVO cmmntyVO, ModelMap model) throws Exception {
     	model.addAttribute("commuMasterVO", new CommunityVO());
     	
-	return "egovframework/com/cop/cmy/EgovCommuMasterRegist";
+	return "egovframework/com/admin/cop/cmy/EgovCommuMasterRegist";
     }
 
     /**
@@ -133,13 +133,13 @@ public class EgovCommuMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
    	 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
         
 		beanValidator.validate(community, bindingResult);
 	
 		if (bindingResult.hasErrors()) {
-		    return "egovframework/com/cop/cmy/EgovCommuMasterRegist";
+		    return "egovframework/com/admin/cop/cmy/EgovCommuMasterRegist";
 		}
 	
 		community.setRegistSeCode("REGC02");
@@ -186,7 +186,7 @@ public class EgovCommuMasterController {
 	
 		model.addAttribute("result", result);
 	
-		return "egovframework/com/cop/cmy/EgovCommuMasterDetail";
+		return "egovframework/com/admin/cop/cmy/EgovCommuMasterDetail";
     }
 
     /**
@@ -205,7 +205,7 @@ public class EgovCommuMasterController {
 		
 		model.addAttribute("commuMasterVO", result);
 	
-		return "egovframework/com/cop/cmy/EgovCommuMasterUpdt";
+		return "egovframework/com/admin/cop/cmy/EgovCommuMasterUpdt";
     }
 
     /**
@@ -225,7 +225,7 @@ public class EgovCommuMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 	
 		beanValidator.validate(community, bindingResult);
@@ -234,7 +234,7 @@ public class EgovCommuMasterController {
 		    CommunityVO result = CommuMasterService.selectCommuMaster(cmmntyVO);
 		    model.addAttribute("result", result);
 	
-		    return "egovframework/com/cop/cmy/EgovCommuMasterUpdt";
+		    return "egovframework/com/admin/cop/cmy/EgovCommuMasterUpdt";
 		}
 	
 		community.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -282,6 +282,6 @@ public class EgovCommuMasterController {
 	
 	model.addAttribute("resultList", result);
 
-	return "egovframework/com/cop/cmy/EgovCommuMasterListPortlet";
+	return "egovframework/com/admin/cop/cmy/EgovCommuMasterListPortlet";
     }
 }

@@ -46,9 +46,6 @@
 	            <if test="searchCondition == 2">AND
 	                   A.USER_NM LIKE CONCAT('%' , #{searchKeyword}, '%')
 	            </if>
-	            <if test="searchCondition == 3">AND
-	                   A.GROUP_ID = #{searchKeyword}
-	            </if>
             </if>
              LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
     </select>

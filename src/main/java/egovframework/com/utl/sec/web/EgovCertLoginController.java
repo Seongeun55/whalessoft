@@ -66,7 +66,7 @@ public class EgovCertLoginController {
 
 	model.addAttribute("startPage", startPage);
 
-	return "egovframework/com/utl/sec/EgovCertVar";
+	return "egovframework/com/admin/utl/sec/EgovCertVar";
     }
 
     /**
@@ -90,7 +90,7 @@ public class EgovCertLoginController {
 
 	model.addAttribute("type", typeInfo);
 
-	return "egovframework/com/utl/sec/EgovCertInstall";
+	return "egovframework/com/admin/utl/sec/EgovCertInstall";
     }
 
     /**
@@ -101,7 +101,7 @@ public class EgovCertLoginController {
      */
     @RequestMapping("/utl/sec/certSetup.do")
     public String certSetup() throws Exception {
-	return "egovframework/com/utl/sec/EgovCertSetup";
+	return "egovframework/com/admin/utl/sec/EgovCertSetup";
     }
 
     /**
@@ -117,7 +117,7 @@ public class EgovCertLoginController {
 
 	model.addAttribute("errmsg", errMsg);
 
-	return "egovframework/com/utl/sec/EgovCertGPKIError";
+	return "egovframework/com/admin/utl/sec/EgovCertGPKIError";
     }
 
     /**
@@ -130,7 +130,7 @@ public class EgovCertLoginController {
     @RequestMapping(value="/utl/sec/certInfoPopup.do")
     public String certInfoPopup(Model model) throws Exception {
 
-	return "egovframework/com/utl/sec/EgovCertInfoPopup";
+	return "egovframework/com/admin/utl/sec/EgovCertInfoPopup";
     }
 
     /**
@@ -142,7 +142,7 @@ public class EgovCertLoginController {
     @RequestMapping(value="/utl/sec/certLogin.do", method=RequestMethod.GET)
     public String certLogin() throws Exception {
 
-	return "egovframework/com/utl/sec/EgovCertLogin";
+	return "egovframework/com/admin/utl/sec/EgovCertLogin";
     }
 
     /**
@@ -159,7 +159,7 @@ public class EgovCertLoginController {
 	// 인증서 정보
 	model.addAttribute("certInfo", EgovCertInfoUtil.getCertInfo(request));
 
-	return "egovframework/com/utl/sec/EgovCertLoginConfirm";
+	return "egovframework/com/admin/utl/sec/EgovCertLoginConfirm";
     }
 
     /**
@@ -171,6 +171,6 @@ public class EgovCertLoginController {
     @RequestMapping("/utl/sec/certLoginInfo.do")
     public String certLoginPopup() throws Exception {
 
-	return "egovframework/com/utl/sec/EgovCertLoginInfo";
+	return "egovframework/com/admin/utl/sec/EgovCertLoginInfo";
     }
 }

@@ -63,7 +63,7 @@ public class EgovCryptoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	String plainText = (String)commandMap.get("plainText");
@@ -82,7 +82,7 @@ public class EgovCryptoController {
 	    	model.addAttribute("decryptTextLen", decryptTextLen);
     	}
     	
-    	return "egovframework/com/sec/pki/EgovCryptoInfo";
+    	return "egovframework/com/admin/sec/pki/EgovCryptoInfo";
     }
 	
     /**

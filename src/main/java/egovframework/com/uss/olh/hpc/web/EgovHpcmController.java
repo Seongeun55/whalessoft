@@ -99,7 +99,7 @@ public class EgovHpcmController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olh/hpc/EgovHpcmList";
+        return "egovframework/com/admin/uss/olh/hpc/EgovHpcmList";
     }
     
     /**
@@ -141,7 +141,7 @@ public class EgovHpcmController {
 
         model.addAttribute("hpcmVO", new HpcmVO());
 
-        return "egovframework/com/uss/olh/hpc/EgovHpcmRegist";
+        return "egovframework/com/admin/uss/olh/hpc/EgovHpcmRegist";
 
     }
     
@@ -160,7 +160,7 @@ public class EgovHpcmController {
 
     	beanValidator.validate(hpcmVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/hpc/EgovHpcmRegist";
+			return "egovframework/com/admin/uss/olh/hpc/EgovHpcmRegist";
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기
@@ -201,7 +201,7 @@ public class EgovHpcmController {
 
         model.addAttribute("hpcmVO", egovHpcmService.selectHpcmDetail(hpcmVO));
 
-        return "egovframework/com/uss/olh/hpc/EgovHpcmUpdt";
+        return "egovframework/com/admin/uss/olh/hpc/EgovHpcmUpdt";
     }
     
     /**
@@ -222,7 +222,7 @@ public class EgovHpcmController {
     	// Validation
     	beanValidator.validate(hpcmVO, bindingResult);
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/olh/hpc/EgovHpcmUpdt";
+			return "egovframework/com/admin/uss/olh/hpc/EgovHpcmUpdt";
 		}
 
     	LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();

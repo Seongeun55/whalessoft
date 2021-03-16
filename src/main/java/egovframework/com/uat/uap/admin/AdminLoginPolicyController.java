@@ -60,7 +60,7 @@ public class AdminLoginPolicyController {
 	 */
 	@RequestMapping("/uat/uap/selectLoginPolicyListView.do")
 	public String selectLoginPolicyListView() throws Exception {
-		return "egovframework/com/uat/uap/EgovLoginPolicyList";
+		return "egovframework/com/admin/uat/uap/EgovLoginPolicyList";
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class AdminLoginPolicyController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uat/uap/EgovLoginPolicyList";
+		return "egovframework/com/admin/uat/uap/EgovLoginPolicyList";
 	}
 
 	/**
@@ -112,9 +112,9 @@ public class AdminLoginPolicyController {
 		LoginPolicyVO vo = (LoginPolicyVO) model.get("loginPolicy");
 
 		if (vo.getRegYn().equals("N"))
-			return "egovframework/com/uat/uap/EgovLoginPolicyRegist";
+			return "egovframework/com/admin/uat/uap/EgovLoginPolicyRegist";
 		else
-			return "egovframework/com/uat/uap/EgovLoginPolicyUpdt";
+			return "egovframework/com/admin/uat/uap/EgovLoginPolicyUpdt";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class AdminLoginPolicyController {
 		model.addAttribute("loginPolicy", LoginPolicyService.selectLoginPolicy(loginPolicyVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uat/uap/EgovLoginPolicyRegist";
+		return "egovframework/com/admin/uat/uap/EgovLoginPolicyRegist";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class AdminLoginPolicyController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("loginPolicyVO", loginPolicy);
-			return "egovframework/com/uat/uap/EgovLoginPolicyRegist";
+			return "egovframework/com/admin/uat/uap/EgovLoginPolicyRegist";
 		} else {
 
 			LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
@@ -176,7 +176,7 @@ public class AdminLoginPolicyController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("loginPolicyVO", loginPolicy);
-			return "egovframework/com/uat/uap/EgovLoginPolicyUpdt";
+			return "egovframework/com/admin/uat/uap/EgovLoginPolicyUpdt";
 		} else {
 			LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 			loginPolicy.setUserId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));

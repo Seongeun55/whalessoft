@@ -102,7 +102,7 @@ public class EgovProcessMonController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonList";
+		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonList";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class EgovProcessMonController {
     	model.addAttribute("result", vo);
     	//model.addAttribute("processNm", ProcessMonChecker.getProcessId(vo.getProcessNm()));
 
-		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonDetail";
+		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonDetail";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class EgovProcessMonController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -151,13 +151,13 @@ public class EgovProcessMonController {
 
     	if (processMonVO.getProcessNm() == null
             ||processMonVO.getProcessNm().equals("")) {
-        	return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonRegist";
+        	return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonRegist";
         }
 
 		//서버  validate 체크
         beanValidator.validate(processMonVO, bindingResult);
 		if(bindingResult.hasErrors()){
-    		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonRegist";
+    		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonRegist";
 		}
 
 		//아이디 설정
@@ -190,20 +190,20 @@ public class EgovProcessMonController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	String sCmd = commandMap.get("cmd") == null ? "": (String)commandMap.get("cmd");
     	if (sCmd.equals("")) {
     		ProcessMonVO vo = processMonService.selectProcessMon(processMonVO);
     		model.addAttribute("processMonVO", vo);
-    		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonModify";
+    		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonModify";
     	} else if (sCmd.equals("Modify")) {
     		beanValidator.validate(processMonVO, bindingResult);
     		if (bindingResult.hasErrors()){
     			ProcessMonVO vo = processMonService.selectProcessMon(processMonVO);
     			model.addAttribute("processMonVO", vo);
-    			return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonModify";
+    			return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonModify";
     		}
 
         	// 아이디 설정
@@ -234,7 +234,7 @@ public class EgovProcessMonController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	processMonService.deleteProcessMon(processMonVO);
@@ -260,7 +260,7 @@ public class EgovProcessMonController {
     	model.addAttribute("processMonVO", processMonVO);
 
 
-		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonRegist";
+		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonRegist";
 	}
 
     /**
@@ -313,7 +313,7 @@ public class EgovProcessMonController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonLogList";
+		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonLogList";
 	}
 
 	/**
@@ -339,7 +339,7 @@ public class EgovProcessMonController {
 
     	model.addAttribute("result", vo);
 
-		return "egovframework/com/utl/sys/prm/EgovComUtlProcessMonLogDetail";
+		return "egovframework/com/admin/utl/sys/prm/EgovComUtlProcessMonLogDetail";
 	}
 
 	/**

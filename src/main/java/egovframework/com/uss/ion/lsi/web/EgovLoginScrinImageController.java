@@ -84,7 +84,7 @@ public class EgovLoginScrinImageController {
     @RequestMapping("/uss/ion/lsi/selectLoginScrinImageListView.do")
     public String selectLoginScrinImageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageList";
+        return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageList";
     }
 
 	/**
@@ -118,7 +118,7 @@ public class EgovLoginScrinImageController {
 
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-        return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageList";
+        return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageList";
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class EgovLoginScrinImageController {
 
     	model.addAttribute("loginScrinImage", egovLoginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageUpdt";
+    	return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageUpdt";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class EgovLoginScrinImageController {
 	 */
     @RequestMapping(value="/uss/ion/lsi/addViewLoginScrinImage.do")
 	public String insertViewLoginScrinImage(@ModelAttribute("loginScrinImageVO") LoginScrinImageVO loginScrinImageVO) throws Exception {
-    	return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageRegist";
+    	return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageRegist";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class EgovLoginScrinImageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("loginScrinImageVO", loginScrinImageVO);
-			return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageRegist";
+			return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageRegist";
 		} else {
 
 	    	List<FileVO> result = null;
@@ -202,7 +202,7 @@ public class EgovLoginScrinImageController {
 	    	model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 	    	model.addAttribute("loginScrinImage", egovLoginScrinImageService.insertLoginScrinImage(loginScrinImage, loginScrinImageVO));
 
-//	    	return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageUpdt";
+//	    	return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageUpdt";
 	    	return "forward:/uss/ion/lsi/selectLoginScrinImageList.do";
 
 		}
@@ -225,7 +225,7 @@ public class EgovLoginScrinImageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("loginScrinImageVO", loginScrinImage);
-			return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageUpdt";
+			return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageUpdt";
 		} else {
 
 	    	List<FileVO> result = null;
@@ -336,6 +336,6 @@ public class EgovLoginScrinImageController {
 		List<LoginScrinImageVO> fileList = egovLoginScrinImageService.selectLoginScrinImageResult(loginScrinImageVO);
 		model.addAttribute("fileList", fileList);
 
-		return "egovframework/com/uss/ion/lsi/EgovLoginScrinImageView";
+		return "egovframework/com/admin/uss/ion/lsi/EgovLoginScrinImageView";
 	}
 }

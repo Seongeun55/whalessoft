@@ -82,7 +82,7 @@ public class EgovMemoTodoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 		
 		memoTodoVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -108,7 +108,7 @@ public class EgovMemoTodoController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/cop/smt/mtm/EgovMemoTodoList";
+		return "egovframework/com/admin/cop/smt/mtm/EgovMemoTodoList";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class EgovMemoTodoController {
 		model.addAttribute("memoTodo", memoTodo);
     	
   
-		return "egovframework/com/cop/smt/mtm/EgovMemoTodoDetail";
+		return "egovframework/com/admin/cop/smt/mtm/EgovMemoTodoDetail";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	// 1. 로그인 객체 선언
@@ -178,7 +178,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		
     	//할일시작일자(시)
@@ -199,7 +199,7 @@ public class EgovMemoTodoController {
 		resultVO.setPageIndex(memoTodoVO.getPageIndex());
         model.addAttribute("memoTodoVO", resultVO);
         
-		return "egovframework/com/cop/smt/mtm/EgovMemoTodoUpdt";
+		return "egovframework/com/admin/cop/smt/mtm/EgovMemoTodoUpdt";
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class EgovMemoTodoController {
 		if (bindingResult.hasErrors()) {
 			MemoTodo memoTodo = memoTodoService.selectMemoTodo(memoTodoVO);
 		    model.addAttribute("memoTodo", memoTodo);
-		    return "egovframework/com/cop/smt/mtm/EgovMemoTodoUpdt";
+		    return "egovframework/com/admin/cop/smt/mtm/EgovMemoTodoUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -245,7 +245,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
 		//로그인 객체 선언
@@ -284,7 +284,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	memoTodoService.deleteMemoTodo(memoTodoVO);
 		return "forward:/cop/smt/mtm/selectMemoTodoList.do";
@@ -305,7 +305,7 @@ public class EgovMemoTodoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 		
 		memoTodoVO.setSearchId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
@@ -319,7 +319,7 @@ public class EgovMemoTodoController {
 		model.addAttribute("resultList", memoTodoList);
 		model.addAttribute("resultToday", strToday);
 
-		return "egovframework/com/cop/smt/mtm/EgovMemoTodoListToday";
+		return "egovframework/com/admin/cop/smt/mtm/EgovMemoTodoListToday";
 	}
     
     /**

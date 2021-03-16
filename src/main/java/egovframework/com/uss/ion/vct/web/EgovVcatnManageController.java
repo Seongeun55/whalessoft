@@ -75,7 +75,7 @@ public class EgovVcatnManageController {
     @RequestMapping("/uss/ion/vct/EgovVcatnManageListView.do")
     public String selectVcatnManageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/vct/EgovVcatnManageList";
+        return "egovframework/com/admin/uss/ion/vct/EgovVcatnManageList";
     }
 
 	/**
@@ -98,14 +98,14 @@ public class EgovVcatnManageController {
     	
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	vcatnManageVO = egovVcatnManageService.selectIndvdlYrycManage(user.getUniqId());
     	    	
     	if(vcatnManageVO == null){
 	    	model.addAttribute("messageTemp", egovMessageSource.getMessage("comUssIonVct.vcatnManageList.validate.move")); // 휴가 사용을 위한 개인연차 등록을 위해 개인연차관리 콤포넌트로 이동
-	    	return "egovframework/com/uss/ion/yrc/EgovIndvdlYrycManageList";	    	
+	    	return "egovframework/com/admin/uss/ion/yrc/EgovIndvdlYrycManageList";	    	
     	}else{
     		
     	vcatnManageVO.setSearchKeyword(searchKeyword);
@@ -137,7 +137,7 @@ public class EgovVcatnManageController {
 		model.addAttribute("paginationInfo", paginationInfo);				
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));		
 		
-		return "egovframework/com/uss/ion/vct/EgovVcatnManageList";
+		return "egovframework/com/admin/uss/ion/vct/EgovVcatnManageList";
     	}
 	}
 
@@ -171,9 +171,9 @@ public class EgovVcatnManageController {
 
 	        model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
 	    	model.addAttribute("vcatnManage", vcatnManageVOTemp);
-			return "egovframework/com/uss/ion/vct/EgovVcatnUpdt";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnUpdt";
 		}else{
-			return "egovframework/com/uss/ion/vct/EgovVcatnDetail";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnDetail";
 		}
 	}
 
@@ -200,7 +200,7 @@ public class EgovVcatnManageController {
         model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
     	model.addAttribute("vcatnManageVO",  vcatnManageVO1);
 
-    	return "egovframework/com/uss/ion/vct/EgovVcatnRegist";
+    	return "egovframework/com/admin/uss/ion/vct/EgovVcatnRegist";
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class EgovVcatnManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("vcatnManageVO", vcatnManageVO);
-			return "egovframework/com/uss/ion/vct/EgovVcatnRegist";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	if(vcatnManage.getSanctnerId() != null) vcatnManage.setConfmAt("A");
@@ -284,7 +284,7 @@ public class EgovVcatnManageController {
 		            List<?> vcatnSeCodeList = cmmUseService.selectCmmCodeDetail(vo);
 		            model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
 
-					return "egovframework/com/uss/ion/vct/EgovVcatnRegist";
+					return "egovframework/com/admin/uss/ion/vct/EgovVcatnRegist";
 		    	}
 		    }else{
 
@@ -301,7 +301,7 @@ public class EgovVcatnManageController {
 	            List<?> vcatnSeCodeList = cmmUseService.selectCmmCodeDetail(vo);
 	            model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
 
-				return "egovframework/com/uss/ion/vct/EgovVcatnRegist";
+				return "egovframework/com/admin/uss/ion/vct/EgovVcatnRegist";
 		    }
 		}
 	}
@@ -325,7 +325,7 @@ public class EgovVcatnManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("vcatnManageVO", vcatnManageVO);
-			return "egovframework/com/uss/ion/vct/EgovVcatnUpdt";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnUpdt";
 		} else {
 
 	    	vcatnManage.setBgnde(EgovStringUtil.removeMinusChar(vcatnManage.getBgnde()));
@@ -339,7 +339,7 @@ public class EgovVcatnManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 	    
     	vcatnManage.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -383,7 +383,7 @@ public class EgovVcatnManageController {
 	            List<?> vcatnSeCodeList = cmmUseService.selectCmmCodeDetail(vo);
 	            model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
 
-				return "egovframework/com/uss/ion/vct/EgovVcatnUpdt";
+				return "egovframework/com/admin/uss/ion/vct/EgovVcatnUpdt";
 	    	}
 	    }else{
 
@@ -400,7 +400,7 @@ public class EgovVcatnManageController {
             List<?> vcatnSeCodeList = cmmUseService.selectCmmCodeDetail(vo);
             model.addAttribute("vcatnSeCode",    vcatnSeCodeList);
 
-			return "egovframework/com/uss/ion/vct/EgovVcatnUpdt";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnUpdt";
 	    }
 	}
 
@@ -450,7 +450,7 @@ public class EgovVcatnManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
     	
     	vcatnManageVO.setSanctnerId(user.getUniqId()); //사용자가 승인권자인지 조건값 setting
@@ -467,7 +467,7 @@ public class EgovVcatnManageController {
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/vct/EgovVcatnConfmList";
+		return "egovframework/com/admin/uss/ion/vct/EgovVcatnConfmList";
 	}
 
 	/**
@@ -489,7 +489,7 @@ public class EgovVcatnManageController {
     	model.addAttribute("vcatnManage", vcatnManageVOTemp);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/vct/EgovVcatnConfm";
+		return "egovframework/com/admin/uss/ion/vct/EgovVcatnConfm";
     }
 
 	/**
@@ -513,12 +513,12 @@ public class EgovVcatnManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("vcatnManageVO", vcatnManageVO);
-			return "egovframework/com/uss/ion/vct/EgovVcatnConfm";
+			return "egovframework/com/admin/uss/ion/vct/EgovVcatnConfm";
 		} else {
 	    	vcatnManage.setSanctnerId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
 	    	vcatnManage.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -538,6 +538,6 @@ public class EgovVcatnManageController {
 	@RequestMapping("/uss/ion/vct/EgovVcatnReturn.do")
 	public String selectSanctnerListPopup(@ModelAttribute("vcatnManage")   VcatnManage   vcatnManage,
                                           ModelMap model) throws Exception{
-		return "egovframework/com/uss/ion/vct/EgovVcatnReturn";
+		return "egovframework/com/admin/uss/ion/vct/EgovVcatnReturn";
 	}
 }

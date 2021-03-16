@@ -74,7 +74,7 @@ public class EgovQustnrManageController {
 	 * @param commandMap
 	 * @param qustnrManageVO
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qmc/EgovQustnrManageListPopup"
+	 * @return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageListPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qmc/EgovQustnrManageListPopup.do")
@@ -115,7 +115,7 @@ public class EgovQustnrManageController {
         model.addAttribute("paginationInfo", paginationInfo);
 
 
-		return "egovframework/com/uss/olp/qmc/EgovQustnrManageListPopup";
+		return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageListPopup";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class EgovQustnrManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olp/qmc/EgovQustnrManageList";
+		return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageList";
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class EgovQustnrManageController {
 	 * @param qustnrManageVO
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qmc/EgovQustnrManageDetail";
+	 * @return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageDetail";
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qmc/EgovQustnrManageDetail.do")
@@ -214,7 +214,7 @@ public class EgovQustnrManageController {
 	 * @param qustnrManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qmc/EgovQustnrManageModify"
+	 * @return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qmc/EgovQustnrManageModify.do")
@@ -229,7 +229,7 @@ public class EgovQustnrManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언
@@ -288,7 +288,7 @@ public class EgovQustnrManageController {
 	 * @param qustnrManageVO
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/uss/olp/qmc/EgovQustnrManageRegist"
+	 * @return "egovframework/com/admin/uss/olp/qmc/EgovQustnrManageRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/uss/olp/qmc/EgovQustnrManageRegist.do")
@@ -303,7 +303,7 @@ public class EgovQustnrManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		//로그인 객체 선언

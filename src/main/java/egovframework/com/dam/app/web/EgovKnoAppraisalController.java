@@ -81,7 +81,7 @@ public class EgovKnoAppraisalController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         // 로그인 객체 선언
@@ -109,7 +109,7 @@ public class EgovKnoAppraisalController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/dam/app/EgovComDamAppraisalList";
+		return "egovframework/com/admin/dam/app/EgovComDamAppraisalList";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EgovKnoAppraisalController {
 			) throws Exception {
 		KnoAppraisal vo = knoAppraisalService.selectKnoAppraisal(knoAppraisal);
 		model.addAttribute("result", vo);
-		return "egovframework/com/dam/app/EgovComDamAppraisalDetail";
+		return "egovframework/com/admin/dam/app/EgovComDamAppraisalDetail";
 	}
 
 	/**
@@ -163,13 +163,13 @@ public class EgovKnoAppraisalController {
 		if (sCmd.equals("")) {
 			KnoAppraisal vo = knoAppraisalService.selectKnoAppraisal(knoAppraisal);
 			model.addAttribute("knoAppraisal", vo);
-			return "egovframework/com/dam/app/EgovComDamAppraisalModify";
+			return "egovframework/com/admin/dam/app/EgovComDamAppraisalModify";
 		} else if (sCmd.equals("Modify")) {
 			beanValidator.validate(knoAppraisal, bindingResult);
 			if (bindingResult.hasErrors()){
 				KnoAppraisal vo = knoAppraisalService.selectKnoAppraisal(knoAppraisal);
 				model.addAttribute("knoAppraisal", vo);
-				return "egovframework/com/dam/app/EgovComDamAppraisalModify";
+				return "egovframework/com/admin/dam/app/EgovComDamAppraisalModify";
 			}
 
         	// 아이디 설정

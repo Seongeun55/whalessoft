@@ -65,7 +65,7 @@ public class EgovCcmCmmnClCodeManageController {
 	 * @param loginVO
 	 * @param searchVO
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/ccc/SelectCcmCmmnClCodeList"
+	 * @return "egovframework/com/admin/sym/ccm/ccc/SelectCcmCmmnClCodeList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "공통분류코드", listUrl = "/sym/ccm/ccc/SelectCcmCmmnClCodeList.do", order = 960, gid = 60)
@@ -93,7 +93,7 @@ public class EgovCcmCmmnClCodeManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeList";
+		return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeList";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class EgovCcmCmmnClCodeManageController {
 	 * @param loginVO
 	 * @param cmmnClCode
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/ccc/SelectCcmCmmnClCodeDetail.do"
+	 * @return "egovframework/com/admin/sym/ccm/ccc/SelectCcmCmmnClCodeDetail.do"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/ccc/SelectCcmCmmnClCodeDetail.do")
@@ -113,7 +113,7 @@ public class EgovCcmCmmnClCodeManageController {
 
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeDetail";
+		return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeDetail";
 	}
 	
 	/**
@@ -121,14 +121,14 @@ public class EgovCcmCmmnClCodeManageController {
 	 * 
 	 * @param cmmnClCodeVO
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
+	 * @return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
 	 * @throws Exception
 	 */
 	@RequestMapping("/sym/ccm/ccc/RegistCcmCmmnClCodeView.do")
 	public String insertCmmnClCodeView(@ModelAttribute("searchVO")CmmnClCodeVO cmmnClCodeVO, ModelMap model) throws Exception {
 		model.addAttribute("cmmnClCodeVO", new CmmnClCodeVO());
 
-		return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
+		return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
 	}
 	
 	 /**
@@ -151,14 +151,14 @@ public class EgovCcmCmmnClCodeManageController {
 		beanValidator.validate(cmmnClCodeVO, bindingResult);
 	
 		if (bindingResult.hasErrors()) {
-		    return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
+		    return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
 		}
 		
 		if(cmmnClCodeVO.getClCode() != null){
 			CmmnClCode vo = cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO);
 			if(vo != null){
 				model.addAttribute("message", egovMessageSource.getMessage("comSymCcmCcc.validate.codeCheck"));
-				return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
+				return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeRegist";
 			}
 		}
 	
@@ -194,7 +194,7 @@ public class EgovCcmCmmnClCodeManageController {
      * 
      * @param cmmnClCodeVO
      * @param model
-     * @return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";  
+     * @return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";  
      * @throws Exception
      */
     @RequestMapping("/sym/ccm/ccc/UpdateCcmCmmnClCodeView.do")
@@ -205,7 +205,7 @@ public class EgovCcmCmmnClCodeManageController {
 		
 		model.addAttribute("cmmnClCodeVO", result);
 	
-		return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";  
+		return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";  
     }
     
     /**
@@ -229,7 +229,7 @@ public class EgovCcmCmmnClCodeManageController {
 			CmmnClCode result = cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCode);
 		    model.addAttribute("cmmnClCodeVO", result);
 	
-		    return "egovframework/com/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";
+		    return "egovframework/com/admin/sym/ccm/ccc/EgovCcmCmmnClCodeUpdt";
 		}
 	
 		cmmnClCodeVO.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());

@@ -90,7 +90,7 @@ public class EgovBatchOpertController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		egovBatchOpertService.deleteBatchOpert(batchOpert);
@@ -113,7 +113,7 @@ public class EgovBatchOpertController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 
 		//로그인 객체 선언
@@ -122,7 +122,7 @@ public class EgovBatchOpertController {
 		beanValidator.validate(batchOpert, bindingResult);
 		batchOpertValidator.validate(batchOpert, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/sym/bat/EgovBatchOpertRegist";
+			return "egovframework/com/admin/sym/bat/EgovBatchOpertRegist";
 		} else {
 			batchOpert.setBatchOpertId(idgenService.getNextStringId());
 			//아이디 설정
@@ -151,7 +151,7 @@ public class EgovBatchOpertController {
 		model.addAttribute("resultInfo", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/bat/EgovBatchOpertDetail";
+		return "egovframework/com/admin/sym/bat/EgovBatchOpertDetail";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class EgovBatchOpertController {
 	public String selectBatchOpertForRegist(@ModelAttribute("searchVO") BatchOpert batchOpert, ModelMap model) throws Exception {
 		model.addAttribute("batchOpert", batchOpert);
 
-		return "egovframework/com/sym/bat/EgovBatchOpertRegist";
+		return "egovframework/com/admin/sym/bat/EgovBatchOpertRegist";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class EgovBatchOpertController {
 		model.addAttribute("batchOpert", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/bat/EgovBatchOpertUpdt";
+		return "egovframework/com/admin/sym/bat/EgovBatchOpertUpdt";
 	}
 
 	/**
@@ -223,10 +223,10 @@ public class EgovBatchOpertController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		if ("Y".equals(popupAt)) {
 			// Popup 화면이면
-			return "egovframework/com/sym/bat/EgovBatchOpertListPopup";
+			return "egovframework/com/admin/sym/bat/EgovBatchOpertListPopup";
 		} else {
 			// 메인화면 호출이면
-			return "egovframework/com/sym/bat/EgovBatchOpertList";
+			return "egovframework/com/admin/sym/bat/EgovBatchOpertList";
 		}
 
 	}
@@ -246,7 +246,7 @@ public class EgovBatchOpertController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 		}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
@@ -255,7 +255,7 @@ public class EgovBatchOpertController {
 		batchOpertValidator.validate(batchOpert, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("batchOpert", batchOpert);
-			return "egovframework/com/sym/bat/EgovBatchOpertUpdt";
+			return "egovframework/com/admin/sym/bat/EgovBatchOpertUpdt";
 		}
 
 		// 정보 업데이트
@@ -276,7 +276,7 @@ public class EgovBatchOpertController {
 	 */
 	@RequestMapping("/sym/bat/getBatchOpertListPopup.do")
 	public String openPopupWindow(@ModelAttribute("searchVO") BatchOpert searchVO, ModelMap model) throws Exception {
-		return "egovframework/com/sym/bat/EgovBatchOpertListPopupFrame";
+		return "egovframework/com/admin/sym/bat/EgovBatchOpertListPopupFrame";
 	}
 
 }

@@ -77,7 +77,7 @@ public class EgovOnlinePollManageController {
      * @param commandMap
      * @param onlinePollManage
      * @param model
-     * @return "egovframework/com/uss/olp/opm/EgovOnlinePollList"
+     * @return "egovframework/com/admin/uss/olp/opm/EgovOnlinePollList"
      * @throws Exception
      */
     @SuppressWarnings("unused")
@@ -115,7 +115,7 @@ public class EgovOnlinePollManageController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/olp/opm/EgovOnlinePollManageList";
+        return "egovframework/com/admin/uss/olp/opm/EgovOnlinePollManageList";
     }
 
     /**
@@ -182,7 +182,7 @@ public class EgovOnlinePollManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -244,7 +244,7 @@ public class EgovOnlinePollManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -301,7 +301,7 @@ public class EgovOnlinePollManageController {
         List<?> reusltList = egovOnlinePollManageService.selectOnlinePollItemList(onlinePollItem);
         model.addAttribute("resultList", reusltList);
 
-        return "egovframework/com/uss/olp/opm/EgovOnlinePollItemList";
+        return "egovframework/com/admin/uss/olp/opm/EgovOnlinePollItemList";
     }
 
     /**
@@ -326,7 +326,7 @@ public class EgovOnlinePollManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -363,7 +363,7 @@ public class EgovOnlinePollManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         // 로그인 객체 선언
@@ -400,7 +400,7 @@ public class EgovOnlinePollManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
         if (!isAuthenticated) {
             model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         egovOnlinePollManageService.deleteOnlinePollItem(onlinePollItem);

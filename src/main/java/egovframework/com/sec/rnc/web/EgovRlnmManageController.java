@@ -53,7 +53,7 @@ public class EgovRlnmManageController {
 	/**
 	 * 실명인증확인화면 호출(주민번호)
 	 * @param model 모델
-	 * @return "egovframework/com/uss/umt/EgovStplatCnfirm"
+	 * @return "egovframework/com/admin/uss/umt/EgovStplatCnfirm"
 	 * @exception Exception
 	 */
 	@RequestMapping("/sec/rnc/EgovRlnmCnfirm.do")
@@ -71,7 +71,7 @@ public class EgovRlnmManageController {
 //		if ("".equals((String) commandMap.get("ihidnum"))) {
 //			result = "info.user.rlnmCnfirm";
 //			model.addAttribute("result", result); 	//실명확인 결과
-//			return "egovframework/com/sec/rnc/EgovRlnmCnfirm";
+//			return "egovframework/com/admin/sec/rnc/EgovRlnmCnfirm";
 //		}
 //
 //		try {
@@ -100,7 +100,7 @@ public class EgovRlnmManageController {
 		nextUrl = EgovWebUtil.filePathBlackList(nextUrl);
 
 		
-//		return "egovframework/com/sec/rnc/EgovRlnmCnfirm";
+//		return "egovframework/com/admin/sec/rnc/EgovRlnmCnfirm";
 		// 실명인증기능 미탑재로 바로 회원가입 페이지로 이동.
 		return "forward:" + nextUrl;
 	}
@@ -108,7 +108,7 @@ public class EgovRlnmManageController {
 	/**
 	 * 실명인증확인화면 호출(GPIN)
 	 * @param model 모델
-	 * @return "egovframework/com/uss/umt/EgovStplatCnfirm"
+	 * @return "egovframework/com/admin/uss/umt/EgovStplatCnfirm"
 	 * @exception Exception
 	 */
 	@RequestMapping("/sec/rnc/EgovRlnmPinCnfirm.do")
@@ -140,13 +140,13 @@ public class EgovRlnmManageController {
 		}
 		LOGGER.debug("result: {}", result);
 		
-		return "egovframework/com/sec/rnc/EgovRlnmPinCnfirm";
+		return "egovframework/com/admin/sec/rnc/EgovRlnmPinCnfirm";
 	}
 
 	/**
 	 * 실명인증확인화면 호출(GPIN)
 	 * @param model 모델
-	 * @return "egovframework/com/uss/umt/EgovStplatCnfirm"
+	 * @return "egovframework/com/admin/uss/umt/EgovStplatCnfirm"
 	 * @exception Exception
 	 */
 	@RequestMapping("/sec/rnc/EgovGPinCall.do")
@@ -159,7 +159,7 @@ public class EgovRlnmManageController {
 		model.addAttribute("nextUrlName", (String) commandMap.get("nextUrlName")); 	//다음단계버튼명(이동할 URL에 따른)
 		model.addAttribute("nextUrl", (String) commandMap.get("nextUrl")); 						//다음단계로 이동할 URL
 
-		return "egovframework/com/sec/rnc/gpin/Sample-AuthRequest";
+		return "egovframework/com/admin/sec/rnc/gpin/Sample-AuthRequest";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class EgovRlnmManageController {
 	 */
 	@RequestMapping("/sec/rnc/validator.do")
 	public String validate() {
-		return "egovframework/com/cmm/validator";
+		return "egovframework/com/admin/cmm/validator";
 	}
 
 	/**

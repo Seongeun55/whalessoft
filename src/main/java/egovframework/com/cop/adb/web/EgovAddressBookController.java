@@ -75,7 +75,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         adbkVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -104,7 +104,7 @@ public class EgovAddressBookController {
         model.addAttribute("userId", user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/cop/adb/EgovAddressBookList";
+        return "egovframework/com/admin/cop/adb/EgovAddressBookList";
     }
 
     /**
@@ -124,7 +124,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         adbkVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -151,7 +151,7 @@ public class EgovAddressBookController {
         model.addAttribute("resultCnt", map.get("resultCnt"));
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/cop/adb/EgovAddressBookMainList";
+        return "egovframework/com/admin/cop/adb/EgovAddressBookMainList";
     }
 
     /**
@@ -168,7 +168,7 @@ public class EgovAddressBookController {
     		@ModelAttribute("searchVO") AddressBookVO adbkVO, 
     		@ModelAttribute("adbk") AddressBookVO addressBookVO,
     		ModelMap model) throws Exception {
-        return "egovframework/com/cop/adb/EgovAddressBookRegist";
+        return "egovframework/com/admin/cop/adb/EgovAddressBookRegist";
     }
 
     /**
@@ -225,10 +225,10 @@ public class EgovAddressBookController {
         }
 
         if(checkCnd.equals("regist"))
-            return "egovframework/com/cop/adb/EgovAddressBookRegist";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookRegist";
         else{
             model.addAttribute("writer" , true);
-            return "egovframework/com/cop/adb/EgovAddressBookUpdt";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookUpdt";
         }
     }
 
@@ -253,7 +253,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         String[] tempId = EgovStringUtil.isNullToString(adbkUserVO.getUserId()).split(",");
@@ -279,10 +279,10 @@ public class EgovAddressBookController {
 
 
         if(checkCnd.equals("regist"))
-            return "egovframework/com/cop/adb/EgovAddressBookRegist";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookRegist";
         else{
             model.addAttribute("writer" , true);
-            return "egovframework/com/cop/adb/EgovAddressBookUpdt";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookUpdt";
         }
     }
 
@@ -306,7 +306,7 @@ public class EgovAddressBookController {
         model.addAttribute("width", width);
         model.addAttribute("height", height);
 
-        return "egovframework/com/cop/adb/EgovModalPopupFrame";
+        return "egovframework/com/admin/cop/adb/EgovModalPopupFrame";
   }
 
 
@@ -358,7 +358,7 @@ public class EgovAddressBookController {
         model.addAttribute("resultCnt", map.get("resultCnt"));
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/cop/adb/EgovAddressBookPopup";
+        return "egovframework/com/admin/cop/adb/EgovAddressBookPopup";
     }
 
     
@@ -378,7 +378,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         AddressBookVO tempAdbkVO = adbkService.selectAdressBook(adbkVO);
@@ -417,7 +417,7 @@ public class EgovAddressBookController {
         model.addAttribute("searchVO", tempAdbkVO);
         model.addAttribute("adbkUserVO", adbkUserVO);
         model.addAttribute("writer" , writer);
-        return "egovframework/com/cop/adb/EgovAddressBookUpdt";
+        return "egovframework/com/admin/cop/adb/EgovAddressBookUpdt";
     }
 
     /**
@@ -440,11 +440,11 @@ public class EgovAddressBookController {
 
         beanValidator.validate(adbkVO, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "egovframework/com/cop/adb/EgovAddressBookRegist";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookRegist";
         }
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         adbkVO.setWrterId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -488,13 +488,13 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         beanValidator.validate(adbkVO, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "egovframework/com/cop/adb/EgovAddressBookUpdate";
+            return "egovframework/com/admin/cop/adb/EgovAddressBookUpdate";
         }
 
         String[] tempId = EgovStringUtil.isNullToString(adbkUserVO.getUserId()).split(",");

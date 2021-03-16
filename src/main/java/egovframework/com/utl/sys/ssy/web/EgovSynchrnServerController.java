@@ -95,7 +95,7 @@ public class EgovSynchrnServerController {
         model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
         model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
 		
-		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerList";
+		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerList";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class EgovSynchrnServerController {
         model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
         model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
         
-		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerList";
+		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerList";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class EgovSynchrnServerController {
 		model.addAttribute("fileList", egovSynchrnServerService.selectSynchrnServerFiles(synchrnServerVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));	
 
-		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerDetail";
+		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerDetail";
 	}
 	
 	/**
@@ -205,7 +205,7 @@ public class EgovSynchrnServerController {
                                         ModelMap model) throws Exception {
 
 		model.addAttribute("synchrnServer", synchrnServerVO);
-		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerRegist";
+		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerRegist";
 	}
 
 	/**
@@ -223,13 +223,13 @@ public class EgovSynchrnServerController {
     	
 		if (bindingResult.hasErrors()) { 
     		model.addAttribute("synchrnServerVO", synchrnServerVO);
-			return "egovframework/com/utl/sys/ssy/EgovSynchrnServerRegist";
+			return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerRegist";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); //KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 	        if(!isAuthenticated) {
-	            return "egovframework/com/uat/uia/EgovLoginUsr";
+	            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	        }
 	   	    synchrnServer.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
 	   	    //KISA 보안약점 조치 (2018-10-29, 윤창원)
@@ -241,7 +241,7 @@ public class EgovSynchrnServerController {
 
 	   	    model.addAttribute("synchrnServer", egovSynchrnServerService.insertSynchrnServer(synchrnServer, synchrnServerVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/utl/sys/ssy/EgovSynchrnServerDetail";		
+			return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerDetail";		
 		}
 	}
 
@@ -257,7 +257,7 @@ public class EgovSynchrnServerController {
     	synchrnServerVO.setServerId(serverId);
     	model.addAttribute("synchrnServer", egovSynchrnServerService.selectSynchrnServer(synchrnServerVO));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerUpdt";
+		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerUpdt";
 	}    
 
 	/**
@@ -275,13 +275,13 @@ public class EgovSynchrnServerController {
     	
     	if (bindingResult.hasErrors()) { 
     		model.addAttribute("synchrnServerVO", synchrnServer);
-    		return "egovframework/com/utl/sys/ssy/EgovSynchrnServerUpdt";
+    		return "egovframework/com/admin/utl/sys/ssy/EgovSynchrnServerUpdt";
     	} else {
     		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
             if(!isAuthenticated) {
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
     		synchrnServer.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
     		//KISA 보안약점 조치 (2018-10-29, 윤창원)

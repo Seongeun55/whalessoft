@@ -80,19 +80,19 @@ public class EgovCcmZipManageController {
 	/**
 	 * 우편번호 찾기 팝업 메인창을 호출한다.
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipSearchPopup"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipSearchPopup"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmZipSearchPopup.do")
 	public String callNormalCalPopup(ModelMap model) throws Exception {
-		return "egovframework/com/sym/ccm/zip/EgovCcmZipSearchPopup";
+		return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipSearchPopup";
 	}
 
 	/**
 	 * 우편번호 찾기 목록을 조회한다.
 	 * @param searchVO
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipSearchList"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipSearchList"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmZipSearchList.do")
@@ -134,7 +134,7 @@ public class EgovCcmZipManageController {
 			model.addAttribute("paginationInfo", paginationInfo);
 		}
 
-		return "egovframework/com/sym/ccm/zip/EgovCcmZipSearchList";
+		return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipSearchList";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EgovCcmZipManageController {
 	 * @param zip
 	 * @param bindingResult
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipRegist"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmZipRegist.do")
@@ -173,13 +173,13 @@ public class EgovCcmZipManageController {
 
 		if (zip.getZip() == null || zip.getZip().equals("")) {
 
-			return "egovframework/com/sym/ccm/zip/EgovCcmZipRegist";
+			return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipRegist";
 		}
 
 		if (searchVO.getSearchList().equals("1")) {
 			beanValidator.validate(zip, bindingResult);
 			if (bindingResult.hasErrors()) {
-				return "egovframework/com/sym/ccm/zip/EgovCcmZipRegist";
+				return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipRegist";
 			}
 
 			zip.setFrstRegisterId(loginVO.getUniqId());
@@ -187,7 +187,7 @@ public class EgovCcmZipManageController {
 		} else {
 			/*beanValidator.validate(zip, bindingResult);
 			if (bindingResult.hasErrors()){
-				return "egovframework/com/sym/ccm/zip/EgovCcmZipRegist";
+				return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipRegist";
 			}*/
 
 			zip.setFrstRegisterId(loginVO.getUniqId());
@@ -202,7 +202,7 @@ public class EgovCcmZipManageController {
 	 * @param request
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmExcelZipRegist"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmExcelZipRegist"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmExcelZipRegist.do")
@@ -212,7 +212,7 @@ public class EgovCcmZipManageController {
 
 		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 		if (sCmd.equals("")) {
-			return "egovframework/com/sym/ccm/zip/EgovCcmExcelZipRegist";
+			return "egovframework/com/admin/sym/ccm/zip/EgovCcmExcelZipRegist";
 		}
 
 		final MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
@@ -248,7 +248,7 @@ public class EgovCcmZipManageController {
 
 				} else {
 					LOGGER.info("xls, xlsx 파일 타입만 등록이 가능합니다.");
-					return "egovframework/com/sym/ccm/zip/EgovCcmExcelZipRegist";
+					return "egovframework/com/admin/sym/ccm/zip/EgovCcmExcelZipRegist";
 				}
 				// *********** 끝 ***********
 
@@ -263,7 +263,7 @@ public class EgovCcmZipManageController {
 	 * @param loginVO
 	 * @param zip
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipDetail"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmZipDetail.do")
@@ -278,7 +278,7 @@ public class EgovCcmZipManageController {
 			model.addAttribute("searchList", searchVO.getSearchList());
 		}
 
-		return "egovframework/com/sym/ccm/zip/EgovCcmZipDetail";
+		return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipDetail";
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class EgovCcmZipManageController {
 	 * @param loginVO
 	 * @param searchVO
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipList"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipList"
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "우편번호관리", listUrl = "/sym/ccm/zip/EgovCcmZipList.do", order = 1000, gid = 50)
@@ -322,7 +322,7 @@ public class EgovCcmZipManageController {
 			model.addAttribute("paginationInfo", paginationInfo);
 		}
 
-		return "egovframework/com/sym/ccm/zip/EgovCcmZipList";
+		return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipList";
 	}
 
 	/**
@@ -332,7 +332,7 @@ public class EgovCcmZipManageController {
 	 * @param bindingResult
 	 * @param commandMap
 	 * @param model
-	 * @return "egovframework/com/sym/ccm/zip/EgovCcmZipModify"
+	 * @return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipModify"
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/EgovCcmZipModify.do")
@@ -348,12 +348,12 @@ public class EgovCcmZipManageController {
 				Zip vo = rdnmadZipService.selectZipDetail(zip);
 				model.addAttribute("zip", vo);
 			}
-			return "egovframework/com/sym/ccm/zip/EgovCcmZipModify";
+			return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipModify";
 		} else if (sCmd.equals("Modify")) {
 			if (searchVO.getSearchList().equals("1")) {
 				beanValidator.validate(zip, bindingResult);
 				if (bindingResult.hasErrors()) {
-					return "egovframework/com/sym/ccm/zip/EgovCcmZipModify";
+					return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipModify";
 				}
 
 				zip.setLastUpdusrId(loginVO.getUniqId());
@@ -361,7 +361,7 @@ public class EgovCcmZipManageController {
 			} else {
 				/*beanValidator.validate(zip, bindingResult);
 				if (bindingResult.hasErrors()){
-					return "egovframework/com/sym/ccm/zip/EgovCcmZipModify";
+					return "egovframework/com/admin/sym/ccm/zip/EgovCcmZipModify";
 				}*/
 
 				zip.setLastUpdusrId(loginVO.getUniqId());
@@ -381,6 +381,6 @@ public class EgovCcmZipManageController {
      */
 	@RequestMapping(value="/sym/ccm/zip/EgovAdressPop.do")
     public String selectAddPop() {
-    	return "egovframework/com/sym/ccm/zip/EgovAdressPop";
+    	return "egovframework/com/admin/sym/ccm/zip/EgovAdressPop";
     }
 }

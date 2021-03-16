@@ -71,7 +71,7 @@ public class EgovBackupResultController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
     	egovBackupResultService.deleteBackupResult(backupResult);
@@ -96,7 +96,7 @@ public class EgovBackupResultController {
 		model.addAttribute("resultInfo", result);
 		LOGGER.debug(" 결과값 : {}", result);
 
-		return "egovframework/com/sym/sym/bak/EgovBackupResultDetail";
+		return "egovframework/com/admin/sym/sym/bak/EgovBackupResultDetail";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class EgovBackupResultController {
 		model.addAttribute("resultCnt", totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/sym/bak/EgovBackupResultList";
+		return "egovframework/com/admin/sym/sym/bak/EgovBackupResultList";
 	}
 
 

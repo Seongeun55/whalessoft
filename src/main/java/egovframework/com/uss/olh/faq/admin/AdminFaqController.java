@@ -107,7 +107,7 @@ public class AdminFaqController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/uss/olh/faq/EgovFaqList";
+		return "egovframework/com/admin/uss/olh/faq/EgovFaqList";
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class AdminFaqController {
 
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/uss/olh/faq/EgovFaqDetail";
+		return "egovframework/com/admin/uss/olh/faq/EgovFaqDetail";
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class AdminFaqController {
 
 		model.addAttribute("faqVO", new FaqVO());
 
-		return "egovframework/com/uss/olh/faq/EgovFaqRegist";
+		return "egovframework/com/admin/uss/olh/faq/EgovFaqRegist";
 
 	}
 	
@@ -160,7 +160,7 @@ public class AdminFaqController {
 		beanValidator.validate(faqVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/wor/EgovFaqRegist";
+			return "egovframework/com/admin/uss/olh/wor/EgovFaqRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -209,7 +209,7 @@ public class AdminFaqController {
 		// 변수명은 CoC 에 따라 JSTL사용을 위해
 		model.addAttribute("faqVO", FaqService.selectFaqDetail(faqVO));
 
-		return "egovframework/com/uss/olh/faq/EgovFaqUpdt";
+		return "egovframework/com/admin/uss/olh/faq/EgovFaqUpdt";
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class AdminFaqController {
 		// Validation
 		beanValidator.validate(faqVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/uss/olh/wor/EgovFaqUpdt";
+			return "egovframework/com/admin/uss/olh/wor/EgovFaqUpdt";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

@@ -96,7 +96,7 @@ public class EgovNotificationController {
 	model.addAttribute("resultCnt", map.get("resultCnt"));
 	model.addAttribute("paginationInfo", paginationInfo);
 	
-	return "egovframework/com/uss/ion/noi/EgovNotificationList";
+	return "egovframework/com/admin/uss/ion/noi/EgovNotificationList";
     }  
 
     /**
@@ -114,7 +114,7 @@ public class EgovNotificationController {
 
 	model.addAttribute("notification", notification);
 
-	return "egovframework/com/uss/ion/noi/EgovNotificationRegist";
+	return "egovframework/com/admin/uss/ion/noi/EgovNotificationRegist";
     }
 
     /**
@@ -135,12 +135,12 @@ public class EgovNotificationController {
 
 	beanValidator.validate(notification, bindingResult);
 	if (bindingResult.hasErrors()) {
-	    return "egovframework/com/uss/ion/noi/EgovNotificationRegist";
+	    return "egovframework/com/admin/uss/ion/noi/EgovNotificationRegist";
 	}
 
 	if (! notificationService.checkNotification(notification)) {
 	    model.addAttribute("msg", egovMessageSource.getMessage("ussIonNoi.notificationUpdt.validate.alertNtfcTime"));
-	    return "egovframework/com/uss/ion/noi/EgovNotificationRegist";
+	    return "egovframework/com/admin/uss/ion/noi/EgovNotificationRegist";
 	}
 
 	if (isAuthenticated) {
@@ -172,7 +172,7 @@ public class EgovNotificationController {
 	model.addAttribute("sessionUniqId", user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
 	model.addAttribute("result", vo);
 
-	return "egovframework/com/uss/ion/noi/EgovNotificationDetail";
+	return "egovframework/com/admin/uss/ion/noi/EgovNotificationDetail";
     }
 
     /**
@@ -189,7 +189,7 @@ public class EgovNotificationController {
 
 	model.addAttribute("result", vo);
 
-	return "egovframework/com/uss/ion/noi/EgovNotificationUpdt";
+	return "egovframework/com/admin/uss/ion/noi/EgovNotificationUpdt";
     }
 
     /**
@@ -213,7 +213,7 @@ public class EgovNotificationController {
 	if (bindingResult.hasErrors()) {
 	    NotificationVO vo = notificationService.selectNotificationInf(notificationVO);
 	    model.addAttribute("result", vo);
-	    return "egovframework/com/uss/ion/noi/EgovNotificationUpdt";
+	    return "egovframework/com/admin/uss/ion/noi/EgovNotificationUpdt";
 	}
 
 	if (!notificationService.checkNotification(notification)) {
@@ -222,7 +222,7 @@ public class EgovNotificationController {
 	    NotificationVO vo = notificationService.selectNotificationInf(notificationVO);
 
 	    model.addAttribute("result", vo);
-	    return "egovframework/com/uss/ion/noi/EgovNotificationUpdt";
+	    return "egovframework/com/admin/uss/ion/noi/EgovNotificationUpdt";
 	}
 
 	if (isAuthenticated) {
@@ -279,6 +279,6 @@ public class EgovNotificationController {
 	    model.addAttribute("list", list);
 	}
 
-	return "egovframework/com/uss/ion/noi/EgovNotificationData";
+	return "egovframework/com/admin/uss/ion/noi/EgovNotificationData";
     }
 }

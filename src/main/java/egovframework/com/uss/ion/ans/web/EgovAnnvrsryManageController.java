@@ -79,7 +79,7 @@ public class EgovAnnvrsryManageController {
     @RequestMapping("/uss/ion/ans/selectAnnvrsryManageListView.do")
     public String selectAnnvrsryManageListView() throws Exception {
 
-        return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageList";
+        return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageList";
     }
 
 	/**
@@ -103,7 +103,7 @@ public class EgovAnnvrsryManageController {
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (loginVO == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
@@ -128,7 +128,7 @@ public class EgovAnnvrsryManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageList";
+		return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageList";
 	}
 
 	/**
@@ -176,9 +176,9 @@ public class EgovAnnvrsryManageController {
 	        List<?> annvrsrySeCodeList = cmmUseService.selectCmmCodeDetail(vo);
 	        model.addAttribute("annvrsrySeCode", annvrsrySeCodeList);
 			model.addAttribute("annvrsryManage", annvrsryManage);
-			return "egovframework/com/uss/ion/ans/EgovAnnvrsryUpdt";
+			return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryUpdt";
 		}else{
-			return "egovframework/com/uss/ion/ans/EgovAnnvrsryDetail";
+			return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryDetail";
 		}
 	}
 
@@ -206,7 +206,7 @@ public class EgovAnnvrsryManageController {
         model.addAttribute("annvrsrySeCode", annvrsrySeCodeList);
         model.addAttribute("annvrsryManage", annvrsryManage);
         model.addAttribute("annvrsryManageVO", annvrsryManageVO);
-     	return "egovframework/com/uss/ion/ans/EgovAnnvrsryRegist";
+     	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryRegist";
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class EgovAnnvrsryManageController {
 
     		model.addAttribute("annvrsryManageVO", annvrsryManageVO);
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.insert"));
-         	return "egovframework/com/uss/ion/ans/EgovAnnvrsryRegist";
+         	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryRegist";
 		} else {
 
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -252,7 +252,7 @@ public class EgovAnnvrsryManageController {
 	            model.addAttribute("annvrsrySeCode", annvrsrySeCodeList);
 	            model.addAttribute("annvrsryManageVO", annvrsryManageVO);
 		    	model.addAttribute("dplctMessage", egovMessageSource.getMessage("comUssIonAns.common.duplicate"));//이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요"); 
-		     	return "egovframework/com/uss/ion/ans/EgovAnnvrsryRegist";
+		     	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryRegist";
 	    	}
 		}
 	}
@@ -273,7 +273,7 @@ public class EgovAnnvrsryManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("annvrsryManageVO", annvrsryManage);
-			return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageUpdt";
+			return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageUpdt";
 		} else {
 
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -293,7 +293,7 @@ public class EgovAnnvrsryManageController {
 	            model.addAttribute("annvrsrySeCode", annvrsrySeCodeList);
 	            model.addAttribute("annvrsryManageVO", annvrsryManageVO);
 		    	model.addAttribute("dplctMessage", egovMessageSource.getMessage("comUssIonAns.common.duplicate"));//이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요"); 
-		     	return "egovframework/com/uss/ion/ans/EgovAnnvrsryUpdt";
+		     	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryUpdt";
 	    	}
 		}
 	}
@@ -328,7 +328,7 @@ public class EgovAnnvrsryManageController {
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (loginVO == null) {
-    		return "egovframework/com/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
@@ -350,7 +350,7 @@ public class EgovAnnvrsryManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/uss/ion/ans/EgovAnnvrsryMainList";
+		return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryMainList";
 	}
 
 
@@ -413,7 +413,7 @@ public class EgovAnnvrsryManageController {
     	model.addAttribute("annvrsryManageVO", annvrsryManageVO_Temp);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-    	return "egovframework/com/uss/ion/ans/EgovAnnvrsryGdcc";
+    	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryGdcc";
 	}
 
 
@@ -440,10 +440,10 @@ public class EgovAnnvrsryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
-    	return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
+    	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
     }
 
     @RequestMapping(value="/uss/ion/ans/EgovAnnvrsryManageListPopAction.do")
@@ -459,7 +459,7 @@ public class EgovAnnvrsryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		if(sCmd.equals("bnde")){
@@ -478,7 +478,7 @@ public class EgovAnnvrsryManageController {
 			}
 	    	model.addAttribute("resultMsg", resultMsg);
 		}
-    	return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
+    	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
     }
     
 	/**
@@ -501,11 +501,11 @@ public class EgovAnnvrsryManageController {
 	    	    egovAnnvrsryManageService.insertAnnvrsryManageBnde(annvrsryManageVO, checkedAnnvrsryManageForInsert);
 		    	status.setComplete();
 		    	model.addAttribute("message", "true");
-		    	return "egovframework/com/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
+		    	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
     	  //  }else{
     	    	//String sTempMessage = annvrsryManageVO.getBndtDe().substring(0,4)+"년"+bndtManageVO.getBndtDe().substring(4,6)+"월 데이타가 존재합니다.";
     	    	//model.addAttribute("message", sTempMessage);
-		   // 	return "egovframework/com/uss/ion/bnt/EgovBndtManageBndeListPop";
+		   // 	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageBndeListPop";
     	   // }
 	}
 }

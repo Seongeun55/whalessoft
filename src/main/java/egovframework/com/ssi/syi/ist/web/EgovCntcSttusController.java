@@ -54,7 +54,7 @@ public class EgovCntcSttusController {
 	 * @param loginVO
 	 * @param CntcSttus
 	 * @param model
-	 * @return "egovframework/com/cmm/sym/ccm/EgovCcmCntcSttusDetail"
+	 * @return "egovframework/com/admin/cmm/sym/ccm/EgovCcmCntcSttusDetail"
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/ssi/syi/ist/getCntcSttusDetail.do")
@@ -64,7 +64,7 @@ public class EgovCntcSttusController {
     	CntcSttus vo = cntcSttusService.selectCntcSttusDetail(CntcSttus);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/ssi/syi/ist/EgovCntcSttusDetail";
+		return "egovframework/com/admin/ssi/syi/ist/EgovCntcSttusDetail";
 	}
 
     /**
@@ -72,7 +72,7 @@ public class EgovCntcSttusController {
      * @param loginVO
      * @param searchVO
      * @param model
-     * @return "egovframework/com/cmm/sym/ccm/EgovCcmCntcSttusList"
+     * @return "egovframework/com/admin/cmm/sym/ccm/EgovCcmCntcSttusList"
      * @throws Exception
      */
 	@IncludedInfo(name="연계현황관리", listUrl="/ssi/syi/ist/getCntcSttusList.do", order = 1220,gid = 70)
@@ -101,7 +101,7 @@ public class EgovCntcSttusController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/ssi/syi/ist/EgovCntcSttusList";
+        return "egovframework/com/admin/ssi/syi/ist/EgovCntcSttusList";
 	}
 
     /**

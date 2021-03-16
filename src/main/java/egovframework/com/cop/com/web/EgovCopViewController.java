@@ -62,6 +62,6 @@ public class EgovCopViewController {
 		model.addAttribute("width", width);
 		model.addAttribute("height", height);
 
-		return "egovframework/com/cop/com/EgovModalPopupFrame";
+		return "egovframework/com/admin/cop/com/EgovModalPopupFrame";
 	}
 }

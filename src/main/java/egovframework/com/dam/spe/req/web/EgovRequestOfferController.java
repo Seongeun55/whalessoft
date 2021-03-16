@@ -91,7 +91,7 @@ public class EgovRequestOfferController {
      * @param commandMap
      * @param RequestOfferVO
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVOList"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVOList"
      * @throws Exception
      */
 	@IncludedInfo(name="지식정보제공", listUrl="/dam/spe/req/listRequestOffer.do", order = 1291,gid = 80)
@@ -106,7 +106,7 @@ public class EgovRequestOfferController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         // 로그인 객체 선언
@@ -148,7 +148,7 @@ public class EgovRequestOfferController {
         	model.addAttribute("USER_UNIQ_ID", loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
         }
 
-    	return "egovframework/com/dam/spe/req/EgovComDamRequestOfferList";
+    	return "egovframework/com/admin/dam/spe/req/EgovComDamRequestOfferList";
 
     }
 
@@ -158,7 +158,7 @@ public class EgovRequestOfferController {
      * @param RequestOfferVO
      * @param commandMap
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVODetail"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVODetail"
      * @throws Exception
      */
     @RequestMapping(value = "/dam/spe/req/detailRequestOffer.do")
@@ -172,7 +172,7 @@ public class EgovRequestOfferController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
         // 로그인 객체 선언
         LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -253,7 +253,7 @@ public class EgovRequestOfferController {
      * @param RequestOfferVO
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVORegist"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVORegist"
      * @throws Exception
      */
     @RequestMapping(value = "/dam/spe/req/updtRequestOffer.do")
@@ -268,7 +268,7 @@ public class EgovRequestOfferController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
             String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 
@@ -309,7 +309,7 @@ public class EgovRequestOfferController {
             model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
             model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
             
-            return "egovframework/com/dam/spe/req/EgovComDamRequestOfferUpdt";
+            return "egovframework/com/admin/dam/spe/req/EgovComDamRequestOfferUpdt";
     }
 
     /**
@@ -319,7 +319,7 @@ public class EgovRequestOfferController {
      * @param RequestOfferVO
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVOUpdt"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVOUpdt"
      * @throws Exception
      */
     @RequestMapping(value = "/dam/spe/req/updtRequestOfferActor.do")
@@ -334,7 +334,7 @@ public class EgovRequestOfferController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
 
             // 로그인 객체 선언
@@ -403,7 +403,7 @@ public class EgovRequestOfferController {
      * @param RequestOfferVO
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVORegist"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVORegist"
      * @throws Exception
      */
     @RequestMapping(value = "/dam/spe/req/registRequestOffer.do")
@@ -420,7 +420,7 @@ public class EgovRequestOfferController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
 
 			MapTeamVO mapTeamVO = new MapTeamVO();
@@ -453,7 +453,7 @@ public class EgovRequestOfferController {
             model.addAttribute("fileUploadExtensions", whiteListFileUploadExtensions);
             model.addAttribute("fileUploadMaxSize", fileUploadMaxSize);
 
-            return "egovframework/com/dam/spe/req/EgovComDamRequestOfferRegist";
+            return "egovframework/com/admin/dam/spe/req/EgovComDamRequestOfferRegist";
     }
 
     /**
@@ -463,7 +463,7 @@ public class EgovRequestOfferController {
      * @param RequestOfferVO
      * @param bindingResult
      * @param model
-     * @return "egovframework/com/dam/spe/req/EgovRequestOfferVORegist"
+     * @return "egovframework/com/admin/dam/spe/req/EgovRequestOfferVORegist"
      * @throws Exception
      */
     @RequestMapping(value = "/dam/spe/req/registRequestOfferActor.do")
@@ -478,7 +478,7 @@ public class EgovRequestOfferController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
 
             // 로그인 객체 선언
@@ -530,7 +530,7 @@ public class EgovRequestOfferController {
                 	requestOfferVO.setSpeId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));
                 //지식전문가 아니고 reply 일때
                 }else if(sCmd.equals("reply")){
-                	return "egovframework/com/dam/spe/req/EgovComDamRequestOfferRegist";
+                	return "egovframework/com/admin/dam/spe/req/EgovComDamRequestOfferRegist";
                 //일반사용자일때
                 }else{
                 	requestOfferVO.setEmplyrId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));

@@ -43,7 +43,7 @@ public class EgovOnlinePollResultController {
      * @param commandMap
      * @param onlinePollVO
      * @param model
-     * @return "egovframework/com/uss/olp/opr/EgovOnlinePollResultList"
+     * @return "egovframework/com/admin/uss/olp/opr/EgovOnlinePollResultList"
      * @throws Exception
      */
     @RequestMapping(value = "/uss/olp/opr/listOnlinePollResult.do")
@@ -55,7 +55,7 @@ public class EgovOnlinePollResultController {
         List<?> reusltList = egovOnlinePollResultService.selectOnlinePollResultList(onlinePollResult);
         model.addAttribute("resultList", reusltList);
 
-        return "egovframework/com/uss/olp/opr/EgovOnlinePollResultList";
+        return "egovframework/com/admin/uss/olp/opr/EgovOnlinePollResultList";
     }
 
     /**

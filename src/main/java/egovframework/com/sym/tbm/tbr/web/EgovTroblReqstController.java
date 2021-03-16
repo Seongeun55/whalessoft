@@ -76,7 +76,7 @@ public class EgovTroblReqstController {
 	 */
     @RequestMapping(value="/sym/tbm/tbr/selectTroblReqstListView.do")
 	public String selectTroblReqstListView() throws Exception {
-		return "egovframework/com/sym/tbm/tbr/EgovTroblReqstList";
+		return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstList";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class EgovTroblReqstController {
         model.addAttribute("cmmCodeDetailList2", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM068"));
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/tbm/tbr/EgovTroblReqstList";
+		return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstList";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class EgovTroblReqstController {
 		model.addAttribute("troblReqst", egovTroblReqstService.selectTroblReqst(troblReqstVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/tbm/tbr/EgovTroblReqstDetail";
+		return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstDetail";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class EgovTroblReqstController {
 
     	model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM065"));
 		model.addAttribute("troblReqst", troblReqstVO);
-		return "egovframework/com/sym/tbm/tbr/EgovTroblReqstRegist";
+		return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstRegist";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class EgovTroblReqstController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("troblReqstVO", troblReqstVO);
-			return "egovframework/com/sym/tbm/tbr/EgovTroblReqstRegist";
+			return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstRegist";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    troblReqst.setTroblOccrrncTime(EgovStringUtil.removeMinusChar(troblReqst.getTroblOccrrncTime()));
@@ -174,7 +174,7 @@ public class EgovTroblReqstController {
 
 	   	    model.addAttribute("troblReqst", egovTroblReqstService.insertTroblReqst(troblReqst, troblReqstVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/sym/tbm/tbr/EgovTroblReqstDetail";
+			return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstDetail";
 		}
 	}
 
@@ -192,7 +192,7 @@ public class EgovTroblReqstController {
     	model.addAttribute("troblReqst", egovTroblReqstService.selectTroblReqst(troblReqstVO));
     	model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM065"));
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-		return "egovframework/com/sym/tbm/tbr/EgovTroblReqstUpdt";
+		return "egovframework/com/admin/sym/tbm/tbr/EgovTroblReqstUpdt";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class EgovTroblReqstController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("troblReqstVO", troblReqst);
-    		return "egovframework/com/sym/tbm/EgovTroblReqstUpdt";
+    		return "egovframework/com/admin/sym/tbm/EgovTroblReqstUpdt";
     	} else {
     		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    troblReqst.setTroblOccrrncTime(EgovStringUtil.removeMinusChar(troblReqst.getTroblOccrrncTime()));

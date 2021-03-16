@@ -76,7 +76,7 @@ public class EgovNtwrkController {
 	@RequestMapping(value="/sym/sym/nwk/selectNtwrkListView.do")
 	public String selectNtwrkListView(ModelMap model) throws Exception {
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM067"));
-		return "egovframework/com/sym/sym/nwk/EgovNtwrkList";
+		return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkList";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class EgovNtwrkController {
         model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM067"));
         model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/nwk/EgovNtwrkList";
+		return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkList";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class EgovNtwrkController {
 		model.addAttribute("ntwrk", egovNtwrkService.selectNtwrk(ntwrkVO));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/sym/sym/nwk/EgovNtwrkDetail";
+		return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkDetail";
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class EgovNtwrkController {
 
     	model.addAttribute("ntwrk", ntwrkVO);
     	model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM067"));
-    	return "egovframework/com/sym/sym/nwk/EgovNtwrkRegist";
+    	return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkRegist";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class EgovNtwrkController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("ntwrkVO", ntwrkVO);
-			return "egovframework/com/sym/sym/nwk/EgovNtwrkRegist";
+			return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkRegist";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    ntwrk.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -174,7 +174,7 @@ public class EgovNtwrkController {
 	   	    ntwrk.setNtwrkId(egovNtwrkIdGnrService.getNextStringId());
 	   	    model.addAttribute("ntwrk", egovNtwrkService.insertNtwrk(ntwrk, ntwrkVO));
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "egovframework/com/sym/sym/nwk/EgovNtwrkDetail";
+			return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkDetail";
 		}
 
 	}
@@ -193,7 +193,7 @@ public class EgovNtwrkController {
 		model.addAttribute("ntwrk", egovNtwrkService.selectNtwrk(ntwrkVO));
 		model.addAttribute("cmmCodeDetailList", getCmmCodeDetailList(new ComDefaultCodeVO(),"COM067"));
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	return "egovframework/com/sym/sym/nwk/EgovNtwrkUpdt";
+    	return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkUpdt";
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class EgovNtwrkController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("ntwrkVO", ntwrk);
-			return "egovframework/com/sym/sym/nwk/EgovNtwrkUpdt";
+			return "egovframework/com/admin/sym/sym/nwk/EgovNtwrkUpdt";
 		} else {
 	   	    LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	   	    ntwrk.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));

@@ -61,7 +61,7 @@ public class EgovFileMngController {
 	model.addAttribute("fileListCnt", result.size());
 	model.addAttribute("atchFileId", atchFileId);
 
-	return "egovframework/com/cmm/fms/EgovFileList";
+	return "egovframework/com/admin/cmm/fms/EgovFileList";
     }
 
     /**
@@ -90,7 +90,7 @@ public class EgovFileMngController {
 	model.addAttribute("fileListCnt", result.size());
 	model.addAttribute("atchFileId", atchFileId);
 
-	return "egovframework/com/cmm/fms/EgovFileList";
+	return "egovframework/com/admin/cmm/fms/EgovFileList";
     }
 
     /**
@@ -160,6 +160,6 @@ public class EgovFileMngController {
 
 	model.addAttribute("fileList", result);
 
-	return "egovframework/com/cmm/fms/EgovImgFileList";
+	return "egovframework/com/admin/cmm/fms/EgovImgFileList";
     }
 }

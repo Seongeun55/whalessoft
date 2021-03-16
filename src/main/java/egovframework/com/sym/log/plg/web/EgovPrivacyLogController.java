@@ -70,7 +70,7 @@ public class EgovPrivacyLogController {
 		paginationInfo.setTotalRecordCount(totalCount);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/plg/EgovPrivacyLogList";
+		return "egovframework/com/admin/sym/log/plg/EgovPrivacyLogList";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class EgovPrivacyLogController {
 
 		model.addAttribute("result", privacyLogService.selectPrivacyLog(privacyLog));
 
-		return "egovframework/com/sym/log/plg/EgovPrivacyLogDetail";
+		return "egovframework/com/admin/sym/log/plg/EgovPrivacyLogDetail";
 	}
 
 }

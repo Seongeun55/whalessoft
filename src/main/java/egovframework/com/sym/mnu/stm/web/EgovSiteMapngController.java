@@ -72,11 +72,11 @@ public class EgovSiteMapngController {
     	SiteMapngVO  resultVO = siteMapngService.selectSiteMapng(searchVO);
     	if(resultVO == null){
     		model.addAttribute("resultMsg", egovMessageSource.getMessage("comSymMnuStm.siteMapng.validate.siteMap"));
-    		return "egovframework/com/sym/mnu/stm/EgovSiteMapng";
+    		return "egovframework/com/admin/sym/mnu/stm/EgovSiteMapng";
     	}
     	LOGGER.debug(resultVO.getBndeFileNm());
         model.addAttribute("resultVO", resultVO);
 
-        return "egovframework/com/sym/mnu/stm/EgovSiteMapng";
+        return "egovframework/com/admin/sym/mnu/stm/EgovSiteMapng";
     }
 }

@@ -116,7 +116,7 @@ public class EgovBndtManageController {
      		bndtManageVO.setBndtManageList(egovBndtManageService.selectBndtManageList(bndtManageVO));
     		model.addAttribute("bndtManageList", bndtManageVO.getBndtManageList());
 
-        return "egovframework/com/uss/ion/bnt/EgovBndtManageList";
+        return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageList";
     }
 
 	/**
@@ -146,7 +146,7 @@ public class EgovBndtManageController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/bnt/EgovBndtManageList";
+		return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageList";
 	}
 
 	/**
@@ -172,13 +172,13 @@ public class EgovBndtManageController {
 			bndtManage.setRemark(bndtManageVO_Temp.getRemark());
 			model.addAttribute("bndtManage", bndtManage);
 
-			return "egovframework/com/uss/ion/bnt/EgovBndtManageUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageUpdt";
 		}else{
-			return "egovframework/com/uss/ion/bnt/EgovBndtManageDetail";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageDetail";
 		}
     	//model.addAttribute("bndtManage", egovBndtManageService.selectBndtManage(bndtManageVO));
     	//model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
-    	//return "egovframework/com/uss/ion/ans/EgovBndtManageUpdt";
+    	//return "egovframework/com/admin/uss/ion/ans/EgovBndtManageUpdt";
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class EgovBndtManageController {
         model.addAttribute("bndtManage", bndtManage);
         model.addAttribute("bndtManageVO", bndtManageVO);
 
-    	return "egovframework/com/uss/ion/bnt/EgovBndtManageRegist";
+    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageRegist";
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class EgovBndtManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("bndtManageVO", bndtManageVO);
-			return "egovframework/com/uss/ion/bnt/EgovBndtManageRegist";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	status.setComplete();
@@ -243,7 +243,7 @@ public class EgovBndtManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("bndtManageVO", bndtManageVO);
-			return "egovframework/com/uss/ion/bnt/EgovBndtManageUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageUpdt";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	bndtManage.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -285,7 +285,7 @@ public class EgovBndtManageController {
 			bndtManage.setRemark(bndtManageVO.getRemark());
 			model.addAttribute("bndtManage", bndtManage);
 
-			return "egovframework/com/uss/ion/bnt/EgovBndtManageUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageUpdt";
     	}
 	}
 
@@ -326,7 +326,7 @@ public class EgovBndtManageController {
 		model.addAttribute("bndtCeckManageVO", bndtCeckManageVO);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageList";
+		return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageList";
 	}
 
 	/**
@@ -353,9 +353,9 @@ public class EgovBndtManageController {
 			bndtCeckManage_Temp.setBndtCeckCdNm(bndtCeckManageVO_Temp.getBndtCeckCdNm());
 			bndtCeckManage_Temp.setUseAt(bndtCeckManageVO_Temp.getUseAt());
 	    	model.addAttribute("bndtCeckManage", bndtCeckManage_Temp);
-			return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageUpdt";
 		}else{
-			return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageDetail";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageDetail";
 		}
 	}
 
@@ -378,7 +378,7 @@ public class EgovBndtManageController {
         bndtCeckManage.setBndtCeckCd("");
         bndtCeckManage.setBndtCeckCdNm("");
         bndtCeckManage.setBndtCeckSe("");
-    	return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageRegist";
+    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageRegist";
 	}
 
 	/**
@@ -401,7 +401,7 @@ public class EgovBndtManageController {
             List<?> bndtCeckSeList = cmmUseService.selectCmmCodeDetail(vo);
             model.addAttribute("bndtCeckSeList",   bndtCeckSeList);
     		model.addAttribute("bndtCeckManageVO", bndtCeckManageVO);
-			return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageRegist";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	bndtCeckManage.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -418,7 +418,7 @@ public class EgovBndtManageController {
 	            model.addAttribute("bndtCeckSeList",   bndtCeckSeList);
 	    		model.addAttribute("bndtCeckManageVO", bndtCeckManageVO);
 		    	model.addAttribute("dplctMessage", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-				return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageRegist";
+				return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageRegist";
 	    	}
 		}
 	}
@@ -439,7 +439,7 @@ public class EgovBndtManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("bndtCeckManageVO", bndtCeckManageVO);
-			return "egovframework/com/uss/ion/bnt/EgovBndtCeckManageUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtCeckManageUpdt";
 		} else {
 
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -489,12 +489,12 @@ public class EgovBndtManageController {
 			bndtDiaryVO.setBndtDe(bndtDiaryVO.getBndtDe());
 			bndtDiaryVO.setBndtId(bndtDiaryVO.getBndtId());
 			model.addAttribute("bndtDiaryVO", bndtDiaryVO);
-			return "egovframework/com/uss/ion/bnt/EgovBndtDiaryRegist";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtDiaryRegist";
 		}
 		else if(sCmd.equals("updt")){
-			return "egovframework/com/uss/ion/bnt/EgovBndtDiaryUpdt";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtDiaryUpdt";
 		}else{
-			return "egovframework/com/uss/ion/bnt/EgovBndtDiaryDetail";
+			return "egovframework/com/admin/uss/ion/bnt/EgovBndtDiaryDetail";
 		}
 	}
 
@@ -575,10 +575,10 @@ public class EgovBndtManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
-    	return "egovframework/com/uss/ion/bnt/EgovBndtManageBndeListPop";
+    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageBndeListPop";
     }
     
     @RequestMapping(value="/uss/ion/bnt/EgovBndtManageListPopAction.do")
@@ -594,7 +594,7 @@ public class EgovBndtManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
     	}
 
 		if(sCmd.equals("bnde")){
@@ -620,7 +620,7 @@ public class EgovBndtManageController {
 			}
 	    	model.addAttribute("resultMsg", resultMsg);
 		}
-    	return "egovframework/com/uss/ion/bnt/EgovBndtManageBndeListPop";
+    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageBndeListPop";
     }
 
 
@@ -644,11 +644,11 @@ public class EgovBndtManageController {
 		    	egovBndtManageService.insertBndtManageBnde(bndtManageVO, checkedBndtManageForInsert);
 		    	status.setComplete();
 		    	model.addAttribute("message", "true");
-		    	return "egovframework/com/uss/ion/bnt/EgovBndtManageList";
+		    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageList";
     	    }else{
     	    	String sTempMessage = bndtManageVO.getBndtDe().substring(0,4)+"년"+bndtManageVO.getBndtDe().substring(4,6)+"월 데이타가 존재합니다.";
     	    	model.addAttribute("message", sTempMessage);
-		    	return "egovframework/com/uss/ion/bnt/EgovBndtManageBndeListPop";
+		    	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageBndeListPop";
     	    }
 	}
 

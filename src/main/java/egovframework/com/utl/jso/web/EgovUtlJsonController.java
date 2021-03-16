@@ -59,7 +59,7 @@ public class EgovUtlJsonController {
 	 */
     @RequestMapping(value="/utl/jso/EgovUtlJsonInquire.do",method = RequestMethod.GET)
     public String selectUtlJsonInquire()  throws Exception {
-        return "egovframework/com/utl/jso/EgovUtlJsonInquire";
+        return "egovframework/com/admin/utl/jso/EgovUtlJsonInquire";
     }
     
     @RequestMapping(value="/utl/jso/EgovUtlJsonInquire.do",method = RequestMethod.POST)
@@ -87,7 +87,7 @@ public class EgovUtlJsonController {
 	 */
     @RequestMapping(value="/utl/jso/EgovUtlJsonMultiInquire.do",method = RequestMethod.GET)
     public String selectUtlJsonMultiInquire(@RequestParam Map<?, ?> commandMap)  throws Exception {    	
-        return "egovframework/com/utl/jso/EgovUtlJsonMultiInquire";
+        return "egovframework/com/admin/utl/jso/EgovUtlJsonMultiInquire";
     }
     @RequestMapping(value="/utl/jso/EgovUtlJsonMultiInquire.do",method = RequestMethod.POST)
     public ModelAndView selectUtlJsonMultiInquirePost(@RequestParam Map<?, ?> commandMap)  throws Exception {

@@ -81,7 +81,7 @@ public class EgovSysLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/sym/log/lgm/EgovSysLogList";
+		return "egovframework/com/admin/sym/log/lgm/EgovSysLogList";
 		
 	}
 	/**
@@ -101,6 +101,6 @@ public class EgovSysLogController {
 
 		SysLog vo = sysLogService.selectSysLog(sysLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/sym/log/lgm/EgovSysLogDetail";
+		return "egovframework/com/admin/sym/log/lgm/EgovSysLogDetail";
 	}
 }

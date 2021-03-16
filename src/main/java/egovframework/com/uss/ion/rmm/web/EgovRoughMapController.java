@@ -75,7 +75,7 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         searchVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -98,7 +98,7 @@ public class EgovRoughMapController {
         model.addAttribute("resultList", roughMapList);
         model.addAttribute("paginationInfo", paginationInfo);
 
-        return "egovframework/com/uss/ion/rmm/EgovRoughMapList";
+        return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapList";
     }
 
     /**
@@ -115,13 +115,13 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         RoughMapVO roughMap = egovRoughMapService.selectRoughMapDetail(roughMapVO);
         model.addAttribute("roughMap", roughMap);
 
-        return "egovframework/com/uss/ion/rmm/EgovRoughMapDetail";
+        return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapDetail";
     }
 
     /**
@@ -137,10 +137,10 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
-        return "egovframework/com/uss/ion/rmm/EgovRoughMapRegist";
+        return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapRegist";
     }
 
     /**
@@ -156,13 +156,13 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	beanValidator.validate(roughMap, bindingResult);
 
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/ion/rmm/EgovRoughMapRegist";
+			return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapRegist";
 		}
 
         LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -190,7 +190,7 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         roughMap = egovRoughMapService.selectRoughMapDetail(roughMap);
@@ -198,7 +198,7 @@ public class EgovRoughMapController {
         model.addAttribute("result", roughMap);
         model.addAttribute("roughMap", roughMap);
 
-        return "egovframework/com/uss/ion/rmm/EgovRoughMapUpdt";
+        return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapUpdt";
     }
 
     /**
@@ -214,13 +214,13 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
     	beanValidator.validate(roughMap, bindingResult);
 
 		if(bindingResult.hasErrors()){
-			return "egovframework/com/uss/ion/rmm/EgovRoughMapUpdt";
+			return "egovframework/com/admin/uss/ion/rmm/EgovRoughMapUpdt";
 		}
 
         LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -246,7 +246,7 @@ public class EgovRoughMapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
         }
 
         LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();

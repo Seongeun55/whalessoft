@@ -83,7 +83,7 @@ public class EgovRssTagManageController {
     	ArrayList<?> arrListResult = (ArrayList<?>)egovRssManageService.selectRssTagManageTableColumnList(hmParam);
 
     	model.addAttribute("ColumnList",arrListResult);
-    	return "egovframework/com/uss/ion/rss/EgovRssTagManageTableColumnList";
+    	return "egovframework/com/admin/uss/ion/rss/EgovRssTagManageTableColumnList";
 	}
 
     /**
@@ -111,7 +111,7 @@ public class EgovRssTagManageController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         //로그인 객체 선언
@@ -157,7 +157,7 @@ public class EgovRssTagManageController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-    	return "egovframework/com/uss/ion/rss/EgovRssTagManageList";
+    	return "egovframework/com/admin/uss/ion/rss/EgovRssTagManageList";
 
     }
 
@@ -214,7 +214,7 @@ public class EgovRssTagManageController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
 
             // 로그인 객체 선언
@@ -271,7 +271,7 @@ public class EgovRssTagManageController {
             Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
             if (!isAuthenticated) {
                 model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-                return "egovframework/com/uat/uia/EgovLoginUsr";
+                return "egovframework/com/admin/uat/uia/EgovLoginUsr";
             }
 
             // 로그인 객체 선언

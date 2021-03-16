@@ -77,7 +77,7 @@ public class EgovCtsnnManageController {
 		vo.setCodeId("COM054");
 		ctsnnCdCodeList = cmmUseService.selectCmmCodeDetail(vo);
         model.addAttribute("ctsnnCodeList",    ctsnnCdCodeList);
-        return "egovframework/com/uss/ion/ctn/EgovCtsnnManageList";
+        return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnManageList";
     }
 
 	/**
@@ -115,7 +115,7 @@ public class EgovCtsnnManageController {
         model.addAttribute("ctsnnCodeList"  ,   ctsnnCdCodeList);
  		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/ctn/EgovCtsnnManageList";
+		return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnManageList";
 	}
 
 	/**
@@ -166,9 +166,9 @@ public class EgovCtsnnManageController {
 			ctsnnManageTemp.setSanctnerId(ctsnnManageVOTemp.getSanctnerId());
 
 			model.addAttribute("ctsnnManage", ctsnnManageTemp);
-			return "egovframework/com/uss/ion/ctn/EgovCtsnnUpdt";
+			return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnUpdt";
 		}else{
-			return "egovframework/com/uss/ion/ctn/EgovCtsnnDetail";
+			return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnDetail";
 		}
 
 	}
@@ -191,7 +191,7 @@ public class EgovCtsnnManageController {
 		relateCodeList = cmmUseService.selectCmmCodeDetail(vo);
         model.addAttribute("ctsnnCodeList",    ctsnnCdCodeList);
 		model.addAttribute("relateCodeList",    relateCodeList);
-    	return "egovframework/com/uss/ion/ctn/EgovCtsnnRegist";
+    	return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnRegist";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class EgovCtsnnManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("ctsnnManageVO", ctsnnManageVO);
-			return "egovframework/com/uss/ion/ctn/EgovCtsnnRegist";
+			return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnRegist";
 		} else {
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 	    	ctsnnManage.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -237,7 +237,7 @@ public class EgovCtsnnManageController {
 
 		if (bindingResult.hasErrors()) {
     		model.addAttribute("ctsnnManageVO", ctsnnManageVO);
-			return "egovframework/com/uss/ion/ctn/EgovCtsnnUpdt";
+			return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnUpdt";
 		} else {
 
 	    	//LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -302,7 +302,7 @@ public class EgovCtsnnManageController {
         model.addAttribute("ctsnnCodeList"  ,   ctsnnCdCodeList);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/ctn/EgovCtsnnConfmList";
+		return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnConfmList";
 	}
 
 	/**
@@ -337,7 +337,7 @@ public class EgovCtsnnManageController {
     	model.addAttribute("ctsnnManageVO", ctsnnManageVOTemp);
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/uss/ion/ctn/EgovCtsnnConfm";
+		return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnConfm";
     }
 
 	/**
@@ -356,7 +356,7 @@ public class EgovCtsnnManageController {
 
     	if (bindingResult.hasErrors()) {
     		model.addAttribute("ctsnnManageVO", ctsnnManage);
-			return "egovframework/com/uss/ion/ctn/EgovCtsnnConfm";
+			return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnConfm";
 		} else {
 
 	    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -379,7 +379,7 @@ public class EgovCtsnnManageController {
 	public String selectSanctnerListPopup(@ModelAttribute("ctsnnManage")   CtsnnManage   ctsnnManage,
 										  @RequestParam Map<?, ?> commandMap,
                                           ModelMap model) throws Exception{
-		return "egovframework/com/uss/ion/ctn/EgovCtsnnReturn";
+		return "egovframework/com/admin/uss/ion/ctn/EgovCtsnnReturn";
 	}
 
 }

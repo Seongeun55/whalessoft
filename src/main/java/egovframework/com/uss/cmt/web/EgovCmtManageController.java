@@ -145,7 +145,7 @@ public class EgovCmtManageController {
 		List<?> cmtManageList = cmtManageService.selectCmtInfoList(cmtSearchVO);
 		model.addAttribute("resultList", cmtManageList);
 
-		return "egovframework/com/uss/cmt/EgovCmtManageList";
+		return "egovframework/com/admin/uss/cmt/EgovCmtManageList";
 	}
 
 }

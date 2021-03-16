@@ -113,7 +113,7 @@ public class AdminMberManageController {
 		List<?> mberSttus_result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("entrprsMberSttus_result", mberSttus_result);//기업회원상태코드목록
 
-		return "egovframework/com/uss/umt/EgovMberManage";
+		return "egovframework/com/admin/uss/umt/EgovMberManage";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class AdminMberManageController {
 		model.addAttribute("mberSttus_result", mberSttus_result); //사용자상태코드목록
 		model.addAttribute("groupId_result", groupId_result); //그룹정보 목록
 
-		return "egovframework/com/uss/umt/EgovMberInsert";
+		return "egovframework/com/admin/uss/umt/EgovMberInsert";
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class AdminMberManageController {
 			model.addAttribute("mberSttus_result", mberSttus_result); //사용자상태코드목록
 			model.addAttribute("groupId_result", groupId_result); //그룹정보 목록
 			
-			return "egovframework/com/uss/umt/EgovMberInsert";
+			return "egovframework/com/admin/uss/umt/EgovMberInsert";
 		} else {
 			if ("".equals(mberManageVO.getGroupId())) {//KISA 보안약점 조치 (2018-10-29, 윤창원)
 				mberManageVO.setGroupId(null);
@@ -253,7 +253,7 @@ public class AdminMberManageController {
 		model.addAttribute("mberManageVO", mberManageVO);
 		model.addAttribute("userSearchVO", userSearchVO);
 
-		return "egovframework/com/uss/umt/EgovMberSelectUpdt";
+		return "egovframework/com/admin/uss/umt/EgovMberSelectUpdt";
 	}
 	
 	/**
@@ -388,7 +388,7 @@ public class AdminMberManageController {
 
 		mberManageVO.setMberSttus("DEFAULT");
 
-		return "egovframework/com/uss/umt/EgovMberSbscrb";
+		return "egovframework/com/admin/uss/umt/EgovMberSbscrb";
 	}
 
 	/**
@@ -433,7 +433,7 @@ public class AdminMberManageController {
 		model.addAttribute("stplatList", stplatList); //약관정보 포함
 		model.addAttribute("sbscrbTy", sbscrbTy); //회원가입유형 포함
 
-		return "egovframework/com/uss/umt/EgovStplatCnfirm";
+		return "egovframework/com/admin/uss/umt/EgovStplatCnfirm";
 	}
 
 	/**
@@ -492,7 +492,7 @@ public class AdminMberManageController {
 		model.addAttribute("userSearchVO", userSearchVO);
 		model.addAttribute("resultMsg", resultMsg);
 
-		return "egovframework/com/uss/umt/EgovMberPasswordUpdt";
+		return "egovframework/com/admin/uss/umt/EgovMberPasswordUpdt";
 	}
 
 	/**
@@ -520,7 +520,7 @@ public class AdminMberManageController {
 		model.addAttribute("userSearchVO", userSearchVO);
 		model.addAttribute("mberManageVO", mberManageVO);
 
-		return "egovframework/com/uss/umt/EgovMberPasswordUpdt";
+		return "egovframework/com/admin/uss/umt/EgovMberPasswordUpdt";
 	}
 
 }

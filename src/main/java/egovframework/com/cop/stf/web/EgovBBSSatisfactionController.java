@@ -90,7 +90,7 @@ public class EgovBBSSatisfactionController {
 	model.addAttribute("type", satisfactionVO.getType());	// head or body
 	
 	if (satisfactionVO.getType().equals("head")) {
-	    return "egovframework/com/cop/stf/EgovSatisfactionList";
+	    return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
 	}
 	////----------------------------------------
 	
@@ -125,7 +125,7 @@ public class EgovBBSSatisfactionController {
 	satisfactionVO.setStsfdgCn("");	// 등록 후 만족도 내용 처리
 	satisfactionVO.setStsfdg(0);	// 등록 후 만족도 처리
 
-	return "egovframework/com/cop/stf/EgovSatisfactionList";
+	return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
     }
     
     /**
@@ -158,7 +158,7 @@ public class EgovBBSSatisfactionController {
 	model.addAttribute("type", satisfactionVO.getType());	// head or body
 	
 	if (satisfactionVO.getType().equals("head")) {
-	    return "egovframework/com/cop/stf/EgovSatisfactionList";
+	    return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
 	}
 	////----------------------------------------
 	
@@ -190,7 +190,7 @@ public class EgovBBSSatisfactionController {
 	satisfactionVO.setStsfdgCn("");	// 등록 후 만족도 내용 처리
 	satisfactionVO.setStsfdg(0);	// 등록 후 만족도 처리
 
-	return "egovframework/com/cop/stf/EgovSatisfactionList";
+	return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
     }
     
     /**
@@ -347,7 +347,7 @@ public class EgovBBSSatisfactionController {
 	model.addAttribute("type", satisfactionVO.getType());	// head or body
 	
 	if (satisfactionVO.getType().equals("head")) {
-	    return "egovframework/com/cop/stf/EgovSatisfactionList";
+	    return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
 	}
 	////----------------------------------------
 	
@@ -391,7 +391,7 @@ public class EgovBBSSatisfactionController {
 	satisfactionVO.setFrstRegisterPnttm(data.getFrstRegisterPnttm());
 	satisfactionVO.setFrstRegisterNm(data.getFrstRegisterNm());
 	
-	return "egovframework/com/cop/stf/EgovSatisfactionList";
+	return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
     }
     
     /**
@@ -411,7 +411,7 @@ public class EgovBBSSatisfactionController {
 	model.addAttribute("type", satisfactionVO.getType());	// head or body
 	
 	if (satisfactionVO.getType().equals("head")) {
-	    return "egovframework/com/cop/stf/EgovSatisfactionList";
+	    return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
 	}
 	////----------------------------------------
 	
@@ -472,7 +472,7 @@ public class EgovBBSSatisfactionController {
 	}
 	////-----------------------------
 	
-	return "egovframework/com/cop/stf/EgovSatisfactionList";
+	return "egovframework/com/admin/cop/stf/EgovSatisfactionList";
     }
     
     /**

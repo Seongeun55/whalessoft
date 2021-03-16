@@ -87,7 +87,7 @@ public class EgovWikiBookmarkController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	    if (!isAuthenticated) {
 	        model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-	        return "egovframework/com/uat/uia/EgovLoginUsr";
+	        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
 	    }
 
         //로그인 객체 선언
@@ -135,7 +135,7 @@ public class EgovWikiBookmarkController {
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-    	return "egovframework/com/uss/ion/wik/bmk/EgovWikiBookmarkList";
+    	return "egovframework/com/admin/uss/ion/wik/bmk/EgovWikiBookmarkList";
 	}
 
     /**
@@ -162,7 +162,7 @@ public class EgovWikiBookmarkController {
     	//log.debug("Controller EgovWikiBookmarkRegist.WikiBookmark>" + wikiBookmark);
     	//중복 설정
     	model.addAttribute("S_DUPL", sDupl);
-    	return "egovframework/com/uss/ion/wik/bmk/EgovWikiBookmarkRegist";
+    	return "egovframework/com/admin/uss/ion/wik/bmk/EgovWikiBookmarkRegist";
 	}
 
 }
