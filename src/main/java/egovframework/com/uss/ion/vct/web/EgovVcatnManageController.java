@@ -98,7 +98,7 @@ public class EgovVcatnManageController {
     	
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
     	vcatnManageVO = egovVcatnManageService.selectIndvdlYrycManage(user.getUniqId());
@@ -339,7 +339,7 @@ public class EgovVcatnManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 	    
     	vcatnManage.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -450,7 +450,7 @@ public class EgovVcatnManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
     	vcatnManageVO.setSanctnerId(user.getUniqId()); //사용자가 승인권자인지 조건값 setting
@@ -513,7 +513,7 @@ public class EgovVcatnManageController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
     	if (bindingResult.hasErrors()) {

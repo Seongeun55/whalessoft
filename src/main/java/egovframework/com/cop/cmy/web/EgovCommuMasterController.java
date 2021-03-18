@@ -133,7 +133,7 @@ public class EgovCommuMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
    	 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
         
 		beanValidator.validate(community, bindingResult);
@@ -225,7 +225,7 @@ public class EgovCommuMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		// KISA 보안취약점 조치 (2018-12-10, 신용호)
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 	
 		beanValidator.validate(community, bindingResult);

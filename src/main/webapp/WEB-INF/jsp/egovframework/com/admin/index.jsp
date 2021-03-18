@@ -18,8 +18,6 @@
     <script src="/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="/bootstrap/js/sb-admin-2.min.js"></script>    
 </head>
 <body id="page-top">
 
@@ -145,7 +143,7 @@
                 </a>
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/sym/mnu/mcm/AdminMenuCreatManageSelect.do" target="_content">메뉴 생성</a>
+                         <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
                         <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
                     </div>
                 </div>
@@ -373,7 +371,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                	<iframe name="_content" src="${pageContext.request.contextPath}/AdminContent.do" onload="this.height=(this.contentWindow.document.body.scrollHeight+30);" width="100%" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe>
+                	<iframe name="_content" src="${pageContext.request.contextPath}/AdminContent.do" onload="this.height=(this.contentWindow.document.body.scrollHeight+30);" width="100%" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="yes" vspace="0"></iframe>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -421,5 +419,7 @@
         </div>
     </div>
 </body>
+    <!-- Custom scripts for all pages-->
+    <script src="/bootstrap/js/sb-admin-2.min.js"></script>    
 
 </html>

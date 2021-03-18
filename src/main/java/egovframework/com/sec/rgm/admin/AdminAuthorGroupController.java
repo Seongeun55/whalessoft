@@ -66,7 +66,7 @@ public class AdminAuthorGroupController {
 	@RequestMapping("/sec/rgm/EgovAuthorGroupListView.do")
 	public String selectAuthorGroupListView() throws Exception {
 
-		return "egovframework/com/admin/sec/rgm/EgovAuthorGroupManage";
+		return "egovframework/com/admin/sec/rgm/AuthorGroupManage";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class AdminAuthorGroupController {
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.select"));
 
-		return "egovframework/com/admin/sec/rgm/EgovAuthorGroupManage";
+		return "egovframework/com/admin/sec/rgm/AuthorGroupManage";
 	}
 
 	/**

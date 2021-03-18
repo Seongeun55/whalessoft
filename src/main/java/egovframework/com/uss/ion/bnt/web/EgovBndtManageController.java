@@ -575,7 +575,7 @@ public class EgovBndtManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
     	return "egovframework/com/admin/uss/ion/bnt/EgovBndtManageBndeListPop";
@@ -594,7 +594,7 @@ public class EgovBndtManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
 		if(sCmd.equals("bnde")){

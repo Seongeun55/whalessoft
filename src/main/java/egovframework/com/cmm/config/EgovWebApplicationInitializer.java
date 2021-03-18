@@ -93,6 +93,9 @@ public class EgovWebApplicationInitializer implements WebApplicationInitializer 
 		
 		if("security".equals(EgovProperties.getProperty("Globals.Auth").trim())) {
 			
+			FilterRegistration.Dynamic egovLoginPolicyFilter = servletContext.addFilter("LoginPolicyFilter", new EgovLoginPolicyFilter());
+			egovLoginPolicyFilter.addMappingForUrlPatterns(null, false, "/uat/uia/actionLogin.do");
+
 			//-------------------------------------------------------------
 			// springSecurityFilterChain 설정
 			//-------------------------------------------------------------		

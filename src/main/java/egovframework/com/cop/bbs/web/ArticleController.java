@@ -151,7 +151,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); // KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		BoardMasterVO vo = new BoardMasterVO();
@@ -204,7 +204,7 @@ public class ArticleController {
 		model.addAttribute("boardMasterVO", master);
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("noticeList", noticeList);
-		return "egovframework/com/admin/cop/bbs/EgovArticleList";
+		return "egovframework/com/admin/cop/bbs/ArticleList";
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); // KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		boardVO.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
@@ -271,7 +271,7 @@ public class ArticleController {
 
 		model.addAttribute("boardMasterVO", masterVo);
 
-		return "egovframework/com/admin/cop/bbs/EgovArticleDetail";
+		return "egovframework/com/admin/cop/bbs/ArticleDetail";
 	}
 
 	/**
@@ -309,7 +309,7 @@ public class ArticleController {
 		model.addAttribute("boardMasterVO", bdMstr);
 		//// -----------------------------
 
-		return "egovframework/com/admin/cop/bbs/EgovArticleRegist";
+		return "egovframework/com/admin/cop/bbs/ArticleRegist";
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		beanValidator.validate(board, bindingResult);
@@ -353,7 +353,7 @@ public class ArticleController {
 			model.addAttribute("boardMasterVO", master);
 			//// -----------------------------
 
-			return "egovframework/com/admin/cop/bbs/EgovArticleRegist";
+			return "egovframework/com/admin/cop/bbs/ArticleRegist";
 		}
 
 		if (isAuthenticated) {
@@ -411,7 +411,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();// KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		BoardMasterVO master = new BoardMasterVO();
@@ -459,7 +459,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		beanValidator.validate(board, bindingResult);
@@ -564,7 +564,7 @@ public class ArticleController {
 		if (bdvo.getNtcrId().equals("anonymous")) {
 			model.addAttribute("result", bdvo);
 			model.addAttribute("boardMasterVO", bmvo);
-			return "egovframework/com/admin/cop/bbs/EgovArticleDetail";
+			return "egovframework/com/admin/cop/bbs/ArticleDetail";
 		}
 
 		model.addAttribute("articleVO", bdvo);
@@ -573,7 +573,7 @@ public class ArticleController {
 		if (boardVO.getBlogAt().equals("chkBlog")) {
 			return "egovframework/com/admin/cop/bbs/EgovArticleBlogUpdt";
 		} else {
-			return "egovframework/com/admin/cop/bbs/EgovArticleUpdt";
+			return "egovframework/com/admin/cop/bbs/ArticleUpdt";
 		}
 
 	}
@@ -596,7 +596,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// --------------------------------------------------------------------------------------------
@@ -633,7 +633,7 @@ public class ArticleController {
 			model.addAttribute("articleVO", bdvo);
 			model.addAttribute("boardMasterVO", bmvo);
 
-			return "egovframework/com/admin/cop/bbs/EgovArticleUpdt";
+			return "egovframework/com/admin/cop/bbs/ArticleUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -702,7 +702,7 @@ public class ArticleController {
 		if (bdvo.getNtcrId().equals("anonymous")) {
 			model.addAttribute("result", bdvo);
 			model.addAttribute("boardMasterVO", bdMstr);
-			return "egovframework/com/admin/cop/bbs/EgovArticleDetail";
+			return "egovframework/com/admin/cop/bbs/ArticleDetail";
 		}
 
 		if (isAuthenticated) {
@@ -734,7 +734,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// 수정 및 삭제 기능 제어를 위한 처리
@@ -779,7 +779,7 @@ public class ArticleController {
 		model.addAttribute("articleVO", vo);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/cop/bbs/EgovGuestArticleList";
+		return "egovframework/com/admin/cop/bbs/GuestArticleList";
 	}
 
 	/**
@@ -800,7 +800,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		beanValidator.validate(board, bindingResult);
@@ -843,7 +843,7 @@ public class ArticleController {
 			model.addAttribute("articleVO", vo);
 			model.addAttribute("paginationInfo", paginationInfo);
 
-			return "egovframework/com/admin/cop/bbs/EgovGuestArticleList";
+			return "egovframework/com/admin/cop/bbs/GuestArticleList";
 
 		}
 
@@ -901,7 +901,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// 수정 및 삭제 기능 제어를 위한 처리
@@ -935,7 +935,7 @@ public class ArticleController {
 		model.addAttribute("articleVO", vo);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/cop/bbs/EgovGuestArticleList";
+		return "egovframework/com/admin/cop/bbs/GuestArticleList";
 	}
 
 	/**
@@ -956,7 +956,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		beanValidator.validate(board, bindingResult);
@@ -999,7 +999,7 @@ public class ArticleController {
 			model.addAttribute("articleVO", vo);
 			model.addAttribute("paginationInfo", paginationInfo);
 
-			return "egovframework/com/admin/cop/bbs/EgovGuestArticleList";
+			return "egovframework/com/admin/cop/bbs/GuestArticleList";
 		}
 
 		if (isAuthenticated) {
@@ -1034,7 +1034,7 @@ public class ArticleController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); // KISA 보안취약점 조치 (2018-12-10, 이정은)
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		BlogVO blogVo = new BlogVO();
@@ -1320,7 +1320,7 @@ public class ArticleController {
 
 		model.addAttribute("preview", "true");
 
-		return "egovframework/com/admin/cop/bbs/EgovArticleList";
+		return "egovframework/com/admin/cop/bbs/ArticleList";
 	}
 
 	/**

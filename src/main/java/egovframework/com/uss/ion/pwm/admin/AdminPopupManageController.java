@@ -111,7 +111,7 @@ public class AdminPopupManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/uss/ion/pwm/EgovPopupList";
+		return "egovframework/com/admin/uss/ion/pwm/PopupList";
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class AdminPopupManageController {
 	@RequestMapping(value = "/uss/ion/pwm/detailPopup.do")
 	public String egovPopupManageDetail(PopupManageVO popupManageVO, @RequestParam Map<?, ?> commandMap, ModelMap model) throws Exception {
 
-		String sLocationUrl = "egovframework/com/uss/ion/pwm/EgovPopupDetail";
+		String sLocationUrl = "egovframework/com/admin/uss/ion/pwm/PopupDetail";
 
 		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 
@@ -158,13 +158,13 @@ public class AdminPopupManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
-		String sLocationUrl = "egovframework/com/uss/ion/pwm/EgovPopupUpdt";
+		String sLocationUrl = "egovframework/com/admin/uss/ion/pwm/PopupUpdt";
 
 		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 
@@ -222,13 +222,13 @@ public class AdminPopupManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
-		String sLocationUrl = "egovframework/com/uss/ion/pwm/EgovPopupRegist";
+		String sLocationUrl = "egovframework/com/admin/uss/ion/pwm/PopupRegist";
 
 		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
 		LOGGER.info("cmd => {}", sCmd);

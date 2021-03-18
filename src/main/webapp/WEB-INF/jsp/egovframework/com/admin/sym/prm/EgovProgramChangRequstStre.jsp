@@ -49,7 +49,7 @@
  ******************************************************** */
 function searchFileNm() {
 	document.all.tmp_SearchElementName.value = "progrmFileNm";
-	window.open("<c:url value='/sym/prm/EgovProgramListSearch.do' />",'','width=500,height=600');
+	window.open("<c:url value='/sym/prm/AdminProgramListSearch.do' />",'','width=500,height=600');
 }
 
 /* ********************************************************
@@ -129,7 +129,7 @@ function selectList(){
 			<td class="left">
 			    <input id="progrmFileNm" name="progrmFileNm" maxlength="50"  title="<spring:message code="comSymPrm.programChangRequstStre.progrmFileNm"/>" readonly="readonly"/><!-- 프로그램파일명 -->
 				<form:errors path="progrmFileNm" />
-				<a href="<c:url value='/sym/prm/EgovProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" onclick="searchFileNm(); return false;" style="selector-dummy:expression(this.hideFocus=false);"  title="새 창으로 이동"><!-- 새 창으로 이동 -->
+				<a href="<c:url value='/sym/prm/AdminProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" onclick="searchFileNm(); return false;" style="selector-dummy:expression(this.hideFocus=false);"  title="새 창으로 이동"><!-- 새 창으로 이동 -->
 				<img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />" alt='(<spring:message code="comSymPrm.programChangRequstStre.searchProgrmFileNm"/>)' width="15" height="15" /></a><!-- 프로그램파일명 검색 -->
 				(<spring:message code="comSymPrm.programChangRequstStre.searchProgrmFileNm"/>)<!-- 프로그램파일명 검색 -->
 			</td>

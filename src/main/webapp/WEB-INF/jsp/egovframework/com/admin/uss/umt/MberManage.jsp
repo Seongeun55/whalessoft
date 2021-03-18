@@ -91,7 +91,7 @@ function fnSelectUser(id) {
 	    userId = array[1];    
 	}
 	document.listForm.selectedId.value = userId;
-    document.listForm.action = "<c:url value='/uss/umt/EgovMberSelectUpdtView.do'/>";
+    document.listForm.action = "<c:url value='/uss/umt/AdminMberSelectUpdtView.do'/>";
     document.listForm.submit();
 }
 function fnAddUserView() {
@@ -187,7 +187,7 @@ function fnSearch(){
 	        <input name="checkField" title="checkField <c:out value="${status.count}"/>" type="checkbox"/>
 	        <input name="checkId" type="hidden" value="<c:out value='${result.userTy}'/>:<c:out value='${result.uniqId}'/>"/>
 	    </td>
-	    <td><a href="<c:url value='/uss/umt/EgovMberSelectUpdtView.do'/>?selectedId=<c:out value="${result.uniqId}"/>"  onclick="javascript:fnSelectUser('<c:out value="${result.userTy}"/>:<c:out value="${result.uniqId}"/>'); return false;"><c:out value="${result.userId}"/></a></td>
+	    <td><a href="<c:url value='/uss/umt/AdminMberSelectUpdtView.do'/>?selectedId=<c:out value="${result.uniqId}"/>"  onclick="javascript:fnSelectUser('<c:out value="${result.userTy}"/>:<c:out value="${result.uniqId}"/>'); return false;"><c:out value="${result.userId}"/></a></td>
 	    <td><c:out value="${result.userNm}"/></td>
 	    <td><c:out value="${result.emailAdres}"/></td>
 	    <td><c:out value="${result.areaNo}"/>)<c:out value="${result.middleTelno}"/>-<c:out value="${result.endTelno}"/></td>

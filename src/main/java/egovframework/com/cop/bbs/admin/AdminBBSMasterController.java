@@ -111,7 +111,7 @@ public class AdminBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "egovframework/com/admin/cop/bbs/EgovBBSMasterRegist";
+		return "egovframework/com/admin/cop/bbs/BBSMasterRegist";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class AdminBBSMasterController {
 			List<?> codeResult = cmmUseService.selectCmmCodeDetail(vo);
 			model.addAttribute("bbsTyCode", codeResult);
 
-			return "egovframework/com/admin/cop/bbs/EgovBBSMasterRegist";
+			return "egovframework/com/admin/cop/bbs/BBSMasterRegist";
 		}
 
 		if (isAuthenticated) {
@@ -193,7 +193,7 @@ public class AdminBBSMasterController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/cop/bbs/EgovBBSMasterList";
+		return "egovframework/com/admin/cop/bbs/BBSMasterList";
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -303,7 +303,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안약점 조치 (2018-12-10, 신용호)
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		blogVO.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -370,7 +370,7 @@ public class AdminBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "egovframework/com/admin/cop/bbs/EgovBBSMasterDetail";
+		return "egovframework/com/admin/cop/bbs/BBSMasterDetail";
 	}
 
 	/**

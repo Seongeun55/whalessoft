@@ -100,7 +100,7 @@ public class LoginController {
 		String message = (String)request.getParameter("message");
 		if (message!=null) model.addAttribute("message", message);
 		
-		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+		return "egovframework/com/admin/uat/uia/LoginUsr";
 	}
 
 	/**
@@ -125,11 +125,11 @@ public class LoginController {
 					}else if(sLoginIncorrectCode.equals("C")){
 						model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
 					}
-					return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+					return "egovframework/com/admin/uat/uia/LoginUsr";
 				}
 		    }else{
 		    	model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
-		    	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+		    	return "egovframework/com/admin/uat/uia/LoginUsr";
 		    }
 		}
 		
@@ -148,7 +148,7 @@ public class LoginController {
 
 		} else {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 	}
 
@@ -166,7 +166,7 @@ public class LoginController {
 		LOGGER.debug("User IP : {}", userIp);
 
 		
-		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+		return "egovframework/com/admin/uat/uia/LoginUsr";
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class LoginController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		

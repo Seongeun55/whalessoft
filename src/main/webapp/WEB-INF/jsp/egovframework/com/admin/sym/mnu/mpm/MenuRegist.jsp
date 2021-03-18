@@ -103,7 +103,7 @@ function insertMenuManage(form) {
  ******************************************************** */
 function searchFileNm() {
 	document.all.tmp_SearchElementName.value = "progrmFileNm";
-	window.open("<c:url value='/sym/prm/EgovProgramListSearch.do' />",'Pop_progrmFileNm','width=500,height=600');
+	window.open("<c:url value='/sym/prm/AdminProgramListSearch.do' />",'Pop_progrmFileNm','width=500,height=600');
 }
 
 /* ********************************************************
@@ -202,7 +202,7 @@ function press() {
 			<td class="left">
 			    <form:input path="upperMenuId" maxlength="10" title="<spring:message code='comSymMnuMpm.menuRegist.upperMenuId'/>" readonly="true" class="readOnlyClass" cssStyle="width:50px" /><!-- 상위메뉴No -->
 				<form:errors path="upperMenuId" />
-				<a id="popupUpperMenuId" href="<c:url value='/sym/mnu/mpm/EgovMenuListSelectMvmn.do' />" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
+				<a id="popupUpperMenuId" href="<c:url value='/sym/mnu/mpm/AdminMenuListSelectMvmn.do' />" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
 				alt='' />(<spring:message code="comSymMnuMpm.menuRegist.selectMenuSearch"/>)</a><!-- 새창으로 --><!-- 메뉴선택 검색 -->
 			</td>
 		</tr>
@@ -211,7 +211,7 @@ function press() {
 			<td class="left" colspan="3">
 			    <form:input path="progrmFileNm" maxlength="60" onkeypress="press();" title="파일명" readonly="true" class="readOnlyClass" cssStyle="width:350px" /><!-- 파일명 -->
 			    <form:errors path="progrmFileNm" />
-		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/EgovProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>">
+		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/AdminProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>">
 					<img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />" alt='' />(<spring:message code="comSymMnuMpm.menuRegist.programFileNameSearch"/>)</a><!-- 새창으로 --><!-- 프로그램파일명 검색 -->
 			</td>
 		</tr>

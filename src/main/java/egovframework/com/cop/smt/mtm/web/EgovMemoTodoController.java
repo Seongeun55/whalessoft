@@ -82,7 +82,7 @@ public class EgovMemoTodoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 		
 		memoTodoVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -142,7 +142,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
     	// 1. 로그인 객체 선언
@@ -178,7 +178,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		
     	//할일시작일자(시)
@@ -245,7 +245,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
 		//로그인 객체 선언
@@ -284,7 +284,7 @@ public class EgovMemoTodoController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	memoTodoService.deleteMemoTodo(memoTodoVO);
 		return "forward:/cop/smt/mtm/selectMemoTodoList.do";
@@ -305,7 +305,7 @@ public class EgovMemoTodoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 		
 		memoTodoVO.setSearchId(loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId()));

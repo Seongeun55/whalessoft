@@ -45,7 +45,7 @@
  ******************************************************** */
 function searchFileNm() {
 	document.progrmChangeRequstForm.tmp_SearchElementName.value = "progrmFileNm";
-	window.open("<c:url value='/sym/prm/EgovProgramListSearch.do' />",'','width=500,height=600');
+	window.open("<c:url value='/sym/prm/AdminProgramListSearch.do' />",'','width=500,height=600');
 }
 
 /* ********************************************************

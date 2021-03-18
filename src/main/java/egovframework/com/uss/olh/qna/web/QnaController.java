@@ -98,7 +98,7 @@ public class QnaController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> QnaList = QnaService.selectQnaList(searchVO);
+		List<?> QnaList = QnaService.selectQnaAnswerList(searchVO);
 		model.addAttribute("resultList", QnaList);
 
 		// 인증여부 체크
@@ -114,7 +114,7 @@ public class QnaController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaList";
+		return "egovframework/com/admin/uss/olh/qna/QnaList";
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class QnaController {
 		
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaDetail";
+		return "egovframework/com/admin/uss/olh/qna/QnaDetail";
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class QnaController {
 
 		if (!isAuthenticated) {
 			model.addAttribute("qnaVO", qnaVO);
-			return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
+			return "egovframework/com/admin/uss/olh/qna/QnaRegist";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
@@ -178,7 +178,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", qnaVO);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
+		return "egovframework/com/admin/uss/olh/qna/QnaRegist";
 
 	}
 	
@@ -197,7 +197,7 @@ public class QnaController {
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/admin/uss/olh/qna/EgovQnaRegist";
+			return "egovframework/com/admin/uss/olh/qna/QnaRegist";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
@@ -241,7 +241,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", vo);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaUpdt";
+		return "egovframework/com/admin/uss/olh/qna/QnaUpdt";
 	}
 	
 	/**
@@ -260,7 +260,7 @@ public class QnaController {
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			return "egovframework/com/admin/uss/olh/qna/EgovQnaUpdt";
+			return "egovframework/com/admin/uss/olh/qna/QnaUpdt";
 		}
 		
     	//--------------------------------------------------------------------------------------------

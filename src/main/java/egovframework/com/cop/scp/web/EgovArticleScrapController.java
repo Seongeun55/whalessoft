@@ -80,7 +80,7 @@ public class EgovArticleScrapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 	
 		scrapVO.setUniqId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -124,7 +124,7 @@ public class EgovArticleScrapController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 	
 		ScrapVO scrap = egovArticleScrapService.selectArticleScrapDetail(scrapVO);

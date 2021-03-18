@@ -297,7 +297,7 @@ public class EgovEventManageController {
 		eventManageVO.setSearchKeyword(eventManageVO.getSearchYear()+eventManageVO.getSearchMonth());
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
     	eventManageVO.setApplcntId(user.getUniqId());// 사용자UniqID
@@ -481,7 +481,7 @@ public class EgovEventManageController {
 
     	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (user == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
     	eventManageVO.setSanctnerId(user.getUniqId());// 승인권자UniqID

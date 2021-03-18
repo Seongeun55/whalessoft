@@ -39,7 +39,7 @@
  ******************************************************** */
 function linkPage(pageNo){
 	document.progrmManageForm.pageIndex.value = pageNo;
-	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListSearch.do'/>";
+	document.progrmManageForm.action = "<c:url value='/sym/prm/AdminProgramListSearch.do'/>";
    	document.progrmManageForm.submit();
 }
 
@@ -48,7 +48,7 @@ function linkPage(pageNo){
  ******************************************************** */
 function selectProgramListSearch() {
 	document.progrmManageForm.pageIndex.value = 1;
-	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListSearch.do'/>";
+	document.progrmManageForm.action = "<c:url value='/sym/prm/AdminProgramListSearch.do'/>";
 	document.progrmManageForm.submit();
 }
 
@@ -66,7 +66,7 @@ function choisProgramListSearch(vFileNm) {
 </script>
 </head>
 <body>
-<form name="progrmManageForm" action ="<c:url value='/sym/prm/EgovProgramListSearch.do'/>" method="post">
+<form name="progrmManageForm" action ="<c:url value='/sym/prm/AdminProgramListSearch.do'/>" method="post">
 <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
 
 <div class="board" style="width:480px">

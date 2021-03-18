@@ -103,7 +103,7 @@ public class EgovAnnvrsryManageController {
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (loginVO == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
@@ -328,7 +328,7 @@ public class EgovAnnvrsryManageController {
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
     	if (loginVO == null) {
-    		return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+    		return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
@@ -440,7 +440,7 @@ public class EgovAnnvrsryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
     	return "egovframework/com/admin/uss/ion/ans/EgovAnnvrsryManageBndeListPop";
@@ -459,7 +459,7 @@ public class EgovAnnvrsryManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
 		if(sCmd.equals("bnde")){

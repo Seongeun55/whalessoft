@@ -211,7 +211,7 @@ function press() {
 			<td class="left" colspan="3">
 			    <form:input path="progrmFileNm" size="60" maxlength="60" title="<spring:message code='comSymMnuMpm.menuDetailSelectUpdt.progrmFileNm'/>" cssStyle="width:350px"/><!-- 파일명 -->
 			    <form:errors path="progrmFileNm" />
-		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/EgovProgramListSearch.do' />" target="_blank" title="<spring:message code="comSymMnuMpm.menuDetailSelectUpdt.newWindow"/>"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
+		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/AdminProgramListSearch.do' />" target="_blank" title="<spring:message code="comSymMnuMpm.menuDetailSelectUpdt.newWindow"/>"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
 		         alt='' width="15" height="15" />(<spring:message code="comSymMnuMpm.menuDetailSelectUpdt.programFileNameSearch"/>)</a><!-- 새창으로 이동 --><!-- 프로그램파일명 검색 -->
 			</td>
 		</tr>

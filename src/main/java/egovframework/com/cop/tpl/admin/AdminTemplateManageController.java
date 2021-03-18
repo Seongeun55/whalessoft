@@ -95,7 +95,7 @@ public class AdminTemplateManageController {
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/cop/tpl/EgovTemplateList";
+		return "egovframework/com/admin/cop/tpl/TemplateList";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class AdminTemplateManageController {
 		model.addAttribute("TemplateInfVO", vo);
 		model.addAttribute("resultList", result);
 
-		return "egovframework/com/admin/cop/tpl/EgovTemplateUpdt";
+		return "egovframework/com/admin/cop/tpl/TemplateUpdt";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class AdminTemplateManageController {
 
 			model.addAttribute("resultList", result);
 
-			return "egovframework/com/admin/cop/tpl/EgovTemplateRegist";
+			return "egovframework/com/admin/cop/tpl/TemplateRegist";
 		}
 
 		templateInf.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -179,7 +179,7 @@ public class AdminTemplateManageController {
 
 		model.addAttribute("resultList", result);
 
-		return "egovframework/com/admin/cop/tpl/EgovTemplateRegist";
+		return "egovframework/com/admin/cop/tpl/TemplateRegist";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class AdminTemplateManageController {
 			model.addAttribute("TemplateInfVO", vo);
 			model.addAttribute("resultList", result);
 
-			return "egovframework/com/admin/cop/tpl/EgovTemplateUpdt";
+			return "egovframework/com/admin/cop/tpl/TemplateUpdt";
 		}
 
 		templateInf.setLastUpdusrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));

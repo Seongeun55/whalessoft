@@ -75,7 +75,7 @@ public class EgovSmsInfoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
 		smsVO.setUniqId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -178,7 +178,7 @@ public class EgovSmsInfoController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
 		SmsVO vo = smsInfoService.selectSmsInf(smsVO);

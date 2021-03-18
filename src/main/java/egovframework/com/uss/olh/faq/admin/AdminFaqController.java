@@ -107,7 +107,7 @@ public class AdminFaqController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/uss/olh/faq/EgovFaqList";
+		return "egovframework/com/admin/uss/olh/faq/FaqList";
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class AdminFaqController {
 
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/admin/uss/olh/faq/EgovFaqDetail";
+		return "egovframework/com/admin/uss/olh/faq/FaqDetail";
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class AdminFaqController {
 
 		model.addAttribute("faqVO", new FaqVO());
 
-		return "egovframework/com/admin/uss/olh/faq/EgovFaqRegist";
+		return "egovframework/com/admin/uss/olh/faq/FaqRegist";
 
 	}
 	
@@ -209,7 +209,7 @@ public class AdminFaqController {
 		// 변수명은 CoC 에 따라 JSTL사용을 위해
 		model.addAttribute("faqVO", FaqService.selectFaqDetail(faqVO));
 
-		return "egovframework/com/admin/uss/olh/faq/EgovFaqUpdt";
+		return "egovframework/com/admin/uss/olh/faq/FaqUpdt";
 	}
 
 	/**

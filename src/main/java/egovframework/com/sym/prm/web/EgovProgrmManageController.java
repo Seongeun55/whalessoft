@@ -85,7 +85,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	
     	ProgrmManageVO vo = new ProgrmManageVO();
@@ -111,7 +111,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	// 내역 조회
     	/** EgovPropertyService.sample */
@@ -158,7 +158,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	String [] delProgrmFileNm = checkedProgrmFileNmForDel.split(",");
 		if (delProgrmFileNm == null || (delProgrmFileNm.length ==0)){
@@ -195,7 +195,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
         String sCmd = commandMap.get("cmd") == null ? "" : (String)commandMap.get("cmd");
@@ -235,7 +235,7 @@ public class EgovProgrmManageController {
    	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
         beanValidator.validate(progrmManageVO, bindingResult);
@@ -268,7 +268,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
         progrmManageService.deleteProgrm(progrmManageVO);
         resultMsg = egovMessageSource.getMessage("success.common.delete");
@@ -292,7 +292,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	// 내역 조회
     	/** EgovPropertyService.sample */
@@ -334,7 +334,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
          if(progrmManageDtlVO.getProgrmFileNm()== null||progrmManageDtlVO.getProgrmFileNm().equals("")){
 	    	 String FileNm = progrmManageDtlVO.getTmpProgrmNm();
@@ -368,7 +368,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-       	    return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+       	    return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -416,7 +416,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -460,7 +460,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 		//로그인 객체 선언
 		LoginVO loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
@@ -493,7 +493,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
      	 // 내역 조회
      	 /** EgovPropertyService.sample */
@@ -535,7 +535,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
          if(progrmManageDtlVO.getProgrmFileNm()==null){
 	    	 String _FileNm = progrmManageDtlVO.getTmpProgrmNm();
@@ -576,7 +576,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
 
         beanValidator.validate(progrmManageDtlVO, bindingResult);
@@ -644,7 +644,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
          progrmManageService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
@@ -667,7 +667,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
      	 // 내역 조회
      	 /** EgovPropertyService.sample */
@@ -710,7 +710,7 @@ public class EgovProgrmManageController {
     	 Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	 if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	 }
          String _FileNm = progrmManageDtlVO.getTmpProgrmNm();
          progrmManageDtlVO.setProgrmFileNm(_FileNm);
@@ -728,7 +728,7 @@ public class EgovProgrmManageController {
      * @return 출력페이지정보 "sym/prm/EgovFileNmSearch"
      * @exception Exception
      */
-    @RequestMapping(value="/sym/prm/EgovProgramListSearch.do")
+    @RequestMapping(value="/sym/prm/AdminProgramListSearch.do")
     public String selectProgrmListSearch(
     		@ModelAttribute("searchVO") ComDefaultVO searchVO,
     		ModelMap model)
@@ -737,7 +737,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	// 내역 조회
     	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
@@ -760,7 +760,7 @@ public class EgovProgrmManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
 
-      	return "egovframework/com/admin/sym/prm/EgovFileNmSearch";
+      	return "egovframework/com/admin/sym/prm/FileNmSearch";
 
     }
 
@@ -779,7 +779,7 @@ public class EgovProgrmManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
     	}
     	// 내역 조회
     	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));

@@ -81,7 +81,7 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 		// 내역 조회
 		/** EgovPropertyService.sample */
@@ -107,7 +107,7 @@ public class AdminMenuCreateManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("resultMsg", resultMsg);
-		return "egovframework/com/admin/sym/mnu/mcm/EgovMenuCreatManage";
+		return "egovframework/com/admin/sym/mnu/mcm/MenuCreatManage";
 	}
 
 	/* 메뉴생성 세부조회 */
@@ -125,13 +125,13 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 		List<?> list_menulist = menuCreateManageService.selectMenuCreatList(menuCreatVO);
 		model.addAttribute("list_menulist", list_menulist);
 		model.addAttribute("resultVO", menuCreatVO);
 
-		return "egovframework/com/admin/sym/mnu/mcm/EgovMenuCreat";
+		return "egovframework/com/admin/sym/mnu/mcm/MenuCreat";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 		String[] insertMenuNo = checkedMenuNoForInsert.split(",");
 		if (insertMenuNo == null || (insertMenuNo.length == 0)) {
@@ -180,7 +180,7 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 		List<?> list_menulist = menuCreateManageService.selectMenuCreatSiteMapList(menuSiteMapVO);
 		model.addAttribute("list_menulist", list_menulist);
@@ -209,7 +209,7 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		/*menuSiteMapVO.setTmpRootPath(EgovProperties.RELATIVE_PATH_PREFIX
@@ -264,7 +264,7 @@ public class AdminMenuCreateManageController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();

@@ -113,7 +113,7 @@ public class AdminMberManageController {
 		List<?> mberSttus_result = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("entrprsMberSttus_result", mberSttus_result);//기업회원상태코드목록
 
-		return "egovframework/com/admin/uss/umt/EgovMberManage";
+		return "egovframework/com/admin/uss/umt/MberManage";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class AdminMberManageController {
 		model.addAttribute("mberSttus_result", mberSttus_result); //사용자상태코드목록
 		model.addAttribute("groupId_result", groupId_result); //그룹정보 목록
 
-		return "egovframework/com/admin/uss/umt/EgovMberInsert";
+		return "egovframework/com/admin/uss/umt/MberInsert";
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class AdminMberManageController {
 			model.addAttribute("mberSttus_result", mberSttus_result); //사용자상태코드목록
 			model.addAttribute("groupId_result", groupId_result); //그룹정보 목록
 			
-			return "egovframework/com/admin/uss/umt/EgovMberInsert";
+			return "egovframework/com/admin/uss/umt/MberInsert";
 		} else {
 			if ("".equals(mberManageVO.getGroupId())) {//KISA 보안약점 조치 (2018-10-29, 윤창원)
 				mberManageVO.setGroupId(null);
@@ -217,7 +217,7 @@ public class AdminMberManageController {
 	 * @return uss/umt/EgovMberSelectUpdt
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/umt/EgovMberSelectUpdtView.do")
+	@RequestMapping("/uss/umt/AdminMberSelectUpdtView.do")
 	public String updateMberView(@RequestParam("selectedId") String mberId, @ModelAttribute("searchVO") UserDefaultVO userSearchVO, Model model) throws Exception {
 
 		// 미인증 사용자에 대한 보안처리
@@ -253,7 +253,7 @@ public class AdminMberManageController {
 		model.addAttribute("mberManageVO", mberManageVO);
 		model.addAttribute("userSearchVO", userSearchVO);
 
-		return "egovframework/com/admin/uss/umt/EgovMberSelectUpdt";
+		return "egovframework/com/admin/uss/umt/MberSelectUpdt";
 	}
 	
 	/**
@@ -275,7 +275,7 @@ public class AdminMberManageController {
 	    
 	    mberManageService.updateLockIncorrect(mberManageVO);
 	    
-	    return "forward:/uss/umt/EgovMberSelectUpdtView.do";
+	    return "forward:/uss/umt/AdminMberSelectUpdtView.do";
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class AdminMberManageController {
 	 * @return forward:/uss/umt/AdminMberManage.do
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/umt/EgovMberSelectUpdt.do")
+	@RequestMapping("/uss/umt/AdminMberSelectUpdt.do")
 	public String updateMber(@ModelAttribute("mberManageVO") MberManageVO mberManageVO, BindingResult bindingResult, Model model) throws Exception {
 
 		// 미인증 사용자에 대한 보안처리

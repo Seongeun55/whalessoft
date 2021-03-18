@@ -76,7 +76,7 @@ function fnUpdate(form){
 
 
 <!-- content start -->
-<form:form commandName="mberManageVO" action="${pageContext.request.contextPath}/uss/umt/EgovMberSelectUpdt.do" name="mberManageVO"  method="post" onSubmit="fnUpdate(document.forms[0]); return false;"> 
+<form:form commandName="mberManageVO" action="${pageContext.request.contextPath}/uss/umt/AdminMberSelectUpdt.do" name="mberManageVO"  method="post" onSubmit="fnUpdate(document.forms[0]); return false;"> 
 
 <!-- 상세정보 사용자 삭제시 prameter 전달용 input -->
 <input name="checkedIdForDel" type="hidden" />

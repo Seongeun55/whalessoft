@@ -75,7 +75,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         adbkVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -124,7 +124,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         adbkVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -253,7 +253,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         String[] tempId = EgovStringUtil.isNullToString(adbkUserVO.getUserId()).split(",");
@@ -378,7 +378,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         AddressBookVO tempAdbkVO = adbkService.selectAdressBook(adbkVO);
@@ -444,7 +444,7 @@ public class EgovAddressBookController {
         }
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         adbkVO.setWrterId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
@@ -488,7 +488,7 @@ public class EgovAddressBookController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+            return "egovframework/com/admin/uat/uia/LoginUsr";
         }
 
         beanValidator.validate(adbkVO, bindingResult);

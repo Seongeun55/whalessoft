@@ -78,7 +78,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	 // KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -127,7 +127,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	 // KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdVO.setEmplyrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -173,7 +173,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	 // KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 	
 	beanValidator.validate(nameCard, bindingResult);
@@ -208,7 +208,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdVO.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -238,7 +238,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	beanValidator.validate(nameCard, bindingResult);
@@ -283,7 +283,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	 // KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdUser.setEmplyrId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -313,7 +313,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	 // KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdUser.setPageUnit(propertyService.getInt("pageUnit"));
@@ -387,7 +387,7 @@ public class EgovNcrdManageController {
 	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	// KISA 보안취약점 조치 (2018-12-10, 신용호)
     if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/EgovLoginUsr";
+        return "egovframework/com/admin/uat/uia/LoginUsr";
     }
 
 	ncrdVO.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));

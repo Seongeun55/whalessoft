@@ -172,7 +172,6 @@ function fMenuManageSelect(){
 				<input class="s_input2 vat" name="searchKeyword" type="text" value="${searchVO.searchKeyword }" size="25" title="<spring:message code="title.searchCondition"/>" /><!-- 검색조건 -->
 				
 				<input class="s_btn" type="submit" value='<spring:message code="button.inquire" />' title='<spring:message code="button.inquire" />' onclick="selectMenuManageList(); return false;" /><!-- 조회 -->
-				<span class="btn_b"><a href="<c:url value='/sym/mnu/mpm/AdminMenuRegistInsert.do'/>" onclick="bndeInsertMenuManage(); return false;" title="<spring:message code="button.bulkUpload" />"><spring:message code="button.bulkUpload" /></a></span><!-- 일괄등록 -->
 				<span class="btn_b"><a href="<c:url value='/sym/mnu/mpm/AdminMenuRegistInsert.do'/>" onclick="insertMenuManage(); return false;" title='<spring:message code="button.create" />'><spring:message code="button.create" /></a></span><!-- 등록 -->
 				<span class="btn_b"><a href="<c:url value='/sym/mnu/mpm/AdminMenuManageListDelete.do' />" onclick="fDeleteMenuList(); return false;" title='<spring:message code="button.delete" />'><spring:message code="button.delete" /></a></span><!-- 삭제 -->
 			</li>

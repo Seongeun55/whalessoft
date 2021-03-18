@@ -83,7 +83,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("loginVO", loginVO);
-		return "egovframework/com/admin/cmm/EgovUnitContent";
+		return "egovframework/com/admin/cmm/AdminMainContent";
 	}
 
 	@RequestMapping("/EgovLeft.do")
