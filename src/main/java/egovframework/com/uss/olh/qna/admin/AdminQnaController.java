@@ -105,7 +105,7 @@ public class AdminQnaController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaAnswerList";
+		return "egovframework/com/admin/uss/olh/qna/QnaAnswerList";
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class AdminQnaController {
 
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaAnswerDetail";
+		return "egovframework/com/admin/uss/olh/qna/QnaAnswerDetail";
 	}
 	
 	/**

@@ -49,7 +49,7 @@
                 Manage
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <%-- Nav Item - Pages Collapse Menu 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-lock"></i>
@@ -57,13 +57,27 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/sec/rgm/AdminAuthorGroupList.do" target="_content">사용자 권한관리</a>
+                         <a class="collapse-item" href="/sec/rgm/AdminAuthorGroupList.do" target="_content">권한관리</a>
                         <a class="collapse-item" href="/sec/rmt/AdminRoleList.do" target="_content">롤 관리</a>
                         <a class="collapse-item" href="/uat/uap/selectLoginPolicyList.do" target="_content">IP 관리</a>
                     </div>
                 </div>
             </li>
-
+			--%>
+			
+			<li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
+                    <i class="fas fa-tasks"></i>
+                    <span>메뉴관리</span>
+                </a>
+                <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                         <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
+                        <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
+                    </div>
+                </div>
+            </li>
+            
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -77,34 +91,6 @@
                     </div>
                 </div>
             </li>
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsequestion" aria-expanded="true" aria-controls="collapsequestion">
-                    <i class="fas fa-question"></i>
-                    <span>질문관리</span>
-                </a>
-                <div id="collapsequestion" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/uss/olh/faq/selectFaqList.do" target="_content">FAQ 관리</a>
-                        <a class="collapse-item" href="/uss/olh/qna/selectQnaList.do" target="_content">Q&A 관리</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Dashboard -->
-             <li class="nav-item">
-                <a class="nav-link" href="/uss/sam/stp/StplatListInqire.do" target="_content">
-                   <i class="fas fa-balance-scale"></i>
-                    <span>약관 관리</span></a>
-            </li>            
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -115,8 +101,21 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/cop/bbs/selectBBSMasterInfs.do" target="_content">게시판 관리</a>
-                        <a class="collapse-item" href="/cop/bbs/selectBBSMasterInfs.do" target="_content">게시물 관리</a>
+                        <a class="collapse-item" href="/cop/bbs/selectBBSMaster.do" target="_content">게시물 관리</a>
                         <a class="collapse-item" href="/cop/tpl/selectTemplateInfs.do" target="_content">템플릿 관리</a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsequestion" aria-expanded="true" aria-controls="collapsequestion">
+                    <i class="fas fa-question"></i>
+                    <span>질문관리</span>
+                </a>
+                <div id="collapsequestion" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                         <a class="collapse-item" href="/uss/olh/faq/selectFaqList.do" target="_content">FAQ 관리</a>
+                        <a class="collapse-item" href="/uss/olh/qna/selectQnaAnswerList.do" target="_content">Q&A 관리</a>
                     </div>
                 </div>
             </li>
@@ -135,19 +134,18 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
-                    <i class="fas fa-tasks"></i>
-                    <span>메뉴관리</span>
-                </a>
-                <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
-                        <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
-                    </div>
-                </div>
-            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/sym/log/clg/SelectLoginLogList.do" target="_content">
+                   <i class="fas fa-sign-in-alt"></i>
+                    <span>접속로그</span></a>
+            </li>     
+            
+            <!-- Nav Item - Dashboard -->
+             <li class="nav-item">
+                <a class="nav-link" href="/uss/sam/stp/StplatListInqire.do" target="_content">
+                   <i class="fas fa-balance-scale"></i>
+                    <span>약관 관리</span></a>
+            </li>            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

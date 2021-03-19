@@ -98,7 +98,7 @@ public class QnaController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> QnaList = QnaService.selectQnaAnswerList(searchVO);
+		List<?> QnaList = QnaService.selectQnaList(searchVO);
 		model.addAttribute("resultList", QnaList);
 
 		// 인증여부 체크
@@ -292,7 +292,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaList.do";
+		return "forward:/uss/olh/qna/selectQnaAnswerList.do";
 
 	}
 	
@@ -324,6 +324,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaList.do";
+		return "forward:/uss/olh/qna/selectQnaAnswerList.do";
 	}
 }

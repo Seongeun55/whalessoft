@@ -76,7 +76,7 @@ public class AdminLoginLogController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/sym/log/clg/EgovLoginLogList";
+		return "egovframework/com/admin/sym/log/clg/LoginLogList";
 	}
 
 	/**
@@ -89,13 +89,12 @@ public class AdminLoginLogController {
 	 */
 	@RequestMapping(value="/sym/log/clg/SelectLoginLogDetail.do")
 	public String selectLoginLog(@ModelAttribute("searchVO") LoginLog loginLog, @RequestParam("logId") String logId, ModelMap model) throws Exception{
-		
 
 		loginLog.setLogId(logId.trim());
 
 		LoginLog vo = loginLogService.selectLoginLog(loginLog);
 		model.addAttribute("result", vo);
-		return "egovframework/com/admin/sym/log/clg/EgovLoginLogDetail";
+		return "egovframework/com/admin/sym/log/clg/LoginLogDetail";
 	}
 
 }

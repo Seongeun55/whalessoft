@@ -29,12 +29,23 @@
 <title>${pageTitle} <spring:message code="title.detail" /></title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/com/com.css' />">
+<script type="text/javascript">
+/* ********************************************************
+ * 삭제처리
+ ******************************************************** */
+ function fn_egov_delete_qna(form){
+	if(confirm("<spring:message code="common.delete.msg" />")){	
+		// Delete하기 위한 키값을 셋팅
+		form.submit();	
+	}	
+}	
+	
+</script>
 </head>
 <body>
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="qnaForm" action="<c:url value='/uss/olh/qna/updateQnaAnswerView.do'/>" method="post">
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2>${pageTitle} <spring:message code="title.detail" /></h2>
@@ -49,8 +60,7 @@
 		<col style="width: ;">
 	</colgroup>
 	<tbody>
-	
-	
+
 		<!-- 작성자명 -->
 		<tr>
 			<th><spring:message code="table.reger" /></th>
@@ -110,13 +120,23 @@
 	</table>
 	<!-- 하단 버튼 -->
 	<div class="btn">
-		<input type="submit" class="s_submit" value="<spring:message code="button.reply" />" title="<spring:message code="title.reply" /> <spring:message code="input.button" />" />
-		<span class="btn_s"><a href="<c:url value='/uss/olh/qna/selectQnaAnswerList.do' />"  title="<spring:message code="title.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<form name="qnaForm" action="<c:url value='/uss/olh/qna/updateQnaAnswerView.do'/>" method="post" style="float:left;">
+			<input type="submit" class="s_submit" value="<spring:message code="button.reply" />" title="<spring:message code="title.reply" /> <spring:message code="input.button" />" />
+			<input name="qaId" type="hidden" value="${result.qaId}">
+		</form>
+		<form name="qnaUpdate" action="<c:url value='/uss/olh/qna/updateQnaView.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
+			<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
+			<input name="qaId" type="hidden" value="${result.qaId}">
+		</form>
+		<form name="formDelete" action="<c:url value='/uss/olh/qna/deleteQna.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
+			<input type="submit" class="s_submit" value="<spring:message code="button.delete" />" title="<spring:message code="button.delete" /> <spring:message code="input.button" />" onclick="fn_egov_delete_qna(this.form); return false;">
+			<input name="qaId" type="hidden" value="${result.qaId}">
+		</form>
+		<form name="formList" action="<c:url value='/uss/olh/qna/selectQnaList.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
+			<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
+		</form>
 	</div><div style="clear:both;"></div>
 	
 </div>
-<input name="qaId" type="hidden" value="<c:out value="${result.qaId}" />">
-<input name="cmd" type="hidden" value="">
-</form>
 </body>
 </html>

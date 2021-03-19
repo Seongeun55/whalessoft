@@ -95,7 +95,7 @@
 				<c:out value="${fn:replace(result.bbsIntrcn , crlf , '<br/>')}" escapeXml="false" />
 			</td>
 		</tr>
-		
+		<%-- 
 		<c:if test="${result.useAt == 'Y' }">
 			<tr>
 				<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsAdres" /></th>
@@ -103,7 +103,7 @@
 				<a href="<c:url value='/cop/bbs/selectArticleList.do?bbsId=${result.bbsId}' />">/cop/bbs/selectArticleList.do?bbsId=${result.bbsId }</a>	
 				</td>
 			</tr>
-		</c:if>
+		</c:if>--%>
 		<tr>
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.option" /></th><!-- 추가선택사항 -->
 			<td colspan="5" class="cnt">

@@ -23,6 +23,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.EgovWebUtil;
 import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.service.FileMngService;
 import egovframework.com.cmm.service.EgovFileMngUtil;
 import egovframework.com.cmm.service.FileVO;
@@ -133,6 +134,34 @@ public class ArticleController {
 		ret = ret.replaceAll("</(F|f)(O|o)(R|r)(M|m)", "&lt;form");
 
 		return ret;
+	}
+	
+	/**[추가] 게시물 관리로 이동한다.**/
+	@RequestMapping("/cop/bbs/selectBBSMaster.do")
+	public String selectBBSMasterInfs(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO, ModelMap model) throws Exception {
+		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
+		boardMasterVO.setPageSize(propertyService.getInt("pageSize"));
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+
+		paginationInfo.setCurrentPageNo(boardMasterVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(boardMasterVO.getPageUnit());
+		paginationInfo.setPageSize(boardMasterVO.getPageSize());
+
+		boardMasterVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		boardMasterVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardMasterVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+		Map<String, Object> map = BBSMasterService.selectBBSMasterInfs(boardMasterVO);
+		int totCnt = Integer.parseInt((String) map.get("resultCnt"));
+
+		paginationInfo.setTotalRecordCount(totCnt);
+
+		model.addAttribute("resultList", map.get("resultList"));
+		model.addAttribute("resultCnt", map.get("resultCnt"));
+		model.addAttribute("paginationInfo", paginationInfo);
+
+		return "egovframework/com/admin/cop/bbs/ArticleBBSMasterList";
 	}
 
 	/**
