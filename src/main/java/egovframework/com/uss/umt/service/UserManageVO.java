@@ -24,130 +24,37 @@ public class UserManageVO extends UserDefaultVO{
 	/** 이전비밀번호 - 비밀번호 변경시 사용*/
     private String oldPassword = "";
 
-    /**
-	 * 가입일
-	 */
-	private String sbscrbDe;
-	/**
-	 * 사용자고유아이디
-	 */
-	private String uniqId="";
-	/**
-	 * 사용자 유형
-	 */
-	private String userTy;
-	/**
-	 * 지역번호
-	 */
-	private String areaNo;
-	/**
-	 * 생일
-	 */
-	private String brth;
-	/**
-	 * 상세주소
-	 */
-	private String detailAdres;
-	/**
-	 * 이메일주소
-	 */
-	private String emailAdres;
-	/**
-	 * 사원번호
-	 */
-	private String emplNo;
-	/**
-	 * 사용자 ID
-	 */
-	private String emplyrId;
-	/**
-	 * 사용자 명
-	 */
-	private String emplyrNm;
-	/**
-	 * 사용자 상태
-	 */
-	private String emplyrSttusCode;
-	/**
-	 * 팩스번호
-	 */
-	private String fxnum;
-	/**
-	 * 그룹 ID
-	 */
-	private String groupId;
-	/**
-	 * 집 주소
-	 */
-	private String homeadres;
-	/**
-	 * 집끝전화번호
-	 */
-	private String homeendTelno;
-	/**
-	 * 집중간전화번호
-	 */
-	private String homemiddleTelno;
-	/**
-	 * 주민등록번호
-	 */
-	private String ihidnum;
-	/**
-	 * 소속기관코드
-	 */
-	private String insttCode;
-	/**
-	 * 검색조건 회원타입
-	 */
-	private String mberTy;
-	/**
-	 * 핸드폰번호
-	 */
-	private String moblphonNo;
-	/**
-	 * 직위명
-	 */
-	private String ofcpsNm;
-	/**
-	 * 사무실전화번호
-	 */
-	private String offmTelno;
-	/**
-	 * 조직 ID
-	 */
-	private String orgnztId;
-	/**
-	 * 비밀번호
-	 */
-	private String password;
-	/**
-	 * 비밀번호 정답
-	 */
-	private String passwordCnsr;
-	/**
-	 * 비밀번호 힌트
-	 */
-	private String passwordHint;
-	/**
-	 * 검색조건 가입일자 시작일
-	 */
-	private String sbscrbDeBegin;
-	/**
-	 * 검색조건 가입일자 종료일
-	 */
-	private String sbscrbDeEnd;
-	/**
-	 * 성별코드
-	 */
-	private String sexdstnCode;
-	/**
-	 * 우편번호
-	 */
-	private String zip;
-	/**
-	 * DN 값
-	 */
-	private String subDn;
+    private String sbscrbDe;    // 가입일
+	private String uniqId="";	// 사용자고유아이디
+	private String userTy;	// 사용자 유형
+	private String areaNo;	// 지역번호
+	private String brth;	// 생일
+	private String detailAdres;	// 상세주소
+	private String emailAdres;	// 이메일주소
+	private String emplNo;	// 사원번호
+	private String emplyrId;	// 사용자 ID
+	private String emplyrNm;	// 사용자 명
+	private String emplyrSttusCode;	// 사용자 상태
+	private String fxnum;	// 팩스번호
+	private String groupId;	// 그룹 ID
+	private String homeadres;	// 집 주소
+	private String homeendTelno;	// 집끝전화번호
+	private String homemiddleTelno;	// 집중간전화번호
+	private String ihidnum;	// 주민등록번호
+	private String insttCode;	// 소속기관코드
+	private String mberTy;	// 검색조건 회원타입
+	private String moblphonNo;	// 핸드폰번호
+	private String ofcpsNm;	// 직위명
+	private String offmTelno;	// 사무실전화번호
+	private String orgnztId;	// 조직 ID
+	private String password;	// 비밀번호
+	private String passwordCnsr;	// 비밀번호 정답
+	private String passwordHint;	// 비밀번호 힌트
+	private String sbscrbDeBegin;	// 검색조건 가입일자 시작일
+	private String sbscrbDeEnd;	// 검색조건 가입일자 종료일
+	private String sexdstnCode;	// 성별코드
+	private String zip;	// 우편번호
+	private String subDn;	// DN 값
 	
 	private String lockAt;
 	public String getLockAt() {return lockAt;}

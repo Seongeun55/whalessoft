@@ -26,9 +26,12 @@ public class LoginLog implements Serializable {
 	/** 로그ID */
 	private String logId;
 
-	/** 사용자ID */
+	/** 사용자 uniqID */
 	private String loginId;
 
+	/** [추가] 사용자 ID **/
+	private String userId;
+	
 	/** 사용자명 */
 	private String loginNm;
 
@@ -129,6 +132,14 @@ public class LoginLog implements Serializable {
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+	
+	/*[추가] userId의 getter, setter */
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getLoginIp() {
@@ -282,6 +293,4 @@ public class LoginLog implements Serializable {
 	public void setLoginNm(String loginNm) {
 		this.loginNm = loginNm;
 	}
-
-
 }

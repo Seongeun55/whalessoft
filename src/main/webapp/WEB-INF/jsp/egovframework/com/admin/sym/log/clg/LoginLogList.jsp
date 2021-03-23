@@ -138,7 +138,7 @@ function fn_egov_detail_loginLog(logId) {
 				<input type="text" name="searchBgnDe" id="searchBgnDe" size="15" maxlength="10" value="${searchVO.searchBgnDe}" title="<spring:message code="comSymLogClg.seachWrd.searchBgnDe" />" > ~ <!-- 검색시작일  -->
 				<input type="text" name="searchEndDe" id="searchEndDe" size="15" maxlength="10" value="${searchVO.searchEndDe}" title="<spring:message code="comSymLogClg.seachWrd.searchEndDe" />" >&nbsp;&nbsp;&nbsp;<!-- 검색종료일  -->				
 			</li>
-			<li><div style="line-height:6px;">&nbsp;&nbsp;&nbsp;&nbsp;</div><div><spring:message code="comSymLogClg.loginLog.loginMthd" /> :  </div></li><!-- 로그유형-->
+			<li><div style="line-height:6px;">&nbsp;&nbsp;&nbsp;&nbsp;</div><div>사용자 ID :  </div></li><!-- [수정] 접속방식을 사용자ID로 -->
 			<!-- 검색키워드 및 조회버튼 -->
 			<li>
 				<input class="s_input" name="searchWrd" type="text"  size="15" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="15" >
@@ -152,21 +152,22 @@ function fn_egov_detail_loginLog(logId) {
 	<caption>${pageTitle}<spring:message code="title.list" /></caption>
 	<colgroup>
 		<col style="width: 5%;">
-		<col style="width: ;">
-		<col style="width: ;">
-		<col style="width: 10%;">
-		<col style="width: 10%;">
-		<col style="width: ;">
+		<col style="width: 20%;">
+		<col style="width: 15%;">
+		<col style="width: 6">
+		<col style="width: 20%;">
+		<col style="width: 15;">
 		<col style="width: 10%;">
 	</colgroup>
 	<thead>
 	<tr>
 		<th><spring:message code="table.num" /></th><!-- 번호 -->
-		<th><spring:message code="comSymLogClg.loginLog.logId" /></th><!-- 로그ID -->
-		<th><spring:message code="comSymLogClg.loginLog.occrrncDe" /></th><!-- 발생일자 -->
-		<th><spring:message code="comSymLogClg.loginLog.loginMthd" /></th><!-- 로그유형 -->
+		<th><spring:message code="comSymLogClg.loginLog.logId" /></th><!-- 로그ID -->		
+		<!-- <th><spring:message code="comSymLogClg.loginLog.loginMthd" /></th> 로그유형 -->
+		<th>사용자 ID</th>
 		<th><spring:message code="comSymLogClg.loginLog.loginNm" /></th><!-- 사용자 -->
 		<th><spring:message code="comSymLogClg.loginLog.loginIp" /></th><!-- 접속IP -->
+		<th><spring:message code="comSymLogClg.loginLog.occrrncDe" /></th><!-- 발생일자 -->
 		<th><spring:message code="comSymLogClg.loginLog.detail" /></th><!-- 상세보기 -->
 	</tr>
 	</thead>
@@ -180,10 +181,10 @@ function fn_egov_detail_loginLog(logId) {
 	<tr>
 		<td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
 		<td><c:out value='${result.logId}'/></td>
-		<td><c:out value='${fn:substring(result.creatDt,0,10)}'/></td>
-		<td><c:out value='${result.loginMthd}'/></td>
+		<td><c:out value='${result.userId}'/></td> <!-- 사용자 ID로 수정 -->
 		<td><c:out value='${result.loginNm}'/></td>
 		<td><c:out value='${result.loginIp}'/></td>
+		<td><c:out value='${fn:substring(result.creatDt,0,10)}'/></td>
 		<td>
 		<img src="<c:url value='/images/egovframework/com/cmm/btn/btn_search.gif'/>"  class="cursor" onclick="fn_egov_detail_loginLog('<c:out value="${result.logId}"/>'); return false;" alt="<spring:message code="title.detail" />"  title="<spring:message code="title.detail" />">
 		</td>

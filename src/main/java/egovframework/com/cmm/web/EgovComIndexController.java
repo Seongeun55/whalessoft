@@ -169,7 +169,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		String url = "egovframework/com/admin/cmm/error/accessDenied";
 		if(user.getUserSe().equals("USR")) {
-			return "egovframework/com/admin/index";
+			return "egovframework/com/admin/Adminindex";
 		}
 		return url;
 	}	

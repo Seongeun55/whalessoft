@@ -7,6 +7,8 @@ import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.service.CmmUseService;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.sec.rgm.service.AuthorGroup;
+import egovframework.com.sec.rgm.service.AuthorGroupService;
 import egovframework.com.uss.umt.service.UserManageService;
 import egovframework.com.uss.umt.service.UserDefaultVO;
 import egovframework.com.uss.umt.service.UserManageVO;
@@ -60,6 +62,10 @@ public class AdminUserManageController {
 	@Resource(name = "CmmUseService")
 	private CmmUseService cmmUseService;
 
+	/**추가**/
+	@Resource(name = "AuthorGroupService")
+	private AuthorGroupService AuthorGroupService;
+	
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
 	protected EgovPropertyService propertiesService;
@@ -175,6 +181,11 @@ public class AdminUserManageController {
 	@RequestMapping("/uss/umt/AdminUserInsert.do")
 	public String insertUser(@ModelAttribute("userManageVO") UserManageVO userManageVO, BindingResult bindingResult, Model model) throws Exception {
 
+		/**추가**/
+		AuthorGroup authorGroup = new AuthorGroup();
+		String authorCode = "ROLE_ADMIN";
+		String mberTyCode = "USR03";
+		
 		// 미인증 사용자에 대한 보안처리
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
@@ -192,6 +203,13 @@ public class AdminUserManageController {
 				userManageVO.setGroupId(null);
 			}
 			userManageService.insertUser(userManageVO);
+			
+			//[추가] 업무사용자 등록 후 권한부여하는거 추가//
+			authorGroup.setUniqId(userManageVO.getUniqId());
+			authorGroup.setAuthorCode(authorCode);
+			authorGroup.setMberTyCode(mberTyCode);
+			AuthorGroupService.insertAuthorGroup(authorGroup);
+			
 			//Exception 없이 진행시 등록성공메시지
 			model.addAttribute("resultMsg", "success.common.insert");
 		}
@@ -492,5 +510,4 @@ public class AdminUserManageController {
 		model.addAttribute("userSearchVO", userSearchVO);
 		return "egovframework/com/admin/uss/umt/EgovUserPasswordUpdt";
 	}
-
 }

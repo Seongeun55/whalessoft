@@ -20,6 +20,8 @@ import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.service.CmmUseService;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.sec.rgm.service.AuthorGroup;
+import egovframework.com.sec.rgm.service.AuthorGroupService;
 import egovframework.com.uss.umt.service.MberManageService;
 import egovframework.com.uss.umt.service.MberManageVO;
 import egovframework.com.uss.umt.service.UserDefaultVO;
@@ -60,6 +62,10 @@ public class AdminMberManageController {
 	/** cmmUseService */
 	@Resource(name = "CmmUseService")
 	private CmmUseService cmmUseService;
+	
+	/**추가**/
+	@Resource(name = "AuthorGroupService")
+	private AuthorGroupService AuthorGroupService;
 
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
@@ -83,7 +89,7 @@ public class AdminMberManageController {
 		// 미인증 사용자에 대한 보안처리
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
-			return "index";
+			return "forward:/index.do";
 		}
 
 		/** EgovPropertyService */
@@ -168,6 +174,11 @@ public class AdminMberManageController {
 	@RequestMapping("/uss/umt/AdminMberInsert.do")
 	public String insertMber(@ModelAttribute("mberManageVO") MberManageVO mberManageVO, BindingResult bindingResult, Model model) throws Exception {
 
+		/**추가**/
+		AuthorGroup authorGroup = new AuthorGroup();
+		String authorCode = "ROLE_USER";
+		String mberTyCode = "USR01";
+		
 		// 미인증 사용자에 대한 보안처리
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
@@ -198,11 +209,19 @@ public class AdminMberManageController {
 			model.addAttribute("groupId_result", groupId_result); //그룹정보 목록
 			
 			return "egovframework/com/admin/uss/umt/MberInsert";
-		} else {
+		} else {	//에러 없을 경우 여기로 옴
 			if ("".equals(mberManageVO.getGroupId())) {//KISA 보안약점 조치 (2018-10-29, 윤창원)
 				mberManageVO.setGroupId(null);
 			}
 			mberManageService.insertMber(mberManageVO);
+			
+			//[추가] 일반사용자 등록 후 권한부여하는거 추가//
+			authorGroup.setUniqId(mberManageVO.getUniqId());
+			authorGroup.setAuthorCode(authorCode);
+			authorGroup.setMberTyCode(mberTyCode);
+
+			AuthorGroupService.insertAuthorGroup(authorGroup);
+			
 			//Exception 없이 진행시 등록 성공메시지
 			model.addAttribute("resultMsg", "success.common.insert");
 		}
@@ -295,6 +314,11 @@ public class AdminMberManageController {
 			return "index";
 		}
 
+		/**추가**/
+		AuthorGroup authorGroup = new AuthorGroup();
+		String authorCode = "ROLE_USER";
+		String mberTyCode = "USR01";
+
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("resultMsg", bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -304,6 +328,14 @@ public class AdminMberManageController {
 				mberManageVO.setGroupId(null);
 			}
 			mberManageService.updateMber(mberManageVO);
+			
+			//[추가] 회원가입으로 인한 일반사용자 등록 후 권한부여하는거 추가//
+			authorGroup.setUniqId(mberManageVO.getUniqId());
+			authorGroup.setAuthorCode(authorCode);
+			authorGroup.setMberTyCode(mberTyCode);
+
+			AuthorGroupService.insertAuthorGroup(authorGroup);
+			
 			//Exception 없이 진행시 수정성공메시지
 			model.addAttribute("resultMsg", "success.common.update");
 			return "forward:/uss/umt/AdminMberManage.do";

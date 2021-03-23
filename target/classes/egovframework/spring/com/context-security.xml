@@ -23,9 +23,10 @@
  	<security:http pattern="/resource/**" security="none"/>
  	<security:http pattern="\A/WEB-INF/jsp/.*\Z" request-matcher="regex" security="none"/>
 
+	<!-- logoutSuccessUrl을 /AdminContent.do 에서 /uat/uia/securityLogout.do 변경-->
     <egov-security:config id="securityConfig"
 		loginUrl="/uat/uia/LoginUsr.do"
-		logoutSuccessUrl="/AdminContent.do"
+		logoutSuccessUrl="/uat/uia/securityLogout.do"	
 		loginFailureUrl="/uat/uia/LoginUsr.do?login_error=1"
 		accessDeniedUrl="/sec/ram/accessDenied.do"
 

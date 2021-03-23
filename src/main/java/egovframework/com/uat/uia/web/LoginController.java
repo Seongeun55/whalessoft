@@ -385,11 +385,23 @@ public class LoginController {
 	@RequestMapping(value = "/uat/uia/LoginProcess.do")
 	public String securityLogin(@ModelAttribute("loginVO") LoginVO loginVO, HttpServletRequest request, ModelMap model) throws Exception {
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+	
+		request.getSession().setAttribute("loginVO", user);
+		request.getSession().setAttribute("accessUser", user.getUserSe().concat(user.getId()));
+		
+		//System.out.println("확인 : " + request.getRemoteAddr());
+		
 		if(user.getUserSe().equals("USR")) {
-			return "egovframework/com/admin/index";
+			return "egovframework/com/admin/Adminindex";
 		}else {
 			return "egovframework/com/web/afterLogin";
 		}	
 	}
 	
+	@RequestMapping(value = "/uat/uia/securityLogout.do")
+	public String securityLogout(HttpServletRequest request, ModelMap model) throws Exception {
+		request.getSession().setAttribute("loginVO", null);
+		return "egovframework/com/admin/uat/uia/LoginUsr";
+	}
+
 }

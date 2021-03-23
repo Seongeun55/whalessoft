@@ -9,6 +9,6 @@
 </head>
 <body>
  	유저페이지
-	<a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do"><spring:message code="comCmm.unitContent.3"/></a>
+	<a href="${pageContext.request.contextPath }/uat/uia/securityLogout.do"><spring:message code="comCmm.unitContent.3"/></a>
 </body>
 </html>

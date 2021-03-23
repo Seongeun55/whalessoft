@@ -4,6 +4,7 @@ import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Class Name : EgovLoginLogAspect.java
@@ -25,7 +26,8 @@ public class EgovLoginLogAspect {
 	
 	@Resource(name="LoginLogService")
 	private LoginLogService loginLogService;
-
+	private HttpServletRequest request;
+	
 	/**
 	 * 로그인 로그정보를 생성한다.
 	 * EgovLoginController.actionMain Method
@@ -34,23 +36,23 @@ public class EgovLoginLogAspect {
 	 * @return void
 	 * @throws Exception 
 	 */
-	public void logLogin() throws Throwable {
+	public void logLogin() throws Throwable{
 		
 		String uniqId = "";
 		String ip = "";
-
+		
 		/* Authenticated  */
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(isAuthenticated.booleanValue()) {
-			LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 			uniqId = (user == null || user.getUniqId() == null) ? "" : user.getUniqId();
-			ip = (user == null || user.getIp() == null) ? "" : user.getIp();
+			ip = (user == null || user.getIp() == null) ? "" : request.getRemoteAddr();
     	}
 
     	LoginLog loginLog = new LoginLog();
     	loginLog.setLoginId(uniqId);
         loginLog.setLoginIp(ip);
-        loginLog.setLoginMthd("I"); // 로그인:I, 로그아웃:O
+        loginLog.setLoginMthd("I"); 
         loginLog.setErrOccrrAt("N");
         loginLog.setErrorCode("");
         loginLogService.logInsertLoginLog(loginLog);
@@ -64,18 +66,17 @@ public class EgovLoginLogAspect {
 	 * @param 
 	 * @return void
 	 * @throws Exception 
-	 */
+	
 	public void logLogout() throws Throwable {
 		
 		String uniqId = "";
 		String ip = "";
-
-		/* Authenticated  */
+		
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(isAuthenticated.booleanValue()) {
 			LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 			uniqId = (user == null || user.getUniqId() == null) ? "" : user.getUniqId();
-			ip = (user == null || user.getIp() == null) ? "" : user.getIp();
+			ip = (user == null || user.getIp() == null) ? "" : request.getRemoteAddr();
     	}
 
     	LoginLog loginLog = new LoginLog();
@@ -85,6 +86,5 @@ public class EgovLoginLogAspect {
         loginLog.setErrOccrrAt("N");
         loginLog.setErrorCode("");
         loginLogService.logInsertLoginLog(loginLog);
-	}
-	
+	} */
 }

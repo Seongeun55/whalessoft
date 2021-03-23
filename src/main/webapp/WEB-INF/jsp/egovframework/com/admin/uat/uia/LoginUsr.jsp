@@ -245,13 +245,6 @@ function fnShowLogin(stat) {
 						<li><a href="#" onclick="goFindId(); return false;"><spring:message code="comUatUia.loginForm.idPwSearch"/></a></li> <!-- 아이디/비밀번호 찾기 -->
 					</ul>
 				</li>
-				<li>
-					<ul class="btn_idpw" >
-						<li><a href="#" onclick="fnShowLogin(1);"><spring:message code="comUatUia.loginForm.login.gpki"/></a></li><!-- 인증서로그인 -->
-						<li><a href="<c:url value='/uat/uia/egovGpkiIssu.do'/>"><spring:message code="comUatUia.loginForm.gpki.info"/></a></li><!-- 인증서안내 -->
-					</ul>
-				</li>
-				
 			</ul>
 		</div>
 		

@@ -69,7 +69,7 @@ public class AdminLoginLogController {
 
 		HashMap<?, ?> _map = (HashMap<?, ?>)loginLogService.selectLoginLogInf(loginLog);
 		int totCnt = Integer.parseInt((String)_map.get("resultCnt"));
-
+		
 		model.addAttribute("resultList", _map.get("resultList"));
 		model.addAttribute("resultCnt", _map.get("resultCnt"));
 

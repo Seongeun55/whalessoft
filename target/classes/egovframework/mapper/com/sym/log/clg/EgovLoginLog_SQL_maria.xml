@@ -59,9 +59,8 @@
 			
 	</select>
 
-	<!-- 로그인 로그 목록  조회 -->
+	<!-- 로그인 로그 목록  조회 --> <!-- [추가] select 구문에서 맨 아래 추가 & [수정]첫번째 if문에서 검색조건 user_id로 변경 2021-03-23 -->
 	<select id="selectLoginLogInf" parameterType="egovframework.com.sym.log.clg.service.LoginLog" resultMap="LoginLogVO">
-			
 			<![CDATA[
 			SELECT 
 				  a.LOG_ID
@@ -70,6 +69,7 @@
 				, a.CONECT_IP
 				, a.CONECT_ID
 				, b.USER_NM AS LOGIN_NM
+				, b.USER_ID
 			FROM
 				COMTNLOGINLOG a
 			LEFT OUTER JOIN COMVNUSERMASTER b
@@ -79,7 +79,7 @@
 			]]>
 			
 		<if test="searchWrd != null and searchWrd != ''">	<![CDATA[ AND
-					a.CONECT_MTHD LIKE CONCAT ('%', #{searchWrd},'%') ]]>
+					b.USER_ID LIKE CONCAT ('%', #{searchWrd},'%') ]]>
 		</if>
 		<if test="searchBgnDe != null and searchBgnDe != ''">	<![CDATA[	AND
 					a.CREAT_DT BETWEEN STR_TO_DATE(CONCAT(#{searchBgnDe},' 00:00:00'), '%Y-%m-%d %H:%i:%s') 
@@ -103,7 +103,7 @@
 		]]>
 		
 		<if test="searchWrd != null and searchWrd != ''">	<![CDATA[	AND
-					a.CONECT_MTHD LIKE CONCAT ('%', #{searchWrd},'%') ]]>
+					b.USER_ID LIKE CONCAT ('%', #{searchWrd},'%') ]]>
 		</if>
 		<if test="searchBgnDe != null and searchBgnDe != ''">	<![CDATA[	AND
 					a.CREAT_DT BETWEEN STR_TO_DATE(CONCAT(#{searchBgnDe},' 00:00:00'), '%Y-%m-%d %H:%i:%s') 
