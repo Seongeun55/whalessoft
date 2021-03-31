@@ -22,7 +22,11 @@
  	<security:http pattern="/js/**" security="none"/>
  	<security:http pattern="/resource/**" security="none"/>
  	<security:http pattern="\A/WEB-INF/jsp/.*\Z" request-matcher="regex" security="none"/>
-
+	<!-- [추가] 2021.03.31 -->
+	<security:http pattern="/index.do" security="none"/>	<!-- 기본 메인 -->
+	<security:http pattern="/cmm/fms/getImage.do" security="none"/>		<!-- 배너사진 -->
+	<security:http pattern="/uss/umt/StplatCnfirmMber.do" security="none"/>		<!-- 회원가임 -->
+	
 	<!-- logoutSuccessUrl을 /AdminContent.do 에서 /uat/uia/securityLogout.do 변경-->
     <egov-security:config id="securityConfig"
 		loginUrl="/uat/uia/LoginUsr.do"
@@ -82,14 +86,13 @@
 			ORDER BY a.ROLE_SORT"
 	/>
 
+	<!-- [수정] 기존엔 주석처리 되어있었는데 주석처리 없앰 - 2021.03.26 -->
 	<egov-security:initializer id="initializer" supportMethod="true" supportPointcut="false" />
 
-    <!-- URL에 세미콜론(semicolon)허용 여부(기본값/false) -->
-	<!-- 
 	<bean id="egovStrictHttpFirewall" class="org.springframework.security.web.firewall.StrictHttpFirewall">
 		<property name="allowSemicolon" value="true"/>
 	</bean>
 	<security:http-firewall ref="egovStrictHttpFirewall"/>
-	-->
+	
 
 </beans>

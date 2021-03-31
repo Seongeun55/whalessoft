@@ -314,11 +314,6 @@ public class AdminMberManageController {
 			return "index";
 		}
 
-		/**추가**/
-		AuthorGroup authorGroup = new AuthorGroup();
-		String authorCode = "ROLE_USER";
-		String mberTyCode = "USR01";
-
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("resultMsg", bindingResult.getAllErrors().get(0).getDefaultMessage());
@@ -328,14 +323,7 @@ public class AdminMberManageController {
 				mberManageVO.setGroupId(null);
 			}
 			mberManageService.updateMber(mberManageVO);
-			
-			//[추가] 회원가입으로 인한 일반사용자 등록 후 권한부여하는거 추가//
-			authorGroup.setUniqId(mberManageVO.getUniqId());
-			authorGroup.setAuthorCode(authorCode);
-			authorGroup.setMberTyCode(mberTyCode);
 
-			AuthorGroupService.insertAuthorGroup(authorGroup);
-			
 			//Exception 없이 진행시 수정성공메시지
 			model.addAttribute("resultMsg", "success.common.update");
 			return "forward:/uss/umt/AdminMberManage.do";
@@ -395,7 +383,7 @@ public class AdminMberManageController {
 	 * @return uss/umt/EgovMberSbscrb
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/umt/EgovMberSbscrbView.do")
+	@RequestMapping("/uss/umt/MberSbscrbView.do")
 	public String sbscrbMberView(@ModelAttribute("userSearchVO") UserDefaultVO userSearchVO, @ModelAttribute("mberManageVO") MberManageVO mberManageVO,
 			@RequestParam Map<String, Object> commandMap, Model model) throws Exception {
 
@@ -420,7 +408,7 @@ public class AdminMberManageController {
 
 		mberManageVO.setMberSttus("DEFAULT");
 
-		return "egovframework/com/admin/uss/umt/EgovMberSbscrb";
+		return "egovframework/com/admin/uss/umt/MberSbscrb";
 	}
 
 	/**
@@ -429,16 +417,26 @@ public class AdminMberManageController {
 	 * @return forward:/uat/uia/LoginUsr.do
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/umt/EgovMberSbscrb.do")
+	@RequestMapping("/uss/umt/MberSbscrb.do")
 	public String sbscrbMber(@ModelAttribute("mberManageVO") MberManageVO mberManageVO) throws Exception {
-
 		//가입상태 초기화
 		mberManageVO.setMberSttus("A");
-		//그룹정보 초기화
-		//mberManageVO.setGroupId("1");
-		//일반회원가입신청 등록시 일반회원등록기능을 사용하여 등록한다.
+		
+		/**추가**/
+		AuthorGroup authorGroup = new AuthorGroup();
+		String authorCode = "ROLE_USER";
+		String mberTyCode = "USR01";
+		
 		mberManageService.insertMber(mberManageVO);
-		return "forward:/uat/uia/LoginUsr.do";
+		
+		//[추가] 일반사용자 등록 후 권한부여하는거 추가//
+		authorGroup.setUniqId(mberManageVO.getUniqId());
+		authorGroup.setAuthorCode(authorCode);
+		authorGroup.setMberTyCode(mberTyCode);
+
+		AuthorGroupService.insertAuthorGroup(authorGroup);
+		
+		return "forward:/index.do";
 	}
 
 	/**
@@ -447,7 +445,7 @@ public class AdminMberManageController {
 	 * @return uss/umt/EgovStplatCnfirm
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/umt/EgovStplatCnfirmMber.do")
+	@RequestMapping("/uss/umt/StplatCnfirmMber.do")
 	public String sbscrbEntrprsMber(Model model) throws Exception {
 
 		// 미인증 사용자에 대한 보안처리
@@ -465,7 +463,7 @@ public class AdminMberManageController {
 		model.addAttribute("stplatList", stplatList); //약관정보 포함
 		model.addAttribute("sbscrbTy", sbscrbTy); //회원가입유형 포함
 
-		return "egovframework/com/admin/uss/umt/EgovStplatCnfirm";
+		return "egovframework/com/admin/uss/umt/StplatCnfirm";
 	}
 
 	/**

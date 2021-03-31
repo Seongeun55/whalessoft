@@ -32,10 +32,16 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import egovframework.com.cmm.IncludedCompInfoVO;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.uss.ion.bnr.service.BannerService;
+import egovframework.com.uss.ion.bnr.service.BannerVO;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,12 +52,15 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class EgovComIndexController implements ApplicationContextAware, InitializingBean {
 
 	private ApplicationContext applicationContext;
+	 
+	@Resource(name = "BannerService")
+	private BannerService BannerService;
+
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovComIndexController.class);
 
@@ -64,8 +73,21 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	}
 
 	@RequestMapping("/index.do")
-	public String index(ModelMap model) {
-		return "egovframework/com/web/MainPage";
+	public String index(HttpServletRequest request, ModelMap model) throws Exception{
+		//[추가] 메인 배너 컨텐츠 조회 시작 ---------------------------------2021.03.26
+		BannerVO bannerVO = new BannerVO();
+	
+		PaginationInfo paginationInfo_Banner = new PaginationInfo();
+		paginationInfo_Banner.setCurrentPageNo(bannerVO.getPageIndex());
+		paginationInfo_Banner.setRecordCountPerPage(bannerVO.getPageUnit());
+		paginationInfo_Banner.setPageSize(bannerVO.getPageSize());
+		bannerVO.setFirstIndex(paginationInfo_Banner.getFirstRecordIndex());
+		bannerVO.setLastIndex(paginationInfo_Banner.getLastRecordIndex());
+		bannerVO.setRecordCountPerPage(paginationInfo_Banner.getRecordCountPerPage());
+		bannerVO.setBannerList(BannerService.selectBannerResult(bannerVO));
+		model.addAttribute("bannerList", bannerVO.getBannerList());
+		// 메인 배너 컨텐츠 조회 끝 ---------------------------------
+		return "egovframework/com/web/mainIndex";
 	}
 
 	@RequestMapping("/EgovTop.do")
@@ -164,7 +186,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	}
 	//-----------------------------------추가--------------------------------------------------//
 	
-	@RequestMapping("/admin.do")
+	@RequestMapping("/admin/index.do")
 	public String adminIndex(ModelMap model) {
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		String url = "egovframework/com/admin/cmm/error/accessDenied";
@@ -172,5 +194,5 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 			return "egovframework/com/admin/Adminindex";
 		}
 		return url;
-	}	
+	}
 }

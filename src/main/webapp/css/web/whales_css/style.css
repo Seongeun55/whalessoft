@@ -7,6 +7,12 @@
 #wrap {overflow-x:hidden;}
 .wrapper {width:1200px; margin:0 auto;}
 
+.admin_wrap{display:block; width:100%; height:50px; line-height:50px; background:rgba(0,0,0,0.6);}
+.admin_wrap ul{display:block; width:1200px; margin:0 auto;}
+.admin_wrap ul:after {content:''; clear:both; display:block;}
+.admin_wrap ul li{float:right; padding:0 10px;}
+.admin_wrap ul li a{font-size:14px;}
+
 header {position:absolute; z-index:10; top:0; width:100%; left:50%; transform:translateX(-50%); text-align:center;}
 header > div:after {content:''; clear:both; display:block;}
 header ul:after {content:''; clear:both; display:block;}
@@ -18,7 +24,7 @@ header h1 a {font-size:22px; font-weight:600; padding:35px 0;}
 
 header nav:after {content:''; clear:both; display:block;}
 header nav {float:left; width:calc(100% - 124px); text-align:center;}
-header .allmenu {position:absolute; z-index:9998; top:28px; right:30px; display:none; width:40px; height:40px; background:url(../images/ico/ico_all_menu01.png) no-repeat center;}
+header .allmenu {position:absolute; z-index:9998; top:28px; right:30px; display:none; width:40px; height:40px; background:url(/images/web/whales_images/web/whales_images/ico/ico_all_menu01.png) no-repeat center;}
 header nav .cate {display:inline-block;}
 header nav .cate li {display:inline-block; font-size:15px;}
 header nav .cate li a {padding:40px 25px 39px 25px;}
@@ -31,15 +37,15 @@ header nav .util {float:right; width:176px; margin-right:-20px;}
 header nav .util li {float:left; font-size:12px;}
 header nav .util li a {padding:42px 20px 41px 2px;}
 header nav .util li a span {display:inline-block; padding-left:18px; background-repeat:no-repeat; background-position:center left;}
-header nav .util li.join a span {background-image:url(../images/ico/ico_join01.png);}
+header nav .util li.join a span {background-image:url(/images/web/whales_images/web/whales_images/ico/ico_join01.png);}
 header nav .util li.login a {padding:42px 20px 41px 20px;}
-header nav .util li.login a span {background-image:url(../images/ico/ico_login01.png);}
-.menu_bg {display:none; position:absolute; z-index:5; top:98px; width:100%; left:50%; height:235px; transform:translateX(-50%); background:#fff; opacity:0.95;}
+header nav .util li.login a span {background-image:url(/images/web/whales_images/ico/ico_login01.png);}
+.menu_bg {display:none; position:absolute; z-index:5; top:148px; width:100%; left:50%; height:235px; transform:translateX(-50%); background:#fff; opacity:0.95;}
 
 /*슬릭 arrow 공통*/
 .slick-arrow {position:absolute; z-index:5; top:50%; text-indent:-9999px; width:56px; height:56px; background-color:rgba(255,255,255,0.2); background-repeat:no-repeat; background-position:center center;}
-.slick-arrow.slick-prev {left:0; background-image:url(../images/ico/ico_slick_arrow01.png);}
-.slick-arrow.slick-next {right:0; background-image:url(../images/ico/ico_slick_arrow02.png);}
+.slick-arrow.slick-prev {left:0; background-image:url(/images/web/whales_images/ico/ico_slick_arrow01.png);}
+.slick-arrow.slick-next {right:0; background-image:url(/images/web/whales_images/ico/ico_slick_arrow02.png);}
 .wideslick li {position:relative;}
 .wideslick li .txt {position:absolute; z-index:1; left:50%; transform:translateX(-50%);}
 /*detial view버튼 공통*/
@@ -92,7 +98,7 @@ header nav .util li.login a span {background-image:url(../images/ico/ico_login01
 .info .side_con > h3 {color:#222;}
 .info .side_con > p {color:#999;}
 
-.admin {position:relative; width:1920px; left:50%; transform:translateX(-50%); margin-bottom:420px; text-align:center; padding-bottom:385px; background:url(../images/bg/bg_mid_visual01.png) no-repeat 0 0;}
+.admin {position:relative; width:1920px; left:50%; transform:translateX(-50%); margin-bottom:420px; text-align:center; padding-bottom:385px; background:url(/images/web/whales_images/bg/bg_mid_visual01.png) no-repeat 0 0;}
 .admin .title {margin-top:90px;}
 .admin .title h3 {color:#fff;}
 .admin .title p {color:#b5b5b5; line-height:1.7;}
@@ -105,7 +111,7 @@ header nav .util li.login a span {background-image:url(../images/ico/ico_login01
 .admin .admin_slick .slick-arrow {top:-34px; transform:translateY(0);}
 
 .vision {position:relative; padding:166px 0 165px 0; background:#f9f9f9;}
-.vision:before {content:''; position:absolute; z-index:5; top:0; right:0; width:960px; height:640px; background:url(../images/pic/pic_vision_info01.png) no-repeat 0 0;}
+.vision:before {content:''; position:absolute; z-index:5; top:0; right:0; width:960px; height:640px; background:url(/images/web/whales_images/pic/pic_vision_info01.png) no-repeat 0 0;}
 .vision > div:after {content:''; clear:both; display:block;}
 .vision .side_con {float:left; width:50%; padding-right:130px;}
 .vision .side_con > p {color:#999;}
@@ -125,7 +131,7 @@ header nav .util li.login a span {background-image:url(../images/ico/ico_login01
 .product .tab_wrap .tab_con div ul li div.txt_box {text-align:left; padding:20px 30px 0 0;}
 .product .tab_wrap .tab_con div ul li div.txt_box .tit {font-size:18px;}
 
-.different {position:relative; width:1920px; left:50%; transform:translateX(-50%); text-align:center; padding:115px 0 150px 0; background:url(../images/bg/bg_different01.png) no-repeat 0 0;}
+.different {position:relative; width:1920px; left:50%; transform:translateX(-50%); text-align:center; padding:115px 0 150px 0; background:url(/images/web/whales_images/bg/bg_different01.png) no-repeat 0 0;}
 .different .title h3 {color:#fff;}
 .different .title p {color:#b5b5b5;}
 .different .count {margin-top:112px;}
@@ -495,3 +501,24 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 	footer .to_top {width:40px; height:40px; background-size:100%;}
 
 }
+
+/*[추가]*/
+/* main rolling */
+.main_rolling_pc {display: none;}
+.visualRoll {position:relative; width:100%;}
+.viewImgList {position:relative; width:100%;}	
+.viewImgList li {text-align:center; height:550px; line-height:550px;}
+.viewImgList li.imglist0 {position:relative; z-index:50; background:url('../img/mainslide01.jpg') no-repeat center;}
+.viewImgList li.imglist1 {position:absolute; width:100%; left:0; top:0; z-index:10; background:url('../img/mainslide02.jpg') no-repeat center;}
+.viewImgList li.imglist2 {position:absolute; width:100%; left:0; top:0; z-index:10; background:url('../img/mainslide03.jpg') no-repeat center;}
+.viewImgList li.imglist3 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist4 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist5 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist6 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist7 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist8 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li.imglist9 {position:absolute; width:100%; left:0; top:0; z-index:10;}
+.viewImgList li {background-size:cover !important;}
+.viewImgList li .roll_content {position:relative;}
+.viewImgList li .roll_content .roll_txtline {position:absolute; left:0; bottom:60px; width:100%; line-height:1; text-align:center; font-size:22px; color:#fff; letter-spacing:2px;}

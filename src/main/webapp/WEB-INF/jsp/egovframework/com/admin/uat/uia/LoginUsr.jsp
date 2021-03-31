@@ -85,13 +85,9 @@ function goRegiUsr() {
  
     // 일반회원
     if (userSe == "GNR") {
-        document.loginForm.action="<c:url value='/uss/umt/EgovStplatCnfirmMber.do'/>";
+        document.loginForm.action="<c:url value='/uss/umt/StplatCnfirmMber.do'/>";
         document.loginForm.submit();
-    // 기업회원
-    } else if (userSe == "ENT") {
-        document.loginForm.action="<c:url value='/uss/umt/EgovStplatCnfirmEntrprs.do'/>";
-        document.loginForm.submit();
-    // 업무사용자
+     // 업무사용자
     } else if (userSe == "USR") {
     	<%-- 업무사용자는 별도의 회원가입이 필요하지 않습니다. --%>
         alert("<spring:message code="comUatUia.validate.membershipCheck" />");
@@ -209,7 +205,6 @@ function fnShowLogin(stat) {
 	<input type="hidden" id="message" name="message" value="<c:out value='${message}'/>">
 	
 	<fieldset>
-		<img src="<c:url value='/images/egovframework/com/uat/uia/login_tit.png'/>" style="margin:30px 0 0px 60px" alt="login title image"  title="login title image">
 		<div class="login_type">
 			<ul id="ulLoginType">
 				<li><a href="javascript:fnLoginTypeSelect('typeGnr');" id="typeGnr" title=""><spring:message code="comUatUia.loginForm.GNR"/></a></li> <!-- 일반 -->
@@ -240,8 +235,7 @@ function fnShowLogin(stat) {
 					<input type="button" class="btn_login" value="<spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin()"> <!-- 로그인  -->
 				</li>
 				<li>
-					<ul class="btn_idpw" >
-						<li><a href="#" onclick="goRegiUsr(); return false;"><spring:message code="comUatUia.loginForm.regist"/></a></li> <!-- 회원가입  -->
+					<ul class="btn_idpw" >						
 						<li><a href="#" onclick="goFindId(); return false;"><spring:message code="comUatUia.loginForm.idPwSearch"/></a></li> <!-- 아이디/비밀번호 찾기 -->
 					</ul>
 				</li>

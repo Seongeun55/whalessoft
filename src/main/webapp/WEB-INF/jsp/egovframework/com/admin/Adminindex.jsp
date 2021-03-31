@@ -7,17 +7,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>eGovFrame 공통 컴포넌트 관리자모드</title>
     <!-- Custom fonts for this template-->
-    <link href="/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/js/web/bootstrap_vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="/bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/web/bootstrap_css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
-    <script src="/bootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/web/bootstrap_vendor/jquery/jquery.min.js"></script>
+    <script src="/js/web/bootstrap_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/js/web/bootstrap_vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -211,7 +211,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">${loginVO.name }</span>
                                 <img class="img-profile rounded-circle"
-                                    src="/bootstrap/img/undraw_profile.svg">
+                                    src="/images/web/bootstrap_img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -291,6 +291,6 @@
     </div>
 </body>
     <!-- Custom scripts for all pages-->
-    <script src="/bootstrap/js/sb-admin-2.min.js"></script>    
+    <script src="/js/web/bootstrap_js/sb-admin-2.min.js"></script>    
 
 </html>

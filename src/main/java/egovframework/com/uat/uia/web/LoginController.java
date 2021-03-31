@@ -392,16 +392,16 @@ public class LoginController {
 		//System.out.println("확인 : " + request.getRemoteAddr());
 		
 		if(user.getUserSe().equals("USR")) {
-			return "egovframework/com/admin/Adminindex";
+			return "redirect:/admin/index.do";
 		}else {
-			return "egovframework/com/web/afterLogin";
+			return "redirect:/index.do";
 		}	
 	}
 	
 	@RequestMapping(value = "/uat/uia/securityLogout.do")
 	public String securityLogout(HttpServletRequest request, ModelMap model) throws Exception {
 		request.getSession().setAttribute("loginVO", null);
-		return "egovframework/com/admin/uat/uia/LoginUsr";
+		return "redirect:/index.do";
 	}
 
 }
