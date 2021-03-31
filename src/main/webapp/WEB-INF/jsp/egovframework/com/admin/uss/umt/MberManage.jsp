@@ -100,12 +100,12 @@ function fnAddUserView() {
 }
 function fnLinkPage(pageNo){
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/uss/umt/AdminMberManage.do'/>";
+    document.listForm.action = "<c:url value='/admin/uss/umt/AdminMberManage.do'/>";
     document.listForm.submit();
 }
 function fnSearch(){
 	document.listForm.pageIndex.value = 1;
-	document.listForm.action = "<c:url value='/uss/umt/AdminMberManage.do'/>";
+	document.listForm.action = "<c:url value='/admin/uss/umt/AdminMberManage.do'/>";
     document.listForm.submit();
 }
 <c:if test="${!empty resultMsg}">alert("<spring:message code="${resultMsg}" />");</c:if>
@@ -115,7 +115,7 @@ function fnSearch(){
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="listForm" action="<c:url value='/uss/umt/AdminMberManage.do'/>" method="post"> 
+<form name="listForm" action="<c:url value='/admin/uss/umt/AdminMberManage.do'/>" method="post"> 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>
 	

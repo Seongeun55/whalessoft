@@ -106,7 +106,7 @@ function deleteMenuManage(form) {
  * 목록조회 함수
  ******************************************************** */
 function selectList(){
-	location.href = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do' />";
+	location.href = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do' />";
 }
 
 /* ********************************************************
@@ -240,7 +240,7 @@ function press() {
 	<div class="btn">
 		<input class="s_submit" type="submit" value='<spring:message code="button.update" />' onclick="updateMenuManage(document.forms[0]); return false;" /><!-- 수정 -->
 		<span class="btn_s"><a href="<c:url value='/uss/ion/evt/selectEventRceptList.do'/>?menuNo=<c:out value='${menuManageVO.menuNo}'/>" onclick="deleteMenuManage(document.forms[0]); return false;"><spring:message code="button.delete" /></a></span><!-- 삭제 -->
-		<span class="btn_s"><a href="<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
 	</div>
 	<div style="clear:both;"></div>
 </div>

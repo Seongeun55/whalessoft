@@ -37,7 +37,7 @@ function fn_egov_init_PopupManage(){
  * 목록 으로 가기
  ******************************************************** */
 function fn_egov_list_PopupManage(){
-	location.href = "<c:url value='/uss/ion/pwm/listPopup.do' />";
+	location.href = "<c:url value='/admin/uss/ion/pwm/listPopup.do' />";
 }
 /* ********************************************************
  * 저장처리화면
@@ -139,7 +139,7 @@ function fn_egov_delete_PopupManage(){
 			<input name="cmd" type="hidden" value="<c:out value='del'/>"/>
 		</form>
 		 
-		<form name="formList" action="<c:url value='/uss/ion/pwm/listPopup.do'/>" method="post" style="display:inline">
+		<form name="formList" action="<c:url value='/admin/uss/ion/pwm/listPopup.do'/>" method="post" style="display:inline">
 			<input class="s_submit" type="submit" value='<spring:message code="button.list" />' onclick="fn_egov_list_PopupManage(); return false;" />
 		</form>
 	</div>

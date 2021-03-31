@@ -110,7 +110,7 @@ function searchFileNm() {
  * 목록조회  함수
  ******************************************************** */
 function selectList(){
-	location.href = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do' />";
+	location.href = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do' />";
 }
 /* ********************************************************
  * 파일명 엔터key 목록조회  함수
@@ -239,7 +239,7 @@ function press() {
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input class="s_submit" type="submit" value='<spring:message code="button.create" />' onclick="insertMenuManage(document.forms[0]); return false;" /><!-- 등록 -->
-		<span class="btn_s"><a href="<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
 	</div>
 	<div style="clear:both;"></div>
 </div>

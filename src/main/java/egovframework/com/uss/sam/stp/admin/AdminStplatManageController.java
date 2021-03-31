@@ -92,7 +92,7 @@ public class AdminStplatManageController {
      * @throws Exception
      */
     @IncludedInfo(name="약관관리", order = 490 ,gid = 50)
-    @RequestMapping(value="/uss/sam/stp/StplatListInqire.do")
+    @RequestMapping(value="/admin/uss/sam/stp/StplatListInqire.do")
     public String selectStplatList(@ModelAttribute("searchVO") StplatManageDefaultVO searchVO, ModelMap model) throws Exception {
 
     	/** EgovPropertyService.SiteList */
@@ -158,7 +158,7 @@ public class AdminStplatManageController {
      * @param searchVO
      * @param stplatManageVO
      * @param bindingResult
-     * @return	"forward:/uss/sam/stp/StplatListInqire.do"
+     * @return	"forward:/admin/uss/sam/stp/StplatListInqire.do"
      * @throws Exception
      */
     @RequestMapping("/uss/sam/stp/StplatCnRegist.do")
@@ -189,7 +189,7 @@ public class AdminStplatManageController {
 
         stplatManageService.insertStplatCn(stplatManageVO);
 
-        return "forward:/uss/sam/stp/StplatListInqire.do";
+        return "forward:/admin/uss/sam/stp/StplatListInqire.do";
     }
 
     /**
@@ -223,7 +223,7 @@ public class AdminStplatManageController {
      * @param searchVO
      * @param stplatManageVO
      * @param bindingResult
-     * @return	"forward:/uss/sam/stp/StplatListInqire.do"
+     * @return	"forward:/admin/uss/sam/stp/StplatListInqire.do"
      * @throws Exception
      */
     @RequestMapping("/uss/sam/stp/StplatCnUpdt.do")
@@ -254,14 +254,14 @@ public class AdminStplatManageController {
 
     	stplatManageService.updateStplatCn(stplatManageVO);
 
-        return "forward:/uss/sam/stp/StplatListInqire.do";
+        return "forward:/admin/uss/sam/stp/StplatListInqire.do";
     }
 
     /**
      * 약관정보를 삭제 처리한다.
      * @param stplatManageVO
      * @param searchVO
-     * @return	"forward:/uss/sam/stp/StplatListInqire.do"
+     * @return	"forward:/admin/uss/sam/stp/StplatListInqire.do"
      * @throws Exception
      */
     @RequestMapping("/uss/sam/stp/StplatCnDelete.do")
@@ -269,7 +269,7 @@ public class AdminStplatManageController {
 
     	stplatManageService.deleteStplatCn(stplatManageVO);
 
-        return "forward:/uss/sam/stp/StplatListInqire.do";
+        return "forward:/admin/uss/sam/stp/StplatListInqire.do";
     }
 
 }

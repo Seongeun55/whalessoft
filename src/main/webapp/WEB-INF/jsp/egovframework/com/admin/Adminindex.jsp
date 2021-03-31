@@ -28,7 +28,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath }/admin.do">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath }/admin/index.do">
                 <div class="sidebar-brand-text mx-3">Admin Page</div>
             </a>
 
@@ -36,7 +36,7 @@
             <hr class="sidebar-divider my-0">
             
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath }/admin.do">
+                <a class="nav-link" href="${pageContext.request.contextPath }/admin/index.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>관리자 홈</span></a>
             </li>
@@ -57,8 +57,8 @@
                 </a>
                 <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/uss/ion/bnr/selectBannerList.do" target="_content">배너 관리</a>
-                        <a class="collapse-item" href="/uss/ion/pwm/listPopup.do" target="_content">팝업 관리</a>
+                         <a class="collapse-item" href="/admin/uss/ion/bnr/selectBannerList.do" target="_content">배너 관리</a>
+                        <a class="collapse-item" href="/admin/uss/ion/pwm/listPopup.do" target="_content">팝업 관리</a>
                     </div>
                 </div>
             </li>
@@ -70,8 +70,8 @@
                 </a>
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
-                        <a class="collapse-item" href="/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
+                         <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
+                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
                     </div>
                 </div>
             </li>
@@ -84,8 +84,8 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/uss/umt/AdminMberManage.do" target="_content">일반회원 관리</a>
-                        <a class="collapse-item" href="/uss/umt/AdminUserManage.do" target="_content">관리자 관리</a>
+                         <a class="collapse-item" href="/admin/uss/umt/AdminMberManage.do" target="_content">일반회원 관리</a>
+                        <a class="collapse-item" href="/admin/uss/umt/AdminUserManage.do" target="_content">관리자 관리</a>
                     </div>
                 </div>
             </li>
@@ -98,9 +98,9 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/cop/bbs/selectBBSMasterInfs.do" target="_content">게시판 관리</a>
-                        <a class="collapse-item" href="/cop/bbs/selectBBSMaster.do" target="_content">게시물 관리</a>
-                        <a class="collapse-item" href="/cop/tpl/selectTemplateInfs.do" target="_content">템플릿 관리</a>
+                        <a class="collapse-item" href="/admin/cop/bbs/selectBBSMasterInfs.do" target="_content">게시판 관리</a>
+                        <a class="collapse-item" href="/admin/cop/bbs/selectBBSMaster.do" target="_content">게시물 관리</a>
+                        <a class="collapse-item" href="/admin/cop/tpl/selectTemplateInfs.do" target="_content">템플릿 관리</a>
                     </div>
                 </div>
             </li>
@@ -112,8 +112,8 @@
                 </a>
                 <div id="collapsequestion" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/uss/olh/faq/selectFaqList.do" target="_content">FAQ 관리</a>
-                        <a class="collapse-item" href="/uss/olh/qna/selectQnaAnswerList.do" target="_content">Q&A 관리</a>
+                         <a class="collapse-item" href="/admin/uss/olh/faq/selectFaqList.do" target="_content">FAQ 관리</a>
+                        <a class="collapse-item" href="/admin/uss/olh/qna/selectQnaAnswerList.do" target="_content">Q&A 관리</a>
                     </div>
                 </div>
             </li>
@@ -125,23 +125,23 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/sec/ram/AdminAuthorList.do" target="_content">권한관리</a>
-                         <a class="collapse-item" href="/sec/rgm/AdminAuthorGroupList.do" target="_content">사용자권한 관리</a>
-                        <a class="collapse-item" href="/sec/rmt/AdminRoleList.do" target="_content">롤 관리</a>
-                        <a class="collapse-item" href="/uat/uap/selectLoginPolicyList.do" target="_content">IP 관리</a>
+                         <a class="collapse-item" href="/admin/sec/ram/AdminAuthorList.do" target="_content">권한관리</a>
+                         <a class="collapse-item" href="/admin/sec/rgm/AdminAuthorGroupList.do" target="_content">사용자권한 관리</a>
+                        <a class="collapse-item" href="/admin/sec/rmt/AdminRoleList.do" target="_content">롤 관리</a>
+                        <a class="collapse-item" href="/admin/uat/uap/selectLoginPolicyList.do" target="_content">IP 관리</a>
                     </div>
                 </div>
             </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="/sym/log/clg/SelectLoginLogList.do" target="_content">
+                <a class="nav-link" href="/admin/sym/log/clg/SelectLoginLogList.do" target="_content">
                    <i class="fas fa-clipboard-list"></i>
                     <span>접속로그</span></a>
             </li>     
             
             <!-- Nav Item - Dashboard -->
              <li class="nav-item">
-                <a class="nav-link" href="/uss/sam/stp/StplatListInqire.do" target="_content">
+                <a class="nav-link" href="/admin/uss/sam/stp/StplatListInqire.do" target="_content">
                    <i class="fas fa-balance-scale"></i>
                     <span>약관 관리</span></a>
             </li>            
@@ -198,7 +198,7 @@
                         </li>
                         
                         <li class="nav-item">
-               				<a class="nav-link" href="/sym/mnu/mpm/MainMenuHome.do" target="_blank">
+               				<a class="nav-link" href="/index.do" target="_blank">
                   			<i class="fas fa-house-user"></i>
                     			<span>홈페이지 바로가기</span></a>
            				</li>   
@@ -220,11 +220,11 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     	프로필
                                 </a>
-                                <a class="dropdown-item" href="/sec/rgm/AdminAuthorGroupList.do" target="_content">
+                                <a class="dropdown-item" href="/admin/sec/rgm/AdminAuthorGroupList.do" target="_content">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                    		권한관리
                                 </a>
-                                <a class="dropdown-item" href="/sym/log/clg/SelectLoginLogList.do" target="_content">
+                                <a class="dropdown-item" href="/admin/sym/log/clg/SelectLoginLogList.do" target="_content">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     	접속로그
                                 </a>

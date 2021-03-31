@@ -70,7 +70,7 @@ public class AdminLoginPolicyController {
 	 * @return String - 리턴 Url
 	 */
 	@IncludedInfo(name = "로그인정책관리", order = 30, gid = 10)
-	@RequestMapping("/uat/uap/selectLoginPolicyList.do")
+	@RequestMapping("/admin/uat/uap/selectLoginPolicyList.do")
 	public String selectLoginPolicyList(@ModelAttribute("loginPolicyVO") LoginPolicyVO loginPolicyVO, ModelMap model) throws Exception {
 
 		/** paging */
@@ -184,7 +184,7 @@ public class AdminLoginPolicyController {
 			LoginPolicyService.updateLoginPolicy(loginPolicy);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));
 
-			return "forward:/uat/uap/selectLoginPolicyList.do";
+			return "forward:/admin/uat/uap/selectLoginPolicyList.do";
 		}
 	}
 
@@ -201,7 +201,7 @@ public class AdminLoginPolicyController {
 		LoginPolicyService.deleteLoginPolicy(loginPolicy);
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/uat/uap/selectLoginPolicyList.do";
+		return "forward:/admin/uat/uap/selectLoginPolicyList.do";
 	}
 
 }

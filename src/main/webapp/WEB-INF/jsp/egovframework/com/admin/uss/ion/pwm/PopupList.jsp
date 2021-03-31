@@ -35,7 +35,7 @@
  ******************************************************* */
 function linkPage(pageNo){
 	document.listForm.pageIndex.value = pageNo;
-	document.listForm.action = "<c:url value='/uss/ion/pwm/listPopup.do'/>";
+	document.listForm.action = "<c:url value='/admin/uss/ion/pwm/listPopup.do'/>";
    	document.listForm.submit();
 }
 /* ********************************************************
@@ -60,7 +60,7 @@ function fn_egov_detail_PopupManage(popupId){
 function fn_egov_search_PopupManage(){
 	var vFrom = document.listForm;
 	
-	vFrom.action = "<c:url value='/uss/ion/pwm/listPopup.do' />";
+	vFrom.action = "<c:url value='/admin/uss/ion/pwm/listPopup.do' />";
 	vFrom.submit();
 
 }
@@ -182,7 +182,7 @@ function fnGetCookie(name) {
 <body>
 
 <div class="board">
-<form name="listForm" action="<c:url value='/uss/ion/pwm/listPopup.do'/>" method="post">
+<form name="listForm" action="<c:url value='/admin/uss/ion/pwm/listPopup.do'/>" method="post">
 	<h1><spring:message code="ussIonPwm.popupList.popupList"/></h1><!-- 팝업창관리 목록 -->
 	<span><spring:message code="ussIonPwm.popupList.guide"/> </span>
 

@@ -30,7 +30,7 @@ function fn_egov_init(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.BBSMasterForm.pageIndex.value = pageNo;
-	document.BBSMasterForm.action = "<c:url value='/cop/bbs/selectBBSMasterInfs.do'/>";
+	document.BBSMasterForm.action = "<c:url value='/admin/cop/bbs/selectBBSMasterInfs.do'/>";
    	document.BBSMasterForm.submit();
 }
 /*********************************************************
@@ -55,7 +55,7 @@ function fn_egov_inquire_bbsdetail(bbsId) {
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="BBSMasterForm" action="<c:url value='/cop/bbs/selectBBSMasterInfs.do'/>" method="post" onSubmit="fn_egov_search_bbssj(); return false;"> 
+<form name="BBSMasterForm" action="<c:url value='/admin/cop/bbs/selectBBSMasterInfs.do'/>" method="post" onSubmit="fn_egov_search_bbssj(); return false;"> 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1><!-- 게시판 목록 -->
 	<!-- 하단 버튼 -->

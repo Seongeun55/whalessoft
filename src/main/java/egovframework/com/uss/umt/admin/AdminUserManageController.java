@@ -82,7 +82,7 @@ public class AdminUserManageController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "업무사용자관리", order = 460, gid = 50)
-	@RequestMapping(value = "/uss/umt/AdminUserManage.do")
+	@RequestMapping(value = "/admin/uss/umt/AdminUserManage.do")
 	public String selectUserList(@ModelAttribute("userSearchVO") UserDefaultVO userSearchVO, ModelMap model) throws Exception {
 
 		// 미인증 사용자에 대한 보안처리
@@ -175,7 +175,7 @@ public class AdminUserManageController {
 	 * @param userManageVO 사용자등록정보
 	 * @param bindingResult 입력값검증용 bindingResult
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminUserManage.do
+	 * @return forward:/admin/uss/umt/AdminUserManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminUserInsert.do")
@@ -213,7 +213,7 @@ public class AdminUserManageController {
 			//Exception 없이 진행시 등록성공메시지
 			model.addAttribute("resultMsg", "success.common.insert");
 		}
-		return "forward:/uss/umt/AdminUserManage.do";
+		return "forward:/admin/uss/umt/AdminUserManage.do";
 	}
 
 	/**
@@ -296,7 +296,7 @@ public class AdminUserManageController {
 	 * @param userManageVO 사용자수정정보
 	 * @param bindingResult 입력값검증용 bindingResult
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminUserManage.do
+	 * @return forward:/admin/uss/umt/AdminUserManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminUserSelectUpdt.do")
@@ -311,7 +311,7 @@ public class AdminUserManageController {
 		beanValidator.validate(userManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("resultMsg", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			return "forward:/uss/umt/AdminUserManage.do";
+			return "forward:/admin/uss/umt/AdminUserManage.do";
 		} else {
 			//업무사용자 수정시 히스토리 정보를 등록한다.
 			userManageService.insertUserHistory(userManageVO);
@@ -324,7 +324,7 @@ public class AdminUserManageController {
 			userManageService.updateUser(userManageVO);
 			//Exception 없이 진행시 수정성공메시지
 			model.addAttribute("resultMsg", "success.common.update");
-			return "forward:/uss/umt/AdminUserManage.do";
+			return "forward:/admin/uss/umt/AdminUserManage.do";
 		}
 	}
 
@@ -333,7 +333,7 @@ public class AdminUserManageController {
 	 * @param checkedIdForDel 삭제대상아이디 정보
 	 * @param userSearchVO 검색조건
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminUserManage.do
+	 * @return forward:/admin/uss/umt/AdminUserManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminUserDelete.do")
@@ -348,7 +348,7 @@ public class AdminUserManageController {
 		userManageService.deleteUser(checkedIdForDel);
 		//Exception 없이 진행시 등록성공메시지
 		model.addAttribute("resultMsg", "success.common.delete");
-		return "forward:/uss/umt/AdminUserManage.do";
+		return "forward:/admin/uss/umt/AdminUserManage.do";
 	}
 
 	/**

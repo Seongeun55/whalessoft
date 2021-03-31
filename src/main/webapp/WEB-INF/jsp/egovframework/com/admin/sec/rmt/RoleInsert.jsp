@@ -38,7 +38,7 @@
 
 function fncSelectRoleList() {
     var varFrom = document.getElementById("roleManage");
-    varFrom.action = "<c:url value='/sec/rmt/AdminRoleList.do'/>";
+    varFrom.action = "<c:url value='/admin/sec/rmt/AdminRoleList.do'/>";
     varFrom.submit();
 }
 
@@ -155,7 +155,7 @@ function fncRoleDelete() {
 
 	<!-- 하단 버튼 -->
 	<div class="btn">
-		<span class="btn_s"><a href="<c:url value='/sec/rmt/AdminRoleList.do'/>"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sec/rmt/AdminRoleList.do'/>"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
 		<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" /><!-- 등록 -->
 	</div><div style="clear:both;"></div>
 	

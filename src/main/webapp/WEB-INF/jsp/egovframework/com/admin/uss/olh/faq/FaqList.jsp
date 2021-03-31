@@ -42,7 +42,7 @@ function fn_egov_init(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.faqForm.pageIndex.value = pageNo;
-	document.faqForm.action = "<c:url value='/uss/olh/faq/selectFaqList.do'/>";
+	document.faqForm.action = "<c:url value='/admin/uss/olh/faq/selectFaqList.do'/>";
    	document.faqForm.submit();
 }
 /*********************************************************
@@ -67,7 +67,7 @@ function fn_egov_inquire_faqdetail(faqId) {
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="faqForm" action="<c:url value='/uss/olh/faq/selectFaqList.do'/>" method="post" onSubmit="fn_egov_search_faq(); return false;"> 
+<form name="faqForm" action="<c:url value='/admin/uss/olh/faq/selectFaqList.do'/>" method="post" onSubmit="fn_egov_search_faq(); return false;"> 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>
 	<!-- 하단 버튼 -->

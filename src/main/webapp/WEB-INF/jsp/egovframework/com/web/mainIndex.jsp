@@ -32,7 +32,7 @@
 						<li class="login"><a href="/uat/uia/securityLogout.do"><span>로그아웃</span></a></li>					
 						<li><a>${loginVO.name}님</a></li>	
 						<c:if test="${loginVO.userSe == 'USR'}">			
-							<li><a href="/admin.do">관리자모드</a></li>
+							<li><a href="/admin/index.do">관리자모드</a></li>
 						</c:if>	
 					</c:if>
 				</ul>

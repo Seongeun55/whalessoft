@@ -75,7 +75,7 @@ function fn_egov_updt_bbs(form, bbsId){
  * 목록 으로 가기
  ******************************************************** */
 function fn_egov_inqire_bbslist() {
-	boardMasterVO.action = "<c:url value='/cop/bbs/selectBBSMasterInfs.do'/>";
+	boardMasterVO.action = "<c:url value='/admin/cop/bbs/selectBBSMasterInfs.do'/>";
 	boardMasterVO.submit();	
 }
 </script>
@@ -199,7 +199,7 @@ function fn_egov_inqire_bbslist() {
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="button.update" /> <spring:message code="input.button" />" /><!-- 수정 -->
-		<span class="btn_s"><a href="<c:url value='/cop/bbs/selectBBSMasterInfs.do' /><c:if test='${boardMasterVO.cmmntyId != null}'>?cmmntyId=${boardMasterVO.cmmntyId}</c:if>"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/cop/bbs/selectBBSMasterInfs.do' /><c:if test='${boardMasterVO.cmmntyId != null}'>?cmmntyId=${boardMasterVO.cmmntyId}</c:if>"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
 	</div><div style="clear:both;"></div>
 	 
 </div>

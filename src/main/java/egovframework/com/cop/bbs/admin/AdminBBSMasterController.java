@@ -155,7 +155,7 @@ public class AdminBBSMasterController {
 		if (boardMaster.getBlogAt().equals("Y")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
-			return "forward:/cop/bbs/selectBBSMasterInfs.do";
+			return "forward:/admin/cop/bbs/selectBBSMasterInfs.do";
 		}
 
 	}
@@ -169,7 +169,7 @@ public class AdminBBSMasterController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "게시판관리", order = 180, gid = 40)
-	@RequestMapping("/cop/bbs/selectBBSMasterInfs.do")
+	@RequestMapping("/admin/cop/bbs/selectBBSMasterInfs.do")
 	public String selectBBSMasterInfs(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO, ModelMap model) throws Exception {
 		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
 		boardMasterVO.setPageSize(propertyService.getInt("pageSize"));
@@ -448,7 +448,7 @@ public class AdminBBSMasterController {
 			BBSMasterService.updateBBSMasterInf(boardMaster);
 		}
 
-		return "forward:/cop/bbs/selectBBSMasterInfs.do";
+		return "forward:/admin/cop/bbs/selectBBSMasterInfs.do";
 	}
 
 	/**
@@ -472,7 +472,7 @@ public class AdminBBSMasterController {
 			BBSMasterService.deleteBBSMasterInf(boardMaster);
 		}
 		// status.setComplete();
-		return "forward:/cop/bbs/selectBBSMasterInfs.do";
+		return "forward:/admin/cop/bbs/selectBBSMasterInfs.do";
 	}
 
 	/**

@@ -152,7 +152,7 @@ function showModalDialogCallback(retVal) {
 }
 
 function fnListPage(){
-    document.userManageVO.action = "<c:url value='/uss/umt/AdminUserManage.do'/>";
+    document.userManageVO.action = "<c:url value='/admin/uss/umt/AdminUserManage.do'/>";
     document.userManageVO.submit();
 }
 
@@ -463,7 +463,7 @@ if (typeof(opener.fn_egov_dn_info_setting) == 'undefined') {
 
 	<!-- 하단 버튼 --> 
 	<div class="btn">
-		<span class="btn_s"><a href="<c:url value='/uss/umt/AdminUserManage.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/umt/AdminUserManage.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 		<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" />
 	</div><div style="clear:both;"></div>
 

@@ -137,7 +137,7 @@ public class ArticleController {
 	}
 	
 	/**[추가] 게시물 관리로 이동한다.**/
-	@RequestMapping("/cop/bbs/selectBBSMaster.do")
+	@RequestMapping("/admin/cop/bbs/selectBBSMaster.do")
 	public String selectBBSMasterInfs(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO, ModelMap model) throws Exception {
 		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
 		boardMasterVO.setPageSize(propertyService.getInt("pageSize"));

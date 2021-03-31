@@ -55,7 +55,7 @@ function fn_egov_updt_qna(form){
  * 목록 으로 가기
  ******************************************************** */
 function fn_egov_inqire_list() {
-	qnaVO.action = "<c:url value='/uss/olh/qna/selectQnaAnswerList.do'/>";
+	qnaVO.action = "<c:url value='/admin/uss/olh/qna/selectQnaAnswerList.do'/>";
 	qnaVO.submit();	
 }
 </script>
@@ -166,7 +166,7 @@ function fn_egov_inqire_list() {
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" />
-		<span class="btn_s"><a href="<c:url value='/uss/olh/qna/selectQnaAnswerList.do' />"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/olh/qna/selectQnaAnswerList.do' />"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 	</div><div style="clear:both;"></div>
 	
 </div>

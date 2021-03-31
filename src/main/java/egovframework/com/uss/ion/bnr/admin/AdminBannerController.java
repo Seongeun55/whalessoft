@@ -93,7 +93,7 @@ public class AdminBannerController {
 	 * @throws Exception
 	 */
     @IncludedInfo(name="배너관리", order = 740 ,gid = 50)
-    @RequestMapping(value="/uss/ion/bnr/selectBannerList.do")
+    @RequestMapping(value="/admin/uss/ion/bnr/selectBannerList.do")
 	public String selectBannerList(@ModelAttribute("bannerVO") BannerVO bannerVO, ModelMap model) throws Exception{
 
     	/** paging */
@@ -196,7 +196,7 @@ public class AdminBannerController {
 	    	model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
 	    	model.addAttribute("banner", BannerService.insertBanner(banner, bannerVO));
 
-			return "forward:/uss/ion/bnr/selectBannerList.do";
+			return "forward:/admin/uss/ion/bnr/selectBannerList.do";
 
 		}
 	}
@@ -258,7 +258,7 @@ public class AdminBannerController {
 
 			BannerService.updateBanner(banner);
 			//	    	return "forward:/uss/ion/bnr/getBanner.do";
-			return "forward:/uss/ion/bnr/selectBannerList.do";
+			return "forward:/admin/uss/ion/bnr/selectBannerList.do";
 
 		}
 	}
@@ -276,7 +276,7 @@ public class AdminBannerController {
     	BannerService.deleteBanner(banner);
     	status.setComplete();
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/uss/ion/bnr/selectBannerList.do";
+		return "forward:/admin/uss/ion/bnr/selectBannerList.do";
 	}
 
 	/**
@@ -298,7 +298,7 @@ public class AdminBannerController {
 
     	status.setComplete();
     	model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/uss/ion/bnr/selectBannerList.do";
+		return "forward:/admin/uss/ion/bnr/selectBannerList.do";
 	}
 
 	/**

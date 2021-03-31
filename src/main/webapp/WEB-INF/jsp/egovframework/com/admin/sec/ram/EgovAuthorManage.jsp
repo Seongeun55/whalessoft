@@ -104,7 +104,7 @@ function fncManageChecked() {
 function fncSelectAuthorList(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/ram/AdminAuthorList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/ram/AdminAuthorList.do'/>";
     document.listForm.submit();
 }
 
@@ -142,7 +142,7 @@ function fncSelectAuthorRole(author) {
 function linkPage(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/ram/AdminAuthorList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/ram/AdminAuthorList.do'/>";
     document.listForm.submit();
 }
 
@@ -159,7 +159,7 @@ function press() {
 <body>
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
-<form:form name="listForm" action="${pageContext.request.contextPath}/sec/ram/AdminAuthorList.do" method="post">
+<form:form name="listForm" action="${pageContext.request.contextPath}/admin/sec/ram/AdminAuthorList.do" method="post">
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1><!-- 권한관리 목록 -->
 	<!-- 검색영역 -->

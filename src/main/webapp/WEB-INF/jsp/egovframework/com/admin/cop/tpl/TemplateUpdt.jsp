@@ -45,7 +45,7 @@
 	}
 
 	function fn_egov_select_tmplatInfo() {
-		document.templateInf.action = "<c:url value='/cop/tpl/selectTemplateInfs.do'/>";
+		document.templateInf.action = "<c:url value='/admin/cop/tpl/selectTemplateInfs.do'/>";
 		document.templateInf.submit();
 	}
 

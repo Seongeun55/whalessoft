@@ -42,7 +42,7 @@ function fn_egov_init(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.qnaForm.pageIndex.value = pageNo;
-	document.qnaForm.action = "<c:url value='/uss/olh/qna/selectQnaAnswerList.do'/>";
+	document.qnaForm.action = "<c:url value='/admin/uss/olh/qna/selectQnaAnswerList.do'/>";
    	document.qnaForm.submit();
 }
 /*********************************************************
@@ -67,7 +67,7 @@ function fn_egov_inquire_qnadetail(qaId) {
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="qnaForm" action="<c:url value='/uss/olh/qna/selectQnaAnswerList.do'/>" method="post" onSubmit="fn_egov_search_qna(); return false;"> 
+<form name="qnaForm" action="<c:url value='/admin/uss/olh/qna/selectQnaAnswerList.do'/>" method="post" onSubmit="fn_egov_search_qna(); return false;"> 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>
 	<!-- 하단 버튼 -->

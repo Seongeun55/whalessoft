@@ -114,7 +114,7 @@
 				<li class="home"><a class="on" href="" onclick="fn_egov_goCmmntyHome(); return false;">Home</a></li>
              	<!-- 관리자 메뉴 부분 Start -->
                 <c:if test="${cmmntyUser.mngrAt == 'Y'}">
-                <li><a href="" onclick="fn_egov_loadMngrMenu('<c:url value="/cop/bbs/selectBBSMasterInfs.do"/>'); return false;"><spring:message code="comCopCmy.communityUseMgrMain.btnBoard" /></a></li> <!-- 게시판관리  -->
+                <li><a href="" onclick="fn_egov_loadMngrMenu('<c:url value="/admin/cop/bbs/selectBBSMasterInfs.do"/>'); return false;"><spring:message code="comCopCmy.communityUseMgrMain.btnBoard" /></a></li> <!-- 게시판관리  -->
                 <li><a href="" onclick="fn_egov_loadMngrMenu('<c:url value="/cop/cmy/selectCommuUserList.do"/>'); return false;"><spring:message code="comCopCmy.communityUseMgrMain.btnUser" /></a></li> <!-- 사용자관리  -->
                 </c:if>
                 <!-- 관리자 메뉴 부분 End -->

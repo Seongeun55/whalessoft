@@ -101,7 +101,7 @@
 			<input name="cmd" type="hidden" value="<c:out value='del'/>"/>
 		</form>
 	
-		<form name="formList" action="<c:url value='/uss/sam/stp/StplatListInqire.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
+		<form name="formList" action="<c:url value='/admin/uss/sam/stp/StplatListInqire.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
 			<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
 		</form>
 	

@@ -107,7 +107,7 @@ public class AdminMenuManageController {
      * @exception Exception
      */
     @IncludedInfo(name="메뉴관리리스트", order = 1091 ,gid = 60)
-    @RequestMapping(value="/sym/mnu/mpm/AdminMenuManageSelect.do")
+    @RequestMapping(value="/admin/sym/mnu/mpm/AdminMenuManageSelect.do")
     public String selectMenuManageList(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
         // 0. Spring Security 사용자권한 처리
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -143,7 +143,7 @@ public class AdminMenuManageController {
     /**
      * 메뉴목록 멀티 삭제한다.
      * @param checkedMenuNoForDel  String
-     * @return 출력페이지정보 "forward:/sym/mnu/mpm/AdminMenuManageSelect.do"
+     * @return 출력페이지정보 "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do"
      * @exception Exception
      */
     @RequestMapping("/sym/mnu/mpm/AdminMenuManageListDelete.do")
@@ -163,14 +163,14 @@ public class AdminMenuManageController {
 
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0){
     		resultMsg = egovMessageSource.getMessage("fail.common.delete.upperMenuExist");
-    		sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+    		sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
 		}else if (delMenuNo == null || (delMenuNo.length ==0)){
     		resultMsg = egovMessageSource.getMessage("fail.common.delete");
-    		sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+    		sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
 		}else{
 			menuManageService.deleteMenuManageList(checkedMenuNoForDel);
 			resultMsg = egovMessageSource.getMessage("success.common.delete");
-			sLocationUrl ="forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+			sLocationUrl ="forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
 		}
 		model.addAttribute("resultMsg", resultMsg);
         return sLocationUrl;
@@ -181,7 +181,7 @@ public class AdminMenuManageController {
      * @param menuManageVO    MenuManageVO
      * @param commandMap      Map
      * @return 출력페이지정보 등록화면 호출시 "sym/mnu/mpm/EgovMenuRegist",
-     *         출력페이지정보 등록처리시 "forward:/sym/mnu/mpm/AdminMenuManageSelect.do"
+     *         출력페이지정보 등록처리시 "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do"
      * @exception Exception
      */
     @RequestMapping(value="/sym/mnu/mpm/AdminMenuRegistInsert.do")
@@ -211,7 +211,7 @@ public class AdminMenuManageController {
     			}else{
     	        	menuManageService.insertMenuManage(menuManageVO);
             		resultMsg = egovMessageSource.getMessage("success.common.insert");
-    		        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+    		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
     			}
     		}else{
         		resultMsg = egovMessageSource.getMessage("common.isExist.msg");
@@ -227,7 +227,7 @@ public class AdminMenuManageController {
     /**
      * 메뉴정보를 수정 한다.
      * @param menuManageVO  MenuManageVO
-     * @return 출력페이지정보 "forward:/sym/mnu/mpm/AdminMenuManageSelect.do"
+     * @return 출력페이지정보 "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do"
      * @exception Exception
      */
     @RequestMapping(value="/sym/mnu/mpm/AdminMenuDetailSelectUpdt.do")
@@ -253,7 +253,7 @@ public class AdminMenuManageController {
 		}else{
 			menuManageService.updateMenuManage(menuManageVO);
 	    	resultMsg = egovMessageSource.getMessage("success.common.update");
-	       	sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+	       	sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
 		}
     	model.addAttribute("resultMsg", resultMsg);
 		return sLocationUrl;
@@ -262,7 +262,7 @@ public class AdminMenuManageController {
     /**
      * 메뉴정보를 삭제 한다.
      * @param menuManageVO MenuManageVO
-     * @return 출력페이지정보 "forward:/sym/mnu/mpm/AdminMenuManageSelect.do"
+     * @return 출력페이지정보 "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do"
      * @exception Exception
      */
     @RequestMapping(value="/sym/mnu/mpm/AdminMenuManageDelete.do")
@@ -277,7 +277,7 @@ public class AdminMenuManageController {
     	if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0){
     		resultMsg = egovMessageSource.getMessage("fail.common.delete.upperMenuExist");
     		model.addAttribute("resultMsg", resultMsg);
-    		return "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+    		return "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
 		}
 
     	menuManageService.deleteMenuManage(menuManageVO);
@@ -285,7 +285,7 @@ public class AdminMenuManageController {
     	String _MenuNm = "%";
     	menuManageVO.setMenuNm(_MenuNm);
     	model.addAttribute("resultMsg", resultMsg);
-      	return "forward:/sym/mnu/mpm/AdminMenuManageSelect.do";
+      	return "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
     }
 
     /**
@@ -295,7 +295,7 @@ public class AdminMenuManageController {
      * @exception Exception
      */
     @IncludedInfo(name="메뉴리스트관리", order = 1090 ,gid = 60)
-    @RequestMapping(value="/sym/mnu/mpm/AdminMenuListSelect.do")
+    @RequestMapping(value="/admin/sym/mnu/mpm/AdminMenuListSelect.do")
     public String selectMenuList(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
     	String resultMsg    = "";
     	// 0. Spring Security 사용자권한 처리
@@ -339,15 +339,15 @@ public class AdminMenuManageController {
 			searchVO.setSearchKeyword(menuManageVO.getProgrmFileNm());
 			if(progrmManageService.selectProgrmNMTotCnt(searchVO)==0){
 	    		resultMsg = egovMessageSource.getMessage("fail.common.insert");
-		        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 			}else{
 	        	menuManageService.insertMenuManage(menuManageVO);
 	    		resultMsg = egovMessageSource.getMessage("success.common.insert");
-		        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 			}
 		}else{
     		resultMsg = egovMessageSource.getMessage("common.isExist.msg");
-    		sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+    		sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 		}
 		model.addAttribute("resultMsg", resultMsg);
       	return sLocationUrl;
@@ -372,18 +372,18 @@ public class AdminMenuManageController {
 
         beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+			sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 			return sLocationUrl;
 		}
 		ComDefaultVO searchVO = new ComDefaultVO();
 		searchVO.setSearchKeyword(menuManageVO.getProgrmFileNm());
 		if(progrmManageService.selectProgrmNMTotCnt(searchVO)==0){
     		resultMsg = egovMessageSource.getMessage("fail.common.update");
-	        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+	        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 		}else{
 			menuManageService.updateMenuManage(menuManageVO);
 			resultMsg = egovMessageSource.getMessage("success.common.update");
-	        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+	        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 		}
 		model.addAttribute("resultMsg", resultMsg);
       	return sLocationUrl;
@@ -413,7 +413,7 @@ public class AdminMenuManageController {
 		}
 		menuManageService.deleteMenuManage(menuManageVO);
 		resultMsg = egovMessageSource.getMessage("success.common.delete");
-        sLocationUrl = "forward:/sym/mnu/mpm/AdminMenuListSelect.do";
+        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
 		model.addAttribute("resultMsg", resultMsg);
       	return sLocationUrl;
     }

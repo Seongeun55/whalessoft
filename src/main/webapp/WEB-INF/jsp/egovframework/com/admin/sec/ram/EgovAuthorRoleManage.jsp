@@ -124,9 +124,9 @@ function fncSelectAuthorList(){
     // document.listForm.pageIndex.value = "1";
     
     //document.listForm.searchKeyword.value = "";
-    //document.listForm.action = "<c:url value='/sec/ram/AdminAuthorList.do'/>";
+    //document.listForm.action = "<c:url value='/admin/sec/ram/AdminAuthorList.do'/>";
     //document.listForm.submit();
-    location.href = "<c:url value='/sec/ram/AdminAuthorList.do'/>";
+    location.href = "<c:url value='/admin/sec/ram/AdminAuthorList.do'/>";
 }
 
 function fncSelectAuthorRole(roleCode) {
@@ -240,7 +240,7 @@ function press() {
 	<!-- 버튼역역 -->
 	<!-- 
 	<div class="btn">
-		<span class="btn_s"><a href="<c:url value='/sec/ram/AdminAuthorList.do'/>"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/sec/ram/AdminAuthorList.do'/>"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 		<span class="btn_s"><a href="javascript:fncAddAuthorRoleInsert()"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
 	</div>
 	 -->

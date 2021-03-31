@@ -107,7 +107,7 @@ function fncManageChecked() {
 function fncSelectLoginPolicyList(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/uat/uap/selectLoginPolicyList.do'/>";
+    document.listForm.action = "<c:url value='/admin/uat/uap/selectLoginPolicyList.do'/>";
     document.listForm.submit();
 }
 
@@ -173,7 +173,7 @@ function fncLoginPolicyListDelete() {
 function linkPage(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/uat/uap/selectLoginPolicyList.do'/>";
+    document.listForm.action = "<c:url value='/admin/uat/uap/selectLoginPolicyList.do'/>";
     document.listForm.submit();
 }
 
@@ -196,7 +196,7 @@ function press() {
 	<h1><spring:message code="comUatUap.LoginPolicyList.caption" /></h1>
 	
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">
-		<form name="listForm" action="<c:url value='/uat/uap/selectLoginPolicyList.do'/>" method="post">
+		<form name="listForm" action="<c:url value='/admin/uat/uap/selectLoginPolicyList.do'/>" method="post">
 		
 		<ul>
 			<li>

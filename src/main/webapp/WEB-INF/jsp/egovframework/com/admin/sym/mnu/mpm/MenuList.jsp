@@ -85,7 +85,7 @@ function deleteMenuList() {
  * 메뉴리스트 조회 함수
  ******************************************************** */
 function selectMenuList() {
-    document.menuManageVO.action = "<c:url value='/sym/mnu/mpm/AdminMenuListSelect.do'/>";
+    document.menuManageVO.action = "<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>";
     document.menuManageVO.submit();
 }
 
@@ -227,7 +227,7 @@ function checkNumber(str) {
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />"><!-- 이 레이아웃은 하단 정보를 대한 검색 정보로 구성되어 있습니다. -->
 		<ul>
 			<li>
-				<span class="btn_b"><a href="<c:url value='/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;" title="<spring:message code="button.init" />"><spring:message code="button.init" /></a></span><!-- 초기화 -->
+				<span class="btn_b"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;" title="<spring:message code="button.init" />"><spring:message code="button.init" /></a></span><!-- 초기화 -->
 				<span class="btn_b"><a href="#LINK" onclick="updateMenuList(); return false;" title='<spring:message code="button.update" />'><spring:message code="button.update" /></a></span>
 				<span class="btn_b"><a href="#LINK" onclick="deleteMenuList(); return false;" title='<spring:message code="button.delete" />'><spring:message code="button.delete" /></a></span>
 			</li>
@@ -294,7 +294,7 @@ function checkNumber(str) {
 	   <table border="0" cellspacing="0" cellpadding="0" align="left">
 		<tr>
           <td width="90%"></td>
-          <td><span class="button"><a href="<c:url value='/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;">초기화</a></span></td>
+          <td><span class="button"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;">초기화</a></span></td>
           <td width="2%"></td>
           <td><span class="button"><input type="submit" value="<spring:message code="button.save" />" onclick="insertMenuList(); return false;"></span></td>
           <td width="2%"></td>

@@ -100,7 +100,7 @@ function fDeleteMenuList() {
 function linkPage(pageNo){
 //	document.menuManageForm.searchKeyword.value =
 	document.menuManageForm.pageIndex.value = pageNo;
-	document.menuManageForm.action = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
+	document.menuManageForm.action = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
    	document.menuManageForm.submit();
 }
 
@@ -109,7 +109,7 @@ function linkPage(pageNo){
  ******************************************************** */
 function selectMenuManageList() {
 	document.menuManageForm.pageIndex.value = 1;
-	document.menuManageForm.action = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
+	document.menuManageForm.action = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
 	document.menuManageForm.submit();
 }
 
@@ -145,7 +145,7 @@ function selectUpdtMenuManageDetail(menuNo) {
  * 최초조회 함수
  ******************************************************** */
 function fMenuManageSelect(){
-    document.menuManageForm.action = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
+    document.menuManageForm.action = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>";
     document.menuManageForm.submit();
 }
 <c:if test="${!empty resultMsg}">alert("${resultMsg}");</c:if>
@@ -160,7 +160,7 @@ function fMenuManageSelect(){
 <div class="board">
 	<h1><spring:message code="comSymMnuMpm.menuManage.pageTop.title"/></h1><!-- 메뉴관리리스트 -->
 
-	<form name="menuManageForm" action ="<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>" method="post">
+	<form name="menuManageForm" action ="<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>" method="post">
 	<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
 	<input name="checkedMenuNoForDel" type="hidden" />
 	<input name="req_menuNo" type="hidden"  />

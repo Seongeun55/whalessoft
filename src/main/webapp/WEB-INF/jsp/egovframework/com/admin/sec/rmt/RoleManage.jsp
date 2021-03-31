@@ -103,7 +103,7 @@ function fncManageChecked() {
 function fncSelectRoleList(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/rmt/AdminRoleList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/rmt/AdminRoleList.do'/>";
     document.listForm.submit();
 }
 
@@ -134,7 +134,7 @@ function fncAddRoleView() {
 function linkPage(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/rmt/AdminRoleList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/rmt/AdminRoleList.do'/>";
     document.listForm.submit();
 }
 
@@ -149,7 +149,7 @@ function press() {
 <body>
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
-<form:form name="listForm" action="${pageContext.request.contextPath}/sec/rmt/AdminRoleList.do" method="post">
+<form:form name="listForm" action="${pageContext.request.contextPath}/admin/sec/rmt/AdminRoleList.do" method="post">
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1><!-- 롤관리 목록 -->
 	<!-- 검색영역 -->
@@ -201,13 +201,13 @@ function press() {
 	<c:forEach var="role" items="${roleList}" varStatus="status">
 	<tr>
 		<td><input type="checkbox" name="delYn" class="check2" title="선택"><input type="hidden" name="checkId" value="<c:out value="${role.roleCode}"/>" /></td>
-		<td><a href="<c:url value='/sec/rmt/AdminRoleList.do'/>?roleCode=${role.roleCode}" onclick="javascript:fncSelectRole('<c:out value="${role.roleCode}"/>');return false;"><c:out value="${role.roleCode}"/></a></td>
+		<td><a href="<c:url value='/admin/sec/rmt/AdminRoleList.do'/>?roleCode=${role.roleCode}" onclick="javascript:fncSelectRole('<c:out value="${role.roleCode}"/>');return false;"><c:out value="${role.roleCode}"/></a></td>
 		<td class="left"><c:out value="${role.roleNm}"/></td>
 		<td><c:out value="${role.roleTyp}"/></td>
 		<td><c:out value="${role.roleSort}"/></td>
 		<td class="left"><c:out value="${role.roleDc}"/></td>
 		<td><c:out value="${fn:substring(role.roleCreatDe,0,10)}"/></td>
-		<td><a href="<c:url value='/sec/rmt/AdminRoleList.do'/>?roleCode=${role.roleCode}" onclick="javascript:fncSelectRole('<c:out value="${role.roleCode}"/>');return false;s"><img src="<c:url value='/images/egovframework/com/cmm/btn/btn_search.gif'/>" align="middle" alt="<spring:message code="title.detail" />"  title="<spring:message code="title.detail" />"></a></td>
+		<td><a href="<c:url value='/admin/sec/rmt/AdminRoleList.do'/>?roleCode=${role.roleCode}" onclick="javascript:fncSelectRole('<c:out value="${role.roleCode}"/>');return false;s"><img src="<c:url value='/images/egovframework/com/cmm/btn/btn_search.gif'/>" align="middle" alt="<spring:message code="title.detail" />"  title="<spring:message code="title.detail" />"></a></td>
 	</tr>
 	</c:forEach>
 	</tbody>

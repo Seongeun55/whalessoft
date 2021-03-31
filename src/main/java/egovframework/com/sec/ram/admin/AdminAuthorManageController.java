@@ -77,8 +77,8 @@ public class AdminAuthorManageController {
 	 * @return String
 	 * @exception Exception
 	 */
-	@IncludedInfo(name = "권한관리", listUrl = "/sec/ram/AdminAuthorList.do", order = 60, gid = 20)
-	@RequestMapping(value = "/sec/ram/AdminAuthorList.do")
+	@IncludedInfo(name = "권한관리", listUrl = "/admin/sec/ram/AdminAuthorList.do", order = 60, gid = 20)
+	@RequestMapping(value = "/admin/sec/ram/AdminAuthorList.do")
 	public String selectAuthorList(@ModelAttribute("authorManageVO") AuthorManageVO authorManageVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
@@ -155,7 +155,7 @@ public class AdminAuthorManageController {
 		} else {
 			AuthorManageService.insertAuthor(authorManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-			return "forward:/sec/ram/AdminAuthorList.do";
+			return "forward:/admin/sec/ram/AdminAuthorList.do";
 		}
 	}
 
@@ -178,7 +178,7 @@ public class AdminAuthorManageController {
 		} else {
 			AuthorManageService.updateAuthor(authorManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));
-			return "forward:/sec/ram/AdminAuthorList.do";
+			return "forward:/admin/sec/ram/AdminAuthorList.do";
 		}
 	}
 
@@ -195,7 +195,7 @@ public class AdminAuthorManageController {
 
 		AuthorManageService.deleteAuthor(authorManage);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/sec/ram/AdminAuthorList.do";
+		return "forward:/admin/sec/ram/AdminAuthorList.do";
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class AdminAuthorManageController {
 			AuthorManageService.deleteAuthor(authorManage);
 		}
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/sec/ram/AdminAuthorList.do";
+		return "forward:/admin/sec/ram/AdminAuthorList.do";
 	}
 
 	/**

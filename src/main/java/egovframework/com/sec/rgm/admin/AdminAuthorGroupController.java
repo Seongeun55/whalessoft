@@ -77,8 +77,8 @@ public class AdminAuthorGroupController {
 	 * @return String
 	 * @exception Exception
 	 */
-	@IncludedInfo(name = "권한그룹관리", listUrl = "/sec/rgm/AdminAuthorGroupList.do", order = 70, gid = 20)
-	@RequestMapping(value = "/sec/rgm/AdminAuthorGroupList.do")
+	@IncludedInfo(name = "권한그룹관리", listUrl = "/admin/sec/rgm/AdminAuthorGroupList.do", order = 70, gid = 20)
+	@RequestMapping(value = "/admin/sec/rgm/AdminAuthorGroupList.do")
 	public String selectAuthorGroupList(@ModelAttribute("authorGroupVO") AuthorGroupVO authorGroupVO,
 			@ModelAttribute("authorManageVO") AuthorManageVO authorManageVO, ModelMap model) throws Exception {
 
@@ -139,7 +139,7 @@ public class AdminAuthorGroupController {
 		}
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.insert"));
-		return "forward:/sec/rgm/AdminAuthorGroupList.do";
+		return "forward:/admin/sec/rgm/AdminAuthorGroupList.do";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class AdminAuthorGroupController {
 		}
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/sec/rgm/AdminAuthorGroupList.do";
+		return "forward:/admin/sec/rgm/AdminAuthorGroupList.do";
 	}
 
 }

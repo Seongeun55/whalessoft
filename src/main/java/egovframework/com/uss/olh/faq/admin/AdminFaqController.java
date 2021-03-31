@@ -83,7 +83,7 @@ public class AdminFaqController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "FAQ관리", order = 540, gid = 50)
-	@RequestMapping(value = "/uss/olh/faq/selectFaqList.do")
+	@RequestMapping(value = "/admin/uss/olh/faq/selectFaqList.do")
 	public String selectFaqList(@ModelAttribute("searchVO") FaqVO searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.SiteList */
@@ -150,7 +150,7 @@ public class AdminFaqController {
 	 * @param searchVO
 	 * @param faqVO
 	 * @param bindingResult
-	 * @return	"forward:/uss/olh/faq/selectFaqList.do"
+	 * @return	"forward:/admin/uss/olh/faq/selectFaqList.do"
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/olh/faq/insertFaq.do")
@@ -187,7 +187,7 @@ public class AdminFaqController {
 
 		FaqService.insertFaq(faqVO);
 
-		return "forward:/uss/olh/faq/selectFaqList.do";
+		return "forward:/admin/uss/olh/faq/selectFaqList.do";
 	}
 	
 	/**
@@ -220,7 +220,7 @@ public class AdminFaqController {
 	 * @param faqVO
 	 * @param bindingResult
 	 * @param model
-	 * @return	"forward:/uss/olh/faq/selectFaqList.do"
+	 * @return	"forward:/admin/uss/olh/faq/selectFaqList.do"
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/olh/faq/updateFaq.do")
@@ -260,7 +260,7 @@ public class AdminFaqController {
 
 		FaqService.updateFaq(faqVO);
 
-		return "forward:/uss/olh/faq/selectFaqList.do";
+		return "forward:/admin/uss/olh/faq/selectFaqList.do";
 
 	}
 
@@ -268,7 +268,7 @@ public class AdminFaqController {
 	 * FAQ를 삭제처리한다.
 	 * @param faqVO
 	 * @param searchVO
-	 * @return	"forward:/uss/olh/faq/selectFaqList.do"
+	 * @return	"forward:/admin/uss/olh/faq/selectFaqList.do"
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/olh/faq/deleteFaq.do")
@@ -286,7 +286,7 @@ public class AdminFaqController {
 		fileMngService.deleteAllFileInf(fvo);
 		// 첨부파일 삭제 End.............
 
-		return "forward:/uss/olh/faq/selectFaqList.do";
+		return "forward:/admin/uss/olh/faq/selectFaqList.do";
 	}
 	
 }

@@ -42,7 +42,7 @@
 
 	function fn_egov_select_tmplatInfo(pageNo){
 		document.frm.pageIndex.value = pageNo;
-		document.frm.action = "<c:url value='/cop/tpl/selectTemplateInfs.do'/>";
+		document.frm.action = "<c:url value='/admin/cop/tpl/selectTemplateInfs.do'/>";
 		document.frm.submit();
 	}
 

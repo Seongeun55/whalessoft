@@ -292,7 +292,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaAnswerList.do";
+		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
 
 	}
 	
@@ -324,6 +324,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaAnswerList.do";
+		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
 	}
 }

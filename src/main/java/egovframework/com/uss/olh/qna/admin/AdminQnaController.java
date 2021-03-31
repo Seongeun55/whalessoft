@@ -81,7 +81,7 @@ public class AdminQnaController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "Q&A답변관리", order = 551, gid = 50)
-	@RequestMapping(value = "/uss/olh/qna/selectQnaAnswerList.do")
+	@RequestMapping(value = "/admin/uss/olh/qna/selectQnaAnswerList.do")
 	public String selectQnaAnswerList(@ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.SiteList */
@@ -167,7 +167,7 @@ public class AdminQnaController {
 
 		QnaService.updateQnaAnswer(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaAnswerList.do";
+		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
 
 	}
 }

@@ -44,7 +44,7 @@ function fn_egov_init(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.StplatListForm.pageIndex.value = pageNo;
-	document.StplatListForm.action = "<c:url value='/uss/sam/stp/StplatListInqire.do'/>";
+	document.StplatListForm.action = "<c:url value='/admin/uss/sam/stp/StplatListInqire.do'/>";
    	document.StplatListForm.submit();
 }
 /*********************************************************
@@ -72,7 +72,7 @@ function fn_egov_inquire_stplatdetail(useStplatId) {
 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>
-	<form name="StplatListForm" action="<c:url value='/uss/sam/stp/StplatListInqire.do'/>" method="post" onSubmit="fn_egov_search_stplatcn(); return false;"> 
+	<form name="StplatListForm" action="<c:url value='/admin/uss/sam/stp/StplatListInqire.do'/>" method="post" onSubmit="fn_egov_search_stplatcn(); return false;"> 
 	<!-- 검색영역 -->
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">
 		<ul>

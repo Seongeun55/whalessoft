@@ -259,7 +259,7 @@ public class EgovEntrprsManageController {
 	 * @param checkedIdForDel 삭제대상아이디 정보
 	 * @param userSearchVO 조회조건정보
 	 * @param model 화면모델
-	 * @return "forward:/uss/umt/AdminUserManage.do"
+	 * @return "forward:/admin/uss/umt/AdminUserManage.do"
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/EgovEntrprsMberDelete.do")

@@ -156,7 +156,7 @@ function showModalDialogCallback(retVal) {
 }
 
 function fnListPage(){
-    document.mberManageVO.action = "<c:url value='/uss/umt/AdminMberManage.do'/>";
+    document.mberManageVO.action = "<c:url value='/admin/uss/umt/AdminMberManage.do'/>";
     document.mberManageVO.submit();
 }
 

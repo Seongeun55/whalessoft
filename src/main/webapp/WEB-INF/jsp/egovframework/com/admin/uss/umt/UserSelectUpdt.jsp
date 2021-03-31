@@ -39,7 +39,7 @@
 
 <script type="text/javaScript" language="javascript" defer="defer">
 function fnListPage(){
-    document.userManageVO.action = "<c:url value='/uss/umt/AdminUserManage.do'/>";
+    document.userManageVO.action = "<c:url value='/admin/uss/umt/AdminUserManage.do'/>";
     document.userManageVO.submit();
 }
 function fnDeleteUser(checkedIds) {
@@ -363,7 +363,7 @@ function fn_egov_dn_info_setting(dn) {
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.save" />" title="<spring:message code="button.save" /> <spring:message code="input.button" />" />
 		<button class="btn_s2" onClick="fnDeleteUser('<c:out value='${mberManageVO.userTy}'/>:<c:out value='${mberManageVO.uniqId}'/>'); return false;" title="<spring:message code="button.delete" /> <spring:message code="input.button" />"><spring:message code="button.delete" /></button>
-		<span class="btn_s"><a href="<c:url value='/uss/umt/AdminUserManage.do' />"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/umt/AdminUserManage.do' />"  title="<spring:message code="button.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 		<button class="btn_s2" onClick="fnPasswordMove(); return false;" title="<spring:message code="comUssUmt.userManageModifyBtn.passwordChange" /> <spring:message code="input.button" />"><spring:message code="comUssUmt.userManageModifyBtn.passwordChange" /></button>
 		<button class="btn_s2" onClick="fnLockIncorrect(); return false;" title="<spring:message code="comUssUmt.common.lockAtBtn" /> <spring:message code="input.button" />"><spring:message code="comUssUmt.common.lockAtBtn" /></button>
 		<button class="btn_s2" onClick="document.userManageVO.reset(); return false;" title="<spring:message code="button.reset" /> <spring:message code="input.button" />"><spring:message code="button.reset" /></button>

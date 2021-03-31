@@ -389,8 +389,6 @@ public class LoginController {
 		request.getSession().setAttribute("loginVO", user);
 		request.getSession().setAttribute("accessUser", user.getUserSe().concat(user.getId()));
 		
-		//System.out.println("확인 : " + request.getRemoteAddr());
-		
 		if(user.getUserSe().equals("USR")) {
 			return "redirect:/admin/index.do";
 		}else {

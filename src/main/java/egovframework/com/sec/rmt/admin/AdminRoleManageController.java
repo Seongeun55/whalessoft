@@ -94,8 +94,8 @@ public class AdminRoleManageController {
 	 * @return String
 	 * @exception Exception
 	 */
-	@IncludedInfo(name = "롤관리", listUrl = "/sec/rmt/AdminRoleList.do", order = 90, gid = 20)
-	@RequestMapping(value = "/sec/rmt/AdminRoleList.do")
+	@IncludedInfo(name = "롤관리", listUrl = "/admin/sec/rmt/AdminRoleList.do", order = 90, gid = 20)
+	@RequestMapping(value = "/admin/sec/rmt/AdminRoleList.do")
 	public String selectRoleList(@ModelAttribute("roleManageVO") RoleManageVO roleManageVO, ModelMap model) throws Exception {
 
 		/** paging */
@@ -209,7 +209,7 @@ public class AdminRoleManageController {
 			model.addAttribute("roleManage", RoleManageService.insertRole(roleManage, roleManageVO));
 
 			// return "egovframework/com/admin/sec/rmt/RoleUpdate";
-			return "forward:/sec/rmt/AdminRoleList.do";
+			return "forward:/admin/sec/rmt/AdminRoleList.do";
 		}
 	}
 
@@ -231,7 +231,7 @@ public class AdminRoleManageController {
 			RoleManageService.updateRole(roleManage);
 			model.addAttribute("message", egovMessageSource.getMessage("success.common.update"));
 
-			return "forward:/sec/rmt/AdminRoleList.do";
+			return "forward:/admin/sec/rmt/AdminRoleList.do";
 		}
 	}
 
@@ -246,7 +246,7 @@ public class AdminRoleManageController {
 	public String deleteRole(@ModelAttribute("roleManage") RoleManage roleManage, ModelMap model) throws Exception {
 		RoleManageService.deleteRole(roleManage);
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/sec/rmt/AdminRoleList.do";
+		return "forward:/admin/sec/rmt/AdminRoleList.do";
 
 	}
 
@@ -267,7 +267,7 @@ public class AdminRoleManageController {
 		}
 
 		model.addAttribute("message", egovMessageSource.getMessage("success.common.delete"));
-		return "forward:/sec/rmt/AdminRoleList.do";
+		return "forward:/admin/sec/rmt/AdminRoleList.do";
 	}
 
 }

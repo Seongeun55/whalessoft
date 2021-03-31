@@ -80,7 +80,7 @@ function checkFile(){
  * 목록조회  함수
  ******************************************************** */
 function selectList(){
-	location.href = "<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do' />";
+	location.href = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do' />";
 }
 
 <c:if test="${!empty resultMsg}">alert("${resultMsg}");</c:if>
@@ -113,7 +113,7 @@ function selectList(){
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input class="s_submit" type="submit" value="<spring:message code="button.bulkUpload" />" onclick="insertMenuManage(); return false;" /><!-- 일괄등록 -->
-		<span class="btn_s"><a href="<c:url value='/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
 	</div>
 	<div style="clear:both;"></div>
 

@@ -105,7 +105,7 @@ function fncManageChecked() {
 function fncSelectBannerList(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/uss/ion/bnr/selectBannerList.do'/>";
+    document.listForm.action = "<c:url value='/admin/uss/ion/bnr/selectBannerList.do'/>";
     document.listForm.submit();
 }
 
@@ -135,7 +135,7 @@ function fncBannerListDelete() {
 function linkPage(pageNo){
     document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/uss/ion/bnr/selectBannerList.do'/>";
+    document.listForm.action = "<c:url value='/admin/uss/ion/bnr/selectBannerList.do'/>";
     document.listForm.submit();
 }
 
@@ -156,7 +156,7 @@ function press() {
 <div class="board">
 	<h1><spring:message code="ussIonBnr.bannerList.bannerList"/></h1><!-- 배너 관리 -->
 	
-	<form name="listForm" action="<c:url value='/uss/ion/bnr/selectBannerList.do'/>" method="post">
+	<form name="listForm" action="<c:url value='/admin/uss/ion/bnr/selectBannerList.do'/>" method="post">
 
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg"/>"><!-- 이 레이아웃은 하단 정보를 대한 검색 정보로 구성되어 있습니다. -->
 		<ul>

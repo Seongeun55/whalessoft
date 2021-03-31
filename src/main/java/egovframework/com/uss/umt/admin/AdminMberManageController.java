@@ -83,7 +83,7 @@ public class AdminMberManageController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "일반회원관리", order = 470, gid = 50)
-	@RequestMapping(value = "/uss/umt/AdminMberManage.do")
+	@RequestMapping(value = "/admin/uss/umt/AdminMberManage.do")
 	public String selectMberList(@ModelAttribute("userSearchVO") UserDefaultVO userSearchVO, ModelMap model) throws Exception {
 
 		// 미인증 사용자에 대한 보안처리
@@ -168,7 +168,7 @@ public class AdminMberManageController {
 	 * @param mberManageVO 일반회원등록정보
 	 * @param bindingResult 입력값검증용 bindingResult
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminMberManage.do
+	 * @return forward:/admin/uss/umt/AdminMberManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminMberInsert.do")
@@ -225,7 +225,7 @@ public class AdminMberManageController {
 			//Exception 없이 진행시 등록 성공메시지
 			model.addAttribute("resultMsg", "success.common.insert");
 		}
-		return "forward:/uss/umt/AdminMberManage.do";
+		return "forward:/admin/uss/umt/AdminMberManage.do";
 	}
 
 	/**
@@ -302,7 +302,7 @@ public class AdminMberManageController {
 	 * @param mberManageVO 일반회원수정정보
 	 * @param bindingResult 입력값검증용 bindingResult
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminMberManage.do
+	 * @return forward:/admin/uss/umt/AdminMberManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminMberSelectUpdt.do")
@@ -317,7 +317,7 @@ public class AdminMberManageController {
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("resultMsg", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			return "forward:/uss/umt/AdminMberManage.do";
+			return "forward:/admin/uss/umt/AdminMberManage.do";
 		} else {
 			if ("".equals(mberManageVO.getGroupId())) {//KISA 보안약점 조치 (2018-10-29, 윤창원)
 				mberManageVO.setGroupId(null);
@@ -326,7 +326,7 @@ public class AdminMberManageController {
 
 			//Exception 없이 진행시 수정성공메시지
 			model.addAttribute("resultMsg", "success.common.update");
-			return "forward:/uss/umt/AdminMberManage.do";
+			return "forward:/admin/uss/umt/AdminMberManage.do";
 		}
 	}
 
@@ -335,7 +335,7 @@ public class AdminMberManageController {
 	 * @param checkedIdForDel 삭제대상 아이디 정보
 	 * @param userSearchVO 검색조건정보
 	 * @param model 화면모델
-	 * @return forward:/uss/umt/AdminMberManage.do
+	 * @return forward:/admin/uss/umt/AdminMberManage.do
 	 * @throws Exception
 	 */
 	@RequestMapping("/uss/umt/AdminMberDelete.do")
@@ -350,7 +350,7 @@ public class AdminMberManageController {
 		mberManageService.deleteMber(checkedIdForDel);
 		//Exception 없이 진행시 삭제성공메시지
 		model.addAttribute("resultMsg", "success.common.delete");
-		return "forward:/uss/umt/AdminMberManage.do";
+		return "forward:/admin/uss/umt/AdminMberManage.do";
 	}
 
 	// 탈퇴 처리 기능에 대한 예시

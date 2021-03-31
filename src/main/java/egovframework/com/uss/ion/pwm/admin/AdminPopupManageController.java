@@ -84,7 +84,7 @@ public class AdminPopupManageController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "팝업창관리", order = 720, gid = 50)
-	@RequestMapping(value = "/uss/ion/pwm/listPopup.do")
+	@RequestMapping(value = "/admin/uss/ion/pwm/listPopup.do")
 	public String egovPopupManageList(@RequestParam Map<?, ?> commandMap, PopupManageVO popupManageVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
@@ -132,7 +132,7 @@ public class AdminPopupManageController {
 
 		if (sCmd.equals("del")) {
 			PopupManageService.deletePopup(popupManageVO);
-			sLocationUrl = "forward:/uss/ion/pwm/listPopup.do";
+			sLocationUrl = "forward:/admin/uss/ion/pwm/listPopup.do";
 		} else {
 			//상세정보 불러오기
 			PopupManageVO popupManageVOs = PopupManageService.selectPopup(popupManageVO);
@@ -178,7 +178,7 @@ public class AdminPopupManageController {
 		model.addAttribute("ntceEnddeMM", getTimeMM());
 
 		if (sCmd.equals("save")) {
-			sLocationUrl = "forward:/uss/ion/pwm/listPopup.do";
+			sLocationUrl = "forward:/admin/uss/ion/pwm/listPopup.do";
 			//서버  validate 체크
 			beanValidator.validate(popupManageVO, bindingResult);
 			if (bindingResult.hasErrors()) {
@@ -245,7 +245,7 @@ public class AdminPopupManageController {
 			//저장
 			PopupManageService.insertPopup(popupManageVO);
 
-			sLocationUrl = "forward:/uss/ion/pwm/listPopup.do";
+			sLocationUrl = "forward:/admin/uss/ion/pwm/listPopup.do";
 		}
 
 		//팝업창시작일자(시)

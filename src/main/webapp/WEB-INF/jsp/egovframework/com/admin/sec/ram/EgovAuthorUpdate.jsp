@@ -38,7 +38,7 @@
 
 function fncSelectAuthorList() {
 	var varFrom = document.getElementById("authorManage");
-	varFrom.action = "<c:url value='/sec/ram/AdminAuthorList.do'/>";
+	varFrom.action = "<c:url value='/admin/sec/ram/AdminAuthorList.do'/>";
 	varFrom.submit();
 }
 
@@ -113,7 +113,7 @@ function fncAuthorDelete() {
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="button.update" /> <spring:message code="input.button" />" /><!-- 수정 -->
-		<span class="btn_s"><a href="<c:url value='/sec/ram/AdminAuthorList.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sec/ram/AdminAuthorList.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
 	</div><div style="clear:both;"></div>
 	
 </div>

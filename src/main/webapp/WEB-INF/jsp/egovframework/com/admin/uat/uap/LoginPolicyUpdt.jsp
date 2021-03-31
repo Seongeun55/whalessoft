@@ -41,7 +41,7 @@
 
 function fncSelectLoginPolicyList() {
     var varFrom = document.getElementById("loginPolicy");
-    varFrom.action = "<c:url value='/uat/uap/selectLoginPolicyList.do'/>";
+    varFrom.action = "<c:url value='/admin/uat/uap/selectLoginPolicyList.do'/>";
     varFrom.submit();
 }
 
@@ -170,7 +170,7 @@ function ipValidate() {
 	<div class="btn">
 		<input class="s_submit" type="submit" value='<spring:message code="button.save" />' onclick="fncLoginPolicyUpdate();return false;" /><!-- 저장 -->
 		<span class="btn_s"><a href="<c:url value='/uat/uap/removeLoginPolicy.do'/>?emplyrId=<c:out value='${loginPolicyVO.emplyrId}'/>" onclick="fncLoginPolicyDelete(); return false;"><spring:message code="button.delete" /></a></span><!-- 삭제 -->
-		<span class="btn_s"><a href="<c:url value='/uat/uap/selectLoginPolicyList.do'/>?pageIndex=<c:out value='${loginPolicyVO.pageIndex}'/>&amp;searchKeyword=<c:out value="${loginPolicyVO.searchKeyword}"/>&amp;searchCondition=1" onclick="fncSelectLoginPolicyList(); return false;"><spring:message code="button.list" /></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/uat/uap/selectLoginPolicyList.do'/>?pageIndex=<c:out value='${loginPolicyVO.pageIndex}'/>&amp;searchKeyword=<c:out value="${loginPolicyVO.searchKeyword}"/>&amp;searchCondition=1" onclick="fncSelectLoginPolicyList(); return false;"><spring:message code="button.list" /></a></span><!-- 목록 -->
 	</div>
 	<div style="clear:both;"></div>
 </div>

@@ -156,7 +156,7 @@ function showModalDialogCallback(retVal) {
 }
 
 function fnListPage(){
-    document.mberManageVO.action = "<c:url value='/uss/umt/AdminMberManage.do'/>";
+    document.mberManageVO.action = "<c:url value='/admin/uss/umt/AdminMberManage.do'/>";
     document.mberManageVO.submit();
 }
 
@@ -365,7 +365,7 @@ function fnInsert(form){
 
 	<!-- 하단 버튼 --> 
 	<div class="btn">
-		<span class="btn_s"><a href="<c:url value='/uss/umt/AdminMberManage.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/umt/AdminMberManage.do' />"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 		<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" />
 	</div><div style="clear:both;"></div>
 

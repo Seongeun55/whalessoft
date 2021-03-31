@@ -130,7 +130,7 @@ function fncManageChecked() {
 function fncSelectAuthorGroupList(pageNo){
     //document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/rgm/AdminAuthorGroupList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/rgm/AdminAuthorGroupList.do'/>";
     document.listForm.submit();
 }
 
@@ -158,7 +158,7 @@ function fncAuthorGroupDeleteList() {
 function linkPage(pageNo){
     //document.listForm.searchCondition.value = "1";
     document.listForm.pageIndex.value = pageNo;
-    document.listForm.action = "<c:url value='/sec/rgm/AdminAuthorGroupList.do'/>";
+    document.listForm.action = "<c:url value='/admin/sec/rgm/AdminAuthorGroupList.do'/>";
     document.listForm.submit();
 }
 

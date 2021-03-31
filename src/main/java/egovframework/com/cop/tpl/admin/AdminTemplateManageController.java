@@ -71,7 +71,7 @@ public class AdminTemplateManageController {
 	 * @throws Exception
 	 */
 	@IncludedInfo(name = "템플릿관리", order = 200, gid = 40)
-	@RequestMapping("/cop/tpl/selectTemplateInfs.do")
+	@RequestMapping("/admin/cop/tpl/selectTemplateInfs.do")
 	public String selectTemplateInfs(@ModelAttribute("searchVO") TemplateInfVO tmplatInfVO, ModelMap model) throws Exception {
 		tmplatInfVO.setPageUnit(propertyService.getInt("pageUnit"));
 		tmplatInfVO.setPageSize(propertyService.getInt("pageSize"));
@@ -158,7 +158,7 @@ public class AdminTemplateManageController {
 			tmplatService.insertTemplateInf(templateInf);
 		}
 
-		return "forward:/cop/tpl/selectTemplateInfs.do";
+		return "forward:/admin/cop/tpl/selectTemplateInfs.do";
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class AdminTemplateManageController {
 			tmplatService.updateTemplateInf(templateInf);
 		}
 
-		return "forward:/cop/tpl/selectTemplateInfs.do";
+		return "forward:/admin/cop/tpl/selectTemplateInfs.do";
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class AdminTemplateManageController {
 			tmplatService.deleteTemplateInf(tmplatInf);
 		}
 
-		return "forward:/cop/tpl/selectTemplateInfs.do";
+		return "forward:/admin/cop/tpl/selectTemplateInfs.do";
 	}
 
 	/**

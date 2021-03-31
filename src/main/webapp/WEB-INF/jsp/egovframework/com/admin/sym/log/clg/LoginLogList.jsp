@@ -81,7 +81,7 @@ function fn_egov_init_date(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.LoginLogForm.pageIndex.value = pageNo;
-	document.LoginLogForm.action = "<c:url value='/sym/log/clg/SelectLoginLogList.do'/>";
+	document.LoginLogForm.action = "<c:url value='/admin/sym/log/clg/SelectLoginLogList.do'/>";
    	document.LoginLogForm.submit();
 }
 /*********************************************************
@@ -100,7 +100,7 @@ function fn_egov_search_loginLog(){
 	 }
 
 	vFrom.pageIndex.value = "1";
-	vFrom.action = "<c:url value='/sym/log/clg/SelectLoginLogList.do'/>";
+	vFrom.action = "<c:url value='/admin/sym/log/clg/SelectLoginLogList.do'/>";
 	vFrom.submit();
 }
 /* ********************************************************
@@ -126,7 +126,7 @@ function fn_egov_detail_loginLog(logId) {
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="LoginLogForm" action="<c:url value='/sym/log/clg/SelectLoginLogList.do'/>" method="post" onSubmit="fn_egov_search_loginLog(); return false;"> 
+<form name="LoginLogForm" action="<c:url value='/admin/sym/log/clg/SelectLoginLogList.do'/>" method="post" onSubmit="fn_egov_search_loginLog(); return false;"> 
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>
 	<!-- 검색영역 -->
