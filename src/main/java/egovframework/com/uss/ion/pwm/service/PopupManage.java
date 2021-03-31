@@ -35,20 +35,20 @@ public class PopupManage extends ComDefaultVO implements Serializable {
 	 */
 	private String popupWlc;
 
-        /**
-         * 팝업창이 화면에 보여지는 세로 위치정보
-         */
-        private String popupHlc;
+    /**
+     * 팝업창이 화면에 보여지는 세로 위치정보
+     */
+    private String popupHlc;
 
 	/**
 	 * 팝업창의 높이
 	 */
 	private String popupHSize;
 
-        /**
-         * 팝업창의 넚이
-         */
-        private String popupWSize;
+    /**
+     * 팝업창의 넚이
+     */
+    private String popupWSize;
 
 	/**
 	 * 게시시작일
@@ -60,16 +60,16 @@ public class PopupManage extends ComDefaultVO implements Serializable {
 	private String ntceEndde;
 
 	/** 게시시작일(시간) */
-        private String ntceBgndeHH;
+    private String ntceBgndeHH;
 
-        /** 게시시작일(분) */
-        private String ntceBgndeMM;
+    /** 게시시작일(분) */
+    private String ntceBgndeMM;
 
-        /** 게시종료일(시간) */
-        private String ntceEnddeHH;
+    /** 게시종료일(시간) */
+    private String ntceEnddeHH;
 
-        /** 게시종료일(분) */
-        private String ntceEnddeMM;
+    /** 게시종료일(분) */
+    private String ntceEnddeMM;
 
 	/**
 	 * 그만보기 설정 여부

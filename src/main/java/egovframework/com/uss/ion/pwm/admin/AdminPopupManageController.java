@@ -299,7 +299,6 @@ public class AdminPopupManageController {
 	@RequestMapping(value = "/uss/ion/pwm/openPopupManage.do")
 	public String egovPopupManagePopupOpen(@RequestParam("fileUrl") String fileUrl, @RequestParam("stopVewAt") String stopVewAt, @RequestParam("popupId") String popupId,
 			ModelMap model) throws Exception {
-
 		model.addAttribute("stopVewAt", stopVewAt);
 		model.addAttribute("popupId", popupId);
 		
@@ -333,7 +332,7 @@ public class AdminPopupManageController {
 		List<?> reusltList = PopupManageService.selectPopupMainList(popupManageVO);
 		model.addAttribute("resultList", reusltList);
 
-		return "egovframework/com/admin/uss/ion/pwm/EgovPopupMainList";
+		return "egovframework/com/web/mainIndex";
 	}
 
 	/**

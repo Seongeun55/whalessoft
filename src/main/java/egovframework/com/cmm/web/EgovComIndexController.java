@@ -29,6 +29,7 @@ package egovframework.com.cmm.web;
  */
 
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -41,6 +42,8 @@ import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.uss.ion.bnr.service.BannerService;
 import egovframework.com.uss.ion.bnr.service.BannerVO;
+import egovframework.com.uss.ion.pwm.service.PopupManageService;
+import egovframework.com.uss.ion.pwm.service.PopupManageVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import org.slf4j.Logger;
@@ -61,6 +64,9 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	@Resource(name = "BannerService")
 	private BannerService BannerService;
 
+	/** PopupManageService */
+	@Resource(name = "PopupManageService")
+	private PopupManageService PopupManageService;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovComIndexController.class);
 
@@ -74,6 +80,11 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 	@RequestMapping("/index.do")
 	public String index(HttpServletRequest request, ModelMap model) throws Exception{
+		//[추가] 메인화면에 팝업창 -2021.03.31
+		PopupManageVO popupManageVO = new PopupManageVO();
+		List<?> resultList = PopupManageService.selectPopupMainList(popupManageVO);
+		model.addAttribute("resultList", resultList);
+		
 		//[추가] 메인 배너 컨텐츠 조회 시작 ---------------------------------2021.03.26
 		BannerVO bannerVO = new BannerVO();
 	
