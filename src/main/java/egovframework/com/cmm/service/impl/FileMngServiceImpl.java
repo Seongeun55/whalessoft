@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
- * @Class Name : EgovFileMngServiceImpl.java
+ * @Class Name : FileMngServiceImpl.java
  * @Description : 파일정보의 관리를 위한 구현 클래스
  * @Modification Information
  *
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service("FileMngService")
-public class EgovFileMngServiceImpl extends EgovAbstractServiceImpl implements FileMngService {
+public class FileMngServiceImpl extends EgovAbstractServiceImpl implements FileMngService {
 
 	@Resource(name = "FileManageDAO")
 	private FileManageDAO fileMngDAO;
