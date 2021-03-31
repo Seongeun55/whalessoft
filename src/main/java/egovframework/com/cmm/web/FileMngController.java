@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * </pre>
  */
 @Controller
-public class EgovFileMngController {
+public class FileMngController {
 
     @Resource(name = "FileMngService")
     private FileMngService fileService;
