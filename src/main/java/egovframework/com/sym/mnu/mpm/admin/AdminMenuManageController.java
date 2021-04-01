@@ -187,6 +187,7 @@ public class AdminMenuManageController {
     @RequestMapping(value="/sym/mnu/mpm/AdminMenuRegistInsert.do")
     public String insertMenuManage(@RequestParam Map<?, ?> commandMap, @ModelAttribute("menuManageVO") MenuManageVO menuManageVO, BindingResult bindingResult,
     		ModelMap model) throws Exception {
+    	
 		String sLocationUrl = null;
     	String resultMsg    = "";
         // 0. Spring Security 사용자권한 처리

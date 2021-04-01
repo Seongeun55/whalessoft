@@ -70,7 +70,8 @@
                 </a>
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
+                    	<a class="collapse-item" href="/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do" target="_content">메뉴 등록</a>
+                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
                         <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
                     </div>
                 </div>
@@ -99,7 +100,6 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/admin/cop/bbs/selectBBSMasterInfs.do" target="_content">게시판 관리</a>
-                        <a class="collapse-item" href="/admin/cop/bbs/selectBBSMaster.do" target="_content">게시물 관리</a>
                         <a class="collapse-item" href="/admin/cop/tpl/selectTemplateInfs.do" target="_content">템플릿 관리</a>
                     </div>
                 </div>

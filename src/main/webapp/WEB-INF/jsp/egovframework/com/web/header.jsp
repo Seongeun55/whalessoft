@@ -46,10 +46,10 @@
 							<a href="#">회사소개</a>
 							<div class="depth02">
 								<ul>
-									<li><a href="#">하위메뉴1</a></li>
-									<li><a href="#">하위메뉴2</a></li>
-									<li><a href="#">하위메뉴3</a></li>
-									<li><a href="#">하위메뉴4</a></li>
+									<li><a href="#">회사소개</a></li>
+									<li><a href="#">연혁</a></li>
+									<li><a href="#">조직도</a></li>
+									<li><a href="#">오시는길</a></li>
 								</ul>
 							</div>
 						</li>
@@ -57,48 +57,33 @@
 							<a href="#">사업안내</a>
 							<div class="depth02">
 								<ul>
-									<li><a href="#">하위메뉴1</a></li>
-									<li><a href="#">하위메뉴2</a></li>
-									<li><a href="#">하위메뉴3</a></li>
-									<li><a href="#">하위메뉴4</a></li>
-									<li><a href="#">하위메뉴5</a></li>
+									<li><a href="#">사업안내</a></li>							
 								</ul>
 							</div>
 						</li>
 						<li>
 							<a href="#">제품소개</a>
 							<div class="depth02">
-								<ul>
-									<li><a href="#">하위메뉴1</a></li>
-									<li><a href="#">하위메뉴2</a></li>
-									<li><a href="#">하위메뉴3</a></li>
-									<li><a href="#">하위메뉴4</a></li>
-									<li><a href="#">하위메뉴5</a></li>
-									<li><a href="#">하위메뉴6</a></li>
+								<ul>							
+									<li><a href="#">제품소개</a></li>
 								</ul>
 							</div>
-						</li>
-						<li>
-							<a href="#">채용정보</a>
-							<div class="depth02">
-								<ul>
-									<li><a href="#">하위메뉴1</a></li>
-									<li><a href="#">하위메뉴2</a></li>
-									<li><a href="#">하위메뉴3</a></li>
-									<li><a href="#">하위메뉴4</a></li>
-								</ul>
-							</div>
-						</li>
+						</li>				
 						<li>
 							<a href="#">고객센터</a>
 							<div class="depth02">
 								<ul>
 									<li><a href="#">공지사항</a></li>
-									<li><a href="#">Q&A</a></li>
+									<li><a href="#">갤러리</a></li>
+									<li><a href="/uss/olh/qna/selectQnaList.do" >Q&A</a></li>
 									<li><a href="#">FAQ</a></li>
 								</ul>
 							</div>
-						</li>
+						</li> 
+						<!--<c:forEach var="result" items="${list_headmenu}" varStatus="status">
+			   				<li class="gap"> l </li>
+			   				<li><a href="javascript:fn_main_headPageMove('<c:out value="${result.menuNo}"/>','<c:out value="${result.chkURL}"/>')"><c:out value="${result.menuNm}"/></a></li>
+						</c:forEach>-->
 					</ul>
 				</nav>
 			</div>

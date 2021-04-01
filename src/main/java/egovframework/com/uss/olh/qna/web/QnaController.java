@@ -136,13 +136,10 @@ public class QnaController {
 		QnaService.updateQnaInqireCo(qnaVO);
 		
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
-
-		// 작성 비밀번호를 얻는다.
-//		String writngPassword = vo.getWritngPassword();
-
-		// EgovFileScrty Util에 있는 암호화 모듈을 적용해서 복호화한다.
-//		vo.setWritngPassword(EgovFileScrty.decode(writngPassword));
 		
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		
+		model.addAttribute("user", user);
 		model.addAttribute("result", vo);
 
 		return "egovframework/com/admin/uss/olh/qna/QnaDetail";

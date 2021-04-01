@@ -25,7 +25,7 @@
 	<!-- [추가] 2021.03.31 -->
 	<security:http pattern="/index.do" security="none"/>	<!-- 기본 메인 -->
 	<security:http pattern="/cmm/fms/getImage.do" security="none"/>		<!-- 배너사진 -->
-	<security:http pattern="/uss/umt/StplatCnfirmMber.do" security="none"/>		<!-- 회원가임 -->
+	<security:http pattern="/uss/umt/StplatCnfirmMber.do" security="none"/>		<!-- 회원가입 -->
 	
 	<!-- logoutSuccessUrl을 /AdminContent.do 에서 /uat/uia/securityLogout.do 변경-->
     <egov-security:config id="securityConfig"

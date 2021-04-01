@@ -142,18 +142,18 @@ $(function(){
 	});
 	//mobile 메뉴
 	menuList.on('click', function(){
-		if ($win.width() > 769) return false;
-
-		var thisDept02 = $(this).find('.depth02'),
-			thisSiblings = $(this).siblings();
-
-		if ($(this).is('.on')){ 
-			$(this).removeClass('on');
-			thisDept02.stop().slideUp();
-		}else{
-			$(this).addClass('on');
-			thisDept02.stop().slideDown();
-			thisSiblings.removeClass('on').find('.depth02').slideUp();
+		if ($win.width() < 769){
+			var thisDept02 = $(this).find('.depth02'),
+				thisSiblings = $(this).siblings();
+	
+			if ($(this).is('.on')){ 
+				$(this).removeClass('on');
+				thisDept02.stop().slideUp();
+			}else{
+				$(this).addClass('on');
+				thisDept02.stop().slideDown();
+				thisSiblings.removeClass('on').find('.depth02').slideUp();
+			}
 		}
 	});
 	

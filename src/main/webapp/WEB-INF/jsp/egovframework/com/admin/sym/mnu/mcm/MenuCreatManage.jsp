@@ -37,7 +37,7 @@
  * 최초조회 함수
  ******************************************************** */
 function fMenuCreatManageSelect(){
-    document.menuCreatManageForm.action = "<c:url value='/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
+    document.menuCreatManageForm.action = "<c:url value='/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
     document.menuCreatManageForm.submit();
 }
 
@@ -46,7 +46,7 @@ function fMenuCreatManageSelect(){
  ******************************************************** */
 function linkPage(pageNo){
 	document.menuCreatManageForm.pageIndex.value = pageNo;
-	document.menuCreatManageForm.action = "<c:url value='/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
+	document.menuCreatManageForm.action = "<c:url value='/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
    	document.menuCreatManageForm.submit();
 }
 
@@ -55,7 +55,7 @@ function linkPage(pageNo){
  ******************************************************** */
 function selectMenuCreatManageList() {
 	document.menuCreatManageForm.pageIndex.value = 1;
-    document.menuCreatManageForm.action = "<c:url value='/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
+    document.menuCreatManageForm.action = "<c:url value='/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>";
     document.menuCreatManageForm.submit();
 }
 
@@ -77,7 +77,7 @@ function selectMenuCreat(vAuthorCode) {
 <div class="board">
 	<h1><spring:message code="comSymMnuMpm.menuCreatManage.pageTop.title" /></h1><!-- 메뉴생성관리 -->
 
-	<form name="menuCreatManageForm" action ="<c:url value='/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>" method="post">
+	<form name="menuCreatManageForm" action ="<c:url value='/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do'/>" method="post">
 	<input name="checkedMenuNoForDel" type="hidden" />
 	<input name="authorCode"          type="hidden" />
 	<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>

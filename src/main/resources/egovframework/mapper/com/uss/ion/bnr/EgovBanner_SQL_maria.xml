@@ -138,7 +138,8 @@
     <select id="selectBannerResult" resultMap="bannerImage">
         
             SELECT BANNER_IMAGE_FILE,
-                   LINK_URL
+                   LINK_URL,
+                   BANNER_DC
               FROM COMTNBANNER
              WHERE REFLCT_AT = 'Y'  
              ORDER BY SORT_ORDR 

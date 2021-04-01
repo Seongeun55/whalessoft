@@ -40,6 +40,8 @@ import egovframework.com.cmm.IncludedCompInfoVO;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.sym.mnu.mpm.service.MenuManageService;
+import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.uss.ion.bnr.service.BannerService;
 import egovframework.com.uss.ion.bnr.service.BannerVO;
 import egovframework.com.uss.ion.pwm.service.PopupManageService;
@@ -54,6 +56,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -63,6 +66,10 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	 
 	@Resource(name = "BannerService")
 	private BannerService BannerService;
+	
+	/** MenuManageService */
+	@Resource(name = "meunManageService")
+	private MenuManageService menuManageService;
 
 	/** PopupManageService */
 	@Resource(name = "PopupManageService")
@@ -79,11 +86,9 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	}
 
 	@RequestMapping("/index.do")
-	public String index(HttpServletRequest request, ModelMap model) throws Exception{
-		//[추가] 메인화면에 팝업창 -2021.03.31
-		PopupManageVO popupManageVO = new PopupManageVO();
-		List<?> resultList = PopupManageService.selectPopupMainList(popupManageVO);
-		model.addAttribute("resultList", resultList);
+	public String index(@ModelAttribute("menuManageVO") MenuManageVO menuManageVO, HttpServletRequest request, ModelMap model) throws Exception{
+		//[추가] 메인화면에 메뉴리스트 -2021.03.31
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		
 		//[추가] 메인 배너 컨텐츠 조회 시작 ---------------------------------2021.03.26
 		BannerVO bannerVO = new BannerVO();
@@ -97,7 +102,19 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		bannerVO.setRecordCountPerPage(paginationInfo_Banner.getRecordCountPerPage());
 		bannerVO.setBannerList(BannerService.selectBannerResult(bannerVO));
 		model.addAttribute("bannerList", bannerVO.getBannerList());
+		System.out.println("확인 : " + bannerVO.getBannerList().get(0).getBannerDc());
 		// 메인 배너 컨텐츠 조회 끝 ---------------------------------
+		
+		//[추가] 메인화면에 팝업창 -2021.03.31
+		PopupManageVO popupManageVO = new PopupManageVO();
+		List<?> resultList = PopupManageService.selectPopupMainList(popupManageVO);
+		model.addAttribute("resultList", resultList);
+		
+		//[추가] 메인화면에 메뉴리스트 -2021.03.31
+		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
+		model.addAttribute("list_headmenu", list_headmenu);
+		System.out.println("확인 : " + list_headmenu.size());
+		
 		return "egovframework/com/web/mainIndex";
 	}
 

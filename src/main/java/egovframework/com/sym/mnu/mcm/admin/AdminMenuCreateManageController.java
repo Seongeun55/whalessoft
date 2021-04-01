@@ -74,7 +74,7 @@ public class AdminMenuCreateManageController {
 	 * @exception Exception
 	 */
 	@IncludedInfo(name = "메뉴생성관리", order = 1100, gid = 60)
-	@RequestMapping(value = "/sym/mnu/mcm/AdminMenuCreatManageSelect.do")
+	@RequestMapping(value = "/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do")
 	public String selectMenuCreatManagList(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
 		String resultMsg = "";
 		// 0. Spring Security 사용자권한 처리

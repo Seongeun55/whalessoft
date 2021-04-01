@@ -25,9 +25,8 @@
 			 WHERE AUTHOR_CODE like CONCAT('%', #{searchKeyword}, '%')
 		
 	</select>
-
+	
 	<select id="selectMenuCreatList_D" parameterType="egovframework.com.sym.mnu.mcm.service.MenuCreatVO" resultType="egovMap">
-		
 			SELECT
 				  A.MENU_NO AS menuNo
 				, A.MENU_ORDR AS menuOrdr
@@ -40,7 +39,6 @@
 			FROM COMTNMENUINFO A
 			WHERE A.MENU_NO > 0
 			ORDER BY A.MENU_ORDR
-		 
 	</select> 
 
 	<insert id="insertMenuCreat_S">

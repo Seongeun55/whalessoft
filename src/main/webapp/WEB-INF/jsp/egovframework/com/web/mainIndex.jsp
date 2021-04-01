@@ -13,6 +13,10 @@
 					<li>
                   		<div class="roll_content">							
 				        	<img src='<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value="${banner.bannerImageFile}"/>&fileSn=0' alt="배너이미지"/>
+				        	<div class="txt">
+								<h2><strong><c:out value='${banner.bannerDc}'/></strong></h2>
+								<!-- <a href="http://theme001.whalessoft.com/sub/intro-01.php" class="view_btn box">DETAIL VIEW</a> -->
+							</div>
                     	</div>
                 	</li>
 				</c:forEach>	
@@ -37,7 +41,7 @@
 			</div>
 			<div class="admin">
 				<div class="sub title">
-					<h3>관리자가 등록할 수 있습니다.</h3>
+					<h3>우리 회사를 소개합니다.</h3>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
 				</div>
 				<ul class="admin_slick board_list">

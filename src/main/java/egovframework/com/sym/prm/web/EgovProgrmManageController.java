@@ -729,10 +729,7 @@ public class EgovProgrmManageController {
      * @exception Exception
      */
     @RequestMapping(value="/sym/prm/AdminProgramListSearch.do")
-    public String selectProgrmListSearch(
-    		@ModelAttribute("searchVO") ComDefaultVO searchVO,
-    		ModelMap model)
-            throws Exception {
+    public String selectProgrmListSearch(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
         // 0. Spring Security 사용자권한 처리
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
