@@ -269,7 +269,6 @@ public class AdminPopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/ajaxPopupManageInfo.do")
 	public void PopupManageInfoAjax(@RequestParam Map<?, ?> commandMap, HttpServletResponse response, PopupManageVO popupManageVO) throws Exception {
-
 		response.setHeader("Content-Type", "text/html;charset=utf-8");
 		PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8"));
 
@@ -277,7 +276,7 @@ public class AdminPopupManageController {
 		LOGGER.debug("popupManageVO : {}", popupManageVO);
 
 		PopupManageVO popupManageVOs = PopupManageService.selectPopup(popupManageVO);
-
+		
 		String sPrint = "";
 		sPrint = popupManageVOs.getFileUrl();
 		sPrint = sPrint + "||" + popupManageVOs.getPopupWSize();
@@ -285,6 +284,7 @@ public class AdminPopupManageController {
 		sPrint = sPrint + "||" + popupManageVOs.getPopupHlc();
 		sPrint = sPrint + "||" + popupManageVOs.getPopupWlc();
 		sPrint = sPrint + "||" + popupManageVOs.getStopVewAt();
+
 		out.print(sPrint);
 		out.flush();
 	}
@@ -301,7 +301,6 @@ public class AdminPopupManageController {
 			ModelMap model) throws Exception {
 		model.addAttribute("stopVewAt", stopVewAt);
 		model.addAttribute("popupId", popupId);
-		
 		fileUrl = EgovWebUtil.filePathBlackList(fileUrl);
 		
 		List<?> popupWhiteList = PopupManageService.selectPopupWhiteList();

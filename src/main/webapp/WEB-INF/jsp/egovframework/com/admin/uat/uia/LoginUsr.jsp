@@ -235,7 +235,8 @@ function fnShowLogin(stat) {
 					<input type="button" class="btn_login" value="<spring:message code="comUatUia.loginForm.login"/>" onclick="actionLogin()"> <!-- 로그인  -->
 				</li>
 				<li>
-					<ul class="btn_idpw" >						
+					<ul class="btn_idpw" >		
+						<li><a href="#" onclick="goRegiUsr(); return false;"><spring:message code="comUatUia.loginForm.regist"/></a></li> <!-- 회원가입  -->				
 						<li><a href="#" onclick="goFindId(); return false;"><spring:message code="comUatUia.loginForm.idPwSearch"/></a></li> <!-- 아이디/비밀번호 찾기 -->
 					</ul>
 				</li>

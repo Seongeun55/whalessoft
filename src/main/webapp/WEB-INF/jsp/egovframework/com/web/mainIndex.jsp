@@ -397,37 +397,43 @@
 		
 <script>
 	window.onload = function fn_init_PopupManage(){
+		var ajaxUrl = "<c:url value='/uss/ion/pwm/ajaxPopupManageInfo.do' />";
 		<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
 		<c:if test="${resultInfo.ntceAt eq 'Y'}">
-			fn_popupOpen_PopupManage(
-				'${resultInfo.popupId}',
-				'${resultInfo.fileUrl}',
-				'${resultInfo.popupWidthSize}',
-				'${resultInfo.popupVrticlSize}',
-				'${resultInfo.popupVrticlLc}',
-				'${resultInfo.popupWidthLc}',
-				'${resultInfo.stopvewSetupAt}'
-			);
+
+			var param = {
+					popupId: '${resultInfo.popupId}'
+			};
+
+			$.ajax({
+				url: ajaxUrl
+				,type: 'post'
+				,data: param
+				,dataType: 'text'
+				,success: function(data) {
+			    	var returnValueArr = data.split("||");
+					fn_popupOpen_PopupManage('${resultInfo.popupId}',
+		       	    	returnValueArr[0],
+		       	    	returnValueArr[1],
+		       	    	returnValueArr[2],
+		       	    	returnValueArr[3],
+		       	    	returnValueArr[4],
+		       	    	returnValueArr[5]);
+				} ,
+				error: function(err) {
+					alert("ERROR : "+err.statusText);
+				}
+			});		
 		</c:if>
 		</c:forEach>
 	}
-	
-	function fnGetCookie(name) {
-		var prefix = name + "=";
-		var cookieStartIndex = document.cookie.indexOf(prefix);
-		if (cookieStartIndex == -1) return null;
-		var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length);
-		if (cookieEndIndex == -1) cookieEndIndex = document.cookie.length;
-		return unescape(document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex));
-	}
 
-	
 	function fn_popupOpen_PopupManage(popupId,fileUrl,width,height,top,left,stopVewAt){
 		var url = "<c:url value='/uss/ion/pwm/openPopupManage.do' />?";
 		url = url + "fileUrl=" + fileUrl;
 		url = url + "&stopVewAt=" + stopVewAt;
 		url = url + "&popupId=" + popupId;
-
+		
 		var name = popupId;
 		var openWindows = window.open(url,name,"width="+width+",height="+height+",top="+top+",left="+left+",toolbar=no,status=no,location=no,scrollbars=yes,menubar=no,resizable=yes");	
 		if (window.focus) {
