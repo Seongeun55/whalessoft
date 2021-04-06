@@ -110,7 +110,7 @@ function searchFileNm() {
  * 목록조회  함수
  ******************************************************** */
 function selectList(){
-	location.href = "<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do' />";
+	location.href = "<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do' />";
 }
 /* ********************************************************
  * 파일명 엔터key 목록조회  함수
@@ -209,7 +209,7 @@ function press() {
 		<tr>
 			<th><spring:message code="comSymMnuMpm.menuRegist.progrmFileNm"/> <span class="pilsu">*</span></th><!--  -->
 			<td class="left" colspan="3">
-			    <form:input path="progrmFileNm" maxlength="60" onkeypress="press();" title="파일명" readonly="true" class="readOnlyClass" cssStyle="width:350px" /><!-- 파일명 -->
+			    <form:input path="progrmFileNm" maxlength="60" onkeypress="press();" title="파일명" cssStyle="width:350px" /><!-- 파일명 -->
 			    <form:errors path="progrmFileNm" />
 		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/AdminProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>">
 					<img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />" alt='' />(<spring:message code="comSymMnuMpm.menuRegist.programFileNameSearch"/>)</a><!-- 새창으로 --><!-- 프로그램파일명 검색 -->
@@ -239,7 +239,7 @@ function press() {
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input class="s_submit" type="submit" value='<spring:message code="button.create" />' onclick="insertMenuManage(document.forms[0]); return false;" /><!-- 등록 -->
-		<span class="btn_s"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuManageSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="selectList(); return false;"><spring:message code="button.list"/></a></span><!-- 목록 -->
 	</div>
 	<div style="clear:both;"></div>
 </div>

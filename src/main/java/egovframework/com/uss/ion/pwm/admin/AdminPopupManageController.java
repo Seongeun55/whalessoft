@@ -331,7 +331,7 @@ public class AdminPopupManageController {
 		List<?> reusltList = PopupManageService.selectPopupMainList(popupManageVO);
 		model.addAttribute("resultList", reusltList);
 
-		return "egovframework/com/web/mainIndex";
+		return "egovframework/com/web/main";
 	}
 
 	/**

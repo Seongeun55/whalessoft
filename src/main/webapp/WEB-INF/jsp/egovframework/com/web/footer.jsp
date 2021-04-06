@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <footer>
-			<a href="#" class="to_top"><img src="/images/web/whales_images/ico/ico_click_top01.png" alt="상단으로 이동"></a>
+			<a href="#" class="to_top"><img src="/images/ico/ico_click_top01.png" alt="상단으로 이동"></a>
 			<div class="wrapper">
 				<h1 class="logo"><a href="#">웨일즈소프트</a></h1>
 				<div class="content">
@@ -19,10 +19,10 @@
 				</div>
 				<div class="sns">
 					<ul>
-						<li><a href="#"><img src="/images/web/whales_images/ico/ico_sns01.png" alt="웨일즈소프트 네이버 바로가기"></a></li>	
-						<li><a href="#"><img src="/images/web/whales_images/ico/ico_sns02.png" alt="웨일즈소프트 페이스북 바로가기"></a></li>	
-						<li><a href="#"><img src="/images/web/whales_images/ico/ico_sns03.png" alt="웨일즈소프트 인스타그램 바로가기"></a></li>	
-						<li><a href="#"><img src="/images/web/whales_images/ico/ico_sns04.png" alt="웨일즈소프트 카카오톡 바로가기"></a></li>	
+						<li><a href="#"><img src="/images/ico/ico_sns01.png" alt="웨일즈소프트 네이버 바로가기"></a></li>	
+						<li><a href="#"><img src="/images/ico/ico_sns02.png" alt="웨일즈소프트 페이스북 바로가기"></a></li>	
+						<li><a href="#"><img src="/images/ico/ico_sns03.png" alt="웨일즈소프트 인스타그램 바로가기"></a></li>	
+						<li><a href="#"><img src="/images/ico/ico_sns04.png" alt="웨일즈소프트 카카오톡 바로가기"></a></li>	
 					</ul>
 				</div>
 			</div>

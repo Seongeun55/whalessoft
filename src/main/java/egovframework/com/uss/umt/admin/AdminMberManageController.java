@@ -89,7 +89,7 @@ public class AdminMberManageController {
 		// 미인증 사용자에 대한 보안처리
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
-			return "forward:/index.do";
+			return "forward:/main.do";
 		}
 
 		/** EgovPropertyService */
@@ -436,7 +436,7 @@ public class AdminMberManageController {
 
 		AuthorGroupService.insertAuthorGroup(authorGroup);
 		
-		return "forward:/index.do";
+		return "forward:/main.do";
 	}
 
 	/**

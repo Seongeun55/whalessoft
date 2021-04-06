@@ -96,7 +96,7 @@ function fDeleteProgrmManageList() {
 function linkPage(pageNo){
 //	document.menuManageForm.searchKeyword.value =
 	document.progrmManageForm.pageIndex.value = pageNo;
-	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListManageSelect.do'/>";
+	document.progrmManageForm.action = "<c:url value='/admin/sym/prm/ProgramListManageSelect.do'/>";
    	document.progrmManageForm.submit();
 }
 
@@ -105,14 +105,14 @@ function linkPage(pageNo){
  ******************************************************** */
 function selectProgramListManage() {
 	document.progrmManageForm.pageIndex.value = 1;
-	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListManageSelect.do'/>";
+	document.progrmManageForm.action = "<c:url value='/admin/sym/prm/ProgramListManageSelect.do'/>";
 	document.progrmManageForm.submit();
 }
 /* ********************************************************
  * 입력 화면 호출 함수
  ******************************************************** */
 function insertProgramListManage() {
-   	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListRegist.do'/>";
+   	document.progrmManageForm.action = "<c:url value='/admin/sym/prm/ProgramListRegist.do'/>";
    	document.progrmManageForm.submit();
 }
 /* ********************************************************
@@ -120,7 +120,7 @@ function insertProgramListManage() {
  ******************************************************** */
 function selectUpdtProgramListDetail(progrmFileNm) {
 	document.progrmManageForm.tmp_progrmNm.value = progrmFileNm;
-   	document.progrmManageForm.action = "<c:url value='/sym/prm/EgovProgramListDetailSelect.do'/>";
+   	document.progrmManageForm.action = "<c:url value='/admin/sym/prm/ProgramListDetailSelect.do'/>";
    	document.progrmManageForm.submit();
 }
 /* ********************************************************
@@ -140,7 +140,7 @@ function selectUpdtProgramListDetail(progrmFileNm) {
 
 <div class="board">
 	<h1><spring:message code="comSymPrm.programListManage.pageTop.title" /></h1><!-- 프로그램목록관리 -->
-	<form name="progrmManageForm" action ="<c:url value='/sym/prm/EgovProgramListManageSelect.do' />" method="post">
+	<form name="progrmManageForm" action ="<c:url value='/admin/sym/prm/ProgramListManageSelect.do' />" method="post">
 	<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
 	<input name="checkedProgrmFileNmForDel" type="hidden" />
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">
@@ -150,7 +150,7 @@ function selectUpdtProgramListDetail(progrmFileNm) {
 				<input id="F1" class="s_input2 vat" name="searchKeyword" type="text" value="<c:out value='${searchVO.searchKeyword}'/>" size="60" maxlength="60" onkeypress="press();" title="<spring:message code="title.searchCondition" />" /><!-- 검색조건 -->
 				
 				<input class="s_btn" type="submit" value='<spring:message code="button.inquire" />' title='<spring:message code="button.inquire" />' onclick="selectProgramListManage(); return false;" /><!-- 조회 -->
-				<span class="btn_b"><a href="<c:url value='/sym/prm/EgovProgramListRegist.do'/>" onclick="insertProgramListManage(); return false;" title='<spring:message code="button.create" />'><spring:message code="button.create" /></a></span><!-- 등록 -->
+				<span class="btn_b"><a href="<c:url value='/admin/sym/prm/ProgramListRegist.do'/>" onclick="insertProgramListManage(); return false;" title='<spring:message code="button.create" />'><spring:message code="button.create" /></a></span><!-- 등록 -->
 				<span class="btn_b"><a href="#LINK" onclick="fDeleteProgrmManageList(); return false;" title='<spring:message code="button.delete" />'><spring:message code="button.delete" /></a></span><!-- 삭제 -->
 			</li>
 		</ul>
@@ -191,7 +191,7 @@ function selectUpdtProgramListDetail(progrmFileNm) {
 			       <input name="checkProgrmFileNm" type="hidden" value="<c:out value='${result.progrmFileNm}'/>"/>
 			    </td>
 			    <td>
-		            <span class="link"><a href="<c:url value='/sym/prm/EgovProgramListDetailSelect.do'/>?tmp_progrmNm=<c:out value="${result.progrmFileNm}"/>"  onclick="selectUpdtProgramListDetail('<c:out value="${result.progrmFileNm}"/>'); return false;">
+		            <span class="link"><a href="<c:url value='/admin/sym/prm/ProgramListDetailSelect.do'/>?tmp_progrmNm=<c:out value="${result.progrmFileNm}"/>"  onclick="selectUpdtProgramListDetail('<c:out value="${result.progrmFileNm}"/>'); return false;">
 		
 		            <c:if test="${fn:length(result.progrmFileNm)> 22}">
 				    	<c:out value="${fn:substring(result.progrmFileNm,0, 22)}"/>...

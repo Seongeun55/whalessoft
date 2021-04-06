@@ -39,7 +39,7 @@
 			and a.role_ty = 'url'
 			order by a.role_sort"
 	    requestMatcherType="regex"
-		excludeList="/uat/uia/**, /index.do, /AdminLeft.do, /EgovContent.do, /AdminTop.do, /AdminBottom.do"
+		excludeList="/uat/uia/**, /main.do, /cmm/fms/getImage.do"
 	/>
 	<!--
 		* 예외 목록 URL

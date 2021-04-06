@@ -48,7 +48,7 @@ function updateProgramListManage(form) {
 		if(!validateProgrmManageVO(form)){
 			return;
 		}else{
-            form.action="<c:url value='/sym/prm/EgovProgramListDetailSelectUpdt.do' />";
+            form.action="<c:url value='/admin/sym/prm/ProgramListDetailSelectUpdt.do' />";
 			form.submit();
 		}
 	}
@@ -70,7 +70,7 @@ function deleteProgramListManage(form) {
 function selectList(){
 	
     var varForm = document.getElementById("progrmManageVO");
-    varForm.action = "<c:url value='/sym/prm/EgovProgramListManageSelect.do' />";
+    varForm.action = "<c:url value='/admin/sym/prm/ProgramListManageSelect.do' />";
     varForm.submit();
 
 }

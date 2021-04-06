@@ -392,14 +392,14 @@ public class LoginController {
 		if(user.getUserSe().equals("USR")) {
 			return "redirect:/admin/index.do";
 		}else {
-			return "redirect:/index.do";
+			return "redirect:/main.do";
 		}	
 	}
 	
 	@RequestMapping(value = "/uat/uia/securityLogout.do")
 	public String securityLogout(HttpServletRequest request, ModelMap model) throws Exception {
 		request.getSession().setAttribute("loginVO", null);
-		return "redirect:/index.do";
+		return "redirect:/main.do";
 	}
 
 }

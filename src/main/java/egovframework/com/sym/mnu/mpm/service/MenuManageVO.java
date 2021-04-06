@@ -19,54 +19,36 @@ package egovframework.com.sym.mnu.mpm.service;
 
 public class MenuManageVO{
 
-   /** 메뉴정보 */
-   /** 메뉴번호 */
-   private   int      menuNo;
-   /** 메뉴순서 */
-   private   int      menuOrdr;
-   /** 메뉴명 */
-   private   String   menuNm;
-   /** 상위메뉴번호 */
-   private   int      upperMenuId;
-   /** 메뉴설명 */
-   private   String   menuDc;
-   /** 관련이미지경로 */
-   private   String   relateImagePath;
-   /** 관련이미지명 */
-   private   String   relateImageNm;
-   /** 프로그램파일명 */
-   private   String   progrmFileNm;
+   /* 메뉴정보 */
+   private   int      menuNo;	   // 메뉴번호
+   private   int      menuOrdr;   // 메뉴순서
+   private   String   menuNm;   // 메뉴명
+   private   int      upperMenuId;   // 상위메뉴번호
+   private   String   menuDc;   // 메뉴설명
+   private   String   relateImagePath;   // 관련이미지경로
+   private   String   relateImageNm;   // 관련이미지명
+   private   String   progrmFileNm;   // 프로그램파일명
 
-   /** 사이트맵 */
-   /** 생성자ID **/
-   private   String   creatPersonId;
+   /* 사이트맵 */
+   private   String   creatPersonId;   // 생성자ID 
 
-   /** 권한정보설정 */
-   /** 권한코드 */
-   private   String   authorCode;
+   /* 권한정보설정 */
+   private   String   authorCode;   // 권한코드
 
-   /** 기타VO변수 */
+   /* 기타VO변수 */
    private   String   tempValue;
    private   int      tempInt; 
    
 
-   /** Login 메뉴관련 VO변수 */
-   /** tmp_Id */
-   private   String   tmpId;
-   /** tmp_Password */
-   private   String   tmpPassword;
-   /** tmp_Name */
-   private   String   tmpName;
-   /** tmp_UserSe */
-   private   String   tmpUserSe;
-   /** tmp_Email */
-   private   String   tmpEmail;
-   /** tmp_OrgnztId */
-   private   String   tmpOrgnztId;
-   /** tmp_UniqId */
-   private   String   tmpUniqId;
-   /** tmp_Cmd */
-   private   String   tmpCmd;
+   /* Login 메뉴관련 VO변수 */
+   private   String   tmpId;   // tmp_Id
+   private   String   tmpPassword;   // tmp_Password
+   private   String   tmpName;   // tmp_Name
+   private   String   tmpUserSe;   // tmp_UserSe
+   private   String   tmpEmail;   // tmp_Email
+   private   String   tmpOrgnztId;   // tmp_OrgnztId
+   private   String   tmpUniqId;   // tmp_UniqId
+   private   String   tmpCmd;   // tmp_Cmd
    
 	/**
 	 * menuNo attribute를 리턴한다.

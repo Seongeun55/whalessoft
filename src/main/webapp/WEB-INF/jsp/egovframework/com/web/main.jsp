@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@include file="header.jsp" %>
-		<div class="menu_bg"></div>
 		<div class="container">
 			<div class="visual_wrap">
 				<ul class="visual wideslick">
@@ -14,8 +13,7 @@
                   		<div class="roll_content">							
 				        	<img src='<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value="${banner.bannerImageFile}"/>&fileSn=0' alt="배너이미지"/>
 				        	<div class="txt">
-								<h2><strong><c:out value='${banner.bannerDc}'/></strong></h2>
-								<!-- <a href="http://theme001.whalessoft.com/sub/intro-01.php" class="view_btn box">DETAIL VIEW</a> -->
+								<h2><strong><c:out value='${banner.bannerDc}'/></strong></h2>								
 							</div>
                     	</div>
                 	</li>
@@ -30,8 +28,8 @@
 			</div>
 			<div class="info wrapper">
 				<ul class="company_img autoslick">
-					<li><img src="/images/web/whales_images/pic/pic_info01.png" alt="회사 전경"></li>
-					<li><img src="/images/web/whales_images/pic/pic_info02.png" alt="회사 전경"></li>
+					<li><img src="/images/pic/pic_info01.png" alt="회사 전경"></li>
+					<li><img src="/images/pic/pic_info02.png" alt="회사 전경"></li>
 				</ul>
 				<div class="side_con">
 					<h3>우리 회사를 소개합니다.</h3>
@@ -47,7 +45,7 @@
 				<ul class="admin_slick board_list">
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin01.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin01.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">제목은 이렇습니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -57,7 +55,7 @@
 					</li>			
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin02.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin02.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 생각합니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -67,7 +65,7 @@
 					</li>	
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin03.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin03.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">신뢰를 쌓아갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -77,7 +75,7 @@
 					</li>	
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin01.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin01.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">제목은 이렇습니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -87,7 +85,7 @@
 					</li>			
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin02.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin02.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 생각합니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -97,7 +95,7 @@
 					</li>	
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_admin03.png" alt=""></p>
+							<p class="thumb_img"><img src="/images/pic/pic_admin03.png" alt=""></p>
 							<div class="txt_box">
 								<strong class="tit">신뢰를 쌓아갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -133,7 +131,7 @@
 							<ul class="board_list">
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product01.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product01.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -143,7 +141,7 @@
 								</li>	
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product02.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product02.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -153,7 +151,7 @@
 								</li>
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product03.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product03.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -163,7 +161,7 @@
 								</li>
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product04.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product04.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -173,7 +171,7 @@
 								</li>	
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product01.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product01.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -183,7 +181,7 @@
 								</li>	
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product02.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product02.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -193,7 +191,7 @@
 								</li>
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product03.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product03.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -203,7 +201,7 @@
 								</li>
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product04.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product04.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -217,7 +215,7 @@
 							<ul class="board_list">
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product01.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product01.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -231,7 +229,7 @@
 							<ul class="board_list">
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product01.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product01.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -241,7 +239,7 @@
 								</li>	
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product02.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product02.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -255,7 +253,7 @@
 							<ul class="board_list">
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product01.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product01.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -265,7 +263,7 @@
 								</li>	
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product02.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product02.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -275,7 +273,7 @@
 								</li>
 								<li>
 									<a href="#">
-										<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_product03.png" alt=""></p>
+										<p class="thumb_img"><img src="/images/pic/pic_product03.png" alt=""></p>
 										<div class="txt_box">
 											<strong class="tit">제목은 이렇습니다.</strong>
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -324,7 +322,7 @@
 				<ul class="board_list">
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_vision01.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
+							<p class="thumb_img"><img src="/images/pic/pic_vision01.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -334,7 +332,7 @@
 					</li>	
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_vision02.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
+							<p class="thumb_img"><img src="/images/pic/pic_vision02.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -344,7 +342,7 @@
 					</li>
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_vision03.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
+							<p class="thumb_img"><img src="/images/pic/pic_vision03.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -354,7 +352,7 @@
 					</li>	
 					<li>
 						<a href="#">
-							<p class="thumb_img"><img src="/images/web/whales_images/pic/pic_vision04.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
+							<p class="thumb_img"><img src="/images/pic/pic_vision04.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
@@ -374,7 +372,7 @@
 						<ul>
 							<li>
 								<a href="#">
-									<p class="thumbimg"><img src="/images/web/whales_images/pic/pic_notice01.png" alt=""></p>
+									<p class="thumbimg"><img src="/images/pic/pic_notice01.png" alt=""></p>
 									<div class="txtbox">
 										<strong class="tit">우리는 더 앞선 발걸음을 우리는 더 앞선 발걸음을</strong>
 										<p class="sub">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
@@ -384,7 +382,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<p class="thumbimg"><img src="/images/web/whales_images/pic/pic_notice02.png" alt=""></p>
+									<p class="thumbimg"><img src="/images/pic/pic_notice02.png" alt=""></p>
 									<div class="txtbox">
 										<strong class="tit">우리는 더 앞선 발걸음을 우리는 더 앞선 발걸음을</strong>
 										<p class="sub">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>

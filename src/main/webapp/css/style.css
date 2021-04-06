@@ -1,11 +1,5 @@
 @charset "utf-8";
 
-@import url('font.css');
-@import url('common.css');
-@import url('slick.css');
-
-#wrap {overflow-x:hidden;}
-.wrapper {width:1200px; margin:0 auto;}
 
 .admin_wrap{display:block; width:100%; height:50px; line-height:50px; background:rgba(0,0,0,0.6);}
 .admin_wrap ul{display:block; width:1200px; margin:0 auto;}
@@ -13,39 +7,12 @@
 .admin_wrap ul li{float:right; padding:0 10px;}
 .admin_wrap ul li a{font-size:14px;}
 
-header {position:absolute; z-index:10; top:0; width:100%; left:50%; transform:translateX(-50%); text-align:center;}
-header > div:after {content:''; clear:both; display:block;}
-header ul:after {content:''; clear:both; display:block;}
-header a {display:block; width:100%; height:100%; color:#fff;}
-header ul li a {font-weight:300;}
 
-header h1 {float:left;}
-header h1 a {font-size:22px; font-weight:600; padding:35px 0;}
-
-header nav:after {content:''; clear:both; display:block;}
-header nav {float:left; width:calc(100% - 124px); text-align:center;}
-header .allmenu {position:absolute; z-index:9998; top:28px; right:30px; display:none; width:40px; height:40px; background:url(/images/web/whales_images/web/whales_images/ico/ico_all_menu01.png) no-repeat center;}
-header nav .cate {display:inline-block;}
-header nav .cate li {display:inline-block; font-size:15px;}
-header nav .cate li a {padding:40px 25px 39px 25px;}
-header nav .depth01 li {position:relative;}
-header nav .depth01 .depth02 {display:none; position:absolute; z-index:9999; top:98px; left:0; width:100%;padding-top:10px;}
-header nav .depth01 .depth02 ul li {float:none; display:block; font-size:13px;}
-header nav .depth01 .depth02 ul li a {color:#222; padding:10px 25px; font-weight:500;}
-
-header nav .util {float:right; width:176px; margin-right:-20px;}
-header nav .util li {float:left; font-size:12px;}
-header nav .util li a {padding:42px 20px 41px 2px;}
-header nav .util li a span {display:inline-block; padding-left:18px; background-repeat:no-repeat; background-position:center left;}
-header nav .util li.join a span {background-image:url(/images/web/whales_images/web/whales_images/ico/ico_join01.png);}
-header nav .util li.login a {padding:42px 20px 41px 20px;}
-header nav .util li.login a span {background-image:url(/images/web/whales_images/ico/ico_login01.png);}
-.menu_bg {display:none; position:absolute; z-index:5; top:148px; width:100%; left:50%; height:235px; transform:translateX(-50%); background:#fff; opacity:0.95;}
 
 /*슬릭 arrow 공통*/
 .slick-arrow {position:absolute; z-index:5; top:50%; text-indent:-9999px; width:56px; height:56px; background-color:rgba(255,255,255,0.2); background-repeat:no-repeat; background-position:center center;}
-.slick-arrow.slick-prev {left:0; background-image:url(/images/web/whales_images/ico/ico_slick_arrow01.png);}
-.slick-arrow.slick-next {right:0; background-image:url(/images/web/whales_images/ico/ico_slick_arrow02.png);}
+.slick-arrow.slick-prev {left:0; background-image:url(/images/ico/ico_slick_arrow01.png);}
+.slick-arrow.slick-next {right:0; background-image:url(/images/ico/ico_slick_arrow02.png);}
 .wideslick li {position:relative;}
 .wideslick li .txt {position:absolute; z-index:1; left:50%; transform:translateX(-50%);}
 /*detial view버튼 공통*/
@@ -98,7 +65,7 @@ header nav .util li.login a span {background-image:url(/images/web/whales_images
 .info .side_con > h3 {color:#222;}
 .info .side_con > p {color:#999;}
 
-.admin {position:relative; width:1920px; left:50%; transform:translateX(-50%); margin-bottom:420px; text-align:center; padding-bottom:385px; background:url(/images/web/whales_images/bg/bg_mid_visual01.png) no-repeat 0 0;}
+.admin {position:relative; width:1920px; left:50%; transform:translateX(-50%); margin-bottom:420px; text-align:center; padding-bottom:385px; background:url(/images/bg/bg_mid_visual01.png) no-repeat 0 0;}
 .admin .title {margin-top:90px;}
 .admin .title h3 {color:#fff;}
 .admin .title p {color:#b5b5b5; line-height:1.7;}
@@ -111,7 +78,7 @@ header nav .util li.login a span {background-image:url(/images/web/whales_images
 .admin .admin_slick .slick-arrow {top:-34px; transform:translateY(0);}
 
 .vision {position:relative; padding:166px 0 165px 0; background:#f9f9f9;}
-.vision:before {content:''; position:absolute; z-index:5; top:0; right:0; width:960px; height:640px; background:url(/images/web/whales_images/pic/pic_vision_info01.png) no-repeat 0 0;}
+.vision:before {content:''; position:absolute; z-index:5; top:0; right:0; width:960px; height:640px; background:url(/images/pic/pic_vision_info01.png) no-repeat 0 0;}
 .vision > div:after {content:''; clear:both; display:block;}
 .vision .side_con {float:left; width:50%; padding-right:130px;}
 .vision .side_con > p {color:#999;}
@@ -131,7 +98,7 @@ header nav .util li.login a span {background-image:url(/images/web/whales_images
 .product .tab_wrap .tab_con div ul li div.txt_box {text-align:left; padding:20px 30px 0 0;}
 .product .tab_wrap .tab_con div ul li div.txt_box .tit {font-size:18px;}
 
-.different {position:relative; width:1920px; left:50%; transform:translateX(-50%); text-align:center; padding:115px 0 150px 0; background:url(/images/web/whales_images/bg/bg_different01.png) no-repeat 0 0;}
+.different {position:relative; width:1920px; left:50%; transform:translateX(-50%); text-align:center; padding:115px 0 150px 0; background:url(/images/bg/bg_different01.png) no-repeat 0 0;}
 .different .title h3 {color:#fff;}
 .different .title p {color:#b5b5b5;}
 .different .count {margin-top:112px;}
@@ -174,33 +141,7 @@ header nav .util li.login a span {background-image:url(/images/web/whales_images
 .notice .notice_list li .txtbox p.sub {margin-top:10px; height:45px; line-height:1.7; display:-webkit-box; word-wrap:break-word; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis;}
 .notice .notice_list li .txtbox span.date {display:block; margin-top:15px;}
 
-footer {padding:40px 0 64px 0; background:#292929;}
-footer .to_top {position:fixed; z-index:9999; bottom:100px; right:40px; width:64px; height:64px; border-radius:65px; box-shadow:5px 5px 10px rgba(0,0,0,0.2); animation:toUp 1s ease infinite; transition:all .3s ease}
-footer .to_top.ft_position {bottom:315px;}
-footer > div {position:relative;}
-footer > div:after {content:''; clear:both; display:block;}
-footer h1 {float:left; width:185px;}
-footer h1.logo a {display:block; color:#fff; font-weight:600; font-size:22px; opacity:0.3; padding-bottom:80px;}
-footer .content {float:left; width:calc(100% - 185px); margin-top:-5px;}
-footer .content .imformation {margin:0 -15px 10px -15px;}
-footer .content .imformation:after {content:''; clear:both; display:block;}
-footer .content .imformation li {float:left;}
-footer .content .imformation a {color:#fff; font-size:13px; font-weight:500; padding:0 15px;}
 
-footer .content .address {width:100%; font-size:12px; color:#999; vertical-align:middle;}
-footer .content .address p {line-height:1.6;}
-footer .content .address p span {position:relative; display:inline-block; padding:0 5px;}
-footer .content .address p span:before {content:''; position:absolute; z-index:1; top:4px; left:0px; width:2px; height:10px; background:#7b7b7b;}
-footer .content .address p .no_deco {padding-left:0;}
-footer .content .address p .no_deco:before {display:none;}
-footer .content .address a {position:relative; display:inline-block; font-size:12px; color:#999; vertical-align:middle; padding:0 5px;}
-footer .content .address a:before {content:''; position:absolute; z-index:1; top:4px; left:0px; width:2px; height:10px; background:#7b7b7b;}
-
-
-footer .sns {position:absolute; z-index:1; top:0; right:0;}
-footer .sns ul:after {content:''; clear:both; display:block;}
-footer .sns ul li {float:left;}
-footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 
 @keyframes toUp {
 	0% {transform:translateY(0);}

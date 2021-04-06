@@ -212,7 +212,7 @@ public class AdminMenuManageController {
     			}else{
     	        	menuManageService.insertMenuManage(menuManageVO);
             		resultMsg = egovMessageSource.getMessage("success.common.insert");
-    		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuManageSelect.do";
+    		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
     			}
     		}else{
         		resultMsg = egovMessageSource.getMessage("common.isExist.msg");

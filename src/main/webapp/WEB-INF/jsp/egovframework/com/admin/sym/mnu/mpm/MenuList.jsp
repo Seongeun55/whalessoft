@@ -53,12 +53,9 @@ var imgpath = "<c:url value='/images/egovframework/com/cmm/utl/'/>";
 /* ********************************************************
  * 메뉴등록 처리 함수
  ******************************************************** */
-function insertMenuList() {
-	if(!fn_validatorMenuList()){return;}
-    if(document.menuManageVO.tmp_CheckVal.value == "U"){alert("<spring:message code="comSymMnuMpm.menuList.validate.checkVal" />"); return;} //상세조회시는 수정혹은 삭제만 가능합니다.
-	document.menuManageVO.action = "<c:url value='/sym/mnu/mpm/EgovMenuListInsert.do'/>";
-	menuManageVO.submit();
-
+ function insertMenuManage() {
+	   	document.menuManageForm.action = "<c:url value='/sym/mnu/mpm/AdminMenuRegistInsert.do'/>";
+	   	document.menuManageForm.submit();
 }
 
 /* ********************************************************
@@ -228,8 +225,9 @@ function checkNumber(str) {
 		<ul>
 			<li>
 				<span class="btn_b"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;" title="<spring:message code="button.init" />"><spring:message code="button.init" /></a></span><!-- 초기화 -->
-				<span class="btn_b"><a href="#LINK" onclick="updateMenuList(); return false;" title='<spring:message code="button.update" />'><spring:message code="button.update" /></a></span>
-				<span class="btn_b"><a href="#LINK" onclick="deleteMenuList(); return false;" title='<spring:message code="button.delete" />'><spring:message code="button.delete" /></a></span>
+				<span class="btn_b"><a href="#LINK" onclick="updateMenuList(); return false;" title='<spring:message code="button.update" />'><spring:message code="button.update" /></a></span>	<!-- 수정 -->
+				<span class="btn_b"><a href="<c:url value='/sym/mnu/mpm/AdminMenuRegistInsert.do'/>" onclick="insertMenuManage(); return false;" title='<spring:message code="button.create" />'><spring:message code="button.create" /></a></span><!-- 등록 -->
+				<span class="btn_b"><a href="#LINK" onclick="deleteMenuList(); return false;" title='<spring:message code="button.delete" />'><spring:message code="button.delete" /></a></span>	<!-- 삭제 -->
 			</li>
 		</ul>
 	</div>

@@ -71,21 +71,29 @@ public class ComUtlController {
 		return link;
 	}
 	
-	@RequestMapping(value = "/AdminPageLink.do")
-	public String moveToPage(@RequestParam("link") String linkPage, HttpSession session, @RequestParam(value = "menuNo", required = false) String menuNo) {
-		String link = linkPage;
+	/*[추가] jsp페이지 이동메소드 - 2021.04.02*/
+	@RequestMapping(value = "/content.do")
+	public String moveToContent(@RequestParam("id") String id, HttpSession session) {
+		String link = "egovframework/com/web/content/"+id;
+		
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
-		if (linkPage == null || linkPage.equals("")) {
-			link = "admin/adminError";
-		} else {
-			if (link.indexOf(",") > -1) {
-				link = link.substring(0, link.indexOf(","));
-			}
+		if (id==null || id.equals("")){
+			link="egovframework/com/admin/cmm/error/egovError";
 		}
-		// 선택된 메뉴정보를 세션으로 등록한다.
-		if (menuNo != null && !menuNo.equals("")) {
-			session.setAttribute("menuNo", menuNo);
+		
+		return link;
+	}
+	
+	/*[추가] jsp페이지 이동메소드 - 2021.04.06*/
+	@RequestMapping(value = "/board.do")
+	public String moveToboard(@RequestParam("id") String id, HttpSession session) {
+		String link = "egovframework/com/web/board/"+id;
+		
+		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
+		if (id==null || id.equals("")){
+			link="egovframework/com/admin/cmm/error/egovError";
 		}
+		
 		return link;
 	}
 	

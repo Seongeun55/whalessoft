@@ -16,6 +16,7 @@
 2018.10.26      신용호            실행행환경 v3.8 적용
 -->
 
+	<security:http pattern="/bootstrap/**" security="none"/>
 	<security:http pattern="/css/**" security="none"/>
 	<security:http pattern="/html/**" security="none"/>
     <security:http pattern="/images/**" security="none"/>
@@ -23,7 +24,7 @@
  	<security:http pattern="/resource/**" security="none"/>
  	<security:http pattern="\A/WEB-INF/jsp/.*\Z" request-matcher="regex" security="none"/>
 	<!-- [추가] 2021.03.31 -->
-	<security:http pattern="/index.do" security="none"/>	<!-- 기본 메인 -->
+	<security:http pattern="/main.do" security="none"/>	<!-- 기본 메인 -->
 	<security:http pattern="/cmm/fms/getImage.do" security="none"/>		<!-- 배너사진 -->
 	<security:http pattern="/uss/umt/StplatCnfirmMber.do" security="none"/>		<!-- 회원가입 -->
 	

@@ -73,15 +73,14 @@ public class MainMenuManageController {
 	 */
 	@RequestMapping(value = "/sym/mnu/mpm/MainMenuIndex.do")
 	public String selectMainMenuIndex(@ModelAttribute("menuManageVO") MenuManageVO menuManageVO,
-			@RequestParam("menuNo") String menuNo, @RequestParam("chkURL") String chkURL, ModelMap model)
-			throws Exception {
+			@RequestParam("menuNo") String menuNo, @RequestParam("chkURL") String chkURL, ModelMap model) throws Exception {
 
 		int iMenuNo = Integer.parseInt(menuNo);
 		menuManageVO.setMenuNo(iMenuNo);
-		// menuManageVO.setTempValue(chkURL);
+		menuManageVO.setTempValue(chkURL);
 		model.addAttribute("resultVO", menuManageVO);
 
-		return "egovframework/com/menu_index";
+		return "redirect:" + chkURL;	//[수정] url로 직접가도록 수정 - 2021.04.06
 	}
 
 	/**

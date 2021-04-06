@@ -65,7 +65,7 @@ function fncgetLoginSessionView(url) {
      egovframework.com.cmm.LoginVO user = (egovframework.com.cmm.LoginVO)egovframework.com.cmm.util.EgovUserDetailsHelper.getAuthenticatedUser();
 	 String contextPath = request.getContextPath();
 	 if(user != null && (user.getUrl() == null || user.getUrl().equals(""))) 
-		 user.setUrl(contextPath+"/index.do");
+		 user.setUrl(contextPath+"/main.do");
  %>
 <body>
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript><!-- 자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다. -->

@@ -7,17 +7,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>eGovFrame 공통 컴포넌트 관리자모드</title>
     <!-- Custom fonts for this template-->
-    <link href="/js/web/bootstrap_vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="/css/web/bootstrap_css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/admin.min.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
-    <script src="/js/web/bootstrap_vendor/jquery/jquery.min.js"></script>
-    <script src="/js/web/bootstrap_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="/js/web/bootstrap_vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -70,9 +70,9 @@
                 </a>
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                    	<a class="collapse-item" href="/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do" target="_content">메뉴 등록</a>
-                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuManageSelect.do" target="_content">메뉴 생성</a>
-                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트</a>
+                    	<a class="collapse-item" href="/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do" target="_content">메뉴 등록</a>                     
+                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트 관리</a>
+                        <a class="collapse-item" href="/admin/sym/prm/ProgramListManageSelect.do" target="_content">프로그램 관리</a>
                     </div>
                 </div>
             </li>
@@ -198,7 +198,7 @@
                         </li>
                         
                         <li class="nav-item">
-               				<a class="nav-link" href="/index.do" target="_blank">
+               				<a class="nav-link" href="/main.do" target="_blank">
                   			<i class="fas fa-house-user"></i>
                     			<span>홈페이지 바로가기</span></a>
            				</li>   
@@ -211,7 +211,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">${loginVO.name }</span>
                                 <img class="img-profile rounded-circle"
-                                    src="/images/web/bootstrap_img/undraw_profile.svg">
+                                    src="/bootstrap/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -289,8 +289,7 @@
             </div>
         </div>
     </div>
-</body>
     <!-- Custom scripts for all pages-->
-    <script src="/js/web/bootstrap_js/sb-admin-2.min.js"></script>    
-
+    <script src="/js/admin.min.js"></script>    
+</body>
 </html>
