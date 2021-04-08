@@ -231,7 +231,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
 		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
 		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
-		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_99999999999" : EgovStringUtil.isNullToString(user.getUniqId()));
+		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
 
 		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
 		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴

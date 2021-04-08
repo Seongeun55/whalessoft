@@ -133,12 +133,12 @@ public class QnaController {
 		qnaVO.setQaId(qaId);
 		
 		//조회수 수정처리
-		QnaService.updateQnaInqireCo(qnaVO);
+		//QnaService.updateQnaInqireCo(qnaVO);
 		
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
-		
+
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		
+
 		model.addAttribute("user", user);
 		model.addAttribute("result", vo);
 
@@ -213,7 +213,7 @@ public class QnaController {
 
 		QnaService.insertQna(qnaVO);
 
-		return "forward:/uss/olh/qna/selectQnaList.do";
+		return "forward:/board.do?id=page9";
 	}
 	
 	/**

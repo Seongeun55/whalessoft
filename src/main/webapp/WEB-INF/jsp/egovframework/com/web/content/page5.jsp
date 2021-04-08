@@ -54,8 +54,8 @@
             <ul class="leftmenu ">
                 <li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
 				<li class="leftmenu_s  gnb_2dli_2 "><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
-				<li class="leftmenu_s  gnb_2dli_3 "><a href="/board.do?id=page9" target="_self" >온라인문의</a></li>
-				<li class="leftmenu_s  gnb_2dli_4 "><a href="/board.do?id=page10" target="_self" >자주묻는질문</a></li>
+				<li class="leftmenu_s  gnb_2dli_3 "><a href="/board.do?id=page9" target="_self" >Q&A</a></li>
+				<li class="leftmenu_s  gnb_2dli_4 "><a href="/board.do?id=page10" target="_self" >FAQ</a></li>
             </ul>
     	</li>
     	</ul>

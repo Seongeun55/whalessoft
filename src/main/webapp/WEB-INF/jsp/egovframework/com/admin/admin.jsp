@@ -69,10 +69,9 @@
                     <span>메뉴관리</span>
                 </a>
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    	<a class="collapse-item" href="/admin/sym/mnu/mcm/AdminMenuCreatManageSelect.do" target="_content">메뉴 등록</a>                     
-                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 리스트 관리</a>
-                        <a class="collapse-item" href="/admin/sym/prm/ProgramListManageSelect.do" target="_content">프로그램 관리</a>
+                    <div class="bg-white py-2 collapse-inner rounded">                    	                     
+                        <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 관리</a>
+                        <a class="collapse-item" href="/admin/sym/prm/ProgramListManageSelect.do" target="_content">메뉴 RUL 관리</a>
                     </div>
                 </div>
             </li>

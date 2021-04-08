@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/default.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/aos.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/tablestyle.css"/>
 	<script src="/js/jquery-1.12.4.min.js"></script>
 	<script src="/js/waypoints.min.js"></script>
 	<script src="/js/jquery.counterup.min.js"></script>
