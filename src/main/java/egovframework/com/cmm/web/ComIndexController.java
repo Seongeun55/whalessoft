@@ -57,11 +57,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class EgovComIndexController implements ApplicationContextAware, InitializingBean {
+public class ComIndexController implements ApplicationContextAware, InitializingBean {
 
 	private ApplicationContext applicationContext;
 	 
@@ -76,21 +75,19 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 	@Resource(name = "PopupManageService")
 	private PopupManageService PopupManageService;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(EgovComIndexController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ComIndexController.class);
 
 	public void afterPropertiesSet() throws Exception {}
 
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 		
-		LOGGER.info("EgovComIndexController setApplicationContext method has called!");
+		LOGGER.info("ComIndexController setApplicationContext method has called!");
 	}
 
 	@RequestMapping("/main.do")
-	public String index(@ModelAttribute("menuManageVO") MenuManageVO menuManageVO, HttpServletRequest request, ModelMap model) throws Exception{
-		//[추가] 메인화면에 메뉴리스트 -2021.03.31
-		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		
+	public String index(HttpServletRequest request, ModelMap model) throws Exception{
+	
 		//[추가] 메인 배너 컨텐츠 조회 시작 ---------------------------------2021.03.26
 		BannerVO bannerVO = new BannerVO();
 	
@@ -110,18 +107,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		List<?> resultList = PopupManageService.selectPopupMainList(popupManageVO);
 		model.addAttribute("resultList", resultList);
 		
-		//[추가] 메인화면에 메뉴리스트 -2021.04.06
-		menuManageVO.setTmpId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
-		menuManageVO.setTmpPassword(user == null ? "" : EgovStringUtil.isNullToString(user.getPassword()));
-		menuManageVO.setTmpUserSe(user == null ? "" : EgovStringUtil.isNullToString(user.getUserSe()));
-		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
-		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
-		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
-		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_99999999999" : EgovStringUtil.isNullToString(user.getUniqId()));
-
-		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
-		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
-		
+		header(model);
 		
 		return "egovframework/com/web/main";
 	}
@@ -216,7 +202,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 		model.addAttribute("resultList", map.values());
 		
-		LOGGER.debug("EgovComIndexController index is called ");
+		LOGGER.debug("ComIndexController index is called ");
 
 		return "egovframework/com/admin/cmm/EgovUnitLeft";
 	}
@@ -231,4 +217,26 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		}
 		return url;
 	}
+	
+	/** [추가] main.do에 있던 부분을 분리 - 2021.04.07 **/
+	public void header(ModelMap model) throws Exception{
+		//[추가] 메인화면에 메뉴리스트 -2021.03.31
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		MenuManageVO menuManageVO = new MenuManageVO();
+		
+		//[추가] 메인화면에 메뉴리스트 -2021.04.06
+		menuManageVO.setTmpId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
+		menuManageVO.setTmpPassword(user == null ? "" : EgovStringUtil.isNullToString(user.getPassword()));
+		menuManageVO.setTmpUserSe(user == null ? "" : EgovStringUtil.isNullToString(user.getUserSe()));
+		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
+		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
+		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
+		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_99999999999" : EgovStringUtil.isNullToString(user.getUniqId()));
+
+		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
+		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
+		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
+		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
+	}
+	
 }

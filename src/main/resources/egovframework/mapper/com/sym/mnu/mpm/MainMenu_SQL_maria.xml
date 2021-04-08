@@ -24,6 +24,29 @@
 			ORDER BY MENU_ORDR
 		 
 	</select>
+	
+	<!-- [추가]하위메뉴 불러오기 -->
+	<select id="selectSubMenu" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
+		 
+            SELECT
+			      B.MENU_NO AS menuNo
+				, B.MENU_ORDR AS menuOrdr
+				, B.MENU_NM AS menuNm
+				, B.UPPER_MENU_NO AS upperMenuId
+				, B.MENU_DC AS menuDc
+				, B.RELATE_IMAGE_PATH AS relateImagePath
+				, B.RELATE_IMAGE_NM AS relateImageNm
+				, B.PROGRM_FILE_NM AS progrmFileNm
+				, (SELECT C.URL FROM COMTNPROGRMLIST C WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM) AS chkURL
+			FROM COMTNMENUCREATDTLS A, COMTNMENUINFO B 
+			WHERE  B.Menu_NO > 0 
+			AND    B.UPPER_MENU_NO > 0  
+			AND    A.MENU_NO  = B.MENU_NO 
+			AND    A.AUTHOR_CODE = (SELECT C.AUTHOR_CODE from COMTNEMPLYRSCRTYESTBS C
+	                                WHERE  C.SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
+			ORDER BY MENU_ORDR
+		 
+	</select>	
 
 	<select id="selectMainMenuLeft" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
 		 

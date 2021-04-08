@@ -95,6 +95,22 @@ public class MenuCreateManageServiceImpl extends EgovAbstractServiceImpl impleme
 			menuCreateManageDAO.insertMenuCreat(menuCreatVO);
 		}
 	}
+	
+	/**[추가]-2021.04.07
+	 * 메뉴 생성과 동시에 등록하는 메소드
+	 * @param checkedAuthorForInsert  String
+	 * @param checkedMenuNoForInsert String
+	 * @exception Exception
+	 */
+	public void insertMenu(String author, int menoNo) throws Exception {
+		MenuCreatVO menuCreatVO = null;
+
+		menuCreatVO = new MenuCreatVO();
+		menuCreatVO.setAuthorCode(author);
+		menuCreatVO.setMenuNo(menoNo);
+		menuCreateManageDAO.insertMenuCreat(menuCreatVO);
+
+	}
 
 	/**
 	 * 메뉴생성관리 목록을 조회

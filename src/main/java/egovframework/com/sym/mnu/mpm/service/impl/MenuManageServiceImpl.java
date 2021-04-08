@@ -177,6 +177,16 @@ public class MenuManageServiceImpl extends EgovAbstractServiceImpl implements Me
 	public List<?> selectMainMenuHead(MenuManageVO vo) throws Exception {
 		return menuManageDAO.selectMainMenuHead(vo);
 	}
+	
+	/**[추가] 2021.04.07
+	 * SubMenu 조회
+	 * @param vo MenuManageVO
+	 * @return List
+	 * @exception Exception
+	 */
+	public List<?> selectSubMenu(MenuManageVO vo) throws Exception {
+		return menuManageDAO.selectSubMenu(vo);
+	}
 
 	/**
 	 * MainMenu Head Left 조회

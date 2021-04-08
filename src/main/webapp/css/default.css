@@ -584,16 +584,7 @@ header ul li a {font-weight:300;}
 header h1 {float:left;}
 header h1 a {font-size:22px; font-weight:600; padding:35px 0;}
 
-header nav:after {content:''; clear:both; display:block;}
-header nav {float:left; width:calc(100% - 124px); text-align:center;}
-header .allmenu {position:absolute; z-index:9998; top:28px; right:30px; display:none; width:40px; height:40px; background:url(/images/ico/ico_all_menu01.png) no-repeat center;}
-header nav .cate {display:inline-block;}
-header nav .cate li {display:inline-block; font-size:15px;}
-header nav .cate li a {padding:40px 25px 39px 25px;}
-header nav .depth01 li {position:relative;}
-header nav .depth01 .depth02 {display:none; position:absolute; z-index:9999; top:98px; left:0; width:100%;padding-top:10px;}
-header nav .depth01 .depth02 ul li {float:none; display:block; font-size:13px;}
-header nav .depth01 .depth02 ul li a {color:#222; padding:10px 25px; font-weight:500;}
+/*header .allmenu {position:absolute; z-index:9998; top:28px; right:30px; display:none; width:40px; height:40px; background:url(/images/ico/ico_all_menu01.png) no-repeat center;}*/
 
 header nav .util {float:right; width:176px; margin-right:-20px;}
 header nav .util li {float:left; font-size:12px;}
@@ -718,18 +709,19 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 
 .sub_bg{position:relative;display:table;width:100%;height:450px;background:center no-repeat;background-size:cover;overflow:hidden;text-align:center;color:#fff}
 .sub_bg{background-image:url('/images/sub/back07.jpg')}
-.sub_bg.sub_bg_bus{background-image:url('/images/sub/back08.jpg')}
+.sub_bg.sub_bg_bus{background-image:url('/images/sub/back05.jpg')}
 .sub_bg.sub_bg_intro{background-image:url('/images/sub/back03.jpg')}
 .sub_bg.sub_bg_history{background-image:url('/images/sub/back04.jpg')}
 .sub_bg.sub_bg_org{background-image:url('/images/sub/back05.jpg')}
 .sub_bg.sub_bg_way{background-image:url('/images/sub/back06.jpg')}
-.sub_bg.sub_bg_product{background-image:url('/images/sub/back02.jpg')}
+.sub_bg.sub_bg_product{background-image:url('/images/sub/back08.jpg')}
 
 #sub_menu_title{display:table-cell;vertical-align:middle}
 #sub_menu_title strong{display:block;font-size:2.25rem}
 #sub_menu_title span{font-size:1rem;font-weight:400;color:rgba(255,255,255,.6)}
 #submenu{position:relative;top:-35px;width:100%}
 #submenu ul{width:1200px;margin:0 auto}
+#submenu ul:after{content:none}
 #submenu .leftmenu{display:table;table-layout:fixed}
 #submenu .leftmenu_s{display:table-cell;background-color:#fff;}
 #submenu .leftmenu.float{display:block;overflow:hidden}
@@ -819,12 +811,11 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 }
 
 @media all and (max-width:1280px) {
-	header nav {width:650px; text-align:center;}
-	header nav > ul > li {float:none; display:inline-block; vertical-align:top;}
-	header nav > ul > li > a{padding:40px 25px}
 }
 
 @media all and (max-width:1200px) {
+	.admin_wrap ul{width:100%}
+	
 	footer .sns{top:-2px;right:10px}
 	.cinner{padding-left:20px;padding-right:20px;width:100%}
 	
@@ -844,8 +835,6 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 	.btn-view{width:180px;padding:15px 0}
 	.btn-view.one{width:100px;height:100px;padding:30px 0}
 	h3 + .h3-sub{font-size:2rem}
-	header nav{padding-left:80px}
-	header nav > ul > li > a{padding:40px 1vw;font-size:.85rem}
 	
 	footer .f_logo{float:none; margin-bottom:15px;}
 	footer address {float:none; width:100%; margin-left:0;}
@@ -883,14 +872,10 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 	.mb_hidden{display:none}
 	.btn-view.one{width:80px;height:80px;padding:20px 0}
 
-	header {padding:0 20px;background-color:rgba(0,0,0,.5)}
+	header {padding:0;background-color:rgba(0,0,0,.5)}
 	header h1 {z-index:15; padding:0;}
 	header h1 a {display:block; font-size:20px; padding:25px 0;}
 	header .menu{width:70px;height:70px}
-	header.open nav{display:block}
-	header nav {position:absolute; z-index:10; left:0px; top:0px; width:100%; padding:70px 0 20px;transform:translate(0);background-color:#fff}
-	header nav > ul > li {display:block; text-align:left;}
-	header nav > ul > li > a {padding:10px 20px;}
 	header nav .submenu {width:auto; margin:0 20px; background:#fff; border-radius:10px;}
 	header nav .submenu li a {display:block; color:#555; padding:10px 20px; text-align:left;}
 	header nav .submenu li a:hover{color:#d77181}
@@ -938,7 +923,7 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 	.main-frm .info-smit{float:none;width:100%}
 	
 	/* sub */
-	.sub_bg{height:200px}
+	.sub_bg{height:320px}
 	#sub_menu_title strong{font-size:1.2rem}
 	#sub_menu_title span{font-size:.7rem}
 	#submenu .leftmenu_s a{font-size:.75rem;padding:10px 5px}

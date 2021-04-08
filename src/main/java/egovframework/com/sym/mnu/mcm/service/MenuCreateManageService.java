@@ -73,6 +73,15 @@ public interface MenuCreateManageService {
 	 */
 	void insertMenuCreatList(String checkedScrtyForInsert, String checkedMenuNoForInsert) throws Exception;
 
+
+	/**[추가] 2021.04.07
+	 * 새로운 매뉴 생성시 등록
+	 * @param checkedScrtyForInsert String
+	 * @param checkedMenuNoForInsert String
+	 * @exception Exception
+	 */
+	void insertMenu(String author, int menoNo) throws Exception;
+
 	/**
 	 * 메뉴생성 사이트맵 내용 조회
 	 * @param vo MenuSiteMapVO

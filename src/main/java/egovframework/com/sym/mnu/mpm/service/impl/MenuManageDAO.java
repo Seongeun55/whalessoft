@@ -152,6 +152,17 @@ public class MenuManageDAO extends EgovComAbstractDAO{
 	public List<?> selectMainMenuHead(MenuManageVO vo) throws Exception{
 		return selectList("menuManageDAO.selectMainMenuHead", vo);
 	}
+	
+	/**[추가] - 2021.04.07
+	 * SubMenu 조회
+	 * @param vo MenuManageVO
+	 * @return List
+	 * @exception Exception
+	 */
+	public List<?> selectSubMenu(MenuManageVO vo) throws Exception{
+		return selectList("menuManageDAO.selectSubMenu", vo);
+	}
+
 
 	/**
 	 * MainMenu Left Menu 조회

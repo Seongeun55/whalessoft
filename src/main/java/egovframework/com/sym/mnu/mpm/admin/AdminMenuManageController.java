@@ -9,6 +9,7 @@ import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.sym.mnu.mcm.service.MenuCreateManageService;
 import egovframework.com.sym.mnu.mpm.service.MenuManageService;
 import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.sym.prm.service.ProgrmManageService;
@@ -77,6 +78,9 @@ public class AdminMenuManageController {
     @Resource(name="egovMessageSource")
     EgovMessageSource egovMessageSource;
 
+    /** [추가] 메뉴 생성과 동시에 등록을 위해 추가 - 2021.04.07 */
+	@Resource(name = "meunCreateManageService")
+	private MenuCreateManageService menuCreateManageService;
 
     /**
      * 메뉴정보목록을 상세화면 호출 및 상세조회한다.
@@ -211,6 +215,9 @@ public class AdminMenuManageController {
     		        sLocationUrl = "egovframework/com/admin/sym/mnu/mpm/MenuRegist";
     			}else{
     	        	menuManageService.insertMenuManage(menuManageVO);
+    	        	menuCreateManageService.insertMenu("ROLE_ADMIN", menuManageVO.getMenuNo());	//[추가] 메뉴 생성과 동시에 등록을 위해 추가 - 2021.04.07
+    	        	menuCreateManageService.insertMenu("ROLE_USER", menuManageVO.getMenuNo());	//[추가] 메뉴 생성과 동시에 등록을 위해 추가 - 2021.04.07
+    	        	menuCreateManageService.insertMenu("ROLE_ANONYMOUS", menuManageVO.getMenuNo());	//[추가] 메뉴 생성과 동시에 등록을 위해 추가 - 2021.04.07
             		resultMsg = egovMessageSource.getMessage("success.common.insert");
     		        sLocationUrl = "forward:/admin/sym/mnu/mpm/AdminMenuListSelect.do";
     			}

@@ -24,11 +24,11 @@
 	        	<span class="sound_only">회사소개</span>
 	            <script language='javascript'> display_submenu(0); </script> 
 	            <ul class="leftmenu ">
-	                <li class="leftmenu_s border-left gnb_2dli_1 active"><a href="#" target="_self" >회사소개</a></li>
+	                <li class="leftmenu_s border-left gnb_2dli_1 active"><a href="/content.do?id=page1" target="_self" >회사소개</a></li>
 	            	<script language='javascript'> display_submenu(0); </script> 	                
-	            	<li class="leftmenu_s  gnb_2dli_2 "><a href="#" target="_self" >연혁</a></li>
-					<li class="leftmenu_s  gnb_2dli_3 "><a href="#" target="_self" >조직도</a></li>
-					<li class="leftmenu_s  gnb_2dli_4 "><a href="#" target="_self" >오시는길</a></li>
+	            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/content.do?id=page2" target="_self" >연혁</a></li>
+					<li class="leftmenu_s  gnb_2dli_3 "><a href="/content.do?id=page3" target="_self" >조직도</a></li>
+					<li class="leftmenu_s  gnb_2dli_4 "><a href="/content.do?id=page4" target="_self" >오시는길</a></li>
 	            </ul>
 	    	</li>
 	    </ul>
@@ -37,7 +37,7 @@
 			<li>
 	        	<span class="sound_only">사업안내</span>
 	            <ul class="leftmenu ">
-	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="#" target="_self" >사업안내</a></li>
+	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="/content.do?id=page5" target="_self" >사업안내</a></li>
 	            </ul>
 	    	</li>
 	    </ul>
@@ -46,7 +46,7 @@
 	        <li>
 	        	<span class="sound_only">제품소개</span>
 	            <ul class="leftmenu ">
-	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="#" target="_self" >제품소개</a></li>
+	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page6" target="_self" >제품소개</a></li>
 	            </ul>
 	    	</li>
 	    </ul>
@@ -55,10 +55,10 @@
 	        <li>
 	        	<span class="sound_only">고객센터</span>
 	            <ul class="leftmenu ">
-	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="#" target="_self" >공지사항</a></li>
-   	                <li class="leftmenu_s  gnb_2dli_2 "><a href="#" target="_self" >갤러리</a></li>
-   	                <li class="leftmenu_s  gnb_2dli_3 "><a href="#" target="_self" >온라인문의</a></li>
-   	                <li class="leftmenu_s  gnb_2dli_4 "><a href="#" target="_self" >자주묻는질문</a></li>
+	                <li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
+   	                <li class="leftmenu_s  gnb_2dli_2 "><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
+   	                <li class="leftmenu_s  gnb_2dli_3 "><a href="/board.do?id=page9" target="_self" >온라인문의</a></li>
+   	                <li class="leftmenu_s  gnb_2dli_4 "><a href="/board.do?id=page10" target="_self" >자주묻는질문</a></li>
 	            </ul>
 	    	</li>
 	    </ul>
