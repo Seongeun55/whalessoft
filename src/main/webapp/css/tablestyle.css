@@ -407,6 +407,13 @@ box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1)}
 #bo_w .write_div:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_w .bo_w_info:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_w .bo_w_info .frm_input {float:left;margin-bottom:1%}
+
+#bo_w .write_div:after{display:block; content:""; clear:both;}
+#bo_w .write_div .three_div{float:left; margin-right:1%;}
+#bo_w .write_div .three_div:last-child{margin-right:0;}
+#bo_w .bo_w_info .three_input{float:left; width:30%; box-sizing:border-box;}
+#bo_w .bo_w_info span{display:block; width:5%; float:left; padding:0 10px; line-height:40px; font-size:22px;}
+
 #bo_w #wr_password, #bo_w #wr_homepage {margin-left:1%}
 #bo_w .wr_content.smarteditor2 iframe {background:#fff}
 #bo_w .bo_w_tit {position:relative}

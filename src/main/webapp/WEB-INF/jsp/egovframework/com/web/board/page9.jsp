@@ -20,7 +20,7 @@ function fn_egov_search_qna(){
 <div class="container">
 	<div class="sub_bg sub_bg_">
 		<h2 id="sub_menu_title" class="top" title="온라인문의 글쓰기">
-        	<strong title="온라인문의 글쓰기">Q&A 글쓰기</strong>
+        	<strong title="온라인문의 글쓰기">Q&A</strong>
             <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 		</h2>
 	</div>
@@ -83,7 +83,7 @@ function fn_egov_search_qna(){
 	
 	<!-- 게시판 목록 시작 { -->
 	<div id="bo_list">   
-		<form name="qnaForm" id="fboardlist" action="<c:url value='/uss/olh/qna/selectQnaList.do'/>" onsubmit="fn_egov_search_qna(); return false;" method="post">
+		<form name="qnaForm" id="fboardlist" action="<c:url value='/board.do?id=page9'/>" onsubmit="fn_egov_search_qna(); return false;" method="post">
 		    <!-- 게시판 페이지 정보 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -132,8 +132,8 @@ function fn_egov_search_qna(){
 		        				<div class="bo_tit">
 		        					<form name="subForm" method="post" action="<c:url value='/uss/olh/qna/selectQnaDetail.do'/>">
 									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
-									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0;"></span>
+									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
+									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
 									</form>
 		        				</div>
 		        			</td>

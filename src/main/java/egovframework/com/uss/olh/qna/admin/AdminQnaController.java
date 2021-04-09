@@ -134,7 +134,7 @@ public class AdminQnaController {
 	 * @return	"/uss/olh/qna/EgovQnaAnswerUpdt"
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/olh/qna/updateQnaAnswerView.do")
+	@RequestMapping("/admin/uss/olh/qna/updateQnaAnswerView.do")
 	public String updateQnaAnswerView(QnaVO qnaVO, @ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
 
 		// 공통코드를 가져오기 위한 Vo

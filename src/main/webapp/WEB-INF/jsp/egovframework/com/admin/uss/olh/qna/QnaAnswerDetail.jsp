@@ -120,7 +120,7 @@
 	</table>
 	<!-- 하단 버튼 -->
 	<div class="btn">
-		<form name="qnaForm" action="<c:url value='/uss/olh/qna/updateQnaAnswerView.do'/>" method="post" style="float:left;">
+		<form name="qnaForm" action="<c:url value='/admin/uss/olh/qna/updateQnaAnswerView.do'/>" method="post" style="float:left;">
 			<input type="submit" class="s_submit" value="<spring:message code="button.reply" />" title="<spring:message code="title.reply" /> <spring:message code="input.button" />" />
 			<input name="qaId" type="hidden" value="${result.qaId}">
 		</form>

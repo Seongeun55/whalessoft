@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -110,9 +111,9 @@ public class ComUtlController {
 	
 	/*[추가] jsp페이지 이동메소드 - 2021.04.06*/
 	@RequestMapping(value = "/board.do")
-	public String moveToboard(@RequestParam("id") String id, HttpSession session,  ModelMap model) throws Exception {
+	public String moveToboard(@RequestParam("id") String id, @ModelAttribute("searchVO") QnaVO qnaVO, @ModelAttribute("faqVO") FaqVO faqVO, HttpSession session,  ModelMap model) throws Exception {
 		String link = "egovframework/com/web/board/"+id;
-		
+
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (id==null || id.equals("")){
 			link="egovframework/com/admin/cmm/error/egovError";
@@ -120,23 +121,22 @@ public class ComUtlController {
 		
 		/**[추가] Q&A목록을 불러오기위해 - 2021.04.08**/
 		if(id.equals("page9")) {			
-			QnaVO searchVO = new QnaVO();
 			
 			/** EgovPropertyService.SiteList */
-			searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-			searchVO.setPageSize(propertiesService.getInt("pageSize"));
+			qnaVO.setPageUnit(propertiesService.getInt("pageUnit"));
+			qnaVO.setPageSize(propertiesService.getInt("pageSize"));
 
 			/** pageing */
 			PaginationInfo paginationInfo = new PaginationInfo();
-			paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-			paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-			paginationInfo.setPageSize(searchVO.getPageSize());
+			paginationInfo.setCurrentPageNo(qnaVO.getPageIndex());
+			paginationInfo.setRecordCountPerPage(qnaVO.getPageUnit());
+			paginationInfo.setPageSize(qnaVO.getPageSize());
 
-			searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-			searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-			searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+			qnaVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+			qnaVO.setLastIndex(paginationInfo.getLastRecordIndex());
+			qnaVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-			List<?> QnaList = QnaService.selectQnaList(searchVO);
+			List<?> QnaList = QnaService.selectQnaList(qnaVO);
 			model.addAttribute("resultList", QnaList);
 
 			// 인증여부 체크
@@ -148,34 +148,35 @@ public class ComUtlController {
 				model.addAttribute("certificationAt", "Y");
 			}
 
-			int totCnt = QnaService.selectQnaListCnt(searchVO);
+			int totCnt = QnaService.selectQnaListCnt(qnaVO);
 			paginationInfo.setTotalRecordCount(totCnt);
 			model.addAttribute("paginationInfo", paginationInfo);
-			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("searchVO", qnaVO);
+		
 			header(model);
+			
 			return link;
 		}
 		
-		if(id.equals("page10")) {
-			FaqVO searchVO = new FaqVO();
+		if(id.equals("page10")) {		
 			/** EgovPropertyService.SiteList */
-			searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-			searchVO.setPageSize(propertiesService.getInt("pageSize"));
+			faqVO.setPageUnit(propertiesService.getInt("pageUnit"));
+			faqVO.setPageSize(propertiesService.getInt("pageSize"));
 
 			/** pageing */
 			PaginationInfo paginationInfo = new PaginationInfo();
-			paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-			paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-			paginationInfo.setPageSize(searchVO.getPageSize());
+			paginationInfo.setCurrentPageNo(faqVO.getPageIndex());
+			paginationInfo.setRecordCountPerPage(faqVO.getPageUnit());
+			paginationInfo.setPageSize(faqVO.getPageSize());
 
-			searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-			searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-			searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+			faqVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+			faqVO.setLastIndex(paginationInfo.getLastRecordIndex());
+			faqVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-			List<?> FaqList = FaqService.selectFaqList(searchVO);
+			List<?> FaqList = FaqService.selectFaqList(faqVO);
 			model.addAttribute("resultList", FaqList);
 
-			int totCnt = FaqService.selectFaqListCnt(searchVO);
+			int totCnt = FaqService.selectFaqListCnt(faqVO);
 			paginationInfo.setTotalRecordCount(totCnt);
 			model.addAttribute("paginationInfo", paginationInfo);
 

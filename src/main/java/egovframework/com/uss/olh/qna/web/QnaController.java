@@ -175,7 +175,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", qnaVO);
 
-		return "egovframework/com/admin/uss/olh/qna/QnaRegist";
+		return "egovframework/com/web/board/page11";
 
 	}
 	
@@ -190,13 +190,14 @@ public class QnaController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/insertQna.do")
 	public String insertQna(@ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult, ModelMap model) throws Exception {
-
+		System.out.println("확인 : " + qnaVO.getWrterNm() + ", " + qnaVO.getEmailAdres() + ", " + qnaVO.getAreaNo() + ", " +qnaVO.getMiddleTelno() + ", " +qnaVO.getEndTelno() + ", " + qnaVO.getQestnSj() + ", " + qnaVO.getQestnCn());
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
 			return "egovframework/com/admin/uss/olh/qna/QnaRegist";
 		}
-
+		
+	
 		// 로그인VO에서  사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
@@ -289,7 +290,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
+		return "forward:/board.do?id=page9";
 
 	}
 	
@@ -321,6 +322,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
+		return "forward:/board.do?id=page9";
 	}
 }
