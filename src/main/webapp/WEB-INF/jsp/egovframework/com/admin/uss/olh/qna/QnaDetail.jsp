@@ -61,25 +61,27 @@
 		<col style="width: ;">
 	</colgroup>
 	<tbody>
-	
-	
+
 		<!-- 작성자명 -->
 		<tr>
 			<th><spring:message code="table.reger" /></th>
 			<td class="left" colspan="3"><c:out value="${result.wrterNm}"/></td>
 		</tr>
-		<!-- 전화 -->
-		<tr>
-			<th><spring:message code="comUssOlhQna.qnaVO.telNo" /></th>
-			<td class="left" colspan="3"><c:out value="${result.areaNo}"/> - <c:out value="${result.middleTelno}"/> - <c:out value="${result.endTelno}"/></td>
-		</tr>
-		<!-- 이메일 -->
-		<tr>
-			<th><spring:message code="comUssOlhQna.qnaVO.emailAdres" /></th>
-			<td class="left"><c:out value="${result.emailAdres}"/></td>
-			<th><spring:message code="comUssOlhQna.qnaVO.emailAnswerAt" /></th>
-			<td class="left"><input name="emailAnswerAt" type="checkbox"  disabled <c:if test="${result.emailAnswerAt == 'Y'}">checked</c:if> title="<spring:message code="comUssOlhQna.qnaVO.emailAnswerAt" /> "></td>
-		</tr>
+		
+		<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">
+			<!-- 전화 -->		
+			<tr>
+				<th><spring:message code="comUssOlhQna.qnaVO.telNo" /></th>
+				<td class="left" colspan="3"><c:out value="${result.areaNo}"/> - <c:out value="${result.middleTelno}"/> - <c:out value="${result.endTelno}"/></td>
+			</tr>
+			<!-- 이메일 -->
+			<tr>
+				<th><spring:message code="comUssOlhQna.qnaVO.emailAdres" /></th>
+				<td class="left"><c:out value="${result.emailAdres}"/></td>
+				<th><spring:message code="comUssOlhQna.qnaVO.emailAnswerAt" /></th>
+				<td class="left"><input name="emailAnswerAt" type="checkbox"  disabled <c:if test="${result.emailAnswerAt == 'Y'}">checked</c:if> title="<spring:message code="comUssOlhQna.qnaVO.emailAnswerAt" /> "></td>
+			</tr>
+		</c:if>
 		<!-- 작성일자 -->
 		<tr>
 			<th><spring:message code="table.regdate" /></th>
@@ -123,7 +125,7 @@
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<c:if test="${user.userSe == 'USR'}">		
-			<form name="qnaForm" action="<c:url value='/admin/uss/olh/qna/updateQnaAnswerView.do'/>" method="post" style="float:left;">
+			<form name="qnaForm" action="<c:url value='/admin/index.do'/>" method="post" style="float:left;">
 				<input type="submit" class="s_submit" value="<spring:message code="button.reply" />" title="<spring:message code="title.reply" /> <spring:message code="input.button" />" />
 				<input name="qaId" type="hidden" value="${result.qaId}">
 			</form>

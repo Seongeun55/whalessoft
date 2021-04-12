@@ -459,3 +459,17 @@ box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1)}
 .search_box .con input[type=text] {height:22px; }
 .search_box .bt_a {position:absolute; right:10px; top:13px; }	
 
+/*[추가] 페이징처리 css추가 2021.04.12*/
+.pagination {text-align:center; margin-top:15px; }
+.pagination ul { display:inline-block; }
+.pagination ul li {display:inline-block; margin:0 2px;  }
+.pagination ul li a { display:block; color:#999; width:26px; height:26px; line-height:26px; border:1px solid #e0e0e0; }
+.pagination ul li.first a { background:url('../../../images/egovframework/com/cmm/paging/pagination_first.gif') 8px 9px no-repeat; text-indent:-10000em; }
+.pagination ul li.prev a { background:url('../../../images/egovframework/com/cmm/paging/pagination_prev.gif') 11px 9px no-repeat; text-indent:-10000em; }
+.pagination ul li.next a { background:url('../../../images/egovframework/com/cmm/paging/pagination_next.gif') 12px 9px no-repeat; text-indent:-10000em; }
+.pagination ul li.last a { background:url('../../../images/egovframework/com/cmm/paging/pagination_last.gif') 10px 9px no-repeat; text-indent:-10000em; }
+.pagination ul li.first a:hover { background:url('../../../images/egovframework/com/cmm/paging/pagination_first_on.gif') no-repeat; }
+.pagination ul li.prev a:hover { background:url('../../../images/egovframework/com/cmm/paging/pagination_prev_on.gif') no-repeat; }
+.pagination ul li.next a:hover { background:url('../../../images/egovframework/com/cmm/paging/pagination_next_on.gif/') no-repeat; }
+.pagination ul li.current a,
+.pagination ul li a:hover { border:none; color:#fff; font-size:15px; font-weight:600; width:28px; height:28px; line-height:28px; background:#4688d2; }

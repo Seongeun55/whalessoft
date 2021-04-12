@@ -121,14 +121,13 @@ public class ComUtlController {
 		
 		/**[추가] Q&A목록을 불러오기위해 - 2021.04.08**/
 		if(id.equals("page9")) {			
-			
 			/** EgovPropertyService.SiteList */
 			qnaVO.setPageUnit(propertiesService.getInt("pageUnit"));
 			qnaVO.setPageSize(propertiesService.getInt("pageSize"));
 
 			/** pageing */
 			PaginationInfo paginationInfo = new PaginationInfo();
-			paginationInfo.setCurrentPageNo(qnaVO.getPageIndex());
+			paginationInfo.setCurrentPageNo(qnaVO.getPageIndex());		
 			paginationInfo.setRecordCountPerPage(qnaVO.getPageUnit());
 			paginationInfo.setPageSize(qnaVO.getPageSize());
 
@@ -182,6 +181,11 @@ public class ComUtlController {
 
 			header(model);		
 			return link;
+		}
+		
+		if(id.equals("page11")) {
+			header(model);
+			return link;		
 		}
 		
 		header(model);		

@@ -15,6 +15,14 @@ function fn_egov_search_qna(){
 	document.qnaForm.pageIndex.value = 1;
 	document.qnaForm.submit();
 }
+/*********************************************************
+ * 페이징 처리 함수
+ ******************************************************** */
+function fn_egov_select_linkPage(pageNo){
+	document.qnaForm.pageIndex.value = pageNo;
+	document.qnaForm.action = "<c:url value='/board.do?id=page9'/>";
+   	document.qnaForm.submit();
+}
 </script>
 <!-- 콘텐츠 시작 { -->
 <div class="container">
@@ -81,10 +89,10 @@ function fn_egov_search_qna(){
     	<div class="title-wrap">Q&A</div>
 	</div>
 	
-	<!-- 게시판 목록 시작 { -->
+	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
 		<form name="qnaForm" id="fboardlist" action="<c:url value='/board.do?id=page9'/>" onsubmit="fn_egov_search_qna(); return false;" method="post">
-		    <!-- 게시판 페이지 정보 및 버튼 시작 { -->
+		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
 				<li>
@@ -93,7 +101,7 @@ function fn_egov_search_qna(){
 						<option value="1"  <c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if> ><spring:message code="comUssOlhQna.qnaVO.qestnSj" /></option><!-- 질문제목 -->
 					</select>
 				</li>
-				<!-- 검색키워드 및 조회버튼 -->
+				<!-- 조회 및 등록버튼 -->
 				<li>
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />
@@ -102,8 +110,9 @@ function fn_egov_search_qna(){
 			</ul>
 			</div>
 		</form>
-    	<!-- } 게시판 페이지 정보 및 버튼 끝 -->
-        	
+    	<!-- } 게시판 조회 및 버튼 끝 -->
+        
+        <!-- 게시판 목록 시작 -->	
 	    <div class="tbl_head01 tbl_wrap">
 	        <table>
 		        <caption>질문 목록</caption>
@@ -145,30 +154,17 @@ function fn_egov_search_qna(){
 		        </c:forEach>
 	        </table>
 	    </div>
-   		
-
-	    <!-- 게시판 검색 시작 { -->
-	    <div class="bo_sch_wrap">
-	        <fieldset class="bo_sch">
-	            <h3>검색</h3>
-	            <form name="fsearch" method="get">
-	            <input type="hidden" name="bo_table" value="notice">
-	            <input type="hidden" name="sca" value="">
-	            <input type="hidden" name="sop" value="and">
-	            <label for="sfl" class="sound_only">검색대상</label>
-	            <select name="sfl" id="sfl">
-	                <option value="wr_subject" >제목</option><option value="wr_content" >내용</option><option value="wr_subject||wr_content" >제목+내용</option><option value="wr_name,1" >글쓴이</option><option value="wr_name,0" >글쓴이(코)</option>            </select>
-	            <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-	            <div class="sch_bar">
-	                <input type="text" name="stx" value="" required id="stx" class="sch_input" size="25" maxlength="20" placeholder=" 검색어를 입력해주세요">
-	                <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-	            </div>
-	            <button type="button" class="bo_sch_cls" title="닫기"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-	            </form>
-	        </fieldset>
-	        <div class="bo_sch_bg"></div>
-	    </div>
-	</div>
+	    <!-- 게시판 목록 끝 -->
+		<!-- paging navigation -->
+		<div class="pagination">
+			<ul>
+			<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_linkPage"/>
+			</ul>
+		</div>
+		<input name="qaId" type="hidden" value="<c:out value='${searchVO.qaId}'/>">
+		<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>">
+		
+	</div>	
 </div>
 <!-- } 콘텐츠 끝 -->
 	

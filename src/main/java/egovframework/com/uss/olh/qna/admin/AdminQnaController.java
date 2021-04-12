@@ -98,7 +98,7 @@ public class AdminQnaController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> QnaAnswerList = QnaService.selectQnaAnswerList(searchVO);
+		List<?> QnaAnswerList = QnaService.selectQnaList(searchVO);
 		model.addAttribute("resultList", QnaAnswerList);
 
 		int totCnt = QnaService.selectQnaAnswerListCnt(searchVO);
@@ -122,7 +122,7 @@ public class AdminQnaController {
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
 
 		model.addAttribute("result", vo);
-
+		
 		return "egovframework/com/admin/uss/olh/qna/QnaAnswerDetail";
 	}
 	
@@ -147,7 +147,7 @@ public class AdminQnaController {
 		qnaVO = QnaService.selectQnaDetail(qnaVO);
 		model.addAttribute("qnaVO", qnaVO);
 
-		return "egovframework/com/admin/uss/olh/qna/EgovQnaAnswerUpdt";
+		return "egovframework/com/admin/uss/olh/qna/QnaAnswerUpdt";
 	}
 	
 	/**
@@ -168,6 +168,107 @@ public class AdminQnaController {
 		QnaService.updateQnaAnswer(qnaVO);
 
 		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
+	}
+	
+	/**
+	 * [추가]관리자가 Q&A정보 수정하기위한 전처리 -2021.04.12
+	 * @param qnaVO
+	 * @param searchVO
+	 * @param model
+	 * @return	"/uss/olh/qna/EgovQnaUpdt
+	 * @throws Exception
+	 */
+	@SuppressWarnings("deprecation")
+	@RequestMapping("/admin/uss/olh/qna/updateQnaView.do")
+	public String updateQnaView(QnaVO qnaVO, @ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
+
+		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
+
+		model.addAttribute("qnaVO", vo);
+
+		return "egovframework/com/admin/uss/olh/qna/QnaAdminUpdt";
+	}
+	
+	/**
+	 * [추가] 관리자가 Q&A정보를 수정처리한다. - 2021.04.12
+	 * @param searchVO
+	 * @param qnaVO
+	 * @param bindingResult
+	 * @return	"forward:/uss/olh/qna/selectQnaList.do"
+	 * @throws Exception
+	 */
+	@SuppressWarnings("deprecation")
+	@RequestMapping("/admin/uss/olh/qna/updateQna.do")
+	public String updateQna(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult) throws Exception {
+
+		// Validation
+		beanValidator.validate(qnaVO, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			return "egovframework/com/admin/uss/olh/qna/QnaAdminUpdt";
+		}
+		
+    	//--------------------------------------------------------------------------------------------
+    	// @ XSS 사용자권한체크 START
+    	// param1 : 사용자고유ID(uniqId,esntlId)
+    	//--------------------------------------------------------
+    	LOGGER.debug("@ XSS 권한체크 START ----------------------------------------------");
+    	//step1 DB에서 해당 게시물의 uniqId 조회
+    	QnaVO vo = QnaService.selectQnaDetail(qnaVO);;
+    	
+    	//step2 EgovXssChecker 공통모듈을 이용한 권한체크
+    	EgovXssChecker.checkerUserXss(request, vo.getFrstRegisterId()); 
+      	LOGGER.debug("@ XSS 권한체크 END ------------------------------------------------");
+    	//--------------------------------------------------------
+    	// @ XSS 사용자권한체크 END
+    	//--------------------------------------------------------------------------------------------
+
+		// 로그인VO에서  사용자 정보 가져오기
+		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		String lastUpdusrId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());
+
+		qnaVO.setLastUpdusrId(lastUpdusrId); // 최종수정자ID
+
+		// 작성비밀번호를 암호화 하기 위해서 Get
+//		String writngPassword = qnaManageVO.getWritngPassword();
+
+		// EgovFileScrty Util에 있는 암호화 모듈을 적용해서 암호화 한다.
+//		qnaManageVO.setWritngPassword(EgovFileScrty.encode(writngPassword));
+
+		QnaService.updateQna(qnaVO);
+
+		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
 
 	}
+	
+	/**[추가] 관리자가 Q&A정보를 삭제처리한다. - 2021.04.12 
+	 * @param qnaVO
+	 * @param searchVO
+	 * @return	"forward:/uss/olh/qna/selectQnaList.do"
+	 * @throws Exception
+	 */
+	@RequestMapping("/admin/uss/olh/qna/deleteQna.do")
+	public String deleteQna(HttpServletRequest request, QnaVO qnaVO, @ModelAttribute("searchVO") QnaVO searchVO) throws Exception {
+
+    	//--------------------------------------------------------------------------------------------
+    	// @ XSS 사용자권한체크 START
+    	// param1 : 사용자고유ID(uniqId,esntlId)
+    	//--------------------------------------------------------
+    	LOGGER.debug("@ XSS 권한체크 START ----------------------------------------------");
+    	
+    	//step1 DB에서 해당 게시물의 uniqId 조회
+    	QnaVO vo = QnaService.selectQnaDetail(qnaVO);;
+    	
+    	//step2 EgovXssChecker 공통모듈을 이용한 권한체크
+    	EgovXssChecker.checkerUserXss(request, vo.getFrstRegisterId()); 
+      	LOGGER.debug("@ XSS 권한체크 END ------------------------------------------------");
+    	//--------------------------------------------------------
+    	// @ XSS 사용자권한체크 END
+    	//--------------------------------------------------------------------------------------------
+    
+		QnaService.deleteQna(qnaVO);
+
+		return "forward:/admin/uss/olh/qna/selectQnaAnswerList.do";
+	}
+	
 }

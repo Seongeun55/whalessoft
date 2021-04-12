@@ -1,6 +1,9 @@
 package egovframework.com.uss.olh.qna.web;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +27,7 @@ import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.service.CmmUseService;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.cmm.util.EgovXssChecker;
+import egovframework.com.cmm.web.ComUtlController;
 import egovframework.com.uss.olh.qna.service.QnaService;
 import egovframework.com.uss.olh.qna.service.QnaDefaultVO;
 import egovframework.com.uss.olh.qna.service.QnaVO;
@@ -133,7 +137,7 @@ public class QnaController {
 		qnaVO.setQaId(qaId);
 		
 		//조회수 수정처리
-		//QnaService.updateQnaInqireCo(qnaVO);
+		QnaService.updateQnaInqireCo(qnaVO);
 		
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
 
@@ -174,8 +178,8 @@ public class QnaController {
 		qnaVO.setEmailAdres(emailAdres); // email 주소
 
 		model.addAttribute("qnaVO", qnaVO);
-
-		return "egovframework/com/web/board/page11";
+		
+		return "forward:/board.do?id=page11";
 
 	}
 	
@@ -190,7 +194,6 @@ public class QnaController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/insertQna.do")
 	public String insertQna(@ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult, ModelMap model) throws Exception {
-		System.out.println("확인 : " + qnaVO.getWrterNm() + ", " + qnaVO.getEmailAdres() + ", " + qnaVO.getAreaNo() + ", " +qnaVO.getMiddleTelno() + ", " +qnaVO.getEndTelno() + ", " + qnaVO.getQestnSj() + ", " + qnaVO.getQestnCn());
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
