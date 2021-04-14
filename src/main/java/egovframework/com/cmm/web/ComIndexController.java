@@ -219,7 +219,8 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	}
 	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.07 **/
-	public void header(ModelMap model) throws Exception{
+	public ModelMap header(ModelMap model) throws Exception{
+		System.out.println("확인 : ci헤더");
 		//[추가] 메인화면에 메뉴리스트 -2021.03.31
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		MenuManageVO menuManageVO = new MenuManageVO();
@@ -237,6 +238,8 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
 		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
 		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
+		
+		return model;
 	}
 	
 }

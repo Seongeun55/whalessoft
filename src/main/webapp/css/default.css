@@ -369,7 +369,7 @@ button.btn02 {display:inline-block;margin:0;padding:7px;border:1px solid #3b3c3f
 
 .btn_confirm {text-align:right} /* 서식단계 진행 */
 
-.btn_submit {border:0;background:#000000;color:#fff;cursor:pointer;border-radius:3px}
+.btn_submit {border:0;background:#25316e;color:#fff;cursor:pointer;border-radius:3px}
 .btn_submit:hover {background:#333}
 .btn_close {border:1px solid #dcdcdc;cursor:pointer;border-radius:3px;background:#fff}
 a.btn_close {text-align:center;line-height:50px}

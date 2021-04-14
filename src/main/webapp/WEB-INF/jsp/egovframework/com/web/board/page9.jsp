@@ -11,19 +11,26 @@
 /*********************************************************
  * 조회 처리 함수
  ******************************************************** */
-function fn_egov_search_qna(){
-	document.qnaForm.pageIndex.value = 1;
-	document.qnaForm.submit();
+function searchQna(form){
+	form.searchWrd.value = form.searchWrd.value.trim();
+	if(form.searchWrd.value == "") {
+		alert("검색어를 입력해주세요.");
+		form.searchWrd.focus();
+		return false;
+	}
 }
 /*********************************************************
  * 페이징 처리 함수
  ******************************************************** */
-function fn_egov_select_linkPage(pageNo){
-	document.qnaForm.pageIndex.value = pageNo;
-	document.qnaForm.action = "<c:url value='/board.do?id=page9'/>";
-   	document.qnaForm.submit();
+function linkPage(pageNo){
+	document.pageForm.pageIndex.value = pageNo;
+   	document.pageForm.submit();
 }
 </script>
+<form name="pageForm">
+	<input type="hidden" name="id" value="<c:out value='${param.id}'/>">
+	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
+</form>
 <!-- 콘텐츠 시작 { -->
 <div class="container">
 	<div class="sub_bg sub_bg_">
@@ -39,7 +46,6 @@ function fn_egov_select_linkPage(pageNo){
     }
 //-->
 </script>
-	
 	<div id="submenu">
 		<ul id="mysub0" style="display:none">
         <li>
@@ -91,7 +97,7 @@ function fn_egov_select_linkPage(pageNo){
 	
 	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
-		<form name="qnaForm" id="fboardlist" action="<c:url value='/board.do?id=page9'/>" onsubmit="fn_egov_search_qna(); return false;" method="post">
+		<form name="qnaForm" id="fboardlist" action="<c:url value='./board.do'/>?id=<c:out value='${param.id}'/>" onsubmit="return searchQna(this);" method="post">
 		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -158,13 +164,10 @@ function fn_egov_select_linkPage(pageNo){
 		<!-- paging navigation -->
 		<div class="pagination">
 			<ul>
-			<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_linkPage"/>
+			<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
 			</ul>
-		</div>
-		<input name="qaId" type="hidden" value="<c:out value='${searchVO.qaId}'/>">
-		<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>">
-		
-	</div>	
+		</div>	
+	</div>
 </div>
 <!-- } 콘텐츠 끝 -->
 	

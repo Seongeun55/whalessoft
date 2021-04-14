@@ -40,9 +40,9 @@ function fn_egov_init(){
 /*********************************************************
  * 페이징 처리 함수
  ******************************************************** */
-function fn_egov_select_linkPage(pageNo){
+function linkPage(pageNo){
 	document.qnaForm.pageIndex.value = pageNo;
-	document.qnaForm.action = "<c:url value='/uss/olh/qna/selectQnaList.do'/>";
+	document.qnaForm.action = "/uss/olh/qna/selectQnaList.do";
    	document.qnaForm.submit();
 }
 /*********************************************************
@@ -138,7 +138,7 @@ function fn_egov_inquire_qnadetail(qaId) {
 	<!-- paging navigation -->
 	<div class="pagination">
 		<ul>
-		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_linkPage"/>
+		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
 		</ul>
 	</div>
 	

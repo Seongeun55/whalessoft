@@ -28,6 +28,8 @@ import egovframework.com.cmm.service.CmmUseService;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.cmm.util.EgovXssChecker;
 import egovframework.com.cmm.web.ComUtlController;
+import egovframework.com.sym.mnu.mpm.service.MenuManageService;
+import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.uss.olh.qna.service.QnaService;
 import egovframework.com.uss.olh.qna.service.QnaDefaultVO;
 import egovframework.com.uss.olh.qna.service.QnaVO;
@@ -72,6 +74,10 @@ public class QnaController {
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
+	
+	/** MenuManageService */
+	@Resource(name = "meunManageService")
+	private MenuManageService menuManageService;
 
 	// Validation 관련
 	@Autowired
@@ -87,7 +93,6 @@ public class QnaController {
 	@IncludedInfo(name = "Q&A관리", order = 550, gid = 50)
 	@RequestMapping(value = "/uss/olh/qna/selectQnaList.do")
 	public String selectQnaList(@ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
-
 		/** EgovPropertyService.SiteList */
 		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
 		searchVO.setPageSize(propertiesService.getInt("pageSize"));
@@ -133,7 +138,25 @@ public class QnaController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/selectQnaDetail.do")
 	public String selectQnaDetail(@RequestParam("qaId") String qaId, QnaVO qnaVO, @ModelAttribute("searchVO") QnaDefaultVO searchVO, ModelMap model) throws Exception {
+		//[추가] 메인화면에 메뉴리스트 -2021.04.13
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		MenuManageVO menuManageVO = new MenuManageVO();
+		
+		//[추가] 메인화면에 메뉴리스트 -2021.04.06
+		menuManageVO.setTmpId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
+		menuManageVO.setTmpPassword(user == null ? "" : EgovStringUtil.isNullToString(user.getPassword()));
+		menuManageVO.setTmpUserSe(user == null ? "" : EgovStringUtil.isNullToString(user.getUserSe()));
+		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
+		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
+		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
+		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
 
+		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
+		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
+		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
+		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
+		
+		///////////////////////////////////////
 		qnaVO.setQaId(qaId);
 		
 		//조회수 수정처리
@@ -141,12 +164,10 @@ public class QnaController {
 		
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
 
-		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-
 		model.addAttribute("user", user);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/admin/uss/olh/qna/QnaDetail";
+		return "egovframework/com/web/board/page9_2";
 	}
 	
 	/**
@@ -179,7 +200,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", qnaVO);
 		
-		return "forward:/board.do?id=page11";
+		return "forward:/board.do?id=page9_1";
 
 	}
 	
@@ -242,7 +263,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", vo);
 
-		return "egovframework/com/admin/uss/olh/qna/QnaUpdt";
+		return "egovframework/com/web/board/page9_3";
 	}
 	
 	/**
@@ -282,7 +303,6 @@ public class QnaController {
 		// 로그인VO에서  사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		String lastUpdusrId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());
-
 		qnaVO.setLastUpdusrId(lastUpdusrId); // 최종수정자ID
 
 		// 작성비밀번호를 암호화 하기 위해서 Get

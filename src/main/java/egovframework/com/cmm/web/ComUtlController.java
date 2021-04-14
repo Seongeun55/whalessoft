@@ -113,14 +113,15 @@ public class ComUtlController {
 	@RequestMapping(value = "/board.do")
 	public String moveToboard(@RequestParam("id") String id, @ModelAttribute("searchVO") QnaVO qnaVO, @ModelAttribute("faqVO") FaqVO faqVO, HttpSession session,  ModelMap model) throws Exception {
 		String link = "egovframework/com/web/board/"+id;
-
+		ComIndexController ci = new ComIndexController();
+		
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (id==null || id.equals("")){
 			link="egovframework/com/admin/cmm/error/egovError";
 		}
 		
 		/**[추가] Q&A목록을 불러오기위해 - 2021.04.08**/
-		if(id.equals("page9")) {			
+		if(id.equals("page9")) {						
 			/** EgovPropertyService.SiteList */
 			qnaVO.setPageUnit(propertiesService.getInt("pageUnit"));
 			qnaVO.setPageSize(propertiesService.getInt("pageSize"));
@@ -151,10 +152,7 @@ public class ComUtlController {
 			paginationInfo.setTotalRecordCount(totCnt);
 			model.addAttribute("paginationInfo", paginationInfo);
 			model.addAttribute("searchVO", qnaVO);
-		
 			header(model);
-			
-			return link;
 		}
 		
 		if(id.equals("page10")) {		
@@ -180,12 +178,6 @@ public class ComUtlController {
 			model.addAttribute("paginationInfo", paginationInfo);
 
 			header(model);		
-			return link;
-		}
-		
-		if(id.equals("page11")) {
-			header(model);
-			return link;		
 		}
 		
 		header(model);		

@@ -473,3 +473,12 @@ box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1)}
 .pagination ul li.next a:hover { background:url('../../../images/egovframework/com/cmm/paging/pagination_next_on.gif/') no-repeat; }
 .pagination ul li.current a,
 .pagination ul li a:hover { border:none; color:#fff; font-size:15px; font-weight:600; width:28px; height:28px; line-height:28px; background:#4688d2; }
+
+/* [추가] button Style - 2021.04.13 */
+.s_submit {height:21px; padding:0 10px; border:0 !important; color:#fff; font-family:'돋움', '굴림', 'Arial', 'AppleGothic', 'sans-serif'; font-size:11px; font-weight:200; background:#212121; vertical-align:top; cursor:pointer; }
+.s_submit:hover { background:#000000; }
+
+/* [추가] 답변 - 2021.04.13 */
+.coment_wrap{padding:20px 0; border-top:1px solid #f1f1f1}
+.coment_wrap h2 {margin-bottom:15px;}
+.comment {margin-left:5px;}
