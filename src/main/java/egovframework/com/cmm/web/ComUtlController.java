@@ -56,17 +56,6 @@ public class ComUtlController {
     @Resource(name = "propertiesService")
     protected EgovPropertyService propertiesService;
 	
-	/** MenuManageService */
-	@Resource(name = "meunManageService")
-	private MenuManageService menuManageService;
-	
-	/**[추가] 2021.04.08**/
-	@Resource(name = "QnaService")
-	private QnaService QnaService;
-	
-	@Resource(name = "FaqService")
-	private FaqService FaqService;
-	
     /**
 	 * JSP 호출작업만 처리하는 공통 함수
 	 */
@@ -93,118 +82,7 @@ public class ComUtlController {
 		
 		return link;
 	}
-	
-	/*[추가] jsp페이지 이동메소드 - 2021.04.02*/
-	@RequestMapping(value = "/content.do")
-	public String moveToContent(@RequestParam("id") String id, HttpSession session, ModelMap model) throws Exception {
-		String link = "egovframework/com/web/content/"+id;
-		
-		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
-		if (id==null || id.equals("")){
-			link="egovframework/com/admin/cmm/error/egovError";
-		}
-		
-		header(model);
-		
-		return link;
-	}
-	
-	/*[추가] jsp페이지 이동메소드 - 2021.04.06*/
-	@RequestMapping(value = "/board.do")
-	public String moveToboard(@RequestParam("id") String id, @ModelAttribute("searchVO") QnaVO qnaVO, @ModelAttribute("faqVO") FaqVO faqVO, HttpSession session,  ModelMap model) throws Exception {
-		String link = "egovframework/com/web/board/"+id;
-		ComIndexController ci = new ComIndexController();
-		
-		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
-		if (id==null || id.equals("")){
-			link="egovframework/com/admin/cmm/error/egovError";
-		}
-		
-		/**[추가] Q&A목록을 불러오기위해 - 2021.04.08**/
-		if(id.equals("page9")) {						
-			/** EgovPropertyService.SiteList */
-			qnaVO.setPageUnit(propertiesService.getInt("pageUnit"));
-			qnaVO.setPageSize(propertiesService.getInt("pageSize"));
 
-			/** pageing */
-			PaginationInfo paginationInfo = new PaginationInfo();
-			paginationInfo.setCurrentPageNo(qnaVO.getPageIndex());		
-			paginationInfo.setRecordCountPerPage(qnaVO.getPageUnit());
-			paginationInfo.setPageSize(qnaVO.getPageSize());
-
-			qnaVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-			qnaVO.setLastIndex(paginationInfo.getLastRecordIndex());
-			qnaVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-			List<?> QnaList = QnaService.selectQnaList(qnaVO);
-			model.addAttribute("resultList", QnaList);
-
-			// 인증여부 체크
-			Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-
-			if (!isAuthenticated) {
-				model.addAttribute("certificationAt", "N");
-			} else {
-				model.addAttribute("certificationAt", "Y");
-			}
-
-			int totCnt = QnaService.selectQnaListCnt(qnaVO);
-			paginationInfo.setTotalRecordCount(totCnt);
-			model.addAttribute("paginationInfo", paginationInfo);
-			model.addAttribute("searchVO", qnaVO);
-			header(model);
-		}
-		
-		if(id.equals("page10")) {		
-			/** EgovPropertyService.SiteList */
-			faqVO.setPageUnit(propertiesService.getInt("pageUnit"));
-			faqVO.setPageSize(propertiesService.getInt("pageSize"));
-
-			/** pageing */
-			PaginationInfo paginationInfo = new PaginationInfo();
-			paginationInfo.setCurrentPageNo(faqVO.getPageIndex());
-			paginationInfo.setRecordCountPerPage(faqVO.getPageUnit());
-			paginationInfo.setPageSize(faqVO.getPageSize());
-
-			faqVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-			faqVO.setLastIndex(paginationInfo.getLastRecordIndex());
-			faqVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-			List<?> FaqList = FaqService.selectFaqList(faqVO);
-			model.addAttribute("resultList", FaqList);
-
-			int totCnt = FaqService.selectFaqListCnt(faqVO);
-			paginationInfo.setTotalRecordCount(totCnt);
-			model.addAttribute("paginationInfo", paginationInfo);
-
-			header(model);		
-		}
-		
-		header(model);		
-		return link;
-	}
-	
-	/** [추가] ComIndexController.java에 있는 부분을 가져옴(불러오기가 안돼서) - 2021.04.08 **/
-	public void header(ModelMap model) throws Exception{
-		//[추가] 메인화면에 메뉴리스트 -2021.03.31
-		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		MenuManageVO menuManageVO = new MenuManageVO();
-		
-		//[추가] 메인화면에 메뉴리스트 -2021.04.06
-		menuManageVO.setTmpId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
-		menuManageVO.setTmpPassword(user == null ? "" : EgovStringUtil.isNullToString(user.getPassword()));
-		menuManageVO.setTmpUserSe(user == null ? "" : EgovStringUtil.isNullToString(user.getUserSe()));
-		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
-		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
-		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
-		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
-
-		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
-		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
-		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
-		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
-	}
-	
     /**
 	 * 모달조회
 	 * @return String

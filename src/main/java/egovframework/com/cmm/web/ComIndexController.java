@@ -28,17 +28,12 @@ package egovframework.com.cmm.web;
  * </pre>
  */
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
+import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import egovframework.com.cmm.IncludedCompInfoVO;
+import javax.servlet.http.HttpSession;
 import egovframework.com.cmm.LoginVO;
-import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.sym.mnu.mpm.service.MenuManageService;
 import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
@@ -46,7 +41,12 @@ import egovframework.com.uss.ion.bnr.service.BannerService;
 import egovframework.com.uss.ion.bnr.service.BannerVO;
 import egovframework.com.uss.ion.pwm.service.PopupManageService;
 import egovframework.com.uss.ion.pwm.service.PopupManageVO;
+import egovframework.com.uss.olh.faq.service.FaqService;
+import egovframework.com.uss.olh.faq.service.FaqVO;
+import egovframework.com.uss.olh.qna.service.QnaService;
+import egovframework.com.uss.olh.qna.service.QnaVO;
 import egovframework.com.utl.fcc.service.EgovStringUtil;
+import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import org.slf4j.Logger;
@@ -57,23 +57,33 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ComIndexController implements ApplicationContextAware, InitializingBean {
 
 	private ApplicationContext applicationContext;
-	 
+	
+	/** [추가] **/
 	@Resource(name = "BannerService")
 	private BannerService BannerService;
 	
-	/** MenuManageService */
 	@Resource(name = "meunManageService")
 	private MenuManageService menuManageService;
 
-	/** PopupManageService */
 	@Resource(name = "PopupManageService")
 	private PopupManageService PopupManageService;
+	
+	@Resource(name = "QnaService")
+	private QnaService QnaService;
+	
+	@Resource(name = "FaqService")
+	private FaqService FaqService;
+	
+    @Resource(name = "propertiesService")
+    protected EgovPropertyService propertiesService;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ComIndexController.class);
 
@@ -87,125 +97,26 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 	@RequestMapping("/main.do")
 	public String index(HttpServletRequest request, ModelMap model) throws Exception{
-	
-		//[추가] 메인 배너 컨텐츠 조회 시작 ---------------------------------2021.03.26
-		BannerVO bannerVO = new BannerVO();
-	
-		PaginationInfo paginationInfo_Banner = new PaginationInfo();
-		paginationInfo_Banner.setCurrentPageNo(bannerVO.getPageIndex());
-		paginationInfo_Banner.setRecordCountPerPage(bannerVO.getPageUnit());
-		paginationInfo_Banner.setPageSize(bannerVO.getPageSize());
-		bannerVO.setFirstIndex(paginationInfo_Banner.getFirstRecordIndex());
-		bannerVO.setLastIndex(paginationInfo_Banner.getLastRecordIndex());
-		bannerVO.setRecordCountPerPage(paginationInfo_Banner.getRecordCountPerPage());
-		bannerVO.setBannerList(BannerService.selectBannerResult(bannerVO));
-		model.addAttribute("bannerList", bannerVO.getBannerList());
-		// 메인 배너 컨텐츠 조회 끝 ---------------------------------
 		
 		//[추가] 메인화면에 팝업창 -2021.03.31
 		PopupManageVO popupManageVO = new PopupManageVO();
 		List<?> resultList = PopupManageService.selectPopupMainList(popupManageVO);
 		model.addAttribute("resultList", resultList);
 		
-		header(model);
+		menu(model);
+		banner(model);
 		
 		return "egovframework/com/web/main";
 	}
 
-	@RequestMapping("/EgovTop.do")
-	public String top() {
-		return "egovframework/com/admin/cmm/EgovUnitTop";
-	}
-
-	@RequestMapping("/EgovBottom.do")
-	public String bottom() {
-		return "egovframework/com/admin/cmm/EgovUnitBottom";
-	}
-
 	@RequestMapping("/AdminContent.do")		//수정 - EgovContent.do -> AdminContent.do
-	public String setContent(ModelMap model) {
+	public String adminContent(ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("loginVO", loginVO);
 		return "egovframework/com/admin/cmm/AdminMainContent";
 	}
 
-	@RequestMapping("/EgovLeft.do")
-	public String setLeftMenu(ModelMap model) {
-
-		Map<Integer, IncludedCompInfoVO> map = new TreeMap<Integer, IncludedCompInfoVO>();
-		RequestMapping rmAnnotation;
-		IncludedInfo annotation;
-		IncludedCompInfoVO zooVO;
-
-		/*
-		 * EgovLoginController가 AOP Proxy되는 바람에 클래스를 reflection으로 가져올 수 없음
-		 */
-		try {
-			Class<?> loginController = Class.forName("egovframework.com.uat.uia.web.LoginController");
-			Method[] methods = loginController.getMethods();
-			for (int i = 0; i < methods.length; i++) {
-				annotation = methods[i].getAnnotation(IncludedInfo.class);
-
-				if (annotation != null) {
-					LOGGER.debug("Found @IncludedInfo Method : {}", methods[i]);
-					zooVO = new IncludedCompInfoVO();
-					zooVO.setName(annotation.name());
-					zooVO.setOrder(annotation.order());
-					zooVO.setGid(annotation.gid());
-
-					rmAnnotation = methods[i].getAnnotation(RequestMapping.class);
-					if ("".equals(annotation.listUrl()) && rmAnnotation != null) {
-						zooVO.setListUrl(rmAnnotation.value()[0]);
-					} else {
-						zooVO.setListUrl(annotation.listUrl());
-					}
-					map.put(zooVO.getOrder(), zooVO);
-				}
-			}
-		} catch (ClassNotFoundException e) {
-			LOGGER.error("No egovframework.com.uat.uia.web.LoginController!!");
-		}
-		/* 여기까지 AOP Proxy로 인한 코드 */
-
-		/*@Controller Annotation 처리된 클래스를 모두 찾는다.*/
-		Map<String, Object> myZoos = applicationContext.getBeansWithAnnotation(Controller.class);
-		LOGGER.debug("How many Controllers : ", myZoos.size());
-		for (final Object myZoo : myZoos.values()) {
-			Class<? extends Object> zooClass = myZoo.getClass();
-
-			Method[] methods = zooClass.getMethods();
-			LOGGER.debug("Controller Detected {}", zooClass);
-			for (int i = 0; i < methods.length; i++) {
-				annotation = methods[i].getAnnotation(IncludedInfo.class);
-
-				if (annotation != null) {
-					//LOG.debug("Found @IncludedInfo Method : " + methods[i] );
-					zooVO = new IncludedCompInfoVO();
-					zooVO.setName(annotation.name());
-					zooVO.setOrder(annotation.order());
-					zooVO.setGid(annotation.gid());
-					/*
-					 * 목록형 조회를 위한 url 매핑은 @IncludedInfo나 @RequestMapping에서 가져온다
-					 */
-					rmAnnotation = methods[i].getAnnotation(RequestMapping.class);
-					if ("".equals(annotation.listUrl())) {
-						zooVO.setListUrl(rmAnnotation.value()[0]);
-					} else {
-						zooVO.setListUrl(annotation.listUrl());
-					}
-
-					map.put(zooVO.getOrder(), zooVO);
-				}
-			}
-		}
-
-		model.addAttribute("resultList", map.values());
-		
-		LOGGER.debug("ComIndexController index is called ");
-
-		return "egovframework/com/admin/cmm/EgovUnitLeft";
-	}
 	//-----------------------------------추가--------------------------------------------------//
 	
 	@RequestMapping("/admin/index.do")
@@ -218,9 +129,95 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		return url;
 	}
 	
+	/*[추가] jsp페이지 이동메소드 - 2021.04.02*/
+	@RequestMapping(value = "/content.do")
+	public String content(@RequestParam("id") String id, HttpSession session, ModelMap model) throws Exception {
+		
+		String link = "egovframework/com/web/content/"+id;
+
+		if (id==null || id.equals("")){
+			link="egovframework/com/admin/cmm/error/egovError";
+		}
+		
+		menu(model);
+		
+		return link;
+	}
+	
+	/*[추가] jsp페이지 이동메소드 - 2021.04.06*/
+	@RequestMapping(value = "/board.do")
+	public String boardList(@RequestParam("id") String id, @ModelAttribute("searchVO") QnaVO qnaVO, @ModelAttribute("faqVO") FaqVO faqVO, HttpSession session,  ModelMap model) throws Exception {
+		String link = "egovframework/com/web/board/"+id;
+		
+		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
+		if (id==null || id.equals("")){
+			link="egovframework/com/admin/cmm/error/egovError";
+		}
+		
+		/**[추가] Q&A목록을 불러오기위해 - 2021.04.08**/
+		if(id.equals("page9")) {						
+			/** EgovPropertyService.SiteList */
+			qnaVO.setPageUnit(propertiesService.getInt("pageUnit"));
+			qnaVO.setPageSize(propertiesService.getInt("pageSize"));
+
+			/** pageing */
+			PaginationInfo paginationInfo = new PaginationInfo();
+			paginationInfo.setCurrentPageNo(qnaVO.getPageIndex());		
+			paginationInfo.setRecordCountPerPage(qnaVO.getPageUnit());
+			paginationInfo.setPageSize(qnaVO.getPageSize());
+
+			qnaVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+			qnaVO.setLastIndex(paginationInfo.getLastRecordIndex());
+			qnaVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+			List<?> QnaList = QnaService.selectQnaList(qnaVO);
+			model.addAttribute("resultList", QnaList);
+
+			// 인증여부 체크
+			Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+
+			if (!isAuthenticated) {
+				model.addAttribute("certificationAt", "N");
+			} else {
+				model.addAttribute("certificationAt", "Y");
+			}
+
+			int totCnt = QnaService.selectQnaListCnt(qnaVO);
+			paginationInfo.setTotalRecordCount(totCnt);
+			model.addAttribute("paginationInfo", paginationInfo);
+			model.addAttribute("searchVO", qnaVO);
+		}
+		
+		if(id.equals("page10")) {		
+			/** EgovPropertyService.SiteList */
+			faqVO.setPageUnit(propertiesService.getInt("pageUnit"));
+			faqVO.setPageSize(propertiesService.getInt("pageSize"));
+
+			/** pageing */
+			PaginationInfo paginationInfo = new PaginationInfo();
+			paginationInfo.setCurrentPageNo(faqVO.getPageIndex());
+			paginationInfo.setRecordCountPerPage(faqVO.getPageUnit());
+			paginationInfo.setPageSize(faqVO.getPageSize());
+
+			faqVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+			faqVO.setLastIndex(paginationInfo.getLastRecordIndex());
+			faqVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+			List<?> FaqList = FaqService.selectFaqList(faqVO);
+			model.addAttribute("resultList", FaqList);
+
+			int totCnt = FaqService.selectFaqListCnt(faqVO);
+			paginationInfo.setTotalRecordCount(totCnt);
+			model.addAttribute("paginationInfo", paginationInfo);	
+		}
+
+		menu(model);
+		return link;
+	}
+	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.07 **/
-	public ModelMap header(ModelMap model) throws Exception{
-		System.out.println("확인 : ci헤더");
+	public void menu(ModelMap model) throws Exception{
+		
 		//[추가] 메인화면에 메뉴리스트 -2021.03.31
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		MenuManageVO menuManageVO = new MenuManageVO();
@@ -233,13 +230,29 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
 		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
 		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
-
+		
 		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
 		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
 		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
 		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
+	}
+	
+	/** [추가] main.do에 있던 부분을 분리 - 2021.04.14 **/
+	public void banner(ModelMap model) throws Exception{
 		
-		return model;
+		BannerVO bannerVO = new BannerVO();
+		
+		PaginationInfo paginationInfo_Banner = new PaginationInfo();
+		paginationInfo_Banner.setCurrentPageNo(bannerVO.getPageIndex());
+		paginationInfo_Banner.setRecordCountPerPage(bannerVO.getPageUnit());
+		paginationInfo_Banner.setPageSize(bannerVO.getPageSize());
+		
+		bannerVO.setFirstIndex(paginationInfo_Banner.getFirstRecordIndex());
+		bannerVO.setLastIndex(paginationInfo_Banner.getLastRecordIndex());
+		bannerVO.setRecordCountPerPage(paginationInfo_Banner.getRecordCountPerPage());
+		bannerVO.setBannerList(BannerService.selectBannerResult(bannerVO));
+		
+		model.addAttribute("bannerList", bannerVO.getBannerList());
 	}
 	
 }
