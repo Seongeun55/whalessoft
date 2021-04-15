@@ -88,22 +88,4 @@ public class FaqController {
 
 		return "egovframework/com/web/board/faq/list";
 	}
-	
-	/**
-	 * FAQ 목록에 대한 상세정보를 조회한다.
-	 * @param faqVO
-	 * @param searchVO
-	 * @param model
-	 * @return	"/uss/olh/faq/EgovFaqDetail"
-	 * @throws Exception
-	 */
-	@RequestMapping("/uss/olh/faq/faqDetail.do")
-	public String selectFaqDetail(FaqVO faqVO, @ModelAttribute("searchVO") FaqVO searchVO, ModelMap model) throws Exception {
-
-		FaqVO vo = FaqService.selectFaqDetail(searchVO);
-
-		model.addAttribute("result", vo);
-
-		return "egovframework/com/admin/uss/olh/faq/FaqDetail";
-	}
 }

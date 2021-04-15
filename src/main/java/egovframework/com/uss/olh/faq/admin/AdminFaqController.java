@@ -198,7 +198,7 @@ public class AdminFaqController {
 	 * @return	"/uss/olh/faq/EgovFaqUpdt"
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/olh/faq/updateFaqView.do")
+	@RequestMapping("/admin/uss/olh/faq/updateFaqView.do")
 	public String updateFaqView(@RequestParam("faqId") String faqId, @ModelAttribute("searchVO") FaqVO searchVO, ModelMap model) throws Exception {
 
 		FaqVO faqVO = new FaqVO();
@@ -271,7 +271,7 @@ public class AdminFaqController {
 	 * @return	"forward:/admin/uss/olh/faq/selectFaqList.do"
 	 * @throws Exception
 	 */
-	@RequestMapping("/uss/olh/faq/deleteFaq.do")
+	@RequestMapping("/admin/uss/olh/faq/deleteFaq.do")
 	public String deleteFaq(FaqVO faqVO, @ModelAttribute("searchVO") FaqVO searchVO) throws Exception {
 
 		// 첨부파일 삭제를 위한 ID 생성 start....

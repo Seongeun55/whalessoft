@@ -37,7 +37,7 @@
 	if(confirm("<spring:message code="common.delete.msg" />")){	
 		// Delete하기 위한 키값을 셋팅
 		document.faqForm.faqId.value = faqId;	
-		document.faqForm.action = "<c:url value='/uss/olh/faq/deleteFaq.do'/>";
+		document.faqForm.action = "<c:url value='/admin/uss/olh/faq/deleteFaq.do'/>";
 		document.faqForm.submit();	
 	}	
 }	
@@ -48,7 +48,7 @@
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form name="faqForm" action="<c:url value='/uss/olh/faq/updateFaqView.do'/>" method="post">
+<form name="faqForm" action="<c:url value='/admin/uss/olh/faq/updateFaqView.do'/>" method="post">
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2>${pageTitle} <spring:message code="title.detail" /></h2>
@@ -96,8 +96,8 @@
 			<th><spring:message code="comUssOlhFaq.faqVO.atchFile" /></th>
 			<td>
 				<c:import url="/cmm/fms/selectFileInfs.do" charEncoding="utf-8">
-				<c:param name="param_atchFileId" value="${result.atchFileId}" />
-			</c:import>
+					<c:param name="param_atchFileId" value="${result.atchFileId}" />
+				</c:import>
 			</td>
 		</tr>
 	  	</c:if>
@@ -107,8 +107,8 @@
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
-		<span class="btn_s"><a href="<c:url value='/uss/olh/faq/deleteFaq.do' />" onClick="fn_egov_delete_faq('<c:out value="${result.faqId}"/>'); return false;"  title="<spring:message code="button.delete" /> <spring:message code="input.button" />"><spring:message code="button.delete" /></a></span>
-		<span class="btn_s"><a href="<c:url value='/board/list.do?type=faq' />"  title="<spring:message code="title.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/olh/faq/deleteFaq.do' />" onClick="fn_egov_delete_faq('<c:out value="${result.faqId}"/>'); return false;"  title="<spring:message code="button.delete" /> <spring:message code="input.button" />"><spring:message code="button.delete" /></a></span>
+		<span class="btn_s"><a href="<c:url value='/admin/uss/olh/faq/selectFaqList.do' />"  title="<spring:message code="title.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span>
 	</div><div style="clear:both;"></div>
 	
 </div>
