@@ -4,72 +4,62 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>    
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>   
 <%@include file="/WEB-INF/jsp/egovframework/com/web/header.jsp" %>
 <script type="text/javascript">
 /*********************************************************
  * 조회 처리 함수
  ******************************************************** */
-function searchQna(form){
-	form.searchWrd.value = form.searchWrd.value.trim();
-	if(form.searchWrd.value == "") {
-		alert("검색어를 입력해주세요.");
-		form.searchWrd.focus();
-		return false;
-	}
+function fn_egov_search_faq(){
+	document.faqForm.pageIndex.value = 1;
+	document.faqForm.submit();
 }
-/*********************************************************
- * 페이징 처리 함수
+/* ********************************************************
+ * 상세회면 처리 함수
  ******************************************************** */
-function linkPage(pageNo){
-	document.pageForm.pageIndex.value = pageNo;
-   	document.pageForm.submit();
+function fn_egov_inquire_faqdetail(faqId) {
+	// 사이트 키값(siteId) 셋팅.
+	document.faqForm.faqId.value = faqId;
+  	document.faqForm.action = "<c:url value='/uss/olh/faq/selectFaqDetail.do'/>";
+  	document.faqForm.submit();
 }
 </script>
-<form name="pageForm">
-	<input type="hidden" name="id" value="<c:out value='${param.id}'/>">
-	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
-</form>
 <!-- 콘텐츠 시작 { -->
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
-        
-	<div class="sub-con">
-    	<div class="title-wrap">Q&A</div>
-	</div>
+		
+	<!-- FAQ 시작 { -->
+	<div id="faq_hhtml"><div class="sub-con">
+    	<div class="title-wrap">자주묻는질문</div>
+	</div></div>	
 	
-	<!-- 게시판  시작 { -->
+<!-- 게시판 목록 시작 { -->
 	<div id="bo_list">   
-		<form name="qnaForm" id="fboardlist" action="<c:url value='./board.do'/>?id=<c:out value='${param.id}'/>" onsubmit="return searchQna(this);" method="post">
-		    <!-- 게시판 조회 및 버튼 시작 { -->
+		<form name="faqForm" action="<c:url value='/board/list.do?type=faq'/>" onsubmit="fn_egov_search_faq(); return false;" method="post">
+		    <!-- 게시판 페이지 정보 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
 				<li>
 					<select name="searchCnd" title="<spring:message code="title.searchCondition" /> <spring:message code="input.cSelect" />">
-						<option value="0"  <c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if> ><spring:message code="table.reger" /></option><!-- 작성자 -->
-						<option value="1"  <c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if> ><spring:message code="comUssOlhQna.qnaVO.qestnSj" /></option><!-- 질문제목 -->
+						<option value="0"  <c:if test="${faqVO.searchCnd == '0'}">selected="selected"</c:if> ><spring:message code="comUssOlhFaq.faqVO.qestnSj" /></option><!-- 질문제목 -->
 					</select>
 				</li>
-				<!-- 조회 및 등록버튼 -->
+				<!-- 검색키워드 및 조회버튼 -->
 				<li>
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
-					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />
-					<span class="btn_b"><a href="<c:url value='/uss/olh/qna/insertQnaView.do' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
+					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />					
 				</li>
 			</ul>
 			</div>
 		</form>
-    	<!-- } 게시판 조회 및 버튼 끝 -->
-        
-        <!-- 게시판 목록 시작 -->	
+    	<!-- } 게시판 페이지 정보 및 버튼 끝 -->
+        	
 	    <div class="tbl_head01 tbl_wrap">
 	        <table>
 		        <caption>질문 목록</caption>
 		        <colgroup>
 					<col style="width: 5%;">
 					<col style="width: 40%;">
-					<col style="width: 12%;">
 					<col style="width: 9%;">
 					<col style="width: 13%;">
 				</colgroup>
@@ -77,8 +67,7 @@ function linkPage(pageNo){
 		        <tr>
 		            <th scope="col">번호</th>
 		            <th scope="col">제목</th>
-		            <th scope="col">작성자</th>
-		            <th scope="col">진행상태</th>
+		            <th scope="col">조회수</th>
 		            <th scope="col">등록일</th>            
 		        </tr>
 		        </thead>
@@ -89,29 +78,61 @@ function linkPage(pageNo){
 		        			<td align="center"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
 		        				<div class="bo_tit">
-		        					<form name="subForm" method="post" action="<c:url value='/uss/olh/qna/selectQnaDetail.do'/>">
-									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
-									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
-									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
-									</form>
+		        					<a href="<c:url value='/uss/olh/faq/selectFaqDetail.do?faqId=${resultInfo.faqId}'/>" onClick="fn_egov_inquire_faqdetail('<c:out value="${resultInfo.faqId}"/>');return false;"><c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/></a></td>
 		        				</div>
 		        			</td>
-		        			<td class="td_num"><c:out value='${resultInfo.wrterNm}'/></td>
-		        			<td class="td_datetime"><c:out value='${resultInfo.qnaProcessSttusCodeNm}'/></td>
+		        			<td class="td_datetime"><c:out value='${resultInfo.inqireCo}'/></td>
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
 		        		</tr>
 		        	</tbody>
 		        </c:forEach>
 	        </table>
 	    </div>
-	    <!-- 게시판 목록 끝 -->
-		<!-- paging navigation -->
-		<div class="pagination">
-			<ul>
-			<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
-			</ul>
-		</div>	
-	</div>
+	<div id="faq_thtml"></div>
+
+<!-- } FAQ 끝 -->
+
+
+<script src="http://theme001.whalessoft.com/js/viewimageresize.js"></script>
+<script>
+jQuery(function() {
+    $(".closer_btn").on("click", function() {
+        $(this).closest(".con_inner").slideToggle('slow', function() {
+			var $h3 = $(this).closest("li").find("h3");
+
+			$("#faq_con li h3").removeClass("faq_li_open");
+			if($(this).is(":visible")) {
+				$h3.addClass("faq_li_open");
+			}
+		});
+    });
+});
+
+function faq_open(el)
+{	
+    var $con = $(el).closest("li").find(".con_inner"),
+		$h3 = $(el).closest("li").find("h3");
+
+    if($con.is(":visible")) {
+        $con.slideUp();
+		$h3.removeClass("faq_li_open");
+    } else {
+        $("#faq_con .con_inner:visible").css("display", "none");
+
+        $con.slideDown(
+            function() {
+                // 이미지 리사이즈
+                $con.viewimageresize2();
+				$("#faq_con li h3").removeClass("faq_li_open");
+
+				$h3.addClass("faq_li_open");
+            }
+        );
+    }
+
+    return false;
+}
+</script>
 </div>
 <!-- } 콘텐츠 끝 -->
 	

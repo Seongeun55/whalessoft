@@ -123,7 +123,7 @@ public class QnaController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "egovframework/com/admin/uss/olh/qna/QnaList";
+		return "egovframework/com/web/board/qna/list";
 	}
 	
 	/**
@@ -138,23 +138,7 @@ public class QnaController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/selectQnaDetail.do")
 	public String selectQnaDetail(@RequestParam("qaId") String qaId, QnaVO qnaVO, @ModelAttribute("searchVO") QnaDefaultVO searchVO, ModelMap model) throws Exception {
-		//[추가] 메인화면에 메뉴리스트 -2021.04.13
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		MenuManageVO menuManageVO = new MenuManageVO();
-		
-		//[추가] 메인화면에 메뉴리스트 -2021.04.06
-		menuManageVO.setTmpId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
-		menuManageVO.setTmpPassword(user == null ? "" : EgovStringUtil.isNullToString(user.getPassword()));
-		menuManageVO.setTmpUserSe(user == null ? "" : EgovStringUtil.isNullToString(user.getUserSe()));
-		menuManageVO.setTmpName(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
-		menuManageVO.setTmpEmail(user == null ? "" : EgovStringUtil.isNullToString(user.getEmail()));
-		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
-		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
-
-		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
-		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
-		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
-		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
 		
 		///////////////////////////////////////
 		qnaVO.setQaId(qaId);
@@ -167,7 +151,7 @@ public class QnaController {
 		model.addAttribute("user", user);
 		model.addAttribute("result", vo);
 
-		return "egovframework/com/web/board/page9_2";
+		return "egovframework/com/web/board/qna/view";
 	}
 	
 	/**
@@ -200,7 +184,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", qnaVO);
 		
-		return "forward:/board.do?id=page9_1";
+		return "egovframework/com/web/board/qna/write";
 
 	}
 	
@@ -238,7 +222,7 @@ public class QnaController {
 
 		QnaService.insertQna(qnaVO);
 
-		return "forward:/board.do?id=page9";
+		return "redirect:/board/list.do?type=qna";
 	}
 	
 	/**
@@ -263,7 +247,7 @@ public class QnaController {
 
 		model.addAttribute("qnaVO", vo);
 
-		return "egovframework/com/web/board/page9_3";
+		return "egovframework/com/web/board/qna/modify";
 	}
 	
 	/**
@@ -313,7 +297,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "forward:/board.do?id=page9";
+		return "redirect:/board/list.do?type=qna";
 
 	}
 	
@@ -345,6 +329,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "forward:/board.do?id=page9";
+		return "redirect:/board/list.do?type=qna";
 	}
 }
