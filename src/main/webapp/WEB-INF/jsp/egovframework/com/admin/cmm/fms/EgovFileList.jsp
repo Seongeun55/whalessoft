@@ -46,8 +46,6 @@
 				form = forms[i];
 			}
 		}
-		
-		
 
 		var newForm = document.createElement( 'form' );
 		var newfileSn = document.createElement( 'input' );

@@ -35,19 +35,19 @@
 					<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 		        </h2>
 			</c:when>
-			<c:when test="${param.id eq 'page6'}">
+			<c:when test="${param.type eq 'basic'}">
 				<h2 id="sub_menu_title" class="top" title="제품소개 1 페이지">
 					<strong title="제품소개 1 페이지">제품소개</strong>
 					<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 				</h2>
 			</c:when>
-			<c:when test="${param.id eq 'page7'}">
+			<c:when test="${param.type eq 'temp'}">
 				<h2 id="sub_menu_title" class="top" title="공지사항 1 페이지">
 					<strong title="공지사항 1 페이지">공지사항</strong>
 		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 				</h2>
 			</c:when>
-			<c:when test="${param.id eq 'page8'}">
+			<c:when test="${param.type eq 'gallery'}">
 				<h2 id="sub_menu_title" class="top" title="갤러리 1 페이지">
 		        	<strong title="갤러리 1 페이지">갤러리</strong>
 		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
@@ -132,9 +132,9 @@
 	    <ul id="mysub2" style="display:none">
 	        <li>
 	        	<span class="sound_only">제품소개</span>
-	        	<c:if test="${param.id eq 'page6'}">
+	        	<c:if test="${param.type eq 'basic'}">
 		            <ul class="leftmenu ">
-		                <li class="leftmenu_s border-left gnb_2dli_1 active"><a href="/board.do?id=page6" target="_self" >제품소개</a></li>
+		                <li class="leftmenu_s border-left gnb_2dli_1 active"><a href="/board/list.do?type=basic" target="_self" >제품소개</a></li>
 		                <script language='javascript'> display_submenu(2); </script> 
 		            </ul>
 				</c:if>
@@ -146,30 +146,30 @@
 	        	<span class="sound_only">고객센터</span>	        	
 	            <ul class="leftmenu ">
 	            	<c:choose>
-				    	<c:when test="${param.id eq 'page7'}">
-					    	<li class="leftmenu_s border-left gnb_2dli_1 active"><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
+				    	<c:when test="${param.type eq 'temp'}">
+					    	<li class="leftmenu_s border-left gnb_2dli_1 active"><a href="/board/list.do?type=temp" target="_self" >공지사항</a></li>
 					    	<script language='javascript'> display_submenu(3); </script> 
-			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
+			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board/list.do?type=gallery" target="_self" >갤러리</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_3 "><a href="/board/list.do?type=qna" target="_self" >Q&A</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_4 "><a href="/board/list.do?type=faq" target="_self" >FAQ</a></li>
 				    	</c:when>
-				    	<c:when test="${param.id eq 'page8'}">
-					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
-			            	<li class="leftmenu_s  gnb_2dli_2 active"><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
+				    	<c:when test="${param.type eq 'gallery'}">
+					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board/list.do?type=temp" target="_self" >공지사항</a></li>
+			            	<li class="leftmenu_s  gnb_2dli_2 active"><a href="/board/list.do?type=gallery" target="_self" >갤러리</a></li>
 			            	<script language='javascript'> display_submenu(3); </script>
 			            	<li class="leftmenu_s  gnb_2dli_3 "><a href="/board/list.do?type=qna" target="_self" >Q&A</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_4 "><a href="/board/list.do?type=faq" target="_self" >FAQ</a></li>
 				    	</c:when>
 				    	<c:when test="${param.type eq 'qna'}">
-					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
-			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
+					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board/list.do?type=temp" target="_self" >공지사항</a></li>
+			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board/list.do?type=gallery" target="_self" >갤러리</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_3 active"><a href="/board/list.do?type=qna" target="_self" >Q&A</a></li>
 			            	<script language='javascript'> display_submenu(3); </script>
 			            	<li class="leftmenu_s  gnb_2dli_4 "><a href="/board/list.do?type=faq" target="_self" >FAQ</a></li>
 				    	</c:when>
 				    	<c:when test="${param.type eq 'faq'}">
-					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board.do?id=page7" target="_self" >공지사항</a></li>
-			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board.do?id=page8" target="_self" >갤러리</a></li>
+					    	<li class="leftmenu_s border-left gnb_2dli_1 "><a href="/board/list.do?type=temp" target="_self" >공지사항</a></li>
+			            	<li class="leftmenu_s  gnb_2dli_2 "><a href="/board/list.do?type=gallery" target="_self" >갤러리</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_3 "><a href="/board/list.do?type=qna" target="_self" >Q&A</a></li>
 			            	<li class="leftmenu_s  gnb_2dli_4 active"><a href="/board/list.do?type=faq" target="_self" >FAQ</a></li>
 			            	<script language='javascript'> display_submenu(3); </script>

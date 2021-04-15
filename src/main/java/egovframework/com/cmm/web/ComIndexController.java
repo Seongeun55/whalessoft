@@ -146,7 +146,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, HttpSession session,  ModelMap model) throws Exception {
+	public String boardList(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -158,15 +158,19 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 			return "forward:/uss/olh/qna/selectQnaList.do";
 		}else if(type.equals("faq")) {
 			return "forward:/uss/olh/faq/selectFaqList.do";
+		}else if(type.equals("gallery")) {
+			return "egovframework/com/web/board/gallery/list";
+		}else if(type.equals("basic")) {
+			return "egovframework/com/web/board/basic/list";
 		}
 		
 		
-		return "";
+		return "egovframework/com/web/board/page7";
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, HttpSession session,  ModelMap model) throws Exception {
+	public String boardView(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -182,7 +186,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, HttpSession session,  ModelMap model) throws Exception {
+	public String boardWrite(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";

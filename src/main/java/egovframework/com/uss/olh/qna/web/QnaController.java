@@ -168,9 +168,8 @@ public class QnaController {
 		// 인증여부 체크
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
-		if (!isAuthenticated) {
-			model.addAttribute("qnaVO", qnaVO);
-			return "egovframework/com/admin/uss/olh/qna/QnaRegist";
+		if (!isAuthenticated) {	
+			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
 
 		// 로그인VO에서  사용자 정보 가져오기
