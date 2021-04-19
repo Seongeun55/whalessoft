@@ -1,6 +1,7 @@
 package egovframework.com.cmm.web;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -56,6 +57,9 @@ public class ComUtlController {
     @Resource(name = "propertiesService")
     protected EgovPropertyService propertiesService;
 	
+    // 기본생성자 추가 - 2021.04.16
+    public ComUtlController() {	}
+    
     /**
 	 * JSP 호출작업만 처리하는 공통 함수
 	 */
@@ -99,6 +103,27 @@ public class ComUtlController {
 	@RequestMapping("/validator.do")
 	public String validate(){
 		return "egovframework/com/admin/cmm/validator";
+	}
+	
+	//[추가] 토큰값을 랜덤으로 발생하기 위해 - 2021.04.16
+	public StringBuffer random() {
+		StringBuffer temp = new StringBuffer();
+		Random rnd = new Random();
+		for (int i = 0; i < 10; i++) {
+		    int rIndex = rnd.nextInt(3);
+		    switch (rIndex) {
+		    case 0:		// a-z
+		        temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+		        break;
+		    case 1:		// A-Z
+		        temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+		        break;
+		    case 2:		// 0-9
+		        temp.append((rnd.nextInt(10)));
+		        break;
+		    }
+		}
+		return temp;
 	}
 
 }

@@ -13,6 +13,7 @@
   * @  수정일      수정자            수정내용
   * @ -------        --------    ---------------------------
   * @ 2009.03.18   이삼섭          최초 생성
+  * @ 2021.04.19   홍성은          템플릿 구분 삭제
   *
   *  @author 공통서비스 개발팀 이삼섭
   *  @since 2009.03.18
@@ -82,7 +83,6 @@
 		<colgroup>
 			<col style="width:5%" />
 			<col style="width:15%" />
-			<col style="width:10%" />
 			<col style="" />
 			<col style="width:10%" />
 			<col style="width:10%" />
@@ -90,8 +90,7 @@
 		<thead>
 			<tr>
 				<th scope="col"><spring:message code="table.num"/></th> <!-- 번호 -->
-				<th scope="col"><spring:message code="comCopTpl.template.name"/></th> <!-- 템플릿명 -->
-				<th scope="col"><spring:message code="comCopTpl.template.type"/></th> <!-- 템플릿구분 -->
+				<th scope="col"><spring:message code="comCopTpl.template.name"/></th> <!-- 템플릿명 -->				
 				<th scope="col"><spring:message code="comCopTpl.template.path"/></th> <!-- 템플릿경로 -->
 				<th scope="col"><spring:message code="comCopTpl.template.useYN"/></th> <!-- 사용여부 -->
 				<th scope="col"><spring:message code="comCopTpl.template.registDt"/></th> <!-- 등록일자 -->
@@ -105,8 +104,7 @@
 					<a href="<c:url value='/cop/tpl/selectTemplateInf.do'/>?tmplatId=<c:out value='${result.tmplatId}'/>" onclick="">
 					<c:out value="${result.tmplatNm}"/>
 					</a>
-				</td>
-				<td><c:out value="${result.tmplatSeCodeNm}"/></td>
+				</td>				
 				<td><c:out value="${result.tmplatCours}"/></td>
 				<td>
 				<c:if test="${result.useAt == 'N'}"><spring:message code="button.notUsed" /></c:if>

@@ -75,7 +75,7 @@ function fn_egov_init(){
  ******************************************************** */
 function fn_egov_select_linkPage(pageNo){
 	document.articleForm.pageIndex.value = pageNo;
-	document.articleForm.action = "<c:url value='/cop/bbs/selectArticleList.do'/>";
+	document.articleForm.action = "<c:url value='/admin/cop/bbs/selectArticleList.do'/>";
    	document.articleForm.submit();
 }
 /*********************************************************
@@ -105,7 +105,7 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 
 
 <div class="board">
-	<form name="articleForm" action="<c:url value='/cop/bbs/selectArticleList.do'/>" method="post" onSubmit="fn_egov_search_article(); return false;"> 
+	<form name="articleForm" action="<c:url value='/admin/cop/bbs/selectArticleList.do'/>" method="post" onSubmit="fn_egov_search_article(); return false;"> 
 	<h1>${pageTitle} <spring:message code="title.list" /> (<c:out value="${boardMasterVO.bbsNm}"/>)</h1><!-- 게시글 목록 -->
 	<!-- 하단 버튼 -->
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">

@@ -78,7 +78,7 @@ function faq_open(el)
 	<div class="sub-con">
 		<fieldset id="faq_sch">
 		    <legend>FAQ 검색</legend>
-		    <form name="faqForm" action="/board/list.do?type=faq" onsubmit="searchFaq(); return false;" method="post">
+		    <form name="faqForm" action="/faq/list.do" onsubmit="searchFaq(); return false;" method="post">
 			    <!-- 게시판 페이지 정보 및 버튼 시작 { -->
 			    <span class="sch_tit">FAQ 검색</span>
 			    <input type="hidden" name="searchCnd" value="0">

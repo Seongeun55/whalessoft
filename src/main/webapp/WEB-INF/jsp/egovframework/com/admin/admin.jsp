@@ -71,7 +71,7 @@
                 <div id="collapseMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">                    	                     
                         <a class="collapse-item" href="/admin/sym/mnu/mpm/AdminMenuListSelect.do" target="_content">메뉴 관리</a>
-                        <a class="collapse-item" href="/admin/sym/prm/ProgramListManageSelect.do" target="_content">메뉴 RUL 관리</a>
+                        <a class="collapse-item" href="/admin/sym/prm/ProgramListManageSelect.do" target="_content">메뉴 URL 관리</a>
                     </div>
                 </div>
             </li>

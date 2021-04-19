@@ -15,6 +15,7 @@
   * @  수정일      수정자            수정내용
   * @ -------        --------    ---------------------------
   * @ 2009.03.18   이삼섭          최초 생성
+  * @ 2021.04.19   홍성은          템플릿 구분 삭제 & 기본값으로 커뮤니티템플릿 (118line)
   *
   *  @author 공통서비스 개발팀 이삼섭
   *  @since 2009.03.18
@@ -113,19 +114,13 @@
 			    <br /><form:errors path="tmplatNm" />
 			</td>
 		</tr>
-		<tr>
-			<th><spring:message code="comCopTpl.template.type" /> <span class="pilsu">*</span></th>
-			<td class="left">
-				<select name="tmplatSeCode" class="select" onchange="fn_egov_selectTmplatType(this)" title="<spring:message code="comCopTpl.template.type" />">
-					<option selected value=''><spring:message code="input.select" /></option> <!-- 선택하세요 -->
-					<c:forEach var="result" items="${resultList}" varStatus="status">
-					<option value='<c:out value="${result.code}"/>'><c:out value="${result.codeNm}"/></option>
-					</c:forEach>
-				</select>
-				&nbsp;&nbsp;&nbsp;<span id="sometext"></span>
-				<br /><form:errors path="tmplatSeCode" />
-			</td>
-		</tr>
+		
+		<!-- 템플릿구분 -->
+		<form:form>
+			<input type="hidden" name="tmplatSeCode" value="TMPT02" >
+			<br /><form:errors path="tmplatSeCode" />
+		</form:form>
+		
 		<tr>
 			<th><spring:message code="comCopTpl.template.path" /> <span class="pilsu">*</span></th> <!-- 템플릿경로 -->
 			<td class="left">

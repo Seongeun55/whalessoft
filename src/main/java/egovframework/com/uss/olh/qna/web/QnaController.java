@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,7 +93,16 @@ public class QnaController {
 	 */
 	@IncludedInfo(name = "Q&A관리", order = 550, gid = 50)
 	@RequestMapping(value = "/uss/olh/qna/selectQnaList.do")
-	public String selectQnaList(@ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
+	public String selectQnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
+		
+		//문제점 : 세션에 저장된 값이 없을 때, 위 주소로 바로 들어오면 session & request값 모두 null이 된다.
+		HttpSession session = request.getSession();
+		System.out.println("확인 : request" + request.getAttribute("_access_"));
+		System.out.println("확인 : session" + session.getAttribute("_access_"));
+		if(request.getAttribute("_access_") != session.getAttribute("_access_")) {
+			return "egovframework/com/admin/cmm/error/dataAccessFailure";
+		}
+		
 		/** EgovPropertyService.SiteList */
 		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
 		searchVO.setPageSize(propertiesService.getInt("pageSize"));
@@ -137,7 +147,13 @@ public class QnaController {
 	 */
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/selectQnaDetail.do")
-	public String selectQnaDetail(@RequestParam("qaId") String qaId, QnaVO qnaVO, @ModelAttribute("searchVO") QnaDefaultVO searchVO, ModelMap model) throws Exception {
+	public String selectQnaDetail(HttpServletRequest request, @RequestParam("qaId") String qaId, QnaVO qnaVO, @ModelAttribute("searchVO") QnaDefaultVO searchVO, ModelMap model) throws Exception {
+		/*
+		System.out.println("============================================================");
+		System.out.println();
+		HttpSession session = request.getSession();
+		//if(request.getAttribute("_access_") != session.getAttribute("_access_")) return 오류페이지;
+		System.out.println("============================================================");*/
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		
 		///////////////////////////////////////
@@ -165,12 +181,12 @@ public class QnaController {
 	@RequestMapping("/uss/olh/qna/insertQnaView.do")
 	public String insertQnaView(@ModelAttribute("searchVO") QnaVO searchVO, QnaVO qnaVO, Model model) throws Exception {
 
-		// 인증여부 체크
+		/* 인증여부 체크
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) {	
 			return "egovframework/com/admin/uat/uia/LoginUsr";
-		}
+		}*/
 
 		// 로그인VO에서  사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
@@ -203,8 +219,7 @@ public class QnaController {
 		if (bindingResult.hasErrors()) {
 			return "egovframework/com/admin/uss/olh/qna/QnaRegist";
 		}
-		
-	
+
 		// 로그인VO에서  사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
@@ -296,7 +311,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "redirect:/board/list.do?type=qna";
+		return "redirect:/qnz/list.do";
 
 	}
 	

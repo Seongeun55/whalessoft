@@ -83,7 +83,7 @@ function fn_egov_regist_qna(form){
 	    </div>
 	
 	    <div class="btn_confirm write_div">
-	        <a href="/board/list.do?type=qna" class="btn_cancel btn">취소</a>
+	        <a href="/qna/list.do" class="btn_cancel btn">취소</a>
 	        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">작성완료</button>
 	    </div>
 	    

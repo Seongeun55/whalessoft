@@ -118,18 +118,26 @@ function fn_egov_regist_bbs(form){
 			</td>
 		</tr>
 		
-		<!-- 게시판 유형 -->
-		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.regist.bbsTyCode"/> </c:set>
+		<!-- 템플릿 선택 -->
+		<c:set var="title">템플릿 유형</c:set>
 		<tr>
-			<th><label for="bbsTyCode">${title} <span class="pilsu">*</span></label></th>
+			<th><label for="tmplatId">${title } <span class="pilsu">*</span></label></th>
 			<td class="left">
-				<form:select path="bbsTyCode" title="${title} ${inputTxt}" cssClass="txt">
+				<form:select path="tmplatId" title="${title} ${inputTxt }" cssClass="txt">
 					<form:option value="" label="--선택하세요--" />
-					<form:options items="${bbsTyCode}" itemValue="code" itemLabel="codeNm" />
+					<c:forEach var="result" items="${resultList}" varStatus="status">
+						<option value='<c:out value="${result.tmplatId}"/>'><c:out value="${result.tmplatNm}"/></option>
+					</c:forEach>
 				</form:select>
-				<div><form:errors path="bbsTyCode" cssClass="error" /></div>       
+				<div><form:errors path="tmplatId" cssClass="error" /></div>  
 			</td>
 		</tr>
+		
+		<!-- 게시판 유형 -->
+		<form:form>
+			<input type="hidden" name="bbsTyCode" value="BBST01"/>
+			<div><form:errors path="bbsTyCode" cssClass="error" /></div>       
+		</form:form>
 		
 		<!-- 답장가능여부 -->
 		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.regist.replyPosblAt"/> </c:set>

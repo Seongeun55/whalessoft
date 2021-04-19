@@ -91,7 +91,7 @@ td.rightGap {background:url(<c:url value='/images/egovframework/com/cop/tpl/righ
 		if (bbsId == '') {
 			return;
 		}
-		location.href="<c:url value='/cop/bbs/selectArticleList.do' />?bbsId="+bbsId+"&bbsAttrbCode="+bbsAttrbCode;
+		location.href="<c:url value='/admin/cop/bbs/selectArticleList.do' />?bbsId="+bbsId+"&bbsAttrbCode="+bbsAttrbCode;
 	}
 
 	function fn_egov_loadArticle(bbsId, nttId) {

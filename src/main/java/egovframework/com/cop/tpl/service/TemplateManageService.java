@@ -66,6 +66,16 @@ public interface TemplateManageService {
     public Map<String, Object> selectTemplateInfs(TemplateInfVO tmplatInfVO) throws Exception;
 
     /**
+     * 게시판 등록에서 템플릿에 대한 목록를 조회한다.
+     * 
+     * @param tmplatInfVO
+     * @return
+     * @throws Exception
+     */
+    public Map<String, Object> selectTemplate(TemplateInfVO tmplatInfVO) throws Exception;
+
+    
+    /**
      * 템플릿에 대한 상세정보를 조회한다.
      * 
      * @param tmplatInfVO

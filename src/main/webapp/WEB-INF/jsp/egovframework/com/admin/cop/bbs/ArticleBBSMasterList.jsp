@@ -104,7 +104,7 @@ function fn_egov_inquire_bbsdetail(bbsId) {
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
 	<tr>
 		<td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
-		<td class="left"><a href="<c:url value='/cop/bbs/selectArticleList.do?bbsId=${resultInfo.bbsId}'/>"><c:out value='${fn:substring(resultInfo.bbsNm, 0, 40)}'/></a></td>
+		<td class="left"><a href="<c:url value='/admin/cop/bbs/selectArticleList.do?bbsId=${resultInfo.bbsId}'/>"><c:out value='${fn:substring(resultInfo.bbsNm, 0, 40)}'/></a></td>
 		<td><c:out value='${resultInfo.frstRegisterNm}'/></td>
 		<td><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
 		<td><c:out value='${resultInfo.useAt}'/></td>		

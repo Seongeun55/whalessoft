@@ -35,7 +35,7 @@ public class TemplateManageDAO extends EgovComAbstractDAO {
      * @throws Exception
      */
     public void deleteTemplateInf(TemplateInf tmplatInf) throws Exception {
-	update("TemplateManageDAO.deleteTemplateInf", tmplatInf);
+	update("TemplateManageDAO.deleteTemplate", tmplatInf);
     }
 
     /**
@@ -77,7 +77,18 @@ public class TemplateManageDAO extends EgovComAbstractDAO {
      * @throws Exception
      */
     public List<TemplateInfVO> selectTemplateInfs(TemplateInfVO tmplatInfVO) throws Exception {
-	return selectList("TemplateManageDAO.selectTemplateInfs", tmplatInfVO);
+    	return selectList("TemplateManageDAO.selectTemplateInfs", tmplatInfVO); 
+    }
+    
+    /**
+     * 블로그 등록에 대한 템플릿에 대한 목록를 조회한다.
+     * 
+     * @param tmplatInfVO
+     * @return
+     * @throws Exception
+     */
+    public List<TemplateInfVO> selectTemplate(TemplateInfVO tmplatInfVO) throws Exception {
+    	return selectList("TemplateManageDAO.selectTemplate", tmplatInfVO); 
     }
 
     /**

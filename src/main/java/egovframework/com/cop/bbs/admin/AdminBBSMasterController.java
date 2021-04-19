@@ -27,6 +27,8 @@ import egovframework.com.cop.bbs.service.BlogUserVO;
 import egovframework.com.cop.bbs.service.BlogVO;
 import egovframework.com.cop.bbs.service.BoardMaster;
 import egovframework.com.cop.bbs.service.BoardMasterVO;
+import egovframework.com.cop.tpl.service.TemplateInfVO;
+import egovframework.com.cop.tpl.service.TemplateManageService;
 import egovframework.com.cop.bbs.service.BBSMasterService;
 import egovframework.com.utl.fcc.service.EgovStringUtil;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
@@ -73,6 +75,9 @@ public class AdminBBSMasterController {
 	@Resource(name = "egovBlogIdGnrService")
 	private EgovIdGnrService idgenServiceBlog;
 
+	@Resource(name = "TemplateManageService")
+	private TemplateManageService tmplatService;
+	
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
@@ -97,9 +102,16 @@ public class AdminBBSMasterController {
 		ComDefaultCodeVO vo = new ComDefaultCodeVO();
 		vo.setCodeId("COM101");
 		List<?> codeResult = cmmUseService.selectCmmCodeDetail(vo);
+
 		model.addAttribute("bbsTyCode", codeResult);
 		model.addAttribute("boardMasterVO", boardMaster);
 
+		//추가
+		TemplateInfVO tmplatInfVO = new TemplateInfVO();
+		Map<String, Object> map = tmplatService.selectTemplate(tmplatInfVO);	
+		model.addAttribute("resultList", map.get("resultList"));
+		System.out.println("확인 : " + map.get("resultList"));
+		
 		// ---------------------------------
 		// 2011.09.15 : 2단계 기능 추가 반영 방법 변경
 		// ---------------------------------
@@ -124,9 +136,8 @@ public class AdminBBSMasterController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/cop/bbs/insertBBSMaster.do")
-	public String insertBBSMaster(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO,
-			@ModelAttribute("boardMaster") BoardMaster boardMaster, BindingResult bindingResult, ModelMap model)
-			throws Exception {
+	public String insertBBSMaster(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO, @ModelAttribute("boardMaster") BoardMaster boardMaster, 
+			BindingResult bindingResult, ModelMap model) throws Exception {
 
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();

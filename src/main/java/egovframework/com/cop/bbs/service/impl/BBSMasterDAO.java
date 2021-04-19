@@ -36,7 +36,7 @@ public class BBSMasterDAO extends EgovComAbstractDAO {
 	}
 
 	public void deleteBBSMaster(BoardMaster boardMaster) {
-		update("BBSMaster.deleteBBSMaster", boardMaster);
+		update("BBSMaster.deleteBBS", boardMaster);	//[수정] deleteBBSMaster -> deleteBBS
 	}
 	
 	/*

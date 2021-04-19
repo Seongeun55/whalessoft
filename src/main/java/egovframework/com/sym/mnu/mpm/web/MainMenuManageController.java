@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
@@ -19,6 +20,7 @@ import egovframework.com.sym.mnu.mpm.service.MenuManageService;
 import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.utl.fcc.service.EgovStringUtil;
 import egovframework.rte.fdl.property.EgovPropertyService;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 메인메뉴 해당링크 처리를 하는 비즈니스 구현 클래스
@@ -236,4 +238,39 @@ public class MainMenuManageController {
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 	}
+	
+	
+	 /**
+     * [추가] 2021.04.19
+     * 메뉴목록 리스트조회한다.
+     * @param searchVO ComDefaultVO
+     * @return 출력페이지정보 "sym/mnu/mpm/EgovMenuManage"
+     * @exception Exception
+     */
+    public String selectMenu(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
+    
+    	// 내역 조회
+    	/** EgovPropertyService.sample */
+    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
+
+    	/** pageing */
+    	PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+		paginationInfo.setPageSize(searchVO.getPageSize());
+
+		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+		List<?> list_menumanage = menuManageService.selectMenuManageList(searchVO);
+		model.addAttribute("list_menumanage", list_menumanage);
+
+        int totCnt = menuManageService.selectMenuManageListTotCnt(searchVO);
+		paginationInfo.setTotalRecordCount(totCnt);
+        model.addAttribute("paginationInfo", paginationInfo);
+
+      	return "egovframework/com/admin/sym/mnu/mpm/MenuManage";
+    }
 }

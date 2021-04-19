@@ -92,6 +92,7 @@ public class TemplateManageServiceImpl extends EgovAbstractServiceImpl implement
 	 */
 	public Map<String, Object> selectTemplateInfs(TemplateInfVO tmplatInfVO) throws Exception {
 		List<TemplateInfVO> result = tmplatDAO.selectTemplateInfs(tmplatInfVO);
+		System.out.println("확인 : " + result.size());
 		int cnt = tmplatDAO.selectTemplateInfsCnt(tmplatInfVO);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -99,6 +100,19 @@ public class TemplateManageServiceImpl extends EgovAbstractServiceImpl implement
 		map.put("resultList", result);
 		map.put("resultCnt", Integer.toString(cnt));
 
+		return map;
+	}
+	
+	/**
+	 * 블로그 등록에 대한 템플릿에 대한 목록를 조회한다.
+	 * 
+	 * @see egovframework.com.cop.bbs.com.service.EgovTemplateManageService#selectTemplateInfs(egovframework.com.cop.bbs.com.service.TemplateInfVO)
+	 */
+	public Map<String, Object> selectTemplate(TemplateInfVO tmplatInfVO) throws Exception {
+		List<TemplateInfVO> result = tmplatDAO.selectTemplate(tmplatInfVO);
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("resultList", result);
 		return map;
 	}
 

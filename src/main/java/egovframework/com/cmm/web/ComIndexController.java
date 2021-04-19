@@ -146,7 +146,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String boardList(@RequestParam("type") String type, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -154,83 +154,134 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		
-		if(type.equals("qna")) {
-			return "forward:/uss/olh/qna/selectQnaList.do";
-		}else if(type.equals("faq")) {
-			return "forward:/uss/olh/faq/selectFaqList.do";
-		}else if(type.equals("gallery")) {
+		if(type.equals("gallery")) {
 			return "egovframework/com/web/board/gallery/list";
 		}else if(type.equals("basic")) {
 			return "egovframework/com/web/board/basic/list";
+		}else if(type.equals("temp")) {
+			return "forward:/cop/bbs/selectArticleList.do?bbsId=BBSMSTR_000000000092";
 		}
 		
+		return "";
 		
-		return "egovframework/com/web/board/page7";
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String boardView(@RequestParam("type") String type, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		if(type.equals("qna")) {
-			return "forward:/uss/olh/qna/selectQnaDetail.do";
-		}
 		
 		return "";
 	}
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String boardWrite(@RequestParam("type") String type, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		if(type.equals("qna")) {
-			return "forward:/uss/olh/qna/insertQnaView.do";
-		}
-		
 		return "";
 	}
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, HttpSession session,  ModelMap model) throws Exception {
+	public String boardModify(@RequestParam("type") String type, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		if(type.equals("qna")) {
-			return "forward:/uss/olh/qna/updateQnaView.do";
-		}
+
 		
 		return "";
 	}
 	
-	/*[추가] boardModify 이동메소드 - 2021.04.15*/
+	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/delete.do")
-	public String boardDelete(@RequestParam("type") String type, @ModelAttribute("searchVO") QnaVO qnaVO, HttpSession session,  ModelMap model) throws Exception {
+	public String boardDelete(@RequestParam("type") String type, ModelMap model) throws Exception {
 			 
 		if (type==null || type.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		if(type.equals("qna")) {
-			return "forward:/uss/olh/qna/deleteQna.do";
-		}
+		
 		
 		return "";
 	}
+	
+	/**********************************************************baord끝, Q&A 시작*****************************************************************/
+	
+	/*[추가] qnaList 이동메소드 - 2021.04.16*/
+	@RequestMapping(value = "/qna/list.do")
+	public String qnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+		menu(model);
+		
+		ComUtlController utl = new ComUtlController();
+		StringBuffer random = utl.random();
+		HttpSession session = request.getSession();
+		session.setAttribute("_access_", random);
+		request.setAttribute("_access_", session.getAttribute("_access_"));
+		return "forward:/uss/olh/qna/selectQnaList.do";
+	}
+	
+	/*[추가] qnaView 이동메소드 - 2021.04.16*/
+	@RequestMapping(value = "/qna/view.do")
+	public String qnaView(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+
+		menu(model);
+		/*
+		HttpSession session = request.getSession();
+		session.setAttribute("_access_", "wal3rjgk2lw5jrglj");
+		request.setAttribute("_access_", session.getAttribute("_access_"));*/
+		return "forward:/uss/olh/qna/selectQnaDetail.do";
+	}
+	
+	/*[추가] qnaWrite 이동메소드 - 2021.04.15*/
+	@RequestMapping(value = "/qna/write.do")
+	public String qnaWrite(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	
+		menu(model);
+		return "forward:/uss/olh/qna/insertQnaView.do";
+	
+	}
+	
+	/*[추가] qnaModify 이동메소드 - 2021.04.15*/
+	@RequestMapping(value = "/qna/modify.do")
+	public String qnaModify(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+			 
+		menu(model);
+		return "forward:/uss/olh/qna/updateQnaView.do";
+	}
+	
+	/*[추가] qnaDelete 이동메소드 - 2021.04.15*/
+	@RequestMapping(value = "/qna/delete.do")
+	public String qnaDelete(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+
+		menu(model);
+		return "forward:/uss/olh/qna/deleteQna.do";
+	}
+	
+	/**********************************************************Q&A 끝, FAQ 시작*****************************************************************/
+	
+	/*[추가] faqList 이동메소드 - 2021.04.19*/
+	@RequestMapping(value = "/faq/list.do")
+	public String faqList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+		
+		menu(model);
+		return "forward:/uss/olh/faq/selectFaqList.do";
+	}
+	
+	/**********************************************************FAQ 끝*****************************************************************/
 	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.07 **/
 	public void menu(ModelMap model) throws Exception{

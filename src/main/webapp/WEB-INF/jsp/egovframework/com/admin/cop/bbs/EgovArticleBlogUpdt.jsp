@@ -172,7 +172,7 @@ function fn_egov_updt_article(form) {
  * 목록 으로 가기
  ******************************************************** */
 function fn_egov_inqire_articlelist() {
-	articleVO.action = "<c:url value='/cop/bbs/selectArticleList.do'/>";
+	articleVO.action = "<c:url value='/admin/cop/bbs/selectArticleList.do'/>";
 	articleVO.submit();
 }
 

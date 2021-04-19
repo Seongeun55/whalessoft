@@ -70,7 +70,7 @@
 	}
 
 	function fn_egov_loadBdList(bbsId, bbsAttrbCode, bbsTyCode){
-		var url = "<c:url value='/cop/bbs/selectArticleList.do' />?bbsId="+bbsId+"&bbsAttrbCode="+bbsAttrbCode;
+		var url = "<c:url value='/admin/cop/bbs/selectArticleList.do' />?bbsId="+bbsId+"&bbsAttrbCode="+bbsAttrbCode;
 		document.getElementById("contentFrame").src = url;
 	}
 

@@ -203,6 +203,14 @@
  		
  	</update>
  	
+ 	<!-- db에서 완전히 삭제하기 위해 추가 2021.04.19 -->
+ 	<delete id="deleteBBS" parameterType="egovframework.com.cop.bbs.service.BoardMasterVO">
+ 	
+ 		DELETE FROM COMTNBBSMASTER
+		WHERE BBS_ID = #{bbsId}
+		
+ 	</delete>
+ 	
  	<select id="selectBlogMasterList" parameterType="egovframework.com.cop.bbs.service.BlogVO" resultMap="BlogList">
 		
 			SELECT 

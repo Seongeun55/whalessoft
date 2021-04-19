@@ -89,6 +89,22 @@
 						
 	</select>	
 	
+	<select id="selectTemplate" parameterType="egovframework.com.cop.tpl.service.TemplateInfVO" resultMap="tmplatList">
+		
+			SELECT 
+				a.TMPLAT_ID, a.TMPLAT_NM, a.TMPLAT_SE_CODE, a.TMPLAT_COURS, a.USE_AT,
+				a.FRST_REGISTER_ID, a.FRST_REGIST_PNTTM,
+				b.USER_NM AS FRST_REGISTER_NM, c.CODE_NM AS TMPLAT_SE_CODE_NM
+			FROM
+				COMTNTMPLATINFO a
+			LEFT OUTER JOIN COMVNUSERMASTER b
+				ON a.FRST_REGISTER_ID = b.ESNTL_ID
+			LEFT OUTER JOIN COMTCCMMNDETAILCODE c
+				ON a.TMPLAT_SE_CODE = c.CODE
+			WHERE 
+				c.CODE_ID = 'COM005'
+	</select>	
+	
 	<select id="selectTemplateInfsCnt" parameterType="egovframework.com.cop.tpl.service.TemplateInfVO" resultType="java.lang.Integer">
 		
 			SELECT 
@@ -157,6 +173,14 @@
 			WHERE TMPLAT_ID = #{tmplatId}
  		
  	</update>
+ 	
+ 	<!-- db에서 완전히 삭제하기 위해 추가 2021.04.19 -->
+ 	<delete id="deleteTemplate" parameterType="egovframework.com.cop.tpl.service.TemplateInf">
+ 	
+ 		DELETE FROM COMTNTMPLATINFO
+		WHERE TMPLAT_ID = #{tmplatId}
+		
+ 	</delete>
 
 	<select id="selectTemplateInfsByCode" parameterType="egovframework.com.cop.tpl.service.TemplateInfVO" resultMap="tmplatList">
 		

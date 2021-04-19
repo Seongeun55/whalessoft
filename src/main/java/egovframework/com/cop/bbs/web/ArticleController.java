@@ -165,7 +165,7 @@ public class ArticleController {
 	}
 
 	/**
-	 * 게시물에 대한 목록을 조회한다.
+	 * 관리자 페이지의 게시물에 대한 목록을 조회한다.
 	 * 
 	 * @param boardVO
 	 * @param sessionVO
@@ -173,7 +173,7 @@ public class ArticleController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/cop/bbs/selectArticleList.do")
+	@RequestMapping("/admin/cop/bbs/selectArticleList.do")
 	public String selectArticleList(@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model) throws Exception {
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
@@ -235,6 +235,81 @@ public class ArticleController {
 		model.addAttribute("noticeList", noticeList);
 		return "egovframework/com/admin/cop/bbs/ArticleList";
 	}
+	
+	/**
+	 * 관리자 페이지의 게시물에 대한 목록을 조회한다.
+	 * 
+	 * @param boardVO
+	 * @param sessionVO
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/cop/bbs/selectArticleList.do")
+	public String ArticleList(@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model) throws Exception {
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); // KISA 보안취약점 조치 (2018-12-10, 이정은)
+
+		if (!isAuthenticated) {
+			return "egovframework/com/admin/uat/uia/LoginUsr";
+		}
+
+		BoardMasterVO vo = new BoardMasterVO();
+
+		vo.setBbsId(boardVO.getBbsId());
+		vo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+		BoardMasterVO master = BBSMasterService.selectBBSMasterInf(vo);
+
+		// 방명록은 방명록 게시판으로 이동
+		if (master.getBbsTyCode().equals("BBST03")) {
+			return "forward:/cop/bbs/selectGuestArticleList.do";
+		}
+
+		boardVO.setPageUnit(propertyService.getInt("pageUnit"));
+		boardVO.setPageSize(propertyService.getInt("pageSize"));
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+
+		paginationInfo.setCurrentPageNo(boardVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(boardVO.getPageUnit());
+		paginationInfo.setPageSize(boardVO.getPageSize());
+
+		boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+		Map<String, Object> map = ArticleService.selectArticleList(boardVO);
+		int totCnt = Integer.parseInt((String) map.get("resultCnt"));
+
+		// 공지사항 추출
+		List<BoardVO> noticeList = ArticleService.selectNoticeArticleList(boardVO);
+
+		paginationInfo.setTotalRecordCount(totCnt);
+
+		// -------------------------------
+		// 기본 BBS template 지정
+		// -------------------------------
+		if (master.getTmplatCours() == null || master.getTmplatCours().equals("")) {
+			master.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
+			return "egovframework/com/admin/cop/bbs/ArticleList";
+		}
+		
+		String link = master.getTmplatCours() + "/list";
+		//// -----------------------------
+
+		if (user != null) {
+			model.addAttribute("sessionUniqId", user.getUniqId());
+		}
+
+		model.addAttribute("resultList", map.get("resultList"));
+		model.addAttribute("resultCnt", map.get("resultCnt"));
+		model.addAttribute("articleVO", boardVO);
+		model.addAttribute("boardMasterVO", master);
+		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute("noticeList", noticeList);
+		return link;
+	}
 
 	/**
 	 * 게시물에 대한 상세 정보를 조회한다.
@@ -264,7 +339,7 @@ public class ArticleController {
 		// 비밀글은 작성자만 볼수 있음
 		if (!EgovStringUtil.isEmpty(vo.getSecretAt()) && vo.getSecretAt().equals("Y")
 				&& !((user == null || user.getUniqId() == null) ? "" : user.getUniqId()).equals(vo.getFrstRegisterId()))
-			return "forward:/cop/bbs/selectArticleList.do";
+			return "forward:/admin/cop/bbs/selectArticleList.do";
 
 		// ----------------------------
 		// template 처리 (기본 BBS template 지정 포함)
@@ -420,7 +495,7 @@ public class ArticleController {
 		if (boardVO.getBlogAt().equals("Y")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
-			return "forward:/cop/bbs/selectArticleList.do";
+			return "forward:/admin/cop/bbs/selectArticleList.do";
 		}
 
 	}
@@ -548,7 +623,7 @@ public class ArticleController {
 			ArticleService.insertArticle(board);
 		}
 
-		return "forward:/cop/bbs/selectArticleList.do";
+		return "forward:/admin/cop/bbs/selectArticleList.do";
 	}
 
 	/**
@@ -691,7 +766,7 @@ public class ArticleController {
 			ArticleService.updateArticle(board);
 		}
 
-		return "forward:/cop/bbs/selectArticleList.do";
+		return "forward:/admin/cop/bbs/selectArticleList.do";
 	}
 
 	/**
@@ -743,7 +818,7 @@ public class ArticleController {
 		if (boardVO.getBlogAt().equals("chkBlog")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
-			return "forward:/cop/bbs/selectArticleList.do";
+			return "forward:/admin/cop/bbs/selectArticleList.do";
 		}
 	}
 
@@ -1146,7 +1221,7 @@ public class ArticleController {
 		// 비밀글은 작성자만 볼수 있음
 		if (!EgovStringUtil.isEmpty(vo.getSecretAt()) && vo.getSecretAt().equals("Y")
 				&& !((user == null || user.getUniqId() == null) ? "" : user.getUniqId()).equals(vo.getFrstRegisterId()))
-			mav.setViewName("forward:/cop/bbs/selectArticleList.do");
+			mav.setViewName("forward:/admin/cop/bbs/selectArticleList.do");
 		return mav;
 	}
 
@@ -1223,7 +1298,7 @@ public class ArticleController {
 		// 비밀글은 작성자만 볼수 있음
 		if (!EgovStringUtil.isEmpty(vo.getSecretAt()) && vo.getSecretAt().equals("Y")
 				&& !((user == null || user.getUniqId() == null) ? "" : user.getUniqId()).equals(vo.getFrstRegisterId()))
-			mav.setViewName("forward:/cop/bbs/selectArticleList.do");
+			mav.setViewName("forward:/admin/cop/bbs/selectArticleList.do");
 		return mav;
 
 	}

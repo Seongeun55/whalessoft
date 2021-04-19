@@ -80,23 +80,17 @@ function fn_egov_delete_qna(form){
         <!-- } 본문 내용 끝 -->
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
-			<c:if test="${user.userSe == 'USR'}">		
-				<form name="qnaForm" action="<c:url value='/admin/index.do'/>" method="post" style="float:left;">
-					<input type="submit" class="s_submit" value="<spring:message code="button.reply" />" title="<spring:message code="title.reply" /> <spring:message code="input.button" />" />
-					<input name="qaId" type="hidden" value="${result.qaId}">
-				</form>
-			</c:if>
 			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">
-				<form name="formUpdate" action="/board/modify.do?type=<c:out value='${param.type}'/>" method="post" style="float:left; margin:0 0 0 3px;">
+				<form name="formUpdate" action="/qna/modify.do" method="post" style="float:left; margin:0 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
 					<input name="qaId" type="hidden" value="${result.qaId}">
 				</form>
-				<form name="formDelete" action="/board/delete.do?type=<c:out value='${param.type}'/>" method="post" style="float:left; margin:0 0 0 3px;">
+				<form name="formDelete" action="/qna/delete.do" method="post" style="float:left; margin:0 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.delete" />" title="<spring:message code="button.delete" /> <spring:message code="input.button" />" onclick="fn_egov_delete_qna(this.form); return false;">
 					<input name="qaId" type="hidden" value="${result.qaId}">
 				</form>
 			</c:if>
-			<form name="formList" action="/board/list.do?type=<c:out value='${param.type}'/>" method="post" style="float:left; margin:0 0 0 3px;">
+			<form name="formList" action="/qna/list.do" method="post" style="float:left; margin:0 0 0 3px;">
 				<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
 			</form>
 		</div>
@@ -115,10 +109,6 @@ function fn_egov_delete_qna(form){
         </c:if>
         <!-- 답변 내용 끝 -->
     </section>
-	
-	<ul class="bo_v_nb">
-		<li class="btn_next"><span class="nb_tit"><i class="fa fa-chevron-down" aria-hidden="true"></i> 다음글</span><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=notice&amp;wr_id=1">우리는 더 앞선 발걸음으로 나아갑니다.</a>  <span class="nb_date">20.11.15</span></li>    </ul>
-    
     </article>
 <!-- } 게시판 읽기 끝 -->
 </div>

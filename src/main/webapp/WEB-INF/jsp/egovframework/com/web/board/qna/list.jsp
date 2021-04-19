@@ -28,7 +28,7 @@ function linkPage(pageNo){
 }
 </script>
 <form name="pageForm">
-	<input type="hidden" name="type" value="<c:out value='${param.type}'/>" >
+	<!-- input type="hidden" name="type" value="<c:out value='${param.type}'/>" -->
 	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
 </form>
 <!-- 콘텐츠 시작 { -->
@@ -41,7 +41,7 @@ function linkPage(pageNo){
 	
 	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
-		<form name="qnaForm" id="fboardlist" action="/board/list.do?type=<c:out value='${param.type}'/>" onsubmit="return searchQna(this);" method="post">
+		<form name="qnaForm" id="fboardlist" action="/qna/list.do" onsubmit="return searchQna(this);" method="post">
 		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -55,7 +55,7 @@ function linkPage(pageNo){
 				<li>
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />
-					<span class="btn_b"><a href="/board/write.do?type=<c:out value='${param.type}'/>"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
+					<span class="btn_b"><a href="/qna/write.do"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
 				</li>
 			</ul>
 			</div>
@@ -89,7 +89,7 @@ function linkPage(pageNo){
 		        			<td align="center"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
 		        				<div class="bo_tit">
-		        					<form name="subForm" method="post" action="/board/view.do?type=<c:out value='${param.type}'/>">
+		        					<form name="subForm" method="post" action="/qna/view.do">
 									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
 									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
 									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
