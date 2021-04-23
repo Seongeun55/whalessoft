@@ -22,6 +22,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="pageTitle"><spring:message code="comCopBbs.articleVO.title"/></c:set>
 <!DOCTYPE html>
 <html>
@@ -41,11 +42,6 @@ function fn_egov_init(){
 	document.articleForm.searchCnd.focus();
 }
 
-/*********************************************************
- * 페이징 처리 함수
- ******************************************************** */
-function fn_egov_select_linkPage(pageNo){
-}
 /*********************************************************
  * 조회 처리 함수
  ******************************************************** */
@@ -73,9 +69,9 @@ function fn_egov_init(){
 /*********************************************************
  * 페이징 처리 함수
  ******************************************************** */
-function fn_egov_select_linkPage(pageNo){
+function linkPage(pageNo){
 	document.articleForm.pageIndex.value = pageNo;
-	document.articleForm.action = "<c:url value='/admin/cop/bbs/selectArticleList.do'/>";
+	document.articleForm.action = "<c:url value='/admin/cop/bbs/allArticleList.do'/>";
    	document.articleForm.submit();
 }
 /*********************************************************
@@ -105,11 +101,19 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 
 
 <div class="board">
-	<form name="articleForm" action="<c:url value='/admin/cop/bbs/selectArticleList.do'/>" method="post" onSubmit="fn_egov_search_article(); return false;"> 
-	<h1>${pageTitle} <spring:message code="title.list" /> (<c:out value="${boardMasterVO.bbsNm}"/>)</h1><!-- 게시글 목록 -->
+	<form name="articleForm" action="<c:url value='/admin/cop/bbs/allArticleList.do'/>" method="post" onSubmit="fn_egov_search_article(); return false;"> 
+	<h1>게시물 관리</h1><!-- 게시글 목록 -->
 	<!-- 하단 버튼 -->
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">
 		<ul>
+			<li>
+				<select name="bbsNm" title="<spring:message code="comCopBbs.articleVO.regist.bbsNm" /> <spring:message code="input.cSelect" />">
+					<option value="">선택(게시판)</option>
+					<c:forEach var="result" items="${bbsList }" varStatus="status">
+						<option value="${result.bbsId }"><c:out value="${result.bbsNm }" /></option>
+					</c:forEach>
+				</select>
+			</li>
 			<li>
 				<select name="searchCnd" title="<spring:message code="title.searchCondition" /> <spring:message code="input.cSelect" />">
 					<option value="0"  <c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if> ><spring:message code="comCopBbs.articleVO.list.nttSj" /></option><!-- 글 제목  -->
@@ -122,13 +126,11 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 				<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 				<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" /><!-- 조회 -->
 				<c:if test="${preview != 'true'}">
-					<span class="btn_b"><a href="<c:url value='/admin/cop/bbs/insertArticleView.do?bbsId=${boardMasterVO.bbsId}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
+					<span class="btn_b"><a href="<c:url value='/cop/bbs/allInsertArticleView.do' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
 				</c:if>
 			</li>
 		</ul>
 	</div>
-	<input name="bbsId" type="hidden" value="${boardMasterVO.bbsId}">
-	<input name="pageIndex" type="hidden" value="">
 	</form>
 	
 	<!-- 목록영역 -->
@@ -136,7 +138,8 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 	<caption>${pageTitle} <spring:message code="title.list" /></caption>
 	<colgroup>
 		<col style="width: 9%;">
-		<col style="width: 40%;">
+		<col style="width: 15%;">
+		<col style="width: 30%;">
 		<col style="width: 13%;">
 		<col style="width: 13%;">
 		<col style="width: 13%;">
@@ -144,6 +147,7 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 	<thead>
 	<tr>
 		<th><spring:message code="table.num" /></th><!-- 번호 -->
+		<th>게시판</th><!-- 게시판 -->
 		<th class="board_th_link"><spring:message code="comCopBbs.articleVO.list.nttSj" /></th><!--글 제목  -->
 		<th><spring:message code="table.reger" /></th><!-- 작성자명 -->
 		<th><spring:message code="table.regdate" /></th><!-- 작성시각 -->
@@ -151,30 +155,12 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 	</tr>
 	</thead>
 	<tbody class="ov">
-	
-	<!-- 공지사항 본문 -->
-	<c:forEach items="${noticeList}" var="noticeInfo" varStatus="status">
-	<tr>
-		<td><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_notice.png'/>" alt="notice"></td>
-		<td class="bold">
-			<form name="subForm" method="post" action="<c:url value='/admin/cop/bbs/selectArticleDetail.do'/>">
-			    <input name="nttId" type="hidden" value="<c:out value="${noticeInfo.nttId}"/>">
-			    <input name="bbsId" type="hidden" value="<c:out value="${noticeInfo.bbsId}"/>">
-			    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-			    <span class="link"><input type="submit" value="<c:out value='${fn:substring(noticeInfo.nttSj, 0, 40)}'/><c:if test="${noticeInfo.commentCo != ''}">	<c:out value='[${noticeInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;">
-			    </span>
-			</form>
-		</td>
-		<td><c:out value='${noticeInfo.frstRegisterNm}'/></td>
-		<td><c:out value='${noticeInfo.frstRegisterPnttm}'/></td>
-		<td><c:out value='${noticeInfo.inqireCo}'/></td>		
-	</tr>
-	</c:forEach>
+
 	<!-- 게시글 본문 -->
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
 	<tr>
 		<td><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
-		
+		<td><c:out value='${resultInfo.bbsNm}' /></td>
 	<c:choose>
 		<c:when test="${resultInfo.sjBoldAt == 'Y'}">
 		<!-- 제목 Bold인 경우  -->
@@ -204,28 +190,18 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 		<c:otherwise>
 		<!-- 나머지 경우 -->
 		<td class="left">
-			<c:choose>
-			<c:when test="${preview == 'true'}">
+	    	<form name="subForm" method="post" action="<c:url value='/admin/cop/bbs/selectArticleDetail.do'/>">
 				    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
 				    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
 				    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-				    <span class="link"><c:if test="${resultInfo.replyLc!=0}"><c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret"></c:if><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
-			</c:when>
-			<c:otherwise>
-		    	<form name="subForm" method="post" action="<c:url value='/admin/cop/bbs/selectArticleDetail.do'/>">
-					    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
-					    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
-					    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-					    <span class="link">
-					    	<c:if test="${resultInfo.replyLc!=0}">
-					    		<c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach>
-					    		<img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret">
-					    	</c:if>
-					    	<input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/>
-					    	<c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
-				</form>
-			</c:otherwise>
-			</c:choose>
+				    <span class="link">
+				    	<c:if test="${resultInfo.replyLc!=0}">
+				    		<c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach>
+				    		<img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret">
+				    	</c:if>
+				    	<input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/>
+				    	<c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
+			</form>
 		</td>
 		</c:otherwise>
 	</c:choose>
@@ -247,7 +223,7 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 	<!-- paging navigation -->
 	<div class="pagination">
 		<ul>
-		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_linkPage"/>
+		<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
 		</ul>
 	</div>
 	

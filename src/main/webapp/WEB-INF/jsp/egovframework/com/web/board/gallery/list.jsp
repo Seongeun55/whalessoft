@@ -17,8 +17,8 @@
 	
 	<!-- 게시판 목록 시작 { -->
 	<div id="bo_gall">
-
-	    <nav id="bo_cate">
+		 
+	    <!-- <nav id="bo_cate">
 	        <h2>갤러리 카테고리</h2>
 	        <ul id="bo_cate_ul">
 	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery" id="bo_cate_on">전체</a></li>
@@ -27,7 +27,7 @@
 	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC3">카테고리3</a></li>
 	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC4">카테고리4</a></li>
 	        </ul>
-	    </nav>
+	    </nav> -->
 	
 	    <form name="fboardlist" id="fboardlist" action="http://theme001.whalessoft.com/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
 	        <input type="hidden" name="bo_table" value="gallery">

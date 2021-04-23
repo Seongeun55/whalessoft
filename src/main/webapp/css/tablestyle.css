@@ -42,7 +42,10 @@
 #bo_list .tbl_head01 a {}
 #bo_list td.empty_table {}
 #bo_list tbody .even td {background:#fbfbfb;}
-
+#bo_list tbody .even td.bold{font-weight:600 !important;}
+#bo_list tbody .even td.bold input{font-weight:600 !important; background:none;}
+#bo_list tbody .even:nth-child(even) {background:#fbfbfb;}
+#bo_list tbody .even:nth-child(odd) {background:#000000;}
 /* 읽기 내 테이블 */
 #bo_v .tbl_head01 {}
 #bo_v .tbl_head01 caption {}

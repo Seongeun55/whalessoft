@@ -87,6 +87,9 @@ function fn_egov_inqire_bbslist() {
 
 <!-- 상단타이틀 -->
 <form:form commandName="boardMasterVO" action="${pageContext.request.contextPath}/cop/bbs/updateBBSMaster.do" method="post" onSubmit="fn_egov_updt_bbs(document.forms[0]); return false;">  
+<!-- 게시판 유형 -->
+<input type="hidden" name="bbsTyCode" value="BBST01"/>
+<div><form:errors path="bbsTyCode" cssClass="error" /></div>   
 <div class="wTableFrm">
 	<h2>${pageTitle} <spring:message code="title.update" /></h2><!-- 게시판 마스터 수정 -->
 
@@ -118,7 +121,7 @@ function fn_egov_inqire_bbslist() {
 			</td>
 		</tr>
 		
-		<!-- 게시판 유형 -->
+		<!-- 게시판 유형 
 		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.updt.bbsTyCode"/> </c:set>
 		<tr>
 			<th><label for="bbsTyCode">${title} <span class="pilsu">*</span></label></th>
@@ -128,6 +131,19 @@ function fn_egov_inqire_bbslist() {
 				   <form:options items="${bbsTyCode}" itemValue="code" itemLabel="codeNm" />
 				</form:select>
 				<div><form:errors path="bbsTyCode" cssClass="error" /></div>       
+			</td>
+		</tr>-->
+		
+		<!-- 템플릿 선택 -->
+		<c:set var="title">템플릿 유형</c:set>
+		<tr>
+			<th><label for="tmplatId">${title } <span class="pilsu">*</span></label></th>
+			<td class="left">
+				<form:select path="tmplatId" title="${title} ${inputTxt }" cssClass="txt">
+					<form:option value="" label="--선택하세요--" />
+					<form:options items="${resultList}" itemValue="tmplatId" itemLabel="tmplatNm"/>					
+				</form:select>
+				<div><form:errors path="tmplatId" cssClass="error" /></div>  
 			</td>
 		</tr>
 		

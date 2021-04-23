@@ -37,8 +37,21 @@ public class ArticleServiceImpl extends EgovAbstractServiceImpl implements Artic
 	public Map<String, Object> selectArticleList(BoardVO boardVO) {
 		List<?> list = ArticleDAO.selectArticleList(boardVO);
 
-
 		int cnt = ArticleDAO.selectArticleListCnt(boardVO);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("resultList", list);
+		map.put("resultCnt", Integer.toString(cnt));
+
+		return map;
+	}
+	
+	//[추가] 게시물 전체보기 - 2021.04.20
+	@Override
+	public Map<String, Object> allArticleList(BoardVO boardVO) {
+		List<?> list = ArticleDAO.allArticleList(boardVO);
+		int cnt = ArticleDAO.allArticleListCnt(boardVO);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 

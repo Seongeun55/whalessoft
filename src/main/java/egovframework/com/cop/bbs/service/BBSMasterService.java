@@ -20,6 +20,8 @@ public interface BBSMasterService {
 
 	Map<String, Object> selectBBSMasterInfs(BoardMasterVO boardMasterVO);
 	
+	Map<String, Object> selectBBSList(BoardMasterVO boardMasterVO);//추가 2021.04.22
+	
 	void insertBBSMasterInf(BoardMaster boardMaster) throws Exception;
 
 	/*

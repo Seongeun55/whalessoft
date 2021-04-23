@@ -67,8 +67,11 @@
 		<tr>
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsNm" /></th>
 			<td colspan="3" class="left"><c:out value="${result.bbsNm}"/></td>
-			<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsTyCode" /></th>
-			<td class="left"><c:out value="${result.bbsTyCodeNm}"/></td>
+			<th>템플릿 유형</th>
+			<td class="left"><c:out value="${result.tmplatNm}"/></td>
+			
+			<!--게시판 유형 <th><spring:message code="comCopBbs.boardMasterVO.detail.bbsTyCode" /></th>
+			<td class="left"><c:out value="${result.bbsTyCodeNm}"/></td> -->
 		</tr>
 		<!-- 등록자, 등록일, 사용여부 -->
 		<tr>
@@ -95,7 +98,7 @@
 				<c:out value="${fn:replace(result.bbsIntrcn , crlf , '<br/>')}" escapeXml="false" />
 			</td>
 		</tr>
-	
+		<!-- 
 		<c:if test="${result.useAt == 'Y' }">
 			<tr>
 				<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsAdres" /></th>
@@ -103,7 +106,8 @@
 				<a href="<c:url value='/admin/cop/bbs/selectArticleList.do?bbsId=${result.bbsId}' />">/admin/cop/bbs/selectArticleList.do?bbsId=${result.bbsId }</a>	
 				</td>
 			</tr>
-		</c:if>
+		</c:if> 
+		-->
 		<tr>
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.option" /></th><!-- 추가선택사항 -->
 			<td colspan="5" class="cnt">

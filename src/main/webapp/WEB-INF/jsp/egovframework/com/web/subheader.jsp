@@ -35,19 +35,19 @@
 					<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 		        </h2>
 			</c:when>
-			<c:when test="${param.type eq 'basic'}">
+			<c:when test="${param.bbsId eq 'basic'}">
 				<h2 id="sub_menu_title" class="top" title="제품소개 1 페이지">
 					<strong title="제품소개 1 페이지">제품소개</strong>
 					<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 				</h2>
 			</c:when>
-			<c:when test="${param.type eq 'temp'}">
+			<c:when test="${param.bbsId eq 'BBSMSTR_000000000092'}">
 				<h2 id="sub_menu_title" class="top" title="공지사항 1 페이지">
 					<strong title="공지사항 1 페이지">공지사항</strong>
 		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
 				</h2>
 			</c:when>
-			<c:when test="${param.type eq 'gallery'}">
+			<c:when test="${param.bbsId eq 'BBSMSTR_000000000101'}">
 				<h2 id="sub_menu_title" class="top" title="갤러리 1 페이지">
 		        	<strong title="갤러리 1 페이지">갤러리</strong>
 		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>

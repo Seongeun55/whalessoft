@@ -97,9 +97,7 @@ public class QnaController {
 		
 		//문제점 : 세션에 저장된 값이 없을 때, 위 주소로 바로 들어오면 session & request값 모두 null이 된다.
 		HttpSession session = request.getSession();
-		System.out.println("확인 : request" + request.getAttribute("_access_"));
-		System.out.println("확인 : session" + session.getAttribute("_access_"));
-		if(request.getAttribute("_access_") != session.getAttribute("_access_")) {
+		if(request.getAttribute("_access_") != session.getAttribute("_access_") || request.getAttribute("_access_") == null) {
 			return "egovframework/com/admin/cmm/error/dataAccessFailure";
 		}
 		

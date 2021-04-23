@@ -210,7 +210,7 @@ function fn_egov_select_commentList(pageNo) {
 			<input name="bbsId" type="hidden" value="<c:out value="${boardMasterVO.bbsId}" />">
 		</form>
 		</c:if>
-		<form name="formList" action="<c:url value='/admin/cop/bbs/selectArticleList.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
+		<form name="formList" action="<c:url value='/admin/cop/bbs/allArticleList.do'/>" method="post" style="float:left; margin:0 0 0 3px;">
 			<input type="submit" class="s_submit" value="<spring:message code="button.list" />"><!-- 목록 -->
 			<input name="bbsId" type="hidden" value="<c:out value="${boardMasterVO.bbsId}" />">
 		</form>

@@ -8,6 +8,8 @@ import egovframework.rte.fdl.cmmn.exception.FdlException;
 public interface ArticleService {
 
 	Map<String, Object> selectArticleList(BoardVO boardVO);
+	
+	Map<String, Object> allArticleList(BoardVO boardVO);	//[추가] 2021.04.20
 
 	BoardVO selectArticleDetail(BoardVO boardVO);
 	

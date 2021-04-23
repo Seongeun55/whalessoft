@@ -19,6 +19,15 @@ public class ArticleDAO extends EgovComAbstractDAO {
 	public int selectArticleListCnt(BoardVO boardVO) {
 		return (Integer)selectOne("BBSArticle.selectArticleListCnt", boardVO);
 	}
+	
+	//[추가]전체 게시물 보기 - 2021.04.20
+	public List<?> allArticleList(BoardVO boardVO) {
+		return list("BBSArticle.allArticleList", boardVO);
+	}
+	
+	public int allArticleListCnt(BoardVO boardVO) {
+		return (Integer)selectOne("BBSArticle.allArticleListCnt", boardVO);
+	}
 
 	public int selectMaxInqireCo(BoardVO boardVO) {
 		return (Integer)selectOne("BBSArticle.selectMaxInqireCo", boardVO);

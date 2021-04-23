@@ -97,6 +97,16 @@ public class BBSMasterServiceImpl extends EgovAbstractServiceImpl implements BBS
 		return map;
 	}
 	
+	//추가 2021.04.22
+	@Override
+	public Map<String, Object> selectBBSList(BoardMasterVO boardMasterVO) {
+		List<?> result = BBSMasterDAO.selectBBSList(boardMasterVO);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("resultList", result);
+		return map;
+	}
+	
 	@Override
 	public Map<String, Object> selectBlogMasterInfs(BoardMasterVO boardMasterVO) {
 		List<?> result = BBSMasterDAO.selectBlogMasterInfs(boardMasterVO);

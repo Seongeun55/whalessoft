@@ -1,19 +1,6 @@
 <%
  /**
-  * @Class Name : EgovArticleRegist.jsp
-  * @Description : EgovArticleRegist 화면
-  * @Modification Information
-  * @
-  * @  수정일             수정자                   수정내용
-  * @ -------    --------    ---------------------------
-  * @ 2009.02.01   박정규              최초 생성
-  *   2016.06.13   김연호              표준프레임워크 v3.6 개선
-  *   2018.06.05   신용호              CK Editor V4.9.2 Upgrade
-  *
-  *  @author 공통서비스팀 
-  *  @since 2009.02.01
-  *  @version 1.0
-  *  @see
+  *	ArticleRegist.jsp 그대로 가져옴
   *  
   */
 %>
@@ -167,7 +154,7 @@ function fn_egov_init(){
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
-<form:form commandName="articleVO" action="${pageContext.request.contextPath}/admin/cop/bbs/insertArticle.do" method="post" onSubmit="fn_egov_regist_article(document.forms[0]); return false;" enctype="multipart/form-data"> 
+<form:form commandName="articleVO" action="${pageContext.request.contextPath}/cop/bbs/allInsertArticle.do" method="post" onSubmit="fn_egov_regist_article(document.forms[0]); return false;" enctype="multipart/form-data"> 
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2>${pageTitle} <spring:message code="title.create" /></h2><!-- 게시글 등록 -->
@@ -184,8 +171,20 @@ function fn_egov_init(){
 	<tbody>
 		<!-- 입력 -->
 		<c:set var="inputTxt"><spring:message code="input.input" /></c:set>
+		<!-- [추가] 게시판 선택 -->
+		<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.bbsNm"/> </c:set>
+		<tr>
+			<th><label for="nttSj">${title} <span class="pilsu">*</span></label></th>
+			<td colspan="3" class="left">
+				<form:select path="bbsId" id="bbsId">
+					<form:option value="">선택하세요</form:option>
+					<form:options items="${resultList }" itemValue="bbsId" itemLabel="bbsNm"/>					
+				</form:select>
+				<div><form:errors path="bbsId" cssClass="error"/></div>
+			</td>		
+		</tr>
 		<!-- 글 제목, 제목 Bold여부   -->
-		<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttSj"/> </c:set>
+		<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttSj"/> </c:set>		
 		<tr>
 			<th><label for="nttSj">${title} <span class="pilsu">*</span></label></th>
 			<td class="left">
@@ -252,7 +251,6 @@ function fn_egov_init(){
 			</td>
 		</tr>
 		
-		<c:if test="${boardMasterVO.fileAtchPosblAt == 'Y'}">
 		<!-- 첨부파일  -->
 		<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.atchFile"/></c:set>
 		<tr>
@@ -262,7 +260,6 @@ function fn_egov_init(){
 			    <div id="egovComFileList"></div>
 			</td>
 		</tr>
-	  	</c:if>
 
 	</tbody>
 	</table>
@@ -270,22 +267,15 @@ function fn_egov_init(){
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" /><!-- 등록 -->
-		<span class="btn_s"><a href="<c:url value='/admin/cop/bbs/selectArticleList.do' />?bbsId=${boardMasterVO.bbsId}"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
+		<span class="btn_s"><a href="/admin/cop/bbs/allArticleList.do"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
 	</div><div style="clear:both;"></div>
 	
 </div>
 
 <input type="hidden" name="pageIndex"  value="<c:out value='${searchVO.pageIndex}'/>"/>
-<input type="hidden" name="bbsTyCode" value="<c:out value='${boardMasterVO.bbsTyCode}'/>" />
-<input type="hidden" name="replyPosblAt" value="<c:out value='${boardMasterVO.replyPosblAt}'/>" />
-<input type="hidden" name="fileAtchPosblAt" value="<c:out value='${boardMasterVO.fileAtchPosblAt}'/>" />
-<input type="hidden" id="atchPosblFileNumber" name="atchPosblFileNumber" value="<c:out value='${boardMasterVO.atchPosblFileNumber}'/>" />
-<input type="hidden" name="atchPosblFileSize" value="<c:out value='${boardMasterVO.atchPosblFileSize}'/>" />
-<input type="hidden" name="tmplatId" value="<c:out value='${boardMasterVO.tmplatId}'/>" />
 <input type="hidden" name="blogId" value="<c:out value='${searchVO.blogId}'/>" />
 <input type="hidden" name="blogAt" value="<c:out value='${articleVO.blogAt}'/>"/>
 <input type="hidden" name="cmd" value="<c:out value='save'/>">
-<input type="hidden" name="bbsId" value="<c:out value='${articleVO.bbsId}'/>">
 </form:form>
 
 <!-- 첨부파일 업로드 가능화일 설정 Start..-->  

@@ -146,49 +146,39 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("type") String type, ModelMap model) throws Exception {
+	public String boardList(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
 			 
-		if (type==null || type.equals("")){
+		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		
-		if(type.equals("gallery")) {
-			return "egovframework/com/web/board/gallery/list";
-		}else if(type.equals("basic")) {
-			return "egovframework/com/web/board/basic/list";
-		}else if(type.equals("temp")) {
-			return "forward:/cop/bbs/selectArticleList.do?bbsId=BBSMSTR_000000000092";
-		}
-		
-		return "";
-		
+		return "forward:/cop/bbs/selectArticleList.do";		
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("type") String type, ModelMap model) throws Exception {
+	public String boardView(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
 			 
-		if (type==null || type.equals("")){
+		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
 		
-		return "";
+		return "forward:/cop/bbs/selectArticleDetail.do";
 	}
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("type") String type, ModelMap model) throws Exception {
+	public String boardWrite(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
 			 
-		if (type==null || type.equals("")){
+		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		return "";
+		return "forward:/cop/bbs/insertArticleView.do";
 	}
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/

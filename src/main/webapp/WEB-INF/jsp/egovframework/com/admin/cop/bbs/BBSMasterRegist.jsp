@@ -86,6 +86,9 @@ function fn_egov_regist_bbs(form){
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
 
 <form:form commandName="boardMasterVO" action="${pageContext.request.contextPath}/cop/bbs/insertBBSMaster.do" method="post" onSubmit="fn_egov_regist_bbs(document.forms[0]); return false;"> 
+<!-- 게시판 유형 -->
+<input type="hidden" name="bbsTyCode" value="BBST01"/>
+<div><form:errors path="bbsTyCode" cssClass="error" /></div>       
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2>${pageTitle} <spring:message code="title.create" /></h2><!-- 게시판 마스터 등록 -->
@@ -132,13 +135,7 @@ function fn_egov_regist_bbs(form){
 				<div><form:errors path="tmplatId" cssClass="error" /></div>  
 			</td>
 		</tr>
-		
-		<!-- 게시판 유형 -->
-		<form:form>
-			<input type="hidden" name="bbsTyCode" value="BBST01"/>
-			<div><form:errors path="bbsTyCode" cssClass="error" /></div>       
-		</form:form>
-		
+
 		<!-- 답장가능여부 -->
 		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.regist.replyPosblAt"/> </c:set>
 		<tr>

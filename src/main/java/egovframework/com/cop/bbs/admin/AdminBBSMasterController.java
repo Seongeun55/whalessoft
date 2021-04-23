@@ -110,7 +110,6 @@ public class AdminBBSMasterController {
 		TemplateInfVO tmplatInfVO = new TemplateInfVO();
 		Map<String, Object> map = tmplatService.selectTemplate(tmplatInfVO);	
 		model.addAttribute("resultList", map.get("resultList"));
-		System.out.println("확인 : " + map.get("resultList"));
 		
 		// ---------------------------------
 		// 2011.09.15 : 2단계 기능 추가 반영 방법 변경
@@ -393,8 +392,7 @@ public class AdminBBSMasterController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/cop/bbs/updateBBSMasterView.do")
-	public String updateBBSMasterView(@RequestParam("bbsId") String bbsId,
-			@ModelAttribute("searchVO") BoardMaster searchVO, ModelMap model) throws Exception {
+	public String updateBBSMasterView(@RequestParam("bbsId") String bbsId, @ModelAttribute("searchVO") BoardMaster searchVO, ModelMap model) throws Exception {
 
 		BoardMasterVO boardMasterVO = new BoardMasterVO();
 
@@ -403,6 +401,11 @@ public class AdminBBSMasterController {
 		vo.setCodeId("COM101");
 		List<?> codeResult = cmmUseService.selectCmmCodeDetail(vo);
 		model.addAttribute("bbsTyCode", codeResult);
+		
+		// [추가] 템플릿 종류
+		TemplateInfVO tmplatInfVO = new TemplateInfVO();
+		Map<String, Object> map = tmplatService.selectTemplate(tmplatInfVO);	
+		model.addAttribute("resultList", map.get("resultList"));
 
 		// Primary Key 값 세팅
 		boardMasterVO.setBbsId(bbsId);

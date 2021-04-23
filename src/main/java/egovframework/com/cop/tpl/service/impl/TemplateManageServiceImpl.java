@@ -92,7 +92,7 @@ public class TemplateManageServiceImpl extends EgovAbstractServiceImpl implement
 	 */
 	public Map<String, Object> selectTemplateInfs(TemplateInfVO tmplatInfVO) throws Exception {
 		List<TemplateInfVO> result = tmplatDAO.selectTemplateInfs(tmplatInfVO);
-		System.out.println("확인 : " + result.size());
+
 		int cnt = tmplatDAO.selectTemplateInfsCnt(tmplatInfVO);
 
 		Map<String, Object> map = new HashMap<String, Object>();

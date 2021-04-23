@@ -99,6 +99,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/admin/cop/bbs/selectBBSMasterInfs.do" target="_content">게시판 관리</a>
+                        <a class="collapse-item" href="/admin/cop/bbs/allArticleList.do" target="_content">게시물 관리</a>
                         <a class="collapse-item" href="/admin/cop/tpl/selectTemplateInfs.do" target="_content">템플릿 관리</a>
                     </div>
                 </div>

@@ -18,6 +18,11 @@ public class BBSMasterDAO extends EgovComAbstractDAO {
 	public List<?> selectBBSMasterInfs(BoardMasterVO boardMasterVO) {
 		return list("BBSMaster.selectBBSMasterList", boardMasterVO);
 	}
+	
+	//추가 2021.04.22
+	public List<?> selectBBSList(BoardMasterVO boardMasterVO) {
+		return list("BBSMaster.selectBBSList", boardMasterVO);
+	}
 
 	public int selectBBSMasterInfsCnt(BoardMasterVO boardMasterVO) {
 		return (Integer)selectOne("BBSMaster.selectBBSMasterListTotCnt", boardMasterVO);
