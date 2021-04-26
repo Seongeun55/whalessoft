@@ -290,7 +290,7 @@ public class ArticleController {
 	}
 	
 	/**
-	 * 게시물에 대한 상세 정보를 조회한다.
+	 * [추가] 관리자모드에서 게시물에 대한 상세 정보를 조회한다.
 	 * 
 	 * @param boardVO
 	 * @param sessionVO
@@ -984,7 +984,7 @@ public class ArticleController {
 		if (boardVO.getBlogAt().equals("chkBlog")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
-			return "forward:/admin/cop/bbs/selectArticleList.do";
+			return "forward:/admin/cop/bbs/allArticleList.do";
 		}
 	}
 

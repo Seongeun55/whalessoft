@@ -98,7 +98,7 @@
 				<c:out value="${fn:replace(result.bbsIntrcn , crlf , '<br/>')}" escapeXml="false" />
 			</td>
 		</tr>
-		<!-- 
+		<
 		<c:if test="${result.useAt == 'Y' }">
 			<tr>
 				<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsAdres" /></th>
@@ -107,7 +107,7 @@
 				</td>
 			</tr>
 		</c:if> 
-		-->
+		
 		<tr>
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.option" /></th><!-- 추가선택사항 -->
 			<td colspan="5" class="cnt">
