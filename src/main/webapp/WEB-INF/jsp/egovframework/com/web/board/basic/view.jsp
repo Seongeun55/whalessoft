@@ -43,43 +43,54 @@ function fn_egov_delete_qna(form){
 	<!-- 게시물 읽기 시작 { -->
 
 	<article id="bo_v">
-    <div class="bo_v_header">
-        <h2 id="bo_v_title">
-			<span class="bo_v_tit">${result.nttSj}</span>
-        </h2>
-    </div>
-
-    <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        <div class="profile_info">
-        	<div class="pf_img"><img src="/images/sub/no_profile.gif" alt="profile_image"></div>
-        	<div class="profile_info_ct">
-        		<span class="sound_only">작성자</span> <strong><span class="sv_member">${result.frstRegisterNm}</span></strong><br>  		 	
-        		<span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${result.inqireCo}회</strong>
-        		<strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${result.frstRegisterPnttm}</strong>
-    		</div>
-    	</div>
-    </section>
-
-    <section id="bo_v_atc">
-        <h2 id="bo_v_atc_title">본문</h2>
-        <div id="bo_v_share"></div>
-
-        <!-- 본문 내용 시작 { -->
-        <div id="bo_v_con">
-        	${fn:replace(result.nttCn , crlf , '<br/>')}
-		</div>
-        <!-- } 본문 내용 끝 -->
-        <!-- 하단 버튼 -->
-		<div class="btn" style="float:right">
-			<form name="formList" action="/board/list.do?bbsId=${param.bbsId}" method="post" style="float:left; margin:0 0 0 3px;">
-				<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
-			</form>
-		</div>
-		<div style="clear:both;"></div>
-
-		<input name="cmd" type="hidden" value="">
-    </section>
+	    <div class="bo_v_header">
+	        <h2 id="bo_v_title">
+				<span class="bo_v_tit">${result.nttSj}</span>
+	        </h2>
+	    </div>
+	
+	    <section id="bo_v_info">
+	        <h2>페이지 정보</h2>
+	        <div class="profile_info">
+	        	<div class="pf_img"><img src="/images/sub/no_profile.gif" alt="profile_image"></div>
+	        	<div class="profile_info_ct">
+	        		<span class="sound_only">작성자</span> <strong><span class="sv_member">${result.frstRegisterNm}</span></strong><br>  		 	
+	        		<span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${result.inqireCo}회</strong>
+	        		<strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${result.frstRegisterPnttm}</strong>
+	    		</div>
+	    	</div>
+	    </section>
+	
+	    <section id="bo_v_atc">
+	        <h2 id="bo_v_atc_title">본문</h2>
+	        <div id="bo_v_share"></div>
+	
+	        <!-- 본문 내용 시작 { -->
+	        <div id="bo_v_con">
+	        	${fn:replace(result.nttCn , crlf , '<br/>')}
+			</div>
+										
+			<!-- 첨부파일  -->
+			<c:if test="${not empty result.atchFileId}">
+			<hr>	
+				<spring:message code="comCopBbs.articleVO.detail.atchFile" />			
+				<c:import url="/cmm/fms/selectFileInfs.do" charEncoding="utf-8">
+					<c:param name="param_atchFileId" value="${result.atchFileId}" />
+				</c:import>	
+			<hr>
+		  	</c:if>
+	
+	        <!-- } 본문 내용 끝 -->
+	        <!-- 하단 버튼 -->
+			<div class="btn" style="float:right">
+				<form name="formList" action="/board/list.do?bbsId=${param.bbsId}" method="post" style="float:left; margin:7px 0 0 3px;">
+					<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
+				</form>
+			</div>
+			<div style="clear:both;"></div>
+		  	
+		  	<input name="cmd" type="hidden" value="">
+	    </section>
     </article>
 <!-- } 게시판 읽기 끝 -->
 </div>

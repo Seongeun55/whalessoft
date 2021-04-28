@@ -8,98 +8,64 @@
 
 <%@include file="/WEB-INF/jsp/egovframework/com/web/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/css/gallery.css"/>
-<script type="text/javascript">
-	function viewClick() {
-		alert("들어옴?");
-		location.href="/board/view.do";
-	}	
-</script>
+
 <!-- 콘텐츠 시작 { -->
 <div class="container">
+	
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
+    
     <div class="sub-con">
     	<div class="title-wrap">갤러리</div>
 	</div>
 	
 	<!-- 게시판 목록 시작 { -->
 	<div id="bo_gall">
-		 
-	    <!-- <nav id="bo_cate">
-	        <h2>갤러리 카테고리</h2>
-	        <ul id="bo_cate_ul">
-	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery" id="bo_cate_on">전체</a></li>
-	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC1">카테고리1</a></li>
-	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC2">카테고리2</a></li>
-	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC3">카테고리3</a></li>
-	            <li><a href="http://theme001.whalessoft.com/bbs/board.php?bo_table=gallery&amp;sca=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC4">카테고리4</a></li>
-	        </ul>
-	    </nav> -->
-	<!-- 
-	    <form name="fboardlist" id="fboardlist" action="http://theme001.whalessoft.com/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
-	        <input type="hidden" name="bo_table" value="gallery">
-	        <input type="hidden" name="sfl" value="">
-	        <input type="hidden" name="stx" value="">
-	        <input type="hidden" name="spt" value="">
-	        <input type="hidden" name="sst" value="wr_num, wr_reply">
-	        <input type="hidden" name="sod" value="">
-	        <input type="hidden" name="page" value="1">
-	        <input type="hidden" name="sw" value=""> -->
+        <!-- 게시판 페이지 정보 및 버튼 시작 { -->
+        <div id="bo_btn_top">
+            <div id="bo_list_total">
+                <span>Total ${resultCnt }건</span>
+                ${searchVO.pageIndex } 페이지
+            </div>
+	
+    	   <!-- <ul class="btn_bo_user">
+                <li>
+                    <button type="button" class="btn_bo_sch btn_b01 btn" title="게시판 검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">게시판 검색</span></button>
+                </li>
+           	 	</ul> -->
+        </div>
+        <!-- } 게시판 페이지 정보 및 버튼 끝 -->
 		
-	        <!-- 게시판 페이지 정보 및 버튼 시작 { -->
-	        <div id="bo_btn_top">
-	            <div id="bo_list_total">
-	                <span>Total ${resultCnt }건</span>
-	                ${searchVO.pageIndex } 페이지
-	            </div>
-	
-	            <ul class="btn_bo_user">
-	                <li>
-	                    <button type="button" class="btn_bo_sch btn_b01 btn" title="게시판 검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">게시판 검색</span></button>
-	                </li>
-	            </ul>
-	        </div>
-	        <!-- } 게시판 페이지 정보 및 버튼 끝 -->
-			
-	        <ul id="gall_ul" class="gall_row">
-	        <c:forEach items="${resultList}" var="result" varStatus="status">
-	        	<li class="gall_li col-gn-3">
-	        	<form name="mainForm" action="/board/view.do" method="post">
-				<input name="nttId" type="hidden" value="<c:out value="${result.nttId}"/>">
-			    <input name="bbsId" type="hidden" value="<c:out value="${result.bbsId}"/>">
-			    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-	        		<a href="" onclick="viewClick();">
-	        			<div class="line-box"><span class="line line-top"></span><span class="line line-right"></span><span class="line line-bottom"></span><span class="line line-left"></span></div>
-	        		</a>
-	        		<div class="gall_box">
-	        			<div class="gall_chk chk_box">
-	                        <span class="sound_only">
-	                            <c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/> 
-	                        </span>
-	                    </div>
-	                    <div class="gall_con">
-	                    	<div class="gall_img">
-	                            <a href="">
-	                                <img src="<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value='${result.atchFileId}'/>" alt="">
-	                            </a>
-	                        </div>
-	                        <div class="gall_text_href">	                            
-	                            <a href="" onclick="viewClick();" class="bo_tit">
-	                              	<input name="nttId" type="hidden" value="<c:out value="${result.nttId}"/>">
-								    <input name="bbsId" type="hidden" value="<c:out value="${result.bbsId}"/>">
-								    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-	                                <c:out value='${fn:substring(result.nttSj, 0, 40)}'/>
-	                                <span class="badge">자세히 보기</span>
-	                            </a>
-	                        </div>
-	                    </div>
-	        		</div>
-	        	</form>
-	        	</li>
-	        </c:forEach>            
-	        </ul>
-	    <!-- /form -->
-	
-	    <!-- 게시판 검색 시작 { -->
+        <ul id="gall_ul" class="gall_row">
+        <c:forEach items="${resultList}" var="result" varStatus="status">
+        	<li class="gall_li col-gn-3">
+        	<form name="mainForm" action="/board/view.do" method="post">
+				<input name="nttId" id="nttId" type="hidden" value="<c:out value="${result.nttId}"/>">
+			    <input name="bbsId" id="bbsId" type="hidden" value="<c:out value="${result.bbsId}"/>">
+			    <input name="pageIndex" id="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
+        		<div class="gall_box">
+        			<div class="gall_chk chk_box">
+                        <span class="sound_only">
+                            <c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/> 
+                        </span>
+                    </div>
+                    <div class="gall_con">
+                    	<div class="gall_img">
+                            <button type="submit">
+                            	<img src="<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value='${result.atchFileId}'/>" alt="">
+                            </button>	                                	                            
+                        </div>
+                        <div class="gall_text_href">	                            	                                                  
+                               <c:out value='${fn:substring(result.nttSj, 0, 40)}'/>
+                               <input type="submit" class="badge" value="자세히 보기">
+                        </div>
+                    </div>
+        		</div>
+        	</form>
+        	</li>
+        </c:forEach>            
+        </ul>
+
+	    <!-- 게시판 검색 시작
 	    <div class="bo_sch_wrap">
 	        <fieldset class="bo_sch">
 	            <h3>검색</h3>

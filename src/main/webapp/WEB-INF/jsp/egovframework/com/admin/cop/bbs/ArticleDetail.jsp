@@ -85,7 +85,7 @@ function fn_egov_selectCommentForupdt(commentNo) {
 	var form = document.getElementById("articleCommentVO");
 	
 	form.commentNo.value = commentNo;
-	form.action = "<c:url value='/cop/bbs/selectArticleDetail.do'/>";
+	form.action = "<c:url value='/admin/cop/bbs/selectArticleDetail.do'/>";
 	form.submit();
 }
 

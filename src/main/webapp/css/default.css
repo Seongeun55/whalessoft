@@ -130,7 +130,7 @@ textarea, select {font-family:"score", "score", "notosans", Dotum, Arial, sans-s
 div:focus,button:focus{outline:0}
 select {margin:0}
 p {margin:0;padding:0;word-break:break-all}
-hr {display:none}
+/*hr {display:none}*/
 pre {overflow-x:scroll;font-size:1.1em}
 a {color:#251f11;text-decoration:none}
 a:hover, a:active, a:focus {text-decoration:none;outline:none}

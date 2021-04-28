@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -117,6 +118,7 @@ public class EgovArticleCommentController {
 		model.addAttribute("type", "body");	// 댓글 페이지 body import용
 		
 		model.addAttribute("articleCommentVO", articleCommentVO);	// validator 용도 
+		model.addAttribute("user", user);	//추가
 		
 		commentVO.setCommentCn("");	// 등록 후 댓글 내용 처리
 	
@@ -136,7 +138,9 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/insertArticleComment.do")
     public String insertArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
+	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest  request) throws Exception {
+    	
+    	String referer = (String)request.getHeader("REFERER");// 관리자와 사용자에따른 결과 분리하기 위해 추가 - 2021.04.28
 
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -165,7 +169,10 @@ public class EgovArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			return "forward:/cop/bbs/selectArticleDetail.do";
+			if(referer.contains("/board/view.do")) {
+				return "forward:/board/view.do";
+			}
+			return "forward:/admin/cop/bbs/selectArticleDetail.do";
 		}
 		
     }
@@ -182,10 +189,13 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/deleteArticleComment.do")
     public String deleteArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-    		ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
+    		ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest request) throws Exception {
 		@SuppressWarnings("unused")
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+		
+    	String referer = (String)request.getHeader("REFERER");
+    	System.out.println("확인 : " + referer);
 		
 		if (isAuthenticated) {
 		    ArticleCommentService.deleteArticleComment(commentVO);
@@ -199,7 +209,10 @@ public class EgovArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			return "forward:/cop/bbs/selectArticleDetail.do";
+			if(referer.contains("/admin")) {
+				return "forward:/admin/cop/bbs/selectArticleDetail.do";
+			}
+			return "forward:/board/view.do";
 		}
     }
     
@@ -270,8 +283,10 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/updateArticleComment.do")
     public String updateArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model) throws Exception {
-
+	    BindingResult bindingResult, ModelMap model, HttpServletRequest  request) throws Exception {
+    	
+    	String referer = (String)request.getHeader("REFERER");// 관리자와 사용자에따른 결과 분리하기 위해 추가 - 2021.04.28
+    	System.out.println("확인 : " + referer);
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	
@@ -290,8 +305,12 @@ public class EgovArticleCommentController {
 		    commentVO.setCommentCn("");
 		    commentVO.setCommentNo("");
 		}
-	
-		return "forward:/cop/bbs/selectArticleDetail.do";
+		
+		if(referer.contains("/admin")){
+			return "forward:/admin/cop/bbs/selectArticleDetail.do";
+		}
+		
+		return "forward:/board/view.do";
     }
     
 	

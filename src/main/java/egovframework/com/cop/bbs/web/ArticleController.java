@@ -374,10 +374,9 @@ public class ArticleController {
 		if (!isAuthenticated) {
 			return "egovframework/com/admin/uat/uia/LoginUsr";
 		}
-		
+	
 		boardVO.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 		BoardVO vo = ArticleService.selectArticleDetail(boardVO);
-
 		model.addAttribute("result", vo);
 		model.addAttribute("sessionUniqId", (user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 
@@ -395,7 +394,7 @@ public class ArticleController {
 		master.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 
 		BoardMasterVO masterVo = BBSMasterService.selectBBSMasterInf(master);
-	
+		
 		if (masterVo.getTmplatCours() == null || masterVo.getTmplatCours().equals("")) {
 			masterVo.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
 			return "egovframework/com/admin/cop/bbs/ArticleDetail";

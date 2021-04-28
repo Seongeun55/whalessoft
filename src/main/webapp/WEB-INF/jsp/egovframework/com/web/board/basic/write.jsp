@@ -21,7 +21,7 @@
 <script type="text/javascript" src="<c:url value='/js/egovframework/com/cmm/utl/EgovCmmUtl.js'/>" ></script>
 <script type="text/javascript" src="<c:url value='/html/egovframework/com/cmm/utl/ckeditor/ckeditor.js?t=B37D54V'/>" ></script>
 <script type="text/javascript" src="<c:url value="/validator.do"/>"></script>
-<script src="<c:url value='/js/egovframework/com/cmm/jquery.js' />"></script>
+<%--<script src="<c:url value='/js/egovframework/com/cmm/jquery.js' />"></script>--%>
 <script src="<c:url value='/js/egovframework/com/cmm/jqueryui.js' />"></script>
 <validator:javascript formName="articleVO" staticJavascript="false" xhtml="true" cdata="false"/>
 <script type="text/javascript">
@@ -144,134 +144,134 @@ function fn_egov_init(){
 	}
 </script>
 
+<!-- 콘텐츠 시작 -->
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
-
+	<div class="sub-con">
+	    <div class="title-wrap">공지사항</div>
+	</div>
+	
 	<!-- javascript warning tag  -->
 	<noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
-	
-	<form:form commandName="articleVO" action="${pageContext.request.contextPath}/cop/bbs/insertArticle.do" method="post" onSubmit="fn_egov_regist_article(document.forms[0]); return false;" enctype="multipart/form-data"> 
-	<div class="wTableFrm">
-		<!-- 타이틀 -->
-		<h2>${pageTitle} <spring:message code="title.create" /></h2><!-- 게시글 등록 -->
-	
-		<!-- 등록폼 -->
-		<table class="wTable" summary="<spring:message code="common.summary.list" arguments="${pageTitle}" />">
-		<caption>${pageTitle } <spring:message code="title.create" /></caption>
-		<colgroup>
-			<col style="width: 20%;">
-			<col style="width: ;">
-			<col style="width: ;">
-			<col style="width: ;">
-		</colgroup>
-		<tbody>
-			<!-- 입력 -->
-			<c:set var="inputTxt"><spring:message code="input.input" /></c:set>
-			<!-- 글 제목, 제목 Bold여부   -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttSj"/> </c:set>
-			<tr>
-				<th><label for="nttSj">${title} <span class="pilsu">*</span></label></th>
-				<td class="left">
-				    <form:input path="nttSj" title="${title} ${inputTxt}" size="70" maxlength="70" />
-	   				<div><form:errors path="nttSj" cssClass="error" /></div>     
-				</td>
-				<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.sjBoldAt"/> </c:set>
-				<th><label for="sjBoldAt">${title}</label></th>
-				<td class="left">
-				    <form:checkbox path="sjBoldAt" value="Y"/>
-	   				<div><form:errors path="sjBoldAt" cssClass="error" /></div>     
-				</td>
-			</tr>
-			<!-- 글 내용  -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttCn"/> </c:set>
-			<tr>
-				<th><label for="nttCn">${title } <span class="pilsu">*</span></label></th>
-				<td class="nopd" colspan="3">
-					<form:textarea path="nttCn" title="${title} ${inputTxt}" cols="300" rows="20" />   
-	
-					<div><form:errors path="nttCn" cssClass="error" /></div>  
-				</td>
-			</tr>
+	<section id="bo_w">
+		<form:form commandName="articleVO" action="${pageContext.request.contextPath}/cop/bbs/insertArticle.do" method="post" onSubmit="fn_egov_regist_article(document.forms[0]); return false;" enctype="multipart/form-data"> 
+		<div class="wTableFrm">	
+			<!-- 등록폼 -->
+			<table class="wTable" summary="<spring:message code="common.summary.list" arguments="${pageTitle}" />">		
+				<colgroup>
+					<col style="width: 20%;">
+					<col style="width: ;">
+					<col style="width: ;">
+					<col style="width: ;">
+				</colgroup>
+				<tbody>
+					<!-- 입력 -->
+					<c:set var="inputTxt"><spring:message code="input.input" /></c:set>
+					<!-- 글 제목, 제목 Bold여부   -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttSj"/> </c:set>
+					<tr>
+						<th><label for="nttSj">${title} <span class="pilsu">*</span></label></th>
+						<td class="left" >
+						    <form:input path="nttSj" title="${title} ${inputTxt}" size="100" maxlength="100" />
+			   				<div><form:errors path="nttSj" cssClass="error" /></div>     
+						</td>
+						<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.sjBoldAt"/> </c:set>
+						<th><label for="sjBoldAt">${title}</label></th>
+						<td class="left">
+						    <form:checkbox path="sjBoldAt" value="Y"/>
+			   				<div><form:errors path="sjBoldAt" cssClass="error" /></div>     
+						</td>
+					</tr>
+					<!-- 글 내용  -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttCn"/> </c:set>
+					<tr>
+						<th><label for="nttCn">${title } <span class="pilsu">*</span></label></th>
+						<td class="nopd" colspan="3">
+							<form:textarea path="nttCn" title="${title} ${inputTxt}" cols="160" rows="20" />   
 			
-			<!-- 공지신청 여부  -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.noticeAt"/> </c:set>
-			<tr>
-				<th><label for="noticeAt">${title}</label></th>
-				<td class="left" colspan="3">
-					<form:checkbox path="noticeAt" value="Y"/>
-					<div><form:errors path="noticeAt" cssClass="error" /></div>       
-				</td>
-			</tr>
+							<div><form:errors path="nttCn" cssClass="error" /></div>  
+						</td>
+					</tr>
+					
+					<!-- 공지신청 여부  -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.noticeAt"/> </c:set>
+					<tr>
+						<th><label for="noticeAt">${title}</label></th>
+						<td class="left" colspan="3">
+							<form:checkbox path="noticeAt" value="Y"/>
+							<div><form:errors path="noticeAt" cssClass="error" /></div>       
+						</td>
+					</tr>
+					
+					<!-- 비밀글 여부 -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.secretAt"/> </c:set>
+					<tr>
+						<th><label for="secretAt">${title}</label></th>
+						<td class="left" colspan="3">
+							<form:checkbox path="secretAt" value="Y"/>
+							<div><form:errors path="secretAt" cssClass="error" /></div>       
+						</td>
+					</tr>
+					
+					<!-- 익명등록 여부  -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.anonymousAt"/> </c:set>
+					<tr>
+						<th><label for="anonymousAt">${title}</label></th>
+						<td class="left" colspan="3">
+							<form:checkbox path="anonymousAt" value="Y"/>
+							<div><form:errors path="anonymousAt" cssClass="error" /></div>       
+						</td>
+					</tr>
+					
+					<!-- 유효기간 설정  -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.ntceDe"/> </c:set>
+					<tr>
+						<th><label for="ntceBgnde">${title} </label></th>
+						<td class="left" colspan="3">
+							<form:input path="ntceBgnde" title="${title} ${inputTxt}" size="70" maxlength="70" style="width:70px; margin-right:5px;" readonly="true" />
+							&nbsp;~&nbsp;<form:input path="ntceEndde" title="${title} ${inputTxt}" size="70" maxlength="70" style="width:70px; margin-right:5px;" readonly="true" />
+							<div><form:errors path="ntceBgnde" cssClass="error" /></div>       
+							<div><form:errors path="ntceEndde" cssClass="error" /></div>       
+						</td>
+					</tr>
+					
+					<c:if test="${boardMasterVO.fileAtchPosblAt == 'Y'}">
+					<!-- 첨부파일  -->
+					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.atchFile"/></c:set>
+					<tr>
+						<th><label for="file_1">${title}</label> </th>
+						<td class="nopd" colspan="3">
+							<input name="file_1" id="egovComFileUploader" type="file" title="<spring:message code="comCopBbs.articleVO.regist.atchFile"/>" multiple/><!-- 첨부파일 -->
+						    <div id="egovComFileList"></div>
+						</td>
+					</tr>
+				  	</c:if>
 			
-			<!-- 비밀글 여부 -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.secretAt"/> </c:set>
-			<tr>
-				<th><label for="secretAt">${title}</label></th>
-				<td class="left" colspan="3">
-					<form:checkbox path="secretAt" value="Y"/>
-					<div><form:errors path="secretAt" cssClass="error" /></div>       
-				</td>
-			</tr>
-			
-			<!-- 익명등록 여부  -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.anonymousAt"/> </c:set>
-			<tr>
-				<th><label for="anonymousAt">${title}</label></th>
-				<td class="left" colspan="3">
-					<form:checkbox path="anonymousAt" value="Y"/>
-					<div><form:errors path="anonymousAt" cssClass="error" /></div>       
-				</td>
-			</tr>
-			
-			<!-- 유효기간 설정  -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.ntceDe"/> </c:set>
-			<tr>
-				<th><label for="ntceBgnde">${title} </label></th>
-				<td class="left" colspan="3">
-					<form:input path="ntceBgnde" title="${title} ${inputTxt}" size="70" maxlength="70" style="width:70px;" readonly="true" />
-					&nbsp;~&nbsp;<form:input path="ntceEndde" title="${title} ${inputTxt}" size="70" maxlength="70" style="width:70px;" readonly="true" />
-					<div><form:errors path="ntceBgnde" cssClass="error" /></div>       
-					<div><form:errors path="ntceEndde" cssClass="error" /></div>       
-				</td>
-			</tr>
-			
-			<c:if test="${boardMasterVO.fileAtchPosblAt == 'Y'}">
-			<!-- 첨부파일  -->
-			<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.atchFile"/></c:set>
-			<tr>
-				<th><label for="file_1">${title}</label> </th>
-				<td class="nopd" colspan="3">
-					<input name="file_1" id="egovComFileUploader" type="file" title="<spring:message code="comCopBbs.articleVO.regist.atchFile"/>" multiple/><!-- 첨부파일 -->
-				    <div id="egovComFileList"></div>
-				</td>
-			</tr>
-		  	</c:if>
+				</tbody>
+			</table>
+		
+			<!-- 하단 버튼 -->
+			 <div class="btn_confirm write_div">
+		        <a href="/board/list.do?bbsId=${boardMasterVO.bbsId}" class="btn_cancel btn">취소</a>
+		        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">작성완료</button>
+		    </div>	
+		</div>
 	
-		</tbody>
-		</table>
-	
-		<!-- 하단 버튼 -->
-		<div class="btn">
-			<input type="submit" class="s_submit" value="<spring:message code="button.create" />" title="<spring:message code="button.create" /> <spring:message code="input.button" />" /><!-- 등록 -->
-			<span class="btn_s"><a href="/board/list.do?bbsId=${boardMasterVO.bbsId}"  title="<spring:message code="button.list" />  <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
-		</div><div style="clear:both;"></div>		
-	</div>
-
-	<input type="hidden" name="pageIndex"  value="<c:out value='${searchVO.pageIndex}'/>"/>
-	<input type="hidden" name="bbsTyCode" value="<c:out value='${boardMasterVO.bbsTyCode}'/>" />
-	<input type="hidden" name="replyPosblAt" value="<c:out value='${boardMasterVO.replyPosblAt}'/>" />
-	<input type="hidden" name="fileAtchPosblAt" value="<c:out value='${boardMasterVO.fileAtchPosblAt}'/>" />
-	<input type="hidden" id="atchPosblFileNumber" name="atchPosblFileNumber" value="<c:out value='${boardMasterVO.atchPosblFileNumber}'/>" />
-	<input type="hidden" name="atchPosblFileSize" value="<c:out value='${boardMasterVO.atchPosblFileSize}'/>" />
-	<input type="hidden" name="tmplatId" value="<c:out value='${boardMasterVO.tmplatId}'/>" />
-	<input type="hidden" name="blogId" value="<c:out value='${searchVO.blogId}'/>" />
-	<input type="hidden" name="blogAt" value="<c:out value='${articleVO.blogAt}'/>"/>
-	<input type="hidden" name="cmd" value="<c:out value='save'/>">
-	<input type="hidden" name="bbsId" value="<c:out value='${articleVO.bbsId}'/>">
-	</form:form>
-
+		<input type="hidden" name="pageIndex"  value="<c:out value='${searchVO.pageIndex}'/>"/>
+		<input type="hidden" name="bbsTyCode" value="<c:out value='${boardMasterVO.bbsTyCode}'/>" />
+		<input type="hidden" name="replyPosblAt" value="<c:out value='${boardMasterVO.replyPosblAt}'/>" />
+		<input type="hidden" name="fileAtchPosblAt" value="<c:out value='${boardMasterVO.fileAtchPosblAt}'/>" />
+		<input type="hidden" id="atchPosblFileNumber" name="atchPosblFileNumber" value="<c:out value='${boardMasterVO.atchPosblFileNumber}'/>" />
+		<input type="hidden" name="atchPosblFileSize" value="<c:out value='${boardMasterVO.atchPosblFileSize}'/>" />
+		<input type="hidden" name="tmplatId" value="<c:out value='${boardMasterVO.tmplatId}'/>" />
+		<input type="hidden" name="blogId" value="<c:out value='${searchVO.blogId}'/>" />
+		<input type="hidden" name="blogAt" value="<c:out value='${articleVO.blogAt}'/>"/>
+		<input type="hidden" name="cmd" value="<c:out value='save'/>">
+		<input type="hidden" name="bbsId" value="<c:out value='${articleVO.bbsId}'/>">
+		</form:form>
+	</section>
 </div>
-<!-- } 콘텐츠 끝 -->
+<!-- 콘텐츠 끝 -->
 
 <!-- 첨부파일 업로드 가능화일 설정 Start..-->  
 <script type="text/javascript">

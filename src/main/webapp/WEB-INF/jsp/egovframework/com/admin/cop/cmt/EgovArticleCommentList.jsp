@@ -36,10 +36,10 @@
 			<li>
 				<div class="top">
 					<strong><c:out value="${result.wrterNm}" /></strong>
-					<span class="bar">|</span>
+					<span class="bar"> | </span>
 					<span class="date"><c:out value="${result.frstRegisterPnttm}" /></span>
 				</div>
-				<p class="txt">
+				<p class="txt" style="margin-left:5px;">
 					<c:out value="${fn:replace(result.commentCn , crlf , '<br/>')}" escapeXml="false" />
 				</p>
 				<div class="bottom">
@@ -65,7 +65,7 @@
 			</ul>
 		</div>
 		
-	<form:form commandName="articleCommentVO" action="${pageContext.request.contextPath}/cop/cmt/insertArticleComment.do" method="post" onSubmit="fn_egov_insert_commentList(); return false;" style="float:left; clear:both;">
+	<form:form commandName="articleCommentVO" action="${pageContext.request.contextPath}/cop/cmt/insertArticleComment.do" method="post" onSubmit="fn_egov_insert_commentList(); return false;">
 	<div class="wTableFrm" >
 	<table class="board_list top_line">
 		<caption>${replyTitle } <spring:message code="title.create" /></caption>
@@ -78,11 +78,15 @@
 			<tr>
 				<th><label for="commentCn">${title } <span class="pilsu">*</span></label></th>
 				<td class="nopd">
-					<form:textarea path="commentCn" title="${title} ${inputTxt}" cols="300" rows="20" cssClass="re_txt"/>   
+					<form:textarea path="commentCn" title="${title} ${inputTxt}" cols="100" rows="10" cssClass="re_txt"/>   
 					<div><form:errors path="commentCn" cssClass="error" /></div>
 					<c:choose>
-						<c:when test="${searchVO.commentNo == '' }">
-							<span style="float:left;"><a href="javascript:fn_egov_insert_commentList(); " class="btn_s re_btn" title="<spring:message code="button.comment" /> <spring:message code="input.button" />"><spring:message code="button.comment" /><spring:message code="button.create" /></a></span>
+						<c:when test="${searchVO.commentNo == '' }">							
+							<span style="float:left;">
+								<a href="javascript:fn_egov_insert_commentList(); " class="btn_s re_btn" title="<spring:message code="button.comment" /><spring:message code="input.button" />">
+									<spring:message code="button.comment" /><spring:message code="button.create" />
+								</a>
+							</span>
 						</c:when>
 						<c:otherwise>
 							<span style="float:left;"><a href="javascript:fn_egov_updt_commentList(); " class="btn_s re_btn"title="<spring:message code="button.update" /> <spring:message code="input.button" />"><spring:message code="button.comment" /><spring:message code="button.update" /></a></span>
