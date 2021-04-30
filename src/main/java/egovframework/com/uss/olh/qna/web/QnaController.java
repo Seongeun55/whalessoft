@@ -128,6 +128,7 @@ public class QnaController {
 		}
 
 		int totCnt = QnaService.selectQnaListCnt(searchVO);
+		model.addAttribute("resultCnt", totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 

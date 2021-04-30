@@ -8,6 +8,13 @@
 
 <%@include file="/WEB-INF/jsp/egovframework/com/web/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/css/gallery.css"/>
+<script>
+function searchArticle(){
+	document.articleForm.pageIndex.value = 1;
+	document.articleForm.submit();
+}
+
+</script>
 
 <!-- 콘텐츠 시작 { -->
 <div class="container">
@@ -20,21 +27,41 @@
 	
 	<!-- 게시판 목록 시작 { -->
 	<div id="bo_gall">
-        <!-- 게시판 페이지 정보 및 버튼 시작 { -->
+        <!-- } 게시판 페이지 정보 및 버튼 끝 -->
+		<form name="articleForm" id="fboardlist" action="/board/list.do" onsubmit="return searchArticle();" method="get">
+			<!-- 게시판 조회 및 버튼 시작 { -->
+   			<div class="search_box">
+				<ul>
+					<li>
+						<select name="searchCnd" title="<spring:message code="title.searchCondition" /> <spring:message code="input.cSelect" />">
+						<option value="0"  <c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if> ><spring:message code="comCopBbs.articleVO.list.nttSj" /></option><!-- 글 제목  -->
+						<option value="1"  <c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if> ><spring:message code="comCopBbs.articleVO.list.nttCn" /></option><!-- 글 내용 -->
+						<option value="2"  <c:if test="${searchVO.searchCnd == '2'}">selected="selected"</c:if> ><spring:message code="table.reger" /></option><!-- 작성자 -->
+						</select>
+					</li>
+					
+					<!-- 조회 및 등록버튼 -->
+					<li>
+						<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
+						<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />					
+						<c:if test="${user.userSe=='USR' }">
+							<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
+						</c:if>
+					</li>
+				</ul>
+			</div>
+		<input name="bbsId" type="hidden" value="${boardMasterVO.bbsId}">
+		<input name="pageIndex" type="hidden" value="">
+		</form>
+		
+		<!-- 게시판 페이지 정보 및 버튼 시작 { -->
         <div id="bo_btn_top">
             <div id="bo_list_total">
                 <span>Total ${resultCnt }건</span>
                 ${searchVO.pageIndex } 페이지
             </div>
-	
-    	   <!-- <ul class="btn_bo_user">
-                <li>
-                    <button type="button" class="btn_bo_sch btn_b01 btn" title="게시판 검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">게시판 검색</span></button>
-                </li>
-           	 	</ul> -->
         </div>
-        <!-- } 게시판 페이지 정보 및 버튼 끝 -->
-		
+        
         <ul id="gall_ul" class="gall_row">
         <c:forEach items="${resultList}" var="result" varStatus="status">
         	<li class="gall_li col-gn-3">
@@ -64,43 +91,6 @@
         	</li>
         </c:forEach>            
         </ul>
-
-	    <!-- 게시판 검색 시작
-	    <div class="bo_sch_wrap">
-	        <fieldset class="bo_sch">
-	            <h3>검색</h3>
-	            <form name="fsearch" method="get">
-	                <input type="hidden" name="bo_table" value="gallery">
-	                <input type="hidden" name="sca" value="">
-	                <input type="hidden" name="sop" value="and">
-	                <label for="sfl" class="sound_only">검색대상</label>
-	                <select name="sfl" id="sfl">
-	                    <option value="wr_subject">제목</option>
-	                    <option value="wr_content">내용</option>
-	                    <option value="wr_subject||wr_content">제목+내용</option>
-	                    <option value="wr_name,1">글쓴이</option>
-	                    <option value="wr_name,0">글쓴이(코)</option>
-	                </select>
-	                <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-	                <div class="sch_bar">
-	                    <input type="text" name="stx" value="" required id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-	                    <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-	                </div>
-	                <button type="button" class="bo_sch_cls"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-	            </form>
-	        </fieldset>
-	        <div class="bo_sch_bg"></div>
-	    </div>
-	    <script>
-	        // 게시판 검색
-	        $(".btn_bo_sch").on("click", function() {
-	            $(".bo_sch_wrap").toggle();
-	        })
-	        $('.bo_sch_bg, .bo_sch_cls').click(function() {
-	            $('.bo_sch_wrap').hide();
-	        });
-	    </script>
-	    <!-- } 게시판 검색 끝 -->
 	</div>
 	<!-- } 게시판 목록 끝 -->
 </div>

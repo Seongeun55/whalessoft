@@ -46,7 +46,7 @@ function fn_egov_selectCommentForupdt(commentNo) {
 	var form = document.getElementById("articleCommentVO");
 	
 	form.commentNo.value = commentNo;
-	form.action = "<c:url value='/cop/bbs/selectArticleDetail.do'/>";
+	form.action = "<c:url value='/board/view.do'/>";
 	form.submit();
 }
 
@@ -64,6 +64,17 @@ function fn_egov_updt_commentList() {
 		form.action = "<c:url value='/cop/cmt/updateArticleComment.do'/>";
 		form.submit();
 	}
+}
+
+/* 댓글페이징 */
+function fn_egov_select_commentList(pageNo) {
+	
+	var form = document.getElementById("articleCommentVO");
+	
+	form.subPageIndex.value = pageNo;
+	form.commentNo.value = '';
+	form.action = "<c:url value='/board/view.do'/>";
+	form.submit();
 }
 </script>
 <!-- 콘텐츠 시작 { -->

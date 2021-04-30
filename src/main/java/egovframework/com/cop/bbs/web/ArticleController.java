@@ -1,13 +1,13 @@
 package egovframework.com.cop.bbs.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.poi.util.SystemOutLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +24,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.EgovWebUtil;
 import egovframework.com.cmm.LoginVO;
-import egovframework.com.cmm.annotation.IncludedInfo;
+
 import egovframework.com.cmm.service.FileMngService;
 import egovframework.com.cmm.service.EgovFileMngUtil;
 import egovframework.com.cmm.service.FileVO;
@@ -277,7 +276,10 @@ public class ArticleController {
 		if (user != null) {
 			model.addAttribute("sessionUniqId", user.getUniqId());
 		}
-
+		
+		//날짜 비교하기위해 추가 - 2021.04.29
+		Date now = new Date();
+		
 		model.addAttribute("resultList", map.get("resultList"));
 		model.addAttribute("resultCnt", map.get("resultCnt"));
 		model.addAttribute("articleVO", boardVO);
@@ -285,6 +287,7 @@ public class ArticleController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("user", user);
+		model.addAttribute("now", now);
 		
 		return link;
 	}

@@ -88,7 +88,11 @@ function fn_egov_delete_qna(form){
 				</form>
 			</div>
 			<div style="clear:both;"></div>
-		  	
+		  	<!-- 댓글 -->
+			<c:if test="${useComment == 'true'}">
+				<c:import url="/cop/cmt/selectArticleCommentList.do" charEncoding="utf-8" />	
+			</c:if>
+			
 		  	<input name="cmd" type="hidden" value="">
 	    </section>
     </article>

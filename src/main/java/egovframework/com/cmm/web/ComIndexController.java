@@ -214,6 +214,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	/*[추가] qnaList 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/list.do")
 	public String qnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+		
 		menu(model);
 		
 		ComUtlController utl = new ComUtlController();

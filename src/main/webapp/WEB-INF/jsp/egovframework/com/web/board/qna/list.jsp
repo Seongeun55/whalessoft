@@ -84,9 +84,10 @@ function linkPage(pageNo){
 		        </thead>
 	        
 		        <c:forEach items="${resultList}" var="resultInfo" varStatus="status">
-		        	<tbody>
+		        	<tbody>	        	
+		        	<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}">
 		        		<tr class=" even">
-		        			<td align="center"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
+		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
 		        				<div class="bo_tit">
 		        					<form name="subForm" method="post" action="/qna/view.do">
@@ -100,6 +101,24 @@ function linkPage(pageNo){
 		        			<td class="td_datetime"><c:out value='${resultInfo.qnaProcessSttusCodeNm}'/></td>
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
 		        		</tr>
+		        	</c:if>
+		        	<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==1}">
+		        		<tr>
+		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
+		        			<td class="td_subject" style="padding-left:10px">
+		        				<div class="bo_tit">
+		        					<form name="subForm" method="post" action="/qna/view.do">
+									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
+									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
+									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
+									</form>
+		        				</div>
+		        			</td>
+		        			<td class="td_num"><c:out value='${resultInfo.wrterNm}'/></td>
+		        			<td class="td_datetime"><c:out value='${resultInfo.qnaProcessSttusCodeNm}'/></td>
+		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
+		        		</tr>
+		        	</c:if>
 		        	</tbody>
 		        </c:forEach>
 	        </table>

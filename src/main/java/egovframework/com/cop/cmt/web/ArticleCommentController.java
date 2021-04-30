@@ -43,7 +43,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 
 @Controller
-public class EgovArticleCommentController {
+public class ArticleCommentController {
 
 	@Resource(name = "ArticleCommentService")
     protected ArticleCommentService ArticleCommentService;
@@ -68,7 +68,7 @@ public class EgovArticleCommentController {
      * @throws Exception
      */
     @RequestMapping("/cop/cmt/selectArticleCommentList.do")
-    public String selectArticleCommentList(@ModelAttribute("searchVO") CommentVO commentVO, ModelMap model) throws Exception {
+    public String selectArticleCommentList(@ModelAttribute("searchVO") CommentVO commentVO, ModelMap model, HttpServletRequest request) throws Exception {
 
     	CommentVO articleCommentVO = new CommentVO();
     	
@@ -121,10 +121,16 @@ public class EgovArticleCommentController {
 		model.addAttribute("user", user);	//추가
 		
 		commentVO.setCommentCn("");	// 등록 후 댓글 내용 처리
-	
-		return "egovframework/com/admin/cop/cmt/EgovArticleCommentList";
+		
+		//[추가] 어디에서 들어왔는지에 따라 댓글 jsp 변경
+ 		String uri = request.getRequestURI();
+		if(uri.contains("/admin")) {
+			return "egovframework/com/admin/cop/cmt/AdminArticleCommentList";
+		}
+		
+		return "egovframework/com/admin/cop/cmt/ArticleCommentList";
+		
     }
-    
     
     /**
      * 댓글을 등록한다.
@@ -138,10 +144,8 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/insertArticleComment.do")
     public String insertArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest  request) throws Exception {
-    	
-    	String referer = (String)request.getHeader("REFERER");// 관리자와 사용자에따른 결과 분리하기 위해 추가 - 2021.04.28
-
+	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
+		
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	
@@ -169,12 +173,8 @@ public class EgovArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			if(referer.contains("/board/view.do")) {
-				return "forward:/board/view.do";
-			}
-			return "forward:/admin/cop/bbs/selectArticleDetail.do";
+			return "forward:/cop/bbs/selectArticleDetail.do";
 		}
-		
     }
     
     
@@ -189,14 +189,11 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/deleteArticleComment.do")
     public String deleteArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-    		ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest request) throws Exception {
+    		ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
 		@SuppressWarnings("unused")
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-		
-    	String referer = (String)request.getHeader("REFERER");
-    	System.out.println("확인 : " + referer);
-		
+	
 		if (isAuthenticated) {
 		    ArticleCommentService.deleteArticleComment(commentVO);
 		}
@@ -209,9 +206,6 @@ public class EgovArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			if(referer.contains("/admin")) {
-				return "forward:/admin/cop/bbs/selectArticleDetail.do";
-			}
 			return "forward:/board/view.do";
 		}
     }
@@ -228,46 +222,46 @@ public class EgovArticleCommentController {
     @RequestMapping("/cop/cmt/updateArticleCommentView.do")
     public String updateArticleCommentView(@ModelAttribute("searchVO") CommentVO commentVO, ModelMap model) throws Exception {
 
-	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
-	 //KISA 보안취약점 조치 (2018-12-10, 신용호)
-    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-
-    if(!isAuthenticated) {
-        return "egovframework/com/admin/uat/uia/LoginUsr";
-    }
-
-	CommentVO articleCommentVO = new CommentVO();
+		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+		 //KISA 보안취약점 조치 (2018-12-10, 신용호)
+	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	
-	commentVO.setWrterNm(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
-
-	commentVO.setSubPageUnit(propertyService.getInt("pageUnit"));
-	commentVO.setSubPageSize(propertyService.getInt("pageSize"));
-
-	PaginationInfo paginationInfo = new PaginationInfo();
-	paginationInfo.setCurrentPageNo(commentVO.getSubPageIndex());
-	paginationInfo.setRecordCountPerPage(commentVO.getSubPageUnit());
-	paginationInfo.setPageSize(commentVO.getSubPageSize());
-
-	commentVO.setSubFirstIndex(paginationInfo.getFirstRecordIndex());
-	commentVO.setSubLastIndex(paginationInfo.getLastRecordIndex());
-	commentVO.setSubRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-	Map<String, Object> map = ArticleCommentService.selectArticleCommentList(commentVO);
-	int totCnt = Integer.parseInt((String)map.get("resultCnt"));
+	    if(!isAuthenticated) {
+	        return "egovframework/com/admin/uat/uia/LoginUsr";
+	    }
 	
-	paginationInfo.setTotalRecordCount(totCnt);
-
-	model.addAttribute("resultList", map.get("resultList"));
-	model.addAttribute("resultCnt", map.get("resultCnt"));
-	model.addAttribute("paginationInfo", paginationInfo);
-	model.addAttribute("type", "body");	// body import
+		CommentVO articleCommentVO = new CommentVO();
+		
+		commentVO.setWrterNm(user == null ? "" : EgovStringUtil.isNullToString(user.getName()));
 	
-	articleCommentVO = ArticleCommentService.selectArticleCommentDetail(commentVO);
+		commentVO.setSubPageUnit(propertyService.getInt("pageUnit"));
+		commentVO.setSubPageSize(propertyService.getInt("pageSize"));
 	
-	model.addAttribute("articleCommentVO", articleCommentVO);
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(commentVO.getSubPageIndex());
+		paginationInfo.setRecordCountPerPage(commentVO.getSubPageUnit());
+		paginationInfo.setPageSize(commentVO.getSubPageSize());
 	
+		commentVO.setSubFirstIndex(paginationInfo.getFirstRecordIndex());
+		commentVO.setSubLastIndex(paginationInfo.getLastRecordIndex());
+		commentVO.setSubRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 	
-	return "egovframework/com/admin/cop/cmt/EgovArticleCommentList";
+		Map<String, Object> map = ArticleCommentService.selectArticleCommentList(commentVO);
+		int totCnt = Integer.parseInt((String)map.get("resultCnt"));
+		
+		paginationInfo.setTotalRecordCount(totCnt);
+	
+		model.addAttribute("resultList", map.get("resultList"));
+		model.addAttribute("resultCnt", map.get("resultCnt"));
+		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute("type", "body");	// body import
+		
+		articleCommentVO = ArticleCommentService.selectArticleCommentDetail(commentVO);
+		
+		model.addAttribute("articleCommentVO", articleCommentVO);
+		
+		
+		return "egovframework/com/admin/cop/cmt/AdminArticleCommentList";
     }
     
     
@@ -283,10 +277,8 @@ public class EgovArticleCommentController {
      */
     @RequestMapping("/cop/cmt/updateArticleComment.do")
     public String updateArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model, HttpServletRequest  request) throws Exception {
-    	
-    	String referer = (String)request.getHeader("REFERER");// 관리자와 사용자에따른 결과 분리하기 위해 추가 - 2021.04.28
-    	System.out.println("확인 : " + referer);
+	    BindingResult bindingResult, ModelMap model) throws Exception {
+    
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	
@@ -305,13 +297,6 @@ public class EgovArticleCommentController {
 		    commentVO.setCommentCn("");
 		    commentVO.setCommentNo("");
 		}
-		
-		if(referer.contains("/admin")){
-			return "forward:/admin/cop/bbs/selectArticleDetail.do";
-		}
-		
 		return "forward:/board/view.do";
-    }
-    
-	
+    }	
 }

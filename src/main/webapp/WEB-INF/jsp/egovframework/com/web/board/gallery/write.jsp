@@ -143,7 +143,7 @@ $(function() {
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
 	<div class="sub-con">
-	    <div class="title-wrap">공지사항</div>
+	    <div class="title-wrap">갤러리</div>
 	</div>
 	
 	<!-- javascript warning tag  -->
@@ -218,7 +218,7 @@ $(function() {
 						</td>
 					</tr>
 					
-					<!-- 유효기간 설정 
+					<!-- 유효기간 설정  
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.ntceDe"/> </c:set>
 					<tr>
 						<th><label for="ntceBgnde">${title} </label></th>
@@ -228,9 +228,8 @@ $(function() {
 							<div><form:errors path="ntceBgnde" cssClass="error" /></div>       
 							<div><form:errors path="ntceEndde" cssClass="error" /></div>       
 						</td>
-					</tr>
-					 -->
-					 
+					</tr>-->
+					
 					<c:if test="${boardMasterVO.fileAtchPosblAt == 'Y'}">
 					<!-- 첨부파일  -->
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.atchFile"/></c:set>

@@ -12,14 +12,16 @@
 		document.articleForm.pageIndex.value = 1;
 		document.articleForm.submit();
 	}
-	function linkPage(pageNo){
-		document.pageForm.pageIndex.value = pageNo;
+	function linkPage(pageNo){	
+		document.pageForm.pageIndex.value = pageNo;		
 	   	document.pageForm.submit();
 	}
 	</script>
 <form name="pageForm">
 	<input type="hidden" name="bbsId" value="<c:out value='${param.bbsId}'/>" >
 	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
+	<!-- <input type="hidden" name="searchCnd" value="">
+	<input type="hidden" name="searchWrd" value=""> -->
 </form>
 
 <!-- 콘텐츠 시작 { -->
@@ -32,7 +34,7 @@
 	
 	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
-		<form name="articleForm" id="fboardlist" action="/board/list.do" onsubmit="return searchArticle();" method="post">
+		<form name="articleForm" id="fboardlist" action="/board/list.do" onsubmit="return searchArticle();" method="get">
 		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -78,14 +80,14 @@
 		            <th scope="col">조회수</th>            
 		        </tr>
 		        </thead>
-	       		
+       	
 	       		<tbody>
 	       			<!-- 공지사항 부분 -->
-		       		<c:forEach items="${noticeList}" var="noticeInfo" varStatus="status">
+		       		<c:forEach items="${noticeList}" var="noticeInfo" varStatus="status">		    		       	
 						<tr class=" even">
 							<td align="center"><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_notice.png'/>" alt="notice"></td>
 							<td class="bold">
-								<form name="subForm" method="post" action="<c:url value='/board/view.do'/>">
+								<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
 								    <input name="nttId" type="hidden" value="<c:out value="${noticeInfo.nttId}"/>">
 								    <input name="bbsId" type="hidden" value="<c:out value="${noticeInfo.bbsId}"/>">
 								    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
@@ -100,14 +102,14 @@
 					</c:forEach>
 					
 					<!-- 게시글 부분 -->
-		        	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
+		        	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">	
+		        		<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}">						   
 		        		<tr class=" even">
-		        			<td align="center"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
-		        			
+		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>		        			
 		        			<c:choose>		        				
 		        				<c:when test="${resultInfo.sjBoldAt == 'Y'}">	<!-- 제목이 Bold인 경우 -->
 		        					<td class="bold">
-										<form name="subForm" method="post" action="<c:url value='/board/view.do'/>">
+										<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
 											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
 											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
 											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
@@ -118,7 +120,7 @@
 		        				<c:otherwise>
 		        					<td class="td_subject" style="padding-left:10px">
 				        				<div class="bo_tit">
-				        					<form name="subForm" method="post" action="<c:url value='/board/view.do'/>">
+				        					<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
 											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
 											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
 											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
@@ -132,8 +134,43 @@
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterNm}'/></td>
 		        			<td class="td_datetime"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
 		        			<td class="td_num"><c:out value='${resultInfo.inqireCo}'/></td>
-		        		</tr>		        				        
-		        </c:forEach>
+		        		</tr>
+		        		</c:if>	  
+		        		
+		        		<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==1}">						   
+		        		<tr>
+		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>		        			
+		        			<c:choose>		        				
+		        				<c:when test="${resultInfo.sjBoldAt == 'Y'}">	<!-- 제목이 Bold인 경우 -->
+		        					<td class="bold">
+										<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
+											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
+											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
+											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
+											    <span class="link"><c:if test="${resultInfo.replyLc!=0}"><c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret"></c:if><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
+										</form>
+									</td>
+		        				</c:when>
+		        				<c:otherwise>
+		        					<td class="td_subject" style="padding-left:10px">
+				        				<div class="bo_tit">
+				        					<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
+											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
+											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
+											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
+											    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
+											</form>
+				        				</div>
+		        					</td>
+		        				</c:otherwise>
+		        			</c:choose>
+		        			
+		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterNm}'/></td>
+		        			<td class="td_datetime"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
+		        			<td class="td_num"><c:out value='${resultInfo.inqireCo}'/></td>
+		        		</tr>
+		        		</c:if>	       				        
+		        	</c:forEach>
 		        </tbody>
 	        </table>
 	    </div>

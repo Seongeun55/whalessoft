@@ -562,7 +562,7 @@ box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1)}
 .wTable input[readonly="readonly"] {height:22px; border:1px solid #d2d2d2; }
 .wTable > tbody > tr > td input[type=checkbox] {vertical-align:-3px; }
 
-.board_list {width:100%; table-layout:fixed; border-top:2px solid #4688d2; }
+.board_list {width:100%; table-layout:fixed;}
 .board_list caption { display:none; }
 .board_list thead th,
 .board_list tbody th { color:#222 ; font-size:13px; font-weight:400; background:#f4f4f4; padding:12px 0; border-bottom:1px solid #d9d9d9; }

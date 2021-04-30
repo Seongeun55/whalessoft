@@ -75,7 +75,7 @@ function fn_egov_updt_commentList() {
 
 	if (confirm('<spring:message code="common.update.msg" />')) {
 		form.modified.value = "true";
-		form.action = "<c:url value='/cop/cmt/updateArticleComment.do'/>";
+		form.action = "<c:url value='/admin/cop/cmt/updateArticleComment.do'/>";
 		form.submit();
 	}
 }
@@ -96,7 +96,7 @@ function fn_egov_deleteCommentList(commentNo) {
 	if (confirm('<spring:message code="common.delete.msg" />')) {
 		form.modified.value = "true";
 		form.commentNo.value = commentNo;
-		form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
+		form.action = "<c:url value='/admin/cop/cmt/deleteArticleComment.do'/>";
 		form.submit();
 	}
 }
@@ -108,7 +108,7 @@ function fn_egov_select_commentList(pageNo) {
 	
 	form.subPageIndex.value = pageNo;
 	form.commentNo.value = '';
-	form.action = "<c:url value='/cop/bbs/selectArticleDetail.do'/>";
+	form.action = "<c:url value='/admin/cop/bbs/selectArticleDetail.do'/>";
 	form.submit();
 }
 
