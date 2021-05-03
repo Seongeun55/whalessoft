@@ -12,17 +12,24 @@
 		document.articleForm.pageIndex.value = 1;
 		document.articleForm.submit();
 	}
+	
 	function linkPage(pageNo){	
-		document.pageForm.pageIndex.value = pageNo;		
-	   	document.pageForm.submit();
+		document.articleForm.pageIndex.value = pageNo;		
+	   	document.articleForm.submit();
 	}
-	</script>
+	
+	//function searchOption(){
+	//	document.articleForm.pageIndex.value = 1;
+	//	document.articleForm.submit();
+	//}
+</script>
+	<!-- 
 <form name="pageForm">
 	<input type="hidden" name="bbsId" value="<c:out value='${param.bbsId}'/>" >
 	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
-	<!-- <input type="hidden" name="searchCnd" value="">
-	<input type="hidden" name="searchWrd" value=""> -->
-</form>
+	<input type="hidden" name="searchCnd" value="">
+	<input type="hidden" name="searchWrd" value=""> 
+</form> -->
 
 <!-- 콘텐츠 시작 { -->
 <div class="container">
@@ -87,13 +94,7 @@
 						<tr class=" even">
 							<td align="center"><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_notice.png'/>" alt="notice"></td>
 							<td class="bold">
-								<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
-								    <input name="nttId" type="hidden" value="<c:out value="${noticeInfo.nttId}"/>">
-								    <input name="bbsId" type="hidden" value="<c:out value="${noticeInfo.bbsId}"/>">
-								    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-								    <span class="link"><input type="submit" value="<c:out value='${fn:substring(noticeInfo.nttSj, 0, 40)}'/><c:if test="${noticeInfo.commentCo != ''}">	<c:out value='[${noticeInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;">
-								    </span>
-								</form>
+								<a href="<c:url value='/board/view.do?nttId=${noticeInfo.nttId}&bbsId=${noticeInfo.bbsId}&pageIndex=${searchVO.pageIndex}&menuNo='/>"><c:out value='${fn:substring(noticeInfo.nttSj, 0, 40)}'/><c:if test="${noticeInfo.commentCo != ''}">	<c:out value='[${noticeInfo.commentCo}]'/></c:if></a>
 							</td>
 							<td class="td_num"><c:out value='${noticeInfo.frstRegisterNm}'/></td>
 							<td class="td_datetime"><c:out value='${noticeInfo.frstRegisterPnttm}'/></td>
@@ -102,74 +103,20 @@
 					</c:forEach>
 					
 					<!-- 게시글 부분 -->
-		        	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">	
-		        		<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}">						   
-		        		<tr class=" even">
-		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>		        			
-		        			<c:choose>		        				
-		        				<c:when test="${resultInfo.sjBoldAt == 'Y'}">	<!-- 제목이 Bold인 경우 -->
-		        					<td class="bold">
-										<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
-											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
-											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
-											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-											    <span class="link"><c:if test="${resultInfo.replyLc!=0}"><c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret"></c:if><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
-										</form>
-									</td>
-		        				</c:when>
-		        				<c:otherwise>
-		        					<td class="td_subject" style="padding-left:10px">
-				        				<div class="bo_tit">
-				        					<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
-											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
-											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
-											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
-											    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
-											</form>
-				        				</div>
-		        					</td>
-		        				</c:otherwise>
-		        			</c:choose>
-		        			
+		        	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
+	        		<c:set var="even" value=""/>
+	        		<c:set var="bold" value=""/>
+	        		<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}"><c:set var="even" value="even"/></c:if>
+	        		<c:if test="${resultInfo.sjBoldAt == 'Y'}"><c:set var="bold" value="bold"/></c:if>	
+		        		<tr class="<c:out value="${even}"/>">
+		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>	
+        					<td class="td_subject <c:out value="${bold}"/>" style="padding-left:10px">
+		        				<a href="<c:url value='/board/view.do?nttId=${resultInfo.nttId}&bbsId=${resultInfo.bbsId}&pageIndex=${searchVO.pageIndex}&menuNo='/>"><c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if></a>
+        					</td>
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterNm}'/></td>
 		        			<td class="td_datetime"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
 		        			<td class="td_num"><c:out value='${resultInfo.inqireCo}'/></td>
-		        		</tr>
-		        		</c:if>	  
-		        		
-		        		<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==1}">						   
-		        		<tr>
-		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>		        			
-		        			<c:choose>		        				
-		        				<c:when test="${resultInfo.sjBoldAt == 'Y'}">	<!-- 제목이 Bold인 경우 -->
-		        					<td class="bold">
-										<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
-											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
-											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
-											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-											    <span class="link"><c:if test="${resultInfo.replyLc!=0}"><c:forEach begin="0" end="${resultInfo.replyLc}" step="1">&nbsp;	</c:forEach><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_reply.png'/>" alt="secret"></c:if><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if>" style="border:0px solid #e0e0e0;"></span>
-										</form>
-									</td>
-		        				</c:when>
-		        				<c:otherwise>
-		        					<td class="td_subject" style="padding-left:10px">
-				        				<div class="bo_tit">
-				        					<form name="subForm" method="get" action="<c:url value='/board/view.do'/>">
-											    <input name="nttId" type="hidden" value="<c:out value="${resultInfo.nttId}"/>">
-											    <input name="bbsId" type="hidden" value="<c:out value="${resultInfo.bbsId}"/>">
-											    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
-											    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
-											</form>
-				        				</div>
-		        					</td>
-		        				</c:otherwise>
-		        			</c:choose>
-		        			
-		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterNm}'/></td>
-		        			<td class="td_datetime"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
-		        			<td class="td_num"><c:out value='${resultInfo.inqireCo}'/></td>
-		        		</tr>
-		        		</c:if>	       				        
+		        		</tr>        				        
 		        	</c:forEach>
 		        </tbody>
 	        </table>

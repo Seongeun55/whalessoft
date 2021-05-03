@@ -95,7 +95,6 @@ public class QnaController {
 	@RequestMapping(value = "/uss/olh/qna/selectQnaList.do")
 	public String selectQnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
 		
-		//문제점 : 세션에 저장된 값이 없을 때, 위 주소로 바로 들어오면 session & request값 모두 null이 된다.
 		HttpSession session = request.getSession();
 		if(request.getAttribute("_access_") != session.getAttribute("_access_") || request.getAttribute("_access_") == null) {
 			return "egovframework/com/admin/cmm/error/dataAccessFailure";
@@ -251,7 +250,7 @@ public class QnaController {
 	public String updateQnaView(QnaVO qnaVO, @ModelAttribute("searchVO") QnaVO searchVO, ModelMap model) throws Exception {
 
 		QnaVO vo = QnaService.selectQnaDetail(qnaVO);
-
+		
 		// 작성 비밀번호를 얻는다.
 //		String writngPassword = vo.getWritngPassword();
 
@@ -259,6 +258,7 @@ public class QnaController {
 //		vo.setWritngPassword(EgovFileScrty.decode(writngPassword));
 
 		model.addAttribute("qnaVO", vo);
+		model.addAttribute("pageIndex", qnaVO.getPageIndex());
 
 		return "egovframework/com/web/board/qna/modify";
 	}
@@ -274,7 +274,7 @@ public class QnaController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/updateQna.do")
 	public String updateQna(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult) throws Exception {
-
+		
 		// Validation
 		beanValidator.validate(qnaVO, bindingResult);
 
@@ -310,7 +310,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "redirect:/qnz/list.do";
+		return "redirect:/qna/view.do?qaId="+qnaVO.getQaId()+"&pageIndex="+qnaVO.getPageIndex();
 
 	}
 	

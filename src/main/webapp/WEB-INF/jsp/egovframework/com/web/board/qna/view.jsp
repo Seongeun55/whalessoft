@@ -84,13 +84,15 @@ function fn_egov_delete_qna(form){
 				<form name="formUpdate" action="/qna/modify.do" method="post" style="float:left; margin:0 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
 					<input name="qaId" type="hidden" value="${result.qaId}">
+					<input type="hidden" name=pageIndex value="${param.pageIndex}">
 				</form>
 				<form name="formDelete" action="/qna/delete.do" method="post" style="float:left; margin:0 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.delete" />" title="<spring:message code="button.delete" /> <spring:message code="input.button" />" onclick="fn_egov_delete_qna(this.form); return false;">
 					<input name="qaId" type="hidden" value="${result.qaId}">
 				</form>
 			</c:if>
-			<form name="formList" action="/qna/list.do" method="post" style="float:left; margin:0 0 0 3px;">
+			<form name="formList" action="/qna/list.do" method="get" style="float:left; margin:0 0 0 3px;">
+				<input type="hidden" name=pageIndex value="${param.pageIndex}">
 				<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
 			</form>
 		</div>

@@ -65,7 +65,7 @@ function searchArticle(){
         <ul id="gall_ul" class="gall_row">
         <c:forEach items="${resultList}" var="result" varStatus="status">
         	<li class="gall_li col-gn-3">
-        	<form name="mainForm" action="/board/view.do" method="post">
+        	<form name="mainForm" action="/board/view.do" method="get">
 				<input name="nttId" id="nttId" type="hidden" value="<c:out value="${result.nttId}"/>">
 			    <input name="bbsId" id="bbsId" type="hidden" value="<c:out value="${result.bbsId}"/>">
 			    <input name="pageIndex" id="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>

@@ -88,6 +88,7 @@ function fn_egov_updt_qna(form){
 	    
 	    <input name="answerCn" type="hidden" value="<c:out value='answer'/>">
 		<input name="qaId" type="hidden" value="<c:out value='${qnaVO.qaId}'/>">
+		<input name="pageIndex" type="hidden" value="<c:out value='${pageIndex}'/>">
     </form:form>
 	</section>
 <!-- } 게시물 작성/수정 끝 -->

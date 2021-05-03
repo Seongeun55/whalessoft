@@ -101,7 +101,7 @@ function fn_egov_inquire_articledetail(bbsId, nttId) {
 
 
 <div class="board">
-	<form name="articleForm" action="<c:url value='/admin/cop/bbs/allArticleList.do'/>" method="post" onSubmit="fn_egov_search_article(); return false;"> 
+	<form name="articleForm" action="<c:url value='/admin/cop/bbs/allArticleList.do'/>" method="get" onSubmit="fn_egov_search_article(); return false;"> 
 	<h1>게시물 관리</h1><!-- 게시글 목록 -->
 	<!-- 하단 버튼 -->
 	<div class="search_box" title="<spring:message code="common.searchCondition.msg" />">

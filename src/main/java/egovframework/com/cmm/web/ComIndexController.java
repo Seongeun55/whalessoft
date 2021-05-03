@@ -216,12 +216,8 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	public String qnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
+		this.checkSession(request);
 		
-		ComUtlController utl = new ComUtlController();
-		StringBuffer random = utl.random();
-		HttpSession session = request.getSession();
-		session.setAttribute("_access_", random);
-		request.setAttribute("_access_", session.getAttribute("_access_"));
 		return "forward:/uss/olh/qna/selectQnaList.do";
 	}
 	
@@ -230,10 +226,6 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	public String qnaView(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
-		/*
-		HttpSession session = request.getSession();
-		session.setAttribute("_access_", "wal3rjgk2lw5jrglj");
-		request.setAttribute("_access_", session.getAttribute("_access_"));*/
 		return "forward:/uss/olh/qna/selectQnaDetail.do";
 	}
 	
@@ -314,4 +306,12 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		model.addAttribute("bannerList", bannerVO.getBannerList());
 	}
 	
+	/** [추가] 주소로 바로 접근 불가능하게 하기위해 추가 - 2021.05.03 **/
+	public void checkSession(HttpServletRequest request) {
+		ComUtlController utl = new ComUtlController();
+		StringBuffer random = utl.random();
+		HttpSession session = request.getSession();
+		session.setAttribute("_access_", random);
+		request.setAttribute("_access_", session.getAttribute("_access_"));
+	}
 }

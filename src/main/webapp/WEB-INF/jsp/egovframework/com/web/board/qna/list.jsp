@@ -41,7 +41,7 @@ function linkPage(pageNo){
 	
 	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
-		<form name="qnaForm" id="fboardlist" action="/qna/list.do" onsubmit="return searchQna(this);" method="post">
+		<form name="qnaForm" id="fboardlist" action="/qna/list.do" onsubmit="return searchQna(this);" method="get">
 		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -90,7 +90,7 @@ function linkPage(pageNo){
 		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
 		        				<div class="bo_tit">
-		        					<form name="subForm" method="post" action="/qna/view.do">
+		        					<form name="subForm" method="get" action="/qna/view.do">
 									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
 									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
 									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
@@ -107,7 +107,7 @@ function linkPage(pageNo){
 		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
 		        				<div class="bo_tit">
-		        					<form name="subForm" method="post" action="/qna/view.do">
+		        					<form name="subForm" method="get" action="/qna/view.do">
 									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
 									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
 									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>

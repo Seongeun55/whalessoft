@@ -34,7 +34,7 @@
 				<div class="side_con">
 					<h3>우리 회사를 소개합니다.</h3>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
-					<a href="#" class="view_btn box blue">DETAIL VIEW</a>
+					<a href="/content.do?id=page1" class="view_btn box blue">DETAIL VIEW</a>
 				</div>	
 			</div>
 			<div class="admin">
@@ -44,65 +44,35 @@
 				</div>
 				<ul class="admin_slick board_list">
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page5">
 							<p class="thumb_img"><img src="/images/pic/pic_admin01.png" alt=""></p>
 							<div class="txt_box">
-								<strong class="tit">제목은 이렇습니다.</strong>
+								<strong class="tit">사업내용은 이렇습니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
 								<span class="view_btn">DETIAL VIEW</span>
 							</div>
 						</a>
 					</li>			
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page3">
 							<p class="thumb_img"><img src="/images/pic/pic_admin02.png" alt=""></p>
 							<div class="txt_box">
-								<strong class="tit">우리는 생각합니다.</strong>
+								<strong class="tit">구성원은 생각합니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
 								<span class="view_btn">DETIAL VIEW</span>
 							</div>
 						</a>
 					</li>	
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page2">
 							<p class="thumb_img"><img src="/images/pic/pic_admin03.png" alt=""></p>
 							<div class="txt_box">
-								<strong class="tit">신뢰를 쌓아갑니다.</strong>
+								<strong class="tit">연혁은 쌓아갑니다.</strong>
 								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
 								<span class="view_btn">DETIAL VIEW</span>
 							</div>
 						</a>
-					</li>	
-					<li>
-						<a href="#">
-							<p class="thumb_img"><img src="/images/pic/pic_admin01.png" alt=""></p>
-							<div class="txt_box">
-								<strong class="tit">제목은 이렇습니다.</strong>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
-								<span class="view_btn">DETIAL VIEW</span>
-							</div>
-						</a>
-					</li>			
-					<li>
-						<a href="#">
-							<p class="thumb_img"><img src="/images/pic/pic_admin02.png" alt=""></p>
-							<div class="txt_box">
-								<strong class="tit">우리는 생각합니다.</strong>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
-								<span class="view_btn">DETIAL VIEW</span>
-							</div>
-						</a>
-					</li>	
-					<li>
-						<a href="#">
-							<p class="thumb_img"><img src="/images/pic/pic_admin03.png" alt=""></p>
-							<div class="txt_box">
-								<strong class="tit">신뢰를 쌓아갑니다.</strong>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
-								<span class="view_btn">DETIAL VIEW</span>
-							</div>
-						</a>
-					</li>	
+					</li>						
 				</ul>
 			</div>
 			<div class="vision">
@@ -110,7 +80,7 @@
 					<div class="side_con">
 						<h3>우리 비전을 소개합니다.</h3>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic</p>
-						<a href="#" class="view_btn box blue">DETAIL VIEW</a>
+						<a href="/content.do?id=page1" class="view_btn box blue">DETAIL VIEW</a>
 					</div>
 				</div>
 			</div>
@@ -321,7 +291,7 @@
 				</div>
 				<ul class="board_list">
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page5">
 							<p class="thumb_img"><img src="/images/pic/pic_vision01.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
@@ -331,7 +301,7 @@
 						</a>
 					</li>	
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page5">
 							<p class="thumb_img"><img src="/images/pic/pic_vision02.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
@@ -341,7 +311,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page5">
 							<p class="thumb_img"><img src="/images/pic/pic_vision03.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
@@ -351,7 +321,7 @@
 						</a>
 					</li>	
 					<li>
-						<a href="#">
+						<a href="/content.do?id=page5">
 							<p class="thumb_img"><img src="/images/pic/pic_vision04.png" alt="우리는 더 앞선 발걸음을 걸어갑니다."></p>
 							<div class="txt_box">
 								<strong class="tit">우리는 더 앞선 발걸음을 걸어갑니다.</strong>
@@ -392,7 +362,7 @@
 							</li>
 						</ul>
 					</div>
-					<a href="#"><span class="view_btn">DETAIL VIEW</span></a>
+					<a href="board/list.do?bbsId=BBSMSTR_000000000092"><span class="view_btn">DETAIL VIEW</span></a>
 				</div>
 			</div>
 		</div>
