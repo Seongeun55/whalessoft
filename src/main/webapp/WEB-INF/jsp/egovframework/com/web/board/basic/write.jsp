@@ -108,8 +108,12 @@ $(function() {
 					return;
 				}
 			}
+			
+			if (confirm("<spring:message code="common.regist.msg" />")) {
+				form.submit();
+			}
 
-			//게시기간 
+			/*게시기간 
 			var ntceBgnde = getRemoveFormat(validateForm.ntceBgnde.value);
 			var ntceEndde = getRemoveFormat(validateForm.ntceEndde.value);
 
@@ -130,11 +134,7 @@ $(function() {
 			if (ntceBgnde > ntceEndde) {
 				alert("<spring:message code="comCopBbs.articleVO.ntceDeError" />");
 				return;
-			}
-
-			if (confirm("<spring:message code="common.regist.msg" />")) {
-				form.submit();
-			}
+			}*/	
 		}
 	}
 </script>

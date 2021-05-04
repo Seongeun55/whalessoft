@@ -18,18 +18,13 @@
 	   	document.articleForm.submit();
 	}
 	
-	//function searchOption(){
-	//	document.articleForm.pageIndex.value = 1;
-	//	document.articleForm.submit();
-	//}
+	//[추가] 검색 후 다시 목록으로 돌아올 때 조건을 넘겨주기위해 추가 - 2021.05.04
+	function viewClick(nttId, bbsId, pageNo) {
+		var searchWrd=document.getElementsByName("searchWrd")[0].value;
+		var searchCnd=$("select[name=searchCnd]").val();
+		location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
+	}
 </script>
-	<!-- 
-<form name="pageForm">
-	<input type="hidden" name="bbsId" value="<c:out value='${param.bbsId}'/>" >
-	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
-	<input type="hidden" name="searchCnd" value="">
-	<input type="hidden" name="searchWrd" value=""> 
-</form> -->
 
 <!-- 콘텐츠 시작 { -->
 <div class="container">
@@ -93,8 +88,8 @@
 		       		<c:forEach items="${noticeList}" var="noticeInfo" varStatus="status">		    		       	
 						<tr class=" even">
 							<td align="center"><img src="<c:url value='/images/egovframework/com/cop/bbs/icon_notice.png'/>" alt="notice"></td>
-							<td class="bold">
-								<a href="<c:url value='/board/view.do?nttId=${noticeInfo.nttId}&bbsId=${noticeInfo.bbsId}&pageIndex=${searchVO.pageIndex}&menuNo='/>"><c:out value='${fn:substring(noticeInfo.nttSj, 0, 40)}'/><c:if test="${noticeInfo.commentCo != ''}">	<c:out value='[${noticeInfo.commentCo}]'/></c:if></a>
+							<td class="bold">							
+								<a href="javascript:viewClick('${noticeInfo.nttId}', '${noticeInfo.bbsId}', '${searchVO.pageIndex}');"><c:out value='${fn:substring(noticeInfo.nttSj, 0, 40)}'/><c:if test="${noticeInfo.commentCo != ''}">	<c:out value='[${noticeInfo.commentCo}]'/></c:if></a>
 							</td>
 							<td class="td_num"><c:out value='${noticeInfo.frstRegisterNm}'/></td>
 							<td class="td_datetime"><c:out value='${noticeInfo.frstRegisterPnttm}'/></td>
@@ -111,7 +106,7 @@
 		        		<tr class="<c:out value="${even}"/>">
 		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>	
         					<td class="td_subject <c:out value="${bold}"/>" style="padding-left:10px">
-		        				<a href="<c:url value='/board/view.do?nttId=${resultInfo.nttId}&bbsId=${resultInfo.bbsId}&pageIndex=${searchVO.pageIndex}&menuNo='/>"><c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}">	<c:out value='[${resultInfo.commentCo}]'/></c:if></a>
+        						<a href="javascript:viewClick('${resultInfo.nttId}', '${resultInfo.bbsId}', '${searchVO.pageIndex}');"><c:out value='${fn:substring(resultInfo.nttSj, 0, 40)}'/><c:if test="${resultInfo.commentCo != ''}"><c:out value=' [${resultInfo.commentCo}]'/></c:if></a>		        				
         					</td>
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterNm}'/></td>
 		        			<td class="td_datetime"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>

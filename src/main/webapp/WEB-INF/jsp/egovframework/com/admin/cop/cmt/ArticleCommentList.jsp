@@ -50,11 +50,12 @@
 				</div>
 			</li>
 			</c:forEach>
+			
 			<c:if test="${fn:length(resultList) == 0}">
-			<li>
-		  		<p class="txt"><spring:message code="common.nocomment.msg" /></p>
-	  		</li>
-			 </c:if>
+				<li>
+			  		<p class="txt"><spring:message code="common.nocomment.msg" /></p>
+		  		</li>
+			</c:if>
 		</ul>
 	</div>
 	
@@ -65,7 +66,7 @@
 			</ul>
 		</div>
 		
-	<form:form commandName="articleCommentVO" action="${pageContext.request.contextPath}/cop/cmt/insertArticleComment.do" method="post" onSubmit="fn_egov_insert_commentList(); return false;">
+	<form:form commandName="articleCommentVO" action="${pageContext.request.contextPath}/cop/cmt/insertArticleComment.do" method="get" onSubmit="fn_egov_insert_commentList(); return false;">
 	<div class="wTableFrm" >
 	<table class="board_list top_line">
 		<caption>${replyTitle } <spring:message code="title.create" /></caption>

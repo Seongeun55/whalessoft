@@ -129,7 +129,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		return url;
 	}
 	
-	/*[추가] jsp페이지 이동메소드 - 2021.04.02*/
+	/*[추가] 일반 페이지 이동메소드 - 2021.04.02*/
 	@RequestMapping(value = "/content.do")
 	public String content(@RequestParam("id") String id, HttpSession session, ModelMap model) throws Exception {
 		
@@ -183,9 +183,9 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("type") String type, ModelMap model) throws Exception {
+	public String boardModify(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
 			 
-		if (type==null || type.equals("")){
+		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
@@ -197,9 +197,9 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/delete.do")
-	public String boardDelete(@RequestParam("type") String type, ModelMap model) throws Exception {
+	public String boardDelete(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
 			 
-		if (type==null || type.equals("")){
+		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 

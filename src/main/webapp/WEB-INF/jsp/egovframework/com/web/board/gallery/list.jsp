@@ -14,6 +14,13 @@ function searchArticle(){
 	document.articleForm.submit();
 }
 
+//[추가] 검색 후 다시 목록으로 돌아올 때 조건을 넘겨주기위해 추가 - 2021.05.04
+function viewClick(nttId, bbsId, pageNo) {
+	var searchWrd=document.getElementsByName("searchWrd")[0].value;
+	var searchCnd=$("select[name=searchCnd]").val();
+	location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
+}
+
 </script>
 
 <!-- 콘텐츠 시작 { -->
@@ -65,29 +72,34 @@ function searchArticle(){
         <ul id="gall_ul" class="gall_row">
         <c:forEach items="${resultList}" var="result" varStatus="status">
         	<li class="gall_li col-gn-3">
-        	<form name="mainForm" action="/board/view.do" method="get">
-				<input name="nttId" id="nttId" type="hidden" value="<c:out value="${result.nttId}"/>">
-			    <input name="bbsId" id="bbsId" type="hidden" value="<c:out value="${result.bbsId}"/>">
-			    <input name="pageIndex" id="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-        		<div class="gall_box">
-        			<div class="gall_chk chk_box">
-                        <span class="sound_only">
-                            <c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/> 
-                        </span>
-                    </div>
-                    <div class="gall_con">
-                    	<div class="gall_img">
-                            <button type="submit">
-                            	<img src="<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value='${result.atchFileId}'/>" alt="">
-                            </button>	                                	                            
-                        </div>
-                        <div class="gall_text_href">	                            	                                                  
-                               <c:out value='${fn:substring(result.nttSj, 0, 40)}'/>
-                               <input type="submit" class="badge" value="자세히 보기">
-                        </div>
-                    </div>
+        	<a href="javascript:viewClick('${result.nttId}', '${result.bbsId}', '${searchVO.pageIndex}');" class="line-wrap">
+        		<div class="line-box">
+        			<span class="line line-top" ></span>
+        			<span class="line line-right"></span>
+        			<span class="line line-bottom"></span>
+        			<span class="line line-left"></span>
         		</div>
-        	</form>
+        	</a>
+        	<div class="gall_box">
+       			<div class="gall_chk chk_box">
+                       <span class="sound_only">
+                           <c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/> 
+                       </span>
+                   </div>
+                   <div class="gall_con">
+                   	<div class="gall_img">
+						<a href="javascript:viewClick('${result.nttId}', '${result.bbsId}', '${searchVO.pageIndex}');">
+							<img src="<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value='${result.atchFileId}'/>" alt="">
+                        </a>                                	                            
+                    </div>
+                    <div class="gall_text_href">	     
+                    	<a href="javascript:viewClick('${result.nttId}', '${result.bbsId}', '${searchVO.pageIndex}');" class="bo_tit">                       	                                                  
+							<c:out value='${fn:substring(result.nttSj, 0, 40)}'/>
+							<span class="badge">자세히 보기</span>                        	
+                        </a>
+					</div>
+                   </div>
+       		</div>        	
         	</li>
         </c:forEach>            
         </ul>

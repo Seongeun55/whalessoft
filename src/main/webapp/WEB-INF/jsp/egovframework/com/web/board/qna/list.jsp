@@ -23,14 +23,18 @@ function searchQna(form){
  * 페이징 처리 함수
  ******************************************************** */
 function linkPage(pageNo){
-	document.pageForm.pageIndex.value = pageNo;
-   	document.pageForm.submit();
+	document.qnaForm.pageIndex.value = pageNo;
+   	document.qnaForm.submit();
+}
+
+//[추가] 검색 후 다시 목록으로 돌아올 때 조건을 넘겨주기위해 추가 - 2021.05.04
+function viewClick(qaId, pageNo) {
+	var searchWrd=document.getElementsByName("searchWrd")[0].value;
+	var searchCnd=$("select[name=searchCnd]").val();
+	location.href="/qna/view.do?qaId="+qaId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
 }
 </script>
-<form name="pageForm">
-	<!-- input type="hidden" name="type" value="<c:out value='${param.type}'/>" -->
-	<input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>">
-</form>
+
 <!-- 콘텐츠 시작 { -->
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
@@ -84,41 +88,22 @@ function linkPage(pageNo){
 		        </thead>
 	        
 		        <c:forEach items="${resultList}" var="resultInfo" varStatus="status">
-		        	<tbody>	        	
-		        	<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}">
-		        		<tr class=" even">
+		        <c:set var="even" value=""/>
+		        <c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==0}"><c:set var="even" value="even"/></c:if>
+		        	<tbody>	        			        	
+		        		<tr class="<c:out value="${even}"/>">
 		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
 		        			<td class="td_subject" style="padding-left:10px">
-		        				<div class="bo_tit">
-		        					<form name="subForm" method="get" action="/qna/view.do">
-									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
-									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
-									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
-									</form>
+		        				<div>
+		        					<a href="javascript:viewClick('${resultInfo.qaId}', '${searchVO.pageIndex}');">
+		        						<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>
+		        					</a>		        					
 		        				</div>
 		        			</td>
 		        			<td class="td_num"><c:out value='${resultInfo.wrterNm}'/></td>
 		        			<td class="td_datetime"><c:out value='${resultInfo.qnaProcessSttusCodeNm}'/></td>
 		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
-		        		</tr>
-		        	</c:if>
-		        	<c:if test="${(resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index) %2==1}">
-		        		<tr>
-		        			<td align="center"><c:out value="${resultCnt-(searchVO.pageIndex-1) * searchVO.pageSize - status.index}"/></td>
-		        			<td class="td_subject" style="padding-left:10px">
-		        				<div class="bo_tit">
-		        					<form name="subForm" method="get" action="/qna/view.do">
-									    <input name="qaId" type="hidden" value="<c:out value="${resultInfo.qaId}"/>">
-									    <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>								
-									    <span class="link"><input type="submit" value="<c:out value='${fn:substring(resultInfo.qestnSj, 0, 40)}'/>" style="border:0px solid #e0e0e0; background:rgba(0,0,0,0);"></span>
-									</form>
-		        				</div>
-		        			</td>
-		        			<td class="td_num"><c:out value='${resultInfo.wrterNm}'/></td>
-		        			<td class="td_datetime"><c:out value='${resultInfo.qnaProcessSttusCodeNm}'/></td>
-		        			<td class="td_num"><c:out value='${resultInfo.frstRegisterPnttm}'/></td>
-		        		</tr>
-		        	</c:if>
+		        		</tr>	        
 		        	</tbody>
 		        </c:forEach>
 	        </table>

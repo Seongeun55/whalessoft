@@ -80,7 +80,7 @@ function fn_egov_delete_qna(form){
         <!-- } 본문 내용 끝 -->
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
-			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">
+			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">			
 				<form name="formUpdate" action="/qna/modify.do" method="post" style="float:left; margin:0 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
 					<input name="qaId" type="hidden" value="${result.qaId}">

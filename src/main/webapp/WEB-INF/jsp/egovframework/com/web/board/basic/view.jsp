@@ -11,26 +11,69 @@
 
 <%@include file="/WEB-INF/jsp/egovframework/com/web/header.jsp" %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="<c:url value="/validator.do"/>"></script>
+<validator:javascript formName="articleCommentVO" staticJavascript="false" xhtml="true" cdata="false"/>
 <script type="text/javascript">
-/* ********************************************************
- * 저장처리화면
- ******************************************************** */
-function fn_egov_regist_qna(form){
-	//input item Client-Side validate
-	if (!validateQnaVO(form)) {	
-		return false;
-	} else {
-		if(confirm("<spring:message code="common.regist.msg" />")){	
-			form.submit();	
-		}
-	} 
+//댓글 삭제
+function fn_egov_deleteCommentList(commentNo) {
+
+	var form = document.getElementById("articleCommentVO");
+	
+	if (confirm('<spring:message code="common.delete.msg" />')) {
+		form.modified.value = "true";
+		form.commentNo.value = commentNo;
+		form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
+		form.submit();
+	}
 }
 
-function fn_egov_delete_qna(form){
-	if(confirm("<spring:message code="common.delete.msg" />")){	
-		// Delete하기 위한 키값을 셋팅
-		form.submit();	
-	}	
+//댓글 등록
+function fn_egov_insert_commentList() {
+	var form = document.getElementById("articleCommentVO");
+
+	if (!validateArticleCommentVO(form)){
+		return;
+	}
+	if (confirm('<spring:message code="common.regist.msg" />')) {
+		form.submit();
+	}
+}
+
+//댓글 수정 전처리
+function fn_egov_selectCommentForupdt(commentNo) {
+	
+	var form = document.getElementById("articleCommentVO");
+	
+	form.commentNo.value = commentNo;
+	form.action = "<c:url value='/board/view.do'/>";
+	form.submit();
+}
+
+//댓글 수정
+function fn_egov_updt_commentList() {
+	
+	var form = document.getElementById("articleCommentVO");
+	
+	if (!validateArticleCommentVO(form)){
+		return;
+	}
+
+	if (confirm('<spring:message code="common.update.msg" />')) {
+		form.modified.value = "true";
+		form.action = "<c:url value='/cop/cmt/updateArticleComment.do'/>";
+		form.submit();
+	}
+}
+
+/* 댓글페이징 */
+function fn_egov_select_commentList(pageNo) {
+	
+	var form = document.getElementById("articleCommentVO");
+	
+	form.subPageIndex.value = pageNo;
+	form.commentNo.value = '';
+	form.action = "<c:url value='/board/view.do'/>";
+	form.submit();
 }
 </script>
 <!-- 콘텐츠 시작 { -->
@@ -83,7 +126,7 @@ function fn_egov_delete_qna(form){
 	        <!-- } 본문 내용 끝 -->
 	        <!-- 하단 버튼 -->
 			<div class="btn" style="float:right">
-				<form name="formList" action="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}" method="post" style="float:left; margin:7px 0 0 3px;">
+				<form name="formList" action="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}" method="post" style="float:left; margin:7px 0 0 3px;">
 					<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
 				</form>
 			</div>
