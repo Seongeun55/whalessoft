@@ -2,90 +2,45 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 	
-	<!-- 서브헤더 시작  -->
-	<c:choose>
-		<c:when test="${param.id eq 'page1'}">
-		<div class="sub_bg sub_bg_intro">
-			<h2 id="sub_menu_title" class="top" title="회사소개">
-				<strong title="회사소개">회사소개</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-        	</h2>
-        </div>
+	<!-- 서브헤더 시작  -->	
+	<c:forEach var="sub_result" items="${list_submenu}" varStatus="status">
+		<c:set var="i" value="${i+1}"/>
+		<c:choose>
+		<c:when test="${sub_result.upperMenuId==100}">
+			<div class="sub_bg sub_bg_intro">
+				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
+		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
+	        	</h2>
+       		</div>	
 		</c:when>
-		<c:when test="${param.id eq 'page2'}">
-		<div class="sub_bg sub_bg_intro">
-			<h2 id="sub_menu_title" class="top" title="연혁">
-				<strong title="연혁">연혁</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        </h2>
-	    </div>
+		<c:when test="${sub_result.upperMenuId==200}">
+			<div class="sub_bg sub_bg_bus">
+				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
+		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
+	        	</h2>
+       		</div>	
 		</c:when>
-		<c:when test="${param.id eq 'page3'}">
-		<div class="sub_bg sub_bg_intro">
-			<h2 id="sub_menu_title" class="top" title="조직도">
-				<strong title="조직도">조직도</strong>
-				<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
+		<c:when test="${sub_result.upperMenuId==300}">
+			<div class="sub_bg sub_bg_product">
+				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
+		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
+	        	</h2>
+       		</div>	
 		</c:when>
-		<c:when test="${param.id eq 'page4'}">
-		<div class="sub_bg sub_bg_intro">
-			<h2 id="sub_menu_title" class="top" title="오시는길">
-				<strong title="오시는길">오시는길</strong>
-				<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
+		<c:when test="${sub_result.upperMenuId==400}">
+			<div class="sub_bg sub_bg_">
+				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
+		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
+	        	</h2>
+       		</div>	
 		</c:when>
-		<c:when test="${param.id eq 'page5'}">
-		<div class="sub_bg sub_bg_bus">
-			<h2 id="sub_menu_title" class="top" title="사업안내">
-				<strong title="사업안내">사업안내</strong>
-				<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        </h2>
-		</div>	        
-		</c:when>
-		<c:when test="${param.bbsId eq 'BBSMSTR_000000000131'}">
-		<div class="sub_bg sub_bg_product">
-			<h2 id="sub_menu_title" class="top" title="제품소개 1 페이지">
-				<strong title="제품소개 1 페이지">제품소개</strong>
-				<span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
-		</c:when>
-		<c:when test="${param.bbsId eq 'BBSMSTR_000000000092'}">
-		<div class="sub_bg sub_bg_">
-			<h2 id="sub_menu_title" class="top" title="공지사항 1 페이지">
-				<strong title="공지사항 1 페이지">공지사항</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
-		</c:when>
-		<c:when test="${param.bbsId eq 'BBSMSTR_000000000101'}">
-		<div class="sub_bg sub_bg_">
-			<h2 id="sub_menu_title" class="top" title="갤러리 1 페이지">
-	        	<strong title="갤러리 1 페이지">갤러리</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
-		</c:when>
-		<c:when test="${param.type eq 'qna'}">
-		<div class="sub_bg sub_bg_">
-			<h2 id="sub_menu_title" class="top" title="온라인문의 글쓰기">
-	        	<strong title="온라인문의 글쓰기">Q&A</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
-		</c:when>
-		<c:when test="${param.type eq 'faq'}">
-		<div class="sub_bg sub_bg_">
-			<h2 id="sub_menu_title" class="top" title="자주묻는질문">
-	        	<strong title="자주묻는질문">자주묻는질문</strong>
-	            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-			</h2>
-		</div>
-		</c:when>
-	</c:choose>
-	
+		</c:choose>
+	</c:forEach>
+
 	<script type="text/javascript">
 	<!--
 	    function display_submenu(num) { 

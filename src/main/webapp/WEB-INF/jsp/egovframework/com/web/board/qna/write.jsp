@@ -10,18 +10,16 @@
 
 <%@include file="/WEB-INF/jsp/egovframework/com/web/header.jsp" %>
 <script type="text/javascript">
-/* ********************************************************
- * 저장처리화면
- ******************************************************** */
+window.onload = function fn_egov_init(){
+
+		// 첫 입력란에 포커스
+		document.getElementById("qnaVO").qestnSj.focus();
+}
+
 function fn_egov_regist_qna(form){
-	//input item Client-Side validate
-	if (!validateQnaVO(form)) {	
-		return false;
-	} else {
-		if(confirm("<spring:message code="common.regist.msg" />")){	
-			form.submit();	
-		}
-	} 
+	if (confirm("<spring:message code="common.regist.msg" />")) {
+		form.submit();
+	}
 }
 </script>
 <!-- 콘텐츠 시작 { -->
@@ -34,22 +32,35 @@ function fn_egov_regist_qna(form){
 	<section id="bo_w">
     <h2 class="sound_only">온라인문의 글쓰기</h2>
 
+	<!-- javascript warning tag  -->
+	<noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
+	
     <!-- 게시물 작성 시작 -->
     <form:form commandName="qnaVO" action="${pageContext.request.contextPath}/uss/olh/qna/insertQna.do" onSubmit="fn_egov_regist_qna(document.forms[0]); return false;" method="post">    
 	    <div class="bo_w_info write_div">
 	    	<div style="width:24%;" class="three_div">
-			    <label for="wrterNm" class="sound_only">이름<strong>필수</strong></label>
+	    		<!-- 작성자명 -->
+				<c:set var="title"><spring:message code="table.reger"/> </c:set>
+				
+			    <label for="wrterNm" class="sound_only">${title}<strong>필수</strong></label>
 			    <form:input type="text" path="wrterNm" id="wrterNm" required="required" class="frm_input full_input required" placeholder="이름" />
 			    <div><form:errors path="wrterNm" cssClass="error" /></div>     
 		    </div>
 		    
 		    <div style="width:24%;" class="three_div">
-			    <label for="emailAdres" class="sound_only">이메일</label>
+		    	<!-- 이메일주소 -->
+				<c:set var="title"><spring:message code="comUssOlhQna.qnaVO.emailAdres"/> </c:set>
+				
+			    <label for="emailAdres" class="sound_only">${title}</label>
 			    <form:input type="email" path="emailAdres" value="" id="emailAdres" class="frm_input full_input email " placeholder="이메일" />
+			    <div><form:errors path="emailAdres" cssClass="error" /></div>  
 		    </div>
 			
 			<div style="width:50%;" class="three_div">
-				<label for="areaNo" class="sound_only">연락처<strong>필수</strong></label>
+				<!-- 전화번호 -->
+				<c:set var="title"><spring:message code="comUssOlhQna.qnaVO.telNo"/> </c:set>
+				
+				<label for="areaNo" class="sound_only">${title}<strong>필수</strong></label>
 			    <form:input type="text" path="areaNo" id="areaNo" required="required" class="frm_input three_input required" placeholder="010" />
 			    <Span>-</Span>
 			    <form:input type="text" path="middleTelno" id="middleTelno" required="required" class="frm_input three_input required" placeholder="1234" />
@@ -57,14 +68,13 @@ function fn_egov_regist_qna(form){
 			    <form:input type="text" path="endTelno" id="endTelno" required="required" class="frm_input three_input required" placeholder="5678" />
 			    <div><form:errors path="areaNo" cssClass="error" /></div>    
 			</div>	
-		<!-- 
-		    <label for="wr_homepage" class="sound_only">홈페이지</label>
-		    <input type="text" name="wr_homepage" value="" id="wr_homepage" class="frm_input half_input" size="50" placeholder="홈페이지"> -->
 		</div>
 
 	    <div class="bo_w_tit write_div">
-	        <label for="qestnSj" class="sound_only">제목<strong>필수</strong></label>
-	        
+	    	<!-- 질문제목 -->
+			<c:set var="title"><spring:message code="comUssOlhQna.qnaVO.qestnSj"/> </c:set>
+			
+	        <label for="qestnSj" class="sound_only">${title}<strong>필수</strong></label>
 	        <div id="autosave_wrapper" class="write_div">
 	            <form:input type="text" path="qestnSj" value="" id="qestnSj" required="required" class="frm_input full_input required" size="50" maxlength="255" placeholder="제목" />
 	            <div><form:errors path="qestnSj" cssClass="error" /></div>     
@@ -73,7 +83,10 @@ function fn_egov_regist_qna(form){
 	    </div>
 	
 	    <div class="write_div">
-	        <label for="qestnCn" class="sound_only">내용<strong>필수</strong></label>
+	    	<!-- 질문내용 -->
+			<c:set var="title"><spring:message code="comUssOlhQna.qnaVO.qestnCn"/> </c:set>
+			
+	        <label for="qestnCn" class="sound_only">${title}<strong>필수</strong></label>
 	        <div class="wr_content ">
 				<span class="sound_only">웹에디터 시작</span>
 					<form:textarea id="qestnCn" path="qestnCn" required="required" maxlength="65536" style="width:100%;height:300px" />

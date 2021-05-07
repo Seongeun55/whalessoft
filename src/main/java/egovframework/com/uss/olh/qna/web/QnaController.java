@@ -234,7 +234,7 @@ public class QnaController {
 
 		QnaService.insertQna(qnaVO);
 
-		return "redirect:/board/list.do?type=qna";
+		return "redirect:/qna/list.do";
 	}
 	
 	/**
@@ -342,6 +342,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "redirect:/board/list.do?type=qna";
+		return "redirect:/qna/list.do";
 	}
 }

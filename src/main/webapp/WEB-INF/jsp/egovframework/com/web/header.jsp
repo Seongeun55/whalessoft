@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +22,6 @@
 	<script src="/js/slick.min.js"></script>
 	<script src="/js/front.js"></script>
 	<script src="/js/aos.js"></script>
-	<script type="text/javascript">
-	function menuMove(menuNo, url){
-	    location.href = "/sym/mnu/mpm/MainMenuIndex.do?menuNo="+menuNo+"&chkURL="+url;
-	}
-	</script>
 </head>
 <body>
  	<div id="wrap">
@@ -51,17 +47,25 @@
 				<a href="#" class="allmenu"></a>
 				<nav>
 					<ul class="cate depth01">
-						<c:forEach var="result" items="${list_headmenu}" varStatus="status">								
+						<c:forEach var="result" items="${list_headmenu}" varStatus="status">
+						<c:set var="sc1" value="?"/>
+						<c:if test="${fn:contains(result.chkURL, '?')}">
+							<c:set var="sc1" value="&"/>
+						</c:if>
 							<li>
-								<a href="#" onclick="menuMove('<c:out value="${result.menuNo}"/>','<c:out value="${result.chkURL}"/>')" ><c:out value="${result.menuNm}"/></a>
+								<a href="<c:out value='${result.chkURL}'/><c:out value='${sc1}'/>menuNo=<c:out value='${result.menuNo}'/>"><c:out value="${result.menuNm}"/></a>
 						   		<div class="depth02">
 						   			<ul>						   			
 						   			<c:forEach var="sub_result" items="${list_submenu}" varStatus="status">
-						   				<c:if test="${result.menuNo==sub_result.upperMenuId}">						   								
+					   				<c:set var="sc2" value="?"/>
+									<c:if test="${fn:contains(sub_result.chkURL, '?')}">
+										<c:set var="sc2" value="&"/>
+									</c:if>
+						   			<c:if test="${result.menuNo==sub_result.upperMenuId}">						   								
 					   					<li>
-					   						<a href="#" onclick="menuMove('<c:out value="${sub_result.menuNo}"/>','<c:out value="${sub_result.chkURL}"/>')" ><c:out value="${sub_result.menuNm}"/></a>
+					   						<a href="<c:out value="${sub_result.chkURL}"/><c:out value='${sc2}'/>menuNo=<c:out value="${sub_result.menuNo}"/>" ><c:out value="${sub_result.menuNm}"/></a>
 					   					</li>
-					   					</c:if>
+					   				</c:if>
 						   			</c:forEach>
 						   			</ul>
 						   		</div>

@@ -26,10 +26,10 @@ function fn_egov_regist_qna(form){
 	} 
 }
 
-function fn_egov_delete_qna(form){
+function delete_qna(pageNo, qaId){
 	if(confirm("<spring:message code="common.delete.msg" />")){	
 		// Delete하기 위한 키값을 셋팅
-		form.submit();	
+		location.href="/qna/delete.do?qaId="+qaId+"&pageIndex="+pageNo;
 	}	
 }
 </script>
@@ -80,21 +80,17 @@ function fn_egov_delete_qna(form){
         <!-- } 본문 내용 끝 -->
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
-			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">			
-				<form name="formUpdate" action="/qna/modify.do" method="post" style="float:left; margin:0 0 0 3px;">
-					<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" />
-					<input name="qaId" type="hidden" value="${result.qaId}">
-					<input type="hidden" name=pageIndex value="${param.pageIndex}">
-				</form>
-				<form name="formDelete" action="/qna/delete.do" method="post" style="float:left; margin:0 0 0 3px;">
-					<input type="submit" class="s_submit" value="<spring:message code="button.delete" />" title="<spring:message code="button.delete" /> <spring:message code="input.button" />" onclick="fn_egov_delete_qna(this.form); return false;">
-					<input name="qaId" type="hidden" value="${result.qaId}">
-				</form>
+			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">		
+				<a href="/qna/modify.do?pageIndex=${param.pageIndex}&qaId=${result.qaId}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+					<spring:message code="button.update" />
+				</a>
+				<a href="javascript:delete_qna('${param.pageIndex}', '${result.qaId}');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+					<spring:message code="button.delete" />
+				</a>
 			</c:if>
-			<form name="formList" action="/qna/list.do" method="get" style="float:left; margin:0 0 0 3px;">
-				<input type="hidden" name=pageIndex value="${param.pageIndex}">
-				<input type="submit" class="s_submit" value="<spring:message code="button.list" />">
-			</form>
+			<a href="/qna/list.do?pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+				<spring:message code="button.list" />
+			</a>			
 		</div>
 		<div style="clear:both;"></div>
 
