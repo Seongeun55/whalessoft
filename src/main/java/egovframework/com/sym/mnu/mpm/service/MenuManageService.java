@@ -104,7 +104,7 @@ public interface MenuManageService {
 	 * @return List
 	 * @exception Exception
 	 */
-	List<?> selectMainMenuHead(MenuManageVO vo) throws Exception;
+	List<?> selectMainMenu(MenuManageVO vo) throws Exception;
 	
 	/**[추가] - 2021.04.07
 	 * SubMenu 조회

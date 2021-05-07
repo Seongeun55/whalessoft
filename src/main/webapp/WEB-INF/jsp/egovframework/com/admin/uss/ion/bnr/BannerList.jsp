@@ -186,7 +186,7 @@ function press() {
 		<thead>
 			<tr>
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerNm"/></th><!-- 배너명 -->
-			   <th scope="col"><spring:message code="ussIonBnr.bannerList.linkUrl"/></th><!-- 링크 URL -->
+			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerType"/></th><!-- 배너 구분 -->
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerDc"/></th><!-- 배너 설명 -->
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.reflctAtt"/></th><!-- 반영여부 -->
 			</tr>
@@ -203,7 +203,7 @@ function press() {
 						<input class="link" type="submit" value="<c:out value="${banner.bannerNm}"/>" onclick="fncSelectBanner('<c:out value="${banner.bannerId}"/>'); return false;">
 					</form>
 				</td><!-- 배너 명 -->
-				<td class="left"><c:out value="${banner.linkUrl}"/></td><!-- 링크 URL -->
+				<td class="left"><c:out value="${banner.bannerType}"/></td><!-- 링크 URL -->
 				<td><c:out value="${banner.bannerDc}"/></td><!-- 배너 설명 -->
 				<td><c:out value="${banner.reflctAt}"/></td><!-- 반영여부 -->
 			</tr>

@@ -76,11 +76,20 @@ public interface BannerService {
 	public void deleteBannerFile(Banner banner) throws Exception;
 
 	/**
-	 * 배너가 특정화면에 반영된 결과를 조회한다.
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
 	 * @param bannerVO - 배너 Vo
 	 * @return BannerVO - 배너 Vo
 	 * 
 	 * @param bannerVO
 	 */
-	public List<BannerVO> selectBannerResult(BannerVO bannerVO) throws Exception;
+	public List<BannerVO> selectMainBannerResult(BannerVO bannerVO) throws Exception;
+	
+	/**
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
+	 * @param bannerVO - 배너 Vo
+	 * @return BannerVO - 배너 Vo
+	 * 
+	 * @param bannerVO
+	 */
+	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception;
 }

@@ -3,42 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 	
 	<!-- 서브헤더 시작  -->	
-	<c:forEach var="sub_result" items="${list_submenu}" varStatus="status">
-		<c:set var="i" value="${i+1}"/>
-		<c:choose>
-		<c:when test="${sub_result.upperMenuId==100}">
-			<div class="sub_bg sub_bg_intro">
-				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
-					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
-		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        	</h2>
-       		</div>	
-		</c:when>
-		<c:when test="${sub_result.upperMenuId==200}">
-			<div class="sub_bg sub_bg_bus">
-				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
-					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
-		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        	</h2>
-       		</div>	
-		</c:when>
-		<c:when test="${sub_result.upperMenuId==300}">
-			<div class="sub_bg sub_bg_product">
-				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
-					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
-		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        	</h2>
-       		</div>	
-		</c:when>
-		<c:when test="${sub_result.upperMenuId==400}">
-			<div class="sub_bg sub_bg_">
-				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
-					<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
-		            <span class="sub-title">든든한 당신의 파트너로 곁에 있겠습니다.</span>
-	        	</h2>
-       		</div>	
-		</c:when>
-		</c:choose>
+	<c:forEach var="result" items="${mainMenuList}" varStatus="status1">
+		<c:forEach var="sub_banner" items="${subBannerList}" varStatus="status2">		
+			<c:if test="${result.menuOrdr==sub_banner.sortOrdr}">		
+			<c:forEach var="sub_result" items="${subMenuList}" varStatus="status3">
+				<c:if test="${result.menuNo==sub_result.upperMenuId && sub_result.menuNo==menuNo}">
+				<div class="sub_bg" style="background:url('/cmm/fms/getImage.do?atchFileId=<c:out value="${sub_banner.bannerImageFile}"/>')no-repeat 50% 50%;">						
+					<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+						<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
+		            	<span class="sub-title">${sub_banner.bannerDc}</span>
+	        		</h2>
+	        	</div>        		
+       			</c:if>
+       		</c:forEach>
+			</c:if>			
+		</c:forEach>	
 	</c:forEach>
 
 	<script type="text/javascript">

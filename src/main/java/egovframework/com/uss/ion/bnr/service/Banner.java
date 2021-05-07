@@ -65,6 +65,11 @@ public class Banner extends ComDefaultVO {
 	private boolean isAtchFile;
 	
 	/**
+	 * [추가] 배너 구분 - 2021.05.07
+	 */
+	private String bannerType;
+	
+	/**
 	 * @return the bannerId
 	 */
 	public String getBannerId() {
@@ -195,6 +200,16 @@ public class Banner extends ComDefaultVO {
 	 */
 	public void setAtchFile(boolean isAtchFile) {
 		this.isAtchFile = isAtchFile;
+	}
+	
+	//[추가] 배너 구분 - 2021.05.07
+	public String getBannerType() {
+		return bannerType;
+	}
+	
+	//[추가] 배너 구분 - 2021.05.07
+	public void setBannerType(String bannerType) {
+		this.bannerType = bannerType;
 	}
 
 }

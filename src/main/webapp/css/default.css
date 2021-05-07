@@ -708,13 +708,6 @@ footer .sns ul li a {display:block; width:100%; height:100%; padding:0 5px;}
 .con-box{margin:100px 0}
 
 .sub_bg{position:relative;display:table;width:100%;height:450px;background:center no-repeat;background-size:cover;overflow:hidden;text-align:center;color:#fff}
-.sub_bg{background-image:url('/images/sub/back07.jpg')}
-.sub_bg.sub_bg_bus{background-image:url('/images/sub/back05.jpg')}
-.sub_bg.sub_bg_intro{background-image:url('/images/sub/back03.jpg')}
-.sub_bg.sub_bg_history{background-image:url('/images/sub/back04.jpg')}
-.sub_bg.sub_bg_org{background-image:url('/images/sub/back05.jpg')}
-.sub_bg.sub_bg_way{background-image:url('/images/sub/back06.jpg')}
-.sub_bg.sub_bg_product{background-image:url('/images/sub/back08.jpg')}
 
 #sub_menu_title{display:table-cell;vertical-align:middle}
 #sub_menu_title strong{display:block;font-size:2.25rem}

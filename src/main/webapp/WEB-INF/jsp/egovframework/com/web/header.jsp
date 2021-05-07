@@ -47,7 +47,7 @@
 				<a href="#" class="allmenu"></a>
 				<nav>
 					<ul class="cate depth01">
-						<c:forEach var="result" items="${list_headmenu}" varStatus="status">
+						<c:forEach var="result" items="${mainMenuList}" varStatus="status">
 						<c:set var="sc1" value="?"/>
 						<c:if test="${fn:contains(result.chkURL, '?')}">
 							<c:set var="sc1" value="&"/>
@@ -56,7 +56,7 @@
 								<a href="<c:out value='${result.chkURL}'/><c:out value='${sc1}'/>menuNo=<c:out value='${result.menuNo}'/>"><c:out value="${result.menuNm}"/></a>
 						   		<div class="depth02">
 						   			<ul>						   			
-						   			<c:forEach var="sub_result" items="${list_submenu}" varStatus="status">
+						   			<c:forEach var="sub_result" items="${subMenuList}" varStatus="status">
 					   				<c:set var="sc2" value="?"/>
 									<c:if test="${fn:contains(sub_result.chkURL, '?')}">
 										<c:set var="sc2" value="&"/>

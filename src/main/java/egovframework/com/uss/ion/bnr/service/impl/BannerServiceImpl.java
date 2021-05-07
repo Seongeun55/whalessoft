@@ -106,12 +106,21 @@ public class BannerServiceImpl extends EgovAbstractServiceImpl implements Banner
 	}
 
 	/**
-	 * 배너가 특정화면에 반영된 결과를 조회한다.
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
 	 * @param bannerVO - 배너 VO
 	 * @return BannerVO - 배너 VO
 	 */
-	public List<BannerVO> selectBannerResult(BannerVO bannerVO) throws Exception{
-		return bannerDAO.selectBannerResult(bannerVO);
+	public List<BannerVO> selectMainBannerResult(BannerVO bannerVO) throws Exception{
+		return bannerDAO.selectMainBannerResult(bannerVO);
+	}
+	
+	/**
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
+	 * @param bannerVO - 배너 VO
+	 * @return BannerVO - 배너 VO
+	 */
+	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception{
+		return bannerDAO.selectSubBannerResult(bannerVO);
 	}
 
 }

@@ -88,6 +88,8 @@ function fncBannerDelete() {
 
 	<!-- 등록폼 -->
 	<input type="hidden" name="posblAtchFileNumber" value="1" >
+	<input id="linkUrl" type="hidden" name="linkUrl" value="/" title="<spring:message code="ussIonBnr.bannerRegist.linkUrl"/>" maxLength="255" />
+	<!--<form:errors path="linkUrl" />-->
 	<table class="wTable">
 		<colgroup>
 			<col style="width:16%" />
@@ -107,10 +109,13 @@ function fncBannerDelete() {
 			</td>
 		</tr>
 		<tr>
-			<th><spring:message code="ussIonBnr.bannerRegist.linkUrl"/> <span class="pilsu">*</span></th><!-- 링크URL -->
+			<th><spring:message code="ussIonBnr.bannerRegist.bannerType"/> <span class="pilsu">*</span></th><!-- 배너 구분 -->
 			<td class="left">
-				<input id="linkUrl" type="text" name="linkUrl" value="<c:out value='${banner.linkUrl}'/>" title="<spring:message code="ussIonBnr.bannerRegist.linkUrl"/>" maxLength="255" />
-				<form:errors path="linkUrl" />
+				<select name="bannerType" title="<spring:message code="ussIonBnr.bannerRegist.bannerType"/>">
+					<option value="">선택하세요</option>
+					<option value="main">메인배너</option>
+					<option value="sub">서브배너</option>
+				</select>
 			</td>
 		</tr>
 		<tr>

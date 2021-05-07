@@ -174,7 +174,7 @@ public class MenuManageServiceImpl extends EgovAbstractServiceImpl implements Me
 	 * @return List
 	 * @exception Exception
 	 */
-	public List<?> selectMainMenuHead(MenuManageVO vo) throws Exception {
+	public List<?> selectMainMenu(MenuManageVO vo) throws Exception {
 		return menuManageDAO.selectMainMenuHead(vo);
 	}
 	

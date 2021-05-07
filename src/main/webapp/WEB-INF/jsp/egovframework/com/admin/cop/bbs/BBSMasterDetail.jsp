@@ -98,7 +98,6 @@
 				<c:out value="${fn:replace(result.bbsIntrcn , crlf , '<br/>')}" escapeXml="false" />
 			</td>
 		</tr>
-		<
 		<c:if test="${result.useAt == 'Y' }">
 			<tr>
 				<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsAdres" /></th>

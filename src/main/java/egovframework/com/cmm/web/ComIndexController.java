@@ -104,7 +104,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		model.addAttribute("resultList", resultList);
 		
 		menu(model);
-		banner(model);
+		mainBanner(model);
 		
 		return "egovframework/com/web/main";
 	}
@@ -131,7 +131,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] 일반 페이지 이동메소드 - 2021.04.02*/
 	@RequestMapping(value = "/content.do")
-	public String content(@RequestParam("id") String id, HttpSession session, ModelMap model) throws Exception {
+	public String content(@RequestParam("id") String id, @RequestParam("menuNo") String menuNo, HttpSession session, ModelMap model) throws Exception {
 		
 		String link = "egovframework/com/web/content/"+id;
 
@@ -140,71 +140,83 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		}
 		
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
 		
 		return link;
 	}
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
+	public String boardList(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/cop/bbs/selectArticleList.do";		
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
+	public String boardView(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
 		
 		return "forward:/cop/bbs/selectArticleDetail.do";
 	}
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
+	public String boardWrite(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/cop/bbs/insertArticleView.do";
 	}
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
+	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
 		
 		return "";
 	}
 	
 	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/delete.do")
-	public String boardDelete(@RequestParam("bbsId") String bbsId, ModelMap model) throws Exception {
+	public String boardDelete(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
 		menu(model);
-		
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
 		
 		return "";
 	}
@@ -213,9 +225,11 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaList 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/list.do")
-	public String qnaList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaList(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
 		this.checkSession(request);
 		
 		return "forward:/uss/olh/qna/selectQnaList.do";
@@ -223,34 +237,46 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaView 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/view.do")
-	public String qnaView(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaView(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/uss/olh/qna/selectQnaDetail.do";
 	}
 	
 	/*[추가] qnaWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/write.do")
-	public String qnaWrite(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaWrite(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 	
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/uss/olh/qna/insertQnaView.do";
 	
 	}
 	
 	/*[추가] qnaModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/modify.do")
-	public String qnaModify(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaModify(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 			 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/uss/olh/qna/updateQnaView.do";
 	}
 	
 	/*[추가] qnaDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/delete.do")
-	public String qnaDelete(@ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaDelete(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/uss/olh/qna/deleteQna.do";
 	}
 	
@@ -258,9 +284,12 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] faqList 이동메소드 - 2021.04.19*/
 	@RequestMapping(value = "/faq/list.do")
-	public String faqList(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String faqList(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
+		subBanner(model);
+		model.addAttribute("menuNo", menuNo);
+		
 		return "forward:/uss/olh/faq/selectFaqList.do";
 	}
 	
@@ -282,28 +311,46 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		menuManageVO.setTmpOrgnztId(user == null ? "" : EgovStringUtil.isNullToString(user.getOrgnztId()));
 		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
 		
-		List<?> list_headmenu = menuManageService.selectMainMenuHead(menuManageVO);
-		model.addAttribute("list_headmenu", list_headmenu);	// 큰 타이틀만 들어옴
-		List<?> list_submenu = menuManageService.selectSubMenu(menuManageVO);
-		model.addAttribute("list_submenu", list_submenu);	// 서브메뉴
+		List<?> mainMenuList = menuManageService.selectMainMenu(menuManageVO);
+		model.addAttribute("mainMenuList", mainMenuList);	// 큰 타이틀만 들어옴
+		List<?> subMenuList = menuManageService.selectSubMenu(menuManageVO);
+		model.addAttribute("subMenuList", subMenuList);	// 서브메뉴
 	}
 	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.14 **/
-	public void banner(ModelMap model) throws Exception{
+	public void mainBanner(ModelMap model) throws Exception{
 		
 		BannerVO bannerVO = new BannerVO();
 		
-		PaginationInfo paginationInfo_Banner = new PaginationInfo();
-		paginationInfo_Banner.setCurrentPageNo(bannerVO.getPageIndex());
-		paginationInfo_Banner.setRecordCountPerPage(bannerVO.getPageUnit());
-		paginationInfo_Banner.setPageSize(bannerVO.getPageSize());
+		PaginationInfo paginationInfoBanner = new PaginationInfo();
+		paginationInfoBanner.setCurrentPageNo(bannerVO.getPageIndex());
+		paginationInfoBanner.setRecordCountPerPage(bannerVO.getPageUnit());
+		paginationInfoBanner.setPageSize(bannerVO.getPageSize());
 		
-		bannerVO.setFirstIndex(paginationInfo_Banner.getFirstRecordIndex());
-		bannerVO.setLastIndex(paginationInfo_Banner.getLastRecordIndex());
-		bannerVO.setRecordCountPerPage(paginationInfo_Banner.getRecordCountPerPage());
-		bannerVO.setBannerList(BannerService.selectBannerResult(bannerVO));
+		bannerVO.setFirstIndex(paginationInfoBanner.getFirstRecordIndex());
+		bannerVO.setLastIndex(paginationInfoBanner.getLastRecordIndex());
+		bannerVO.setRecordCountPerPage(paginationInfoBanner.getRecordCountPerPage());
+		bannerVO.setBannerList(BannerService.selectMainBannerResult(bannerVO));
 		
 		model.addAttribute("bannerList", bannerVO.getBannerList());
+	}
+	
+	/** [추가] 서브페이지 배너를 위해 추가 - 2021.05.07 **/
+	public void subBanner(ModelMap model) throws Exception{
+		
+		BannerVO bannerVO = new BannerVO();
+		
+		PaginationInfo paginationInfoBanner = new PaginationInfo();
+		paginationInfoBanner.setCurrentPageNo(bannerVO.getPageIndex());
+		paginationInfoBanner.setRecordCountPerPage(bannerVO.getPageUnit());
+		paginationInfoBanner.setPageSize(bannerVO.getPageSize());
+		
+		bannerVO.setFirstIndex(paginationInfoBanner.getFirstRecordIndex());
+		bannerVO.setLastIndex(paginationInfoBanner.getLastRecordIndex());
+		bannerVO.setRecordCountPerPage(paginationInfoBanner.getRecordCountPerPage());
+		bannerVO.setBannerList(BannerService.selectSubBannerResult(bannerVO));
+		
+		model.addAttribute("subBannerList", bannerVO.getBannerList());
 	}
 	
 	/** [추가] 주소로 바로 접근 불가능하게 하기위해 추가 - 2021.05.03 **/

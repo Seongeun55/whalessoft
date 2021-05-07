@@ -85,6 +85,7 @@ function fncOnChangeImage() {
 	<!-- 등록폼 -->
 <form:form commandName="banner" method="post" action="${pageContext.request.contextPath}/uss/ion/bnr/updtBanner.do' />" enctype="multipart/form-data"> 
 <input type="hidden" name="posblAtchFileNumber" value="1"  >
+<input type="hidden" name="linkUrl" id="linkUrl" title="<spring:message code="ussIonBnr.bannerUpdt.linkUrl"/>" value="/" maxLength="255" />&nbsp;<form:errors path="linkUrl" />
 	<table class="wTable">
 		<colgroup>
 			<col style="width:16%" />
@@ -103,9 +104,12 @@ function fncOnChangeImage() {
 			</td>
 		</tr>
 		<tr>
-			<th><spring:message code="ussIonBnr.bannerUpdt.linkUrl"/> <span class="pilsu">*</span></th><!-- 링크URL -->
+			<th><spring:message code="ussIonBnr.bannerUpdt.bannerType"/> <span class="pilsu">*</span></th><!-- 링크URL -->
 			<td class="left">
-			    <input name="linkUrl" id="linkUrl" title="<spring:message code="ussIonBnr.bannerUpdt.linkUrl"/>" type="text" value="<c:out value='${banner.linkUrl}'/>" maxLength="255" />&nbsp;<form:errors path="linkUrl" />
+			    <select name="bannerType" id="bannerType" title="<spring:message code="ussIonBnr.bannerUpdt.bannerType"/>">
+					<option value="main" <c:if test="${banner.bannerType == 'main'}">selected</c:if> >메인배너</option>
+					<option value="sub" <c:if test="${banner.bannerType == 'sub'}">selected</c:if> >서브배너</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -154,13 +158,14 @@ function fncOnChangeImage() {
 		<span class="btn_s"><a href="<c:url value='/admin/uss/ion/bnr/selectBannerList.do'/>?pageIndex=<c:out value='${bannerVO.pageIndex}'/>&amp;searchKeyword=<c:out value="${bannerVO.searchKeyword}"/>&amp;searchCondition=1" onclick="fncSelectBannerList(); return false;"><spring:message code="button.list" /></a></span>
 	</div>
 	<div style="clear:both;"></div>
-</div>
+
 
 <!-- 검색조건 유지 -->
 <input type="hidden" name="searchCondition" value="<c:out value='${bannerVO.searchCondition}'/>" >
 <input type="hidden" name="searchKeyword" value="<c:out value='${bannerVO.searchKeyword}'/>" >
 <input type="hidden" name="pageIndex" value="<c:out value='${bannerVO.pageIndex}'/>" >
 </form:form>
+</div>
 </body>
 </html>
 

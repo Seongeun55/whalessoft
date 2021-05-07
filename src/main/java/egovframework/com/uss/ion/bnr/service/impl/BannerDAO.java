@@ -91,14 +91,23 @@ public class BannerDAO extends EgovComAbstractDAO {
 	}
 
 	/**
-	 * 배너가 특정화면에 반영된 결과를 조회한다.
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
 	 * @param bannerVO - 배너 VO
 	 * @return BannerVO - 배너 VO
 	 * @exception Exception
-	 */
+	 */	
+	public List<BannerVO> selectMainBannerResult(BannerVO bannerVO) throws Exception {
+		return selectList("bannerDAO.selectMainBannerResult", bannerVO);
+	}
 	
-	public List<BannerVO> selectBannerResult(BannerVO bannerVO) throws Exception {
-		return selectList("bannerDAO.selectBannerResult", bannerVO);
+	/**
+	 * 배너가 특정화면에 반영된 결과를 조회한다. (메인 서브 분리 - 2021.05.07)
+	 * @param bannerVO - 배너 VO
+	 * @return BannerVO - 배너 VO
+	 * @exception Exception
+	 */	
+	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception {
+		return selectList("bannerDAO.selectSubBannerResult", bannerVO);
 	}
 
 }

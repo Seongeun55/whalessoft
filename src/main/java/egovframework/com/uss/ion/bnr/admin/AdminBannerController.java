@@ -107,7 +107,6 @@ public class AdminBannerController {
 		bannerVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		bannerVO.setBannerList(BannerService.selectBannerList(bannerVO));
-
 		model.addAttribute("bannerList", bannerVO.getBannerList());
 
         int totCnt = BannerService.selectBannerListTotCnt(bannerVO);
@@ -255,9 +254,7 @@ public class AdminBannerController {
 			LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 			banner.setUserId(user == null ? "" : EgovStringUtil.isNullToString(user.getId()));
 
-
-			BannerService.updateBanner(banner);
-			//	    	return "forward:/uss/ion/bnr/getBanner.do";
+			BannerService.updateBanner(banner);				    
 			return "forward:/admin/uss/ion/bnr/selectBannerList.do";
 
 		}
@@ -309,7 +306,7 @@ public class AdminBannerController {
 	@RequestMapping(value="/uss/ion/bnr/getBannerImage.do")
 	public String selectBannerResult(@ModelAttribute("bannerVO") BannerVO bannerVO, ModelMap model) throws Exception {
 
-		List<BannerVO> fileList = BannerService.selectBannerResult(bannerVO);
+		List<BannerVO> fileList = BannerService.selectMainBannerResult(bannerVO);
 		model.addAttribute("fileList", fileList);
 		model.addAttribute("resultType", bannerVO.getResultType());
 

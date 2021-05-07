@@ -48,7 +48,8 @@
                    SORT_ORDR,           
                    REFLCT_AT,
                    FRST_REGISTER_ID,
-                   FRST_REGIST_PNTTM     
+                   FRST_REGIST_PNTTM,
+                   banner_type     
               FROM COMTNBANNER   
              WHERE 1=1
             <if test="searchCondition == 1">AND
@@ -79,7 +80,8 @@
                    SORT_ORDR,            
                    REFLCT_AT,            
                    FRST_REGISTER_ID,
-                   FRST_REGIST_PNTTM     
+                   FRST_REGIST_PNTTM,
+                   banner_type     
               FROM COMTNBANNER
              WHERE BANNER_ID = #{bannerId}    
         
@@ -97,7 +99,8 @@
                     SORT_ORDR,        
                     REFLCT_AT,            
                     FRST_REGISTER_ID,
-                    FRST_REGIST_PNTTM)
+                    FRST_REGIST_PNTTM,
+                    banner_type)
             VALUES (#{bannerId},
                     #{bannerNm}, 
                     #{linkUrl},
@@ -107,7 +110,8 @@
                     #{sortOrdr},
                     #{reflctAt},
                     #{userId},
-                    now())   
+                    now(),
+                    #{bannerType})   
         
     </insert>     
 
@@ -124,7 +128,8 @@
                    SORT_ORDR = #{sortOrdr},
                    REFLCT_AT = #{reflctAt},
                    LAST_UPDUSR_ID = #{userId},
-                   LAST_UPDT_PNTTM = now()    
+                   LAST_UPDT_PNTTM = now(),
+                   banner_type = #{bannerType}    
              WHERE BANNER_ID = #{bannerId}
     </update>    
     
@@ -134,14 +139,30 @@
              WHERE BANNER_ID = #{bannerId}    
         
     </delete>  
-            
-    <select id="selectBannerResult" resultMap="bannerImage">
+    
+    <!-- 메인과 서브 분리 2021.05.07 -->     
+    <select id="selectMainBannerResult" resultMap="bannerImage">
         
             SELECT BANNER_IMAGE_FILE,
                    LINK_URL,
                    BANNER_DC
               FROM COMTNBANNER
              WHERE REFLCT_AT = 'Y'  
+             AND banner_type = 'main'
+             ORDER BY SORT_ORDR 
+        
+    </select>
+    
+    <select id="selectSubBannerResult" resultMap="bannerImage">
+        
+            SELECT BANNER_IMAGE_FILE,
+                   LINK_URL,
+                   BANNER_DC,
+                   SORT_ORDR,
+                   BANNER_NM 
+              FROM COMTNBANNER
+             WHERE REFLCT_AT = 'Y'  
+             AND banner_type = 'sub'
              ORDER BY SORT_ORDR 
         
     </select>
