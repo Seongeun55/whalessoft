@@ -2,24 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 	
-	<!-- 서브헤더 시작  -->	
-	<c:forEach var="result" items="${mainMenuList}" varStatus="status1">
-		<c:forEach var="sub_banner" items="${subBannerList}" varStatus="status2">		
-			<c:if test="${result.menuOrdr==sub_banner.sortOrdr}">		
-			<c:forEach var="sub_result" items="${subMenuList}" varStatus="status3">
-				<c:if test="${result.menuNo==sub_result.upperMenuId && sub_result.menuNo==menuNo}">
-				<div class="sub_bg" style="background:url('/cmm/fms/getImage.do?atchFileId=<c:out value="${sub_banner.bannerImageFile}"/>')no-repeat 50% 50%;">						
-					<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
-						<strong title="<c:out value="${sub_result.menuNm}"/>"><c:out value="${sub_result.menuNm}"/></strong>
-		            	<span class="sub-title">${sub_banner.bannerDc}</span>
-	        		</h2>
-	        	</div>        		
-       			</c:if>
-       		</c:forEach>
-			</c:if>			
-		</c:forEach>	
+	<!-- 서브헤더 시작  -->
+	<!-- 서브배너 시작 -->	
+	<c:forEach var="sub_banner" items="${subBannerList}" varStatus="status">
+		<c:if test="${selectedMainMenuMap['menuOrdr']==sub_banner.sortOrdr}">	
+			<div class="sub_bg" style="background:url('/cmm/fms/getImage.do?atchFileId=<c:out value="${sub_banner.bannerImageFile}"/>')no-repeat 50% 50%;">						
+				<h2 id="sub_menu_title" class="top" title=<c:out value="${sub_result.menuNm}"/>>
+					<c:if test="${mainMenuNo==menuNo}">
+						<strong title="<c:out value="${selectedMainMenuMap['menuNm']}"/>"><c:out value="${selectedMainMenuMap['menuNm']}"/></strong> 
+					</c:if>
+					<c:forEach var="sub_menu" items="${selectedSubMenuListMap}" varStatus="status">
+						<c:if test="${sub_menu.menuNo==menuNo}">
+							<strong title="<c:out value="${sub_menu.menuNm}"/>"><c:out value="${sub_menu.menuNm}"/></strong> 
+						</c:if>
+					</c:forEach>					
+	            	<span class="sub-title">${sub_banner.bannerDc}</span>
+        		</h2>
+        	</div>  
+        </c:if>	      		
 	</c:forEach>
-
+	<!-- 서브배너 끝 -->
+	
 	<script type="text/javascript">
 	<!--
 	    function display_submenu(num) { 

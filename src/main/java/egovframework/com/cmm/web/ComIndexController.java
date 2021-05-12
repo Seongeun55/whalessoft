@@ -1,5 +1,8 @@
 package egovframework.com.cmm.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * 컴포넌트 설치 후 설치된 컴포넌트들을 IncludedInfo annotation을 통해 찾아낸 후
  * 화면에 표시할 정보를 처리하는 Controller 클래스
@@ -30,6 +33,9 @@ package egovframework.com.cmm.web;
 
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -49,6 +55,7 @@ import egovframework.com.utl.fcc.service.EgovStringUtil;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
+import org.h2.mvstore.DataUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -131,7 +138,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] 일반 페이지 이동메소드 - 2021.04.02*/
 	@RequestMapping(value = "/content.do")
-	public String content(@RequestParam("id") String id, @RequestParam("menuNo") String menuNo, HttpSession session, ModelMap model) throws Exception {
+	public String content(@RequestParam("id") String id, @RequestParam("menuNo") int menuNo, HttpSession session, ModelMap model) throws Exception {
 		
 		String link = "egovframework/com/web/content/"+id;
 
@@ -141,14 +148,14 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
-		
+		selectedMenu(model, menuNo);
+
 		return link;
 	}
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
+	public String boardList(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -156,29 +163,29 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/cop/bbs/selectArticleList.do";		
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
+	public String boardView(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
 		}
 
-		menu(model);
-		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		menu(model);		
+		subBanner(model);		
+		selectedMenu(model, menuNo);
 		
 		return "forward:/cop/bbs/selectArticleDetail.do";
 	}
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
+	public String boardWrite(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -186,14 +193,14 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/cop/bbs/insertArticleView.do";
 	}
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
+	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -201,14 +208,14 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "";
 	}
 	
 	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/delete.do")
-	public String boardDelete(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") String menuNo, ModelMap model) throws Exception {
+	public String boardDelete(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
 			 
 		if (bbsId==null || bbsId.equals("")){
 			return "egovframework/com/admin/cmm/error/egovError";
@@ -216,7 +223,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "";
 	}
@@ -225,11 +232,11 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaList 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/list.do")
-	public String qnaList(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaList(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		this.checkSession(request);
 		
 		return "forward:/uss/olh/qna/selectQnaList.do";
@@ -237,22 +244,22 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaView 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/view.do")
-	public String qnaView(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaView(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/uss/olh/qna/selectQnaDetail.do";
 	}
 	
 	/*[추가] qnaWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/write.do")
-	public String qnaWrite(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaWrite(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 	
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/uss/olh/qna/insertQnaView.do";
 	
@@ -260,22 +267,22 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/modify.do")
-	public String qnaModify(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaModify(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 			 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/uss/olh/qna/updateQnaView.do";
 	}
 	
 	/*[추가] qnaDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/delete.do")
-	public String qnaDelete(@RequestParam("menuNo") String menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaDelete(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/uss/olh/qna/deleteQna.do";
 	}
@@ -284,11 +291,11 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] faqList 이동메소드 - 2021.04.19*/
 	@RequestMapping(value = "/faq/list.do")
-	public String faqList(@RequestParam("menuNo") String menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String faqList(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
 		subBanner(model);
-		model.addAttribute("menuNo", menuNo);
+		selectedMenu(model, menuNo);
 		
 		return "forward:/uss/olh/faq/selectFaqList.do";
 	}
@@ -315,6 +322,60 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		model.addAttribute("mainMenuList", mainMenuList);	// 큰 타이틀만 들어옴
 		List<?> subMenuList = menuManageService.selectSubMenu(menuManageVO);
 		model.addAttribute("subMenuList", subMenuList);	// 서브메뉴
+	}
+	
+	/** [추가] 선택된 메뉴값의 세로메뉴들을 뽑아내기 위해 - 2021.05.10 **/
+	public void selectedMenu(ModelMap model, int menuNo) throws Exception{
+
+		List<Map<String, Object>> mainMenuMap = (List<Map<String, Object>>) model.get("mainMenuList");
+		List<Map<String, Object>> subMenuMap = (List<Map<String, Object>>) model.get("subMenuList");
+		HashMap<String, Object> selectedMainMenuMap = new HashMap<>();
+		List<Map<String,Object>> selectedSubMenuListMap = new ArrayList<>();
+		
+		int mainMenuNo = -1;
+		
+		for(int i=0; i<mainMenuMap.size(); i++) {
+			int num = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());			
+			if(menuNo == num) {				
+				mainMenuNo = menuNo;				
+				break;
+			}
+		}
+		
+		if(mainMenuNo == -1) {
+			for(int i=0; i<subMenuMap.size(); i++) {
+				int num = Integer.parseInt(subMenuMap.get(i).get("menuNo").toString());	
+				if(menuNo == num) {
+					mainMenuNo = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());					
+					break;
+				}			
+			}
+		}
+		
+		for(int i=0; i<mainMenuMap.size(); i++) {
+			int num = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());
+			if(mainMenuNo == num) {
+				for(Entry<String, Object> map : mainMenuMap.get(i).entrySet()) {
+					selectedMainMenuMap.put(map.getKey(), map.getValue());
+				}
+				break; 
+			}
+		}
+		
+		for(int i=0; i<subMenuMap.size(); i++) {
+			int upperMenuId = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());			
+			if(mainMenuNo != upperMenuId) continue; 
+			HashMap<String, Object> selectedMap = new HashMap<>();
+			for(Entry<String, Object> map : subMenuMap.get(i).entrySet()) {
+				selectedMap.put(map.getKey(), map.getValue());				
+			} 
+			selectedSubMenuListMap.add(selectedMap);
+		}	
+		
+		model.addAttribute("selectedMainMenuMap", selectedMainMenuMap);
+		model.addAttribute("selectedSubMenuListMap", selectedSubMenuListMap);
+		model.addAttribute("mainMenuNo", mainMenuNo);
+		model.addAttribute("menuNo", menuNo);
 	}
 	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.14 **/

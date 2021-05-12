@@ -23,6 +23,36 @@ public class MenuManage {
 	 * 메뉴설명
 	 */
 	private String menuDc;
+	
+	/**
+	 * 메뉴명
+	 */
+	private String menuNm;
+	/**
+	 * 메뉴번호
+	 */
+	private int menuNo;
+	/**
+	 * 메뉴순서
+	 */
+	private int menuOrdr;
+	/**
+	 * 프로그램파일명
+	 */
+	private String progrmFileNm;
+	/**
+	 * 관련이미지명
+	 */
+	private String relateImageNm;
+	/**
+	 * 관련이미지경로
+	 */
+	private String relateImagePath;
+	/**
+	 * 상위메뉴번호
+	 */
+	private int upperMenuId;
+	
 	public String getMenuDc() {
 		return menuDc;
 	}
@@ -71,32 +101,4 @@ public class MenuManage {
 	public void setUpperMenuId(int upperMenuId) {
 		this.upperMenuId = upperMenuId;
 	}
-	/**
-	 * 메뉴명
-	 */
-	private String menuNm;
-	/**
-	 * 메뉴번호
-	 */
-	private int menuNo;
-	/**
-	 * 메뉴순서
-	 */
-	private int menuOrdr;
-	/**
-	 * 프로그램파일명
-	 */
-	private String progrmFileNm;
-	/**
-	 * 관련이미지명
-	 */
-	private String relateImageNm;
-	/**
-	 * 관련이미지경로
-	 */
-	private String relateImagePath;
-	/**
-	 * 상위메뉴번호
-	 */
-	private int upperMenuId;
 }
