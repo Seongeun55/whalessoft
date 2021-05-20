@@ -63,6 +63,7 @@ function fn_validatorMenuList() {
 	if(!checkNumber(document.menuManageVO.upperMenuId.value)){alert("<spring:message code="comSymMnuMpm.menuList.validate.upperMenuId.onlyNumber" />"); return false;} //상위메뉴번호는 숫자만 입력 가능합니다.
 
 	if(document.menuManageVO.progrmFileNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.progrmFileNm.notNull" />"); return false;} //프로그램파일명은 핍수입력 항목입니다.
+	if(document.menuManageVO.progrmFileNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.bannerNm.notNull" />"); return false;} //배너명은 핍수입력 항목입니다.
 	if(document.menuManageVO.menuNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.menuNm.notNull" />"); return false;} //메뉴명은 핍수입력 항목입니다.
 
    return true;
@@ -142,6 +143,25 @@ function press() {
         	});
         	$dialog.dialog('open');
     	});
+    	
+     	// 배너검색 화면 호출 함수
+        $('#popupBannerNm').click(function (e) {
+        	e.preventDefault();
+            //var page = $(this).attr("href");
+            var pagetitle = $(this).attr("title");
+            var page = "<c:url value='/uss/ion/bnr/BannerListSearchNew.do'/>";
+            var $dialog = $('<div></div>')
+            .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+            .dialog({
+            	autoOpen: false,
+                modal: true,
+                width: 550,
+                height: 650,
+                title: pagetitle
+        	});
+        	$dialog.dialog('open');
+    	});
+     
         // 메뉴이동 화면 호출 함수
         $('#popupUpperMenuId').click(function (e) {
         	e.preventDefault();
@@ -167,7 +187,6 @@ function press() {
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript><!-- 자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다. -->
 
 <form:form commandName="menuManageVO" name="menuManageVO" method="post" action="${pageContext.request.contextPath}/sym/mnu/mpm/AdminMenuRegistInsert.do">
-
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2><spring:message code="comSymMnuMpm.menuRegist.pageTop.title"/></h2><!-- 메뉴 등록 -->
@@ -213,6 +232,15 @@ function press() {
 			    <form:errors path="progrmFileNm" />
 		        <a id="popupProgrmFileNm" href="<c:url value='/sym/prm/AdminProgramListSearch.do'/>?tmp_SearchElementName=progrmFileNm" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>">
 					<img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />" alt='' />(<spring:message code="comSymMnuMpm.menuRegist.programFileNameSearch"/>)</a><!-- 새창으로 --><!-- 프로그램파일명 검색 -->
+			</td>
+		</tr>
+		<tr>
+			<th><spring:message code="comSymMnuMpm.menuRegist.bannerNm"/> <span class="pilsu">*</span></th><!-- 배너명 -->
+			<td class="left" colspan="3">
+			    <form:input path="bannerId" maxlength="60" onkeypress="press();" title="파일명" cssStyle="width:350px" /><!-- 배너명 -->
+			    <form:errors path="bannerId" />
+		        <a id="popupBannerNm" href="<c:url value='/uss/ion/bnr/AdminBannerListSearch.do'/>" target="_blank" title="<spring:message code="comSymMnuMpm.menuRegist.newWindow"/>">
+					<img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />" alt='' />(<spring:message code="comSymMnuMpm.menuRegist.bannerNameSearch"/>)</a><!-- 새창으로 --><!-- 배너 검색 -->
 			</td>
 		</tr>
 		<tr>

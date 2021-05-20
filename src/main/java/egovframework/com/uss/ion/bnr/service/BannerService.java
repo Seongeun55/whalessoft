@@ -34,6 +34,15 @@ public interface BannerService {
 	 */
 	public int selectBannerListTotCnt(BannerVO bannerVO) throws Exception;
 	
+	/** [추가] - 2021.05.17
+	 * 서브 배너목록 총 갯수를 조회한다.
+	 * @param bannerVO - 배너 Vo
+	 * @return int - 배너 카운트 수
+	 * 
+	 * @param bannerVO
+	 */
+	public int selectSubBannerListTotCnt(BannerVO bannerVO) throws Exception;
+	
 	/**
 	 * 등록된 배너의 상세정보를 조회한다.
 	 * @param bannerVO - 배너 Vo
@@ -92,4 +101,14 @@ public interface BannerService {
 	 * @param bannerVO
 	 */
 	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception;
+	
+	/**
+	 * [추가] - 2021.05.20
+	 * 특정 배너 ID를 통한 배너 정보를 조회한다.
+	 * @param bannerVO - 배너 Vo
+	 * @return BannerVO - 배너 Vo
+	 * 
+	 * @param bannerVO
+	 */
+	public List<BannerVO> selectedBannerResult(BannerVO bannerVO) throws Exception;
 }

@@ -69,6 +69,18 @@
             </if>
     </select>
     
+    <!-- [추가] - 2021.05.17 -->
+    <select id="selectSubBannerListTotCnt" parameterType="egovframework.com.uss.ion.bnr.service.BannerVO" resultType="int">
+
+            SELECT COUNT(*) totcnt
+            FROM COMTNBANNER
+            WHERE 1=1
+            AND banner_type = 'sub'
+            <if test="searchCondition == 1">AND
+                BANNER_NM LIKE CONCAT('%' , #{searchKeyword}, '%')
+            </if>
+    </select>
+    
     <select id="selectBanner" resultMap="banner">
         
             SELECT BANNER_ID,            
@@ -159,11 +171,29 @@
                    LINK_URL,
                    BANNER_DC,
                    SORT_ORDR,
-                   BANNER_NM 
+                   BANNER_NM,
+                   BANNER_ID
               FROM COMTNBANNER
              WHERE REFLCT_AT = 'Y'  
              AND banner_type = 'sub'
+             AND binary(BANNER_NM) like  CONCAT('%', #{searchKeyword}, '%')
              ORDER BY SORT_ORDR 
+        
+    </select>
+    
+    <!-- [추가] 배너ID를 통한 배너 정보 조회 - 2021.05.20 -->
+    <select id="selectedBannerResult" resultMap="bannerImage">
+        
+            SELECT BANNER_IMAGE_FILE,
+                   LINK_URL,
+                   BANNER_DC,
+                   SORT_ORDR,
+                   BANNER_NM,
+                   BANNER_ID
+              FROM COMTNBANNER
+             WHERE REFLCT_AT = 'Y'  
+             AND banner_type = 'sub'
+             AND BANNER_ID = #{bannerId}        
         
     </select>
 

@@ -28,6 +28,8 @@ public class MenuManageVO{
    private   String   relateImagePath;   // 관련이미지경로
    private   String   relateImageNm;   // 관련이미지명
    private   String   progrmFileNm;   // 프로그램파일명
+   private 	 String	  bannerId;		//배너ID
+   private 	 String	  bannerNm;		//배너명
 
    /* 사이트맵 */
    private   String   creatPersonId;   // 생성자ID 
@@ -332,4 +334,21 @@ public class MenuManageVO{
 	public void setTempInt(int tempInt) {
 		this.tempInt = tempInt;
 	}
+	
+	public String getBannerId() {
+		return bannerId;
+	}
+	
+	public void setBannerId(String bannerId) {
+		this.bannerId = bannerId;
+	}
+	
+	public String getBannerNm() {
+		return bannerNm;
+	}
+	
+	public void setBannerNm(String bannerNm) {
+		this.bannerNm = bannerNm;
+	}
+	
 }

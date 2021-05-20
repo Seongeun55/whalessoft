@@ -56,7 +56,8 @@
             , MENU_DC
             , RELATE_IMAGE_PATH
             , RELATE_IMAGE_NM
-            , PROGRM_FILE_NM )
+            , PROGRM_FILE_NM
+            , BANNER_ID )
 			VALUES (   #{menuNo}
                   , #{menuOrdr}
                   , #{menuNm}  
@@ -64,7 +65,8 @@
                   , #{menuDc}
                   , #{relateImagePath}
                   , #{relateImageNm}
-                  , #{progrmFileNm} )
+                  , #{progrmFileNm}
+                  , #{bannerId} )
 		
 	</insert>
 
@@ -77,7 +79,8 @@
             , MENU_DC           = #{menuDc}         
             , RELATE_IMAGE_PATH = #{relateImagePath}
             , RELATE_IMAGE_NM   = #{relateImageNm}  
-            , PROGRM_FILE_NM    = #{progrmFileNm}   
+            , PROGRM_FILE_NM    = #{progrmFileNm}  
+            , BANNER_ID			= #{bannerId}
 			WHERE MENU_NO=#{menuNo}
 		
 	</update>
@@ -118,6 +121,7 @@
 				, RELATE_IMAGE_PATH AS relateImagePath
 				, RELATE_IMAGE_NM AS relateImageNm
 				, PROGRM_FILE_NM AS progrmFileNm
+				, BANNER_ID AS bannerId
 			FROM COMTNMENUINFO 
 			WHERE Menu_NO > 0 
 			ORDER BY MENU_ORDR

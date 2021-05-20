@@ -138,92 +138,68 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] 일반 페이지 이동메소드 - 2021.04.02*/
 	@RequestMapping(value = "/content.do")
-	public String content(@RequestParam("id") String id, @RequestParam("menuNo") int menuNo, HttpSession session, ModelMap model) throws Exception {
+	public String content(@RequestParam("id") String id, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, HttpSession session, ModelMap model) throws Exception {
 		
-		String link = "egovframework/com/web/content/"+id;
-
-		if (id==null || id.equals("")){
-			link="egovframework/com/admin/cmm/error/egovError";
-		}
+		String link = "egovframework/com/web/content/"+id;		
 		
 		menu(model);
-		subBanner(model);
-		selectedMenu(model, menuNo);
+		//selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 
 		return link;
 	}
 	
 	/*[추가] boardList 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/list.do")
-	public String boardList(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
-			 
-		if (bbsId==null || bbsId.equals("")){
-			return "egovframework/com/admin/cmm/error/egovError";
-		}
-
+	public String boardList(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
+	
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "forward:/cop/bbs/selectArticleList.do";		
 	}
 	
 	/*[추가] boardView 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/view.do")
-	public String boardView(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
-			 
-		if (bbsId==null || bbsId.equals("")){
-			return "egovframework/com/admin/cmm/error/egovError";
-		}
-
+	public String boardView(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
+		
 		menu(model);		
-		subBanner(model);		
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);		
 		
 		return "forward:/cop/bbs/selectArticleDetail.do";
 	}
 	
 	/*[추가] boardWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/write.do")
-	public String boardWrite(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
-			 
-		if (bbsId==null || bbsId.equals("")){
-			return "egovframework/com/admin/cmm/error/egovError";
-		}
+	public String boardWrite(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
 
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "forward:/cop/bbs/insertArticleView.do";
 	}
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
-			 
-		if (bbsId==null || bbsId.equals("")){
-			return "egovframework/com/admin/cmm/error/egovError";
-		}
+	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
 
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "";
 	}
 	
 	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/delete.do")
-	public String boardDelete(@RequestParam("bbsId") String bbsId, @RequestParam("menuNo") int menuNo, ModelMap model) throws Exception {
-			 
-		if (bbsId==null || bbsId.equals("")){
-			return "egovframework/com/admin/cmm/error/egovError";
-		}
+	public String boardDelete(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
 
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "";
 	}
@@ -232,11 +208,11 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaList 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/list.do")
-	public String qnaList(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
-		
+	public String qnaList(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model, HttpServletRequest request) throws Exception {
+
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		this.checkSession(request);
 		
 		return "forward:/uss/olh/qna/selectQnaList.do";
@@ -244,45 +220,46 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] qnaView 이동메소드 - 2021.04.16*/
 	@RequestMapping(value = "/qna/view.do")
-	public String qnaView(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaView(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
-		
+		subBanner(model, menuNo);	
+
 		return "forward:/uss/olh/qna/selectQnaDetail.do";
 	}
 	
 	/*[추가] qnaWrite 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/write.do")
-	public String qnaWrite(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
-	
+	public String qnaWrite(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
-		
+		subBanner(model, menuNo);	
+
 		return "forward:/uss/olh/qna/insertQnaView.do";
 	
 	}
 	
 	/*[추가] qnaModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/modify.do")
-	public String qnaModify(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
-			 
+	public String qnaModify(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "forward:/uss/olh/qna/updateQnaView.do";
 	}
 	
 	/*[추가] qnaDelete 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/qna/delete.do")
-	public String qnaDelete(@RequestParam("menuNo") int menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String qnaDelete(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);				
+
 		
 		return "forward:/uss/olh/qna/deleteQna.do";
 	}
@@ -291,11 +268,11 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] faqList 이동메소드 - 2021.04.19*/
 	@RequestMapping(value = "/faq/list.do")
-	public String faqList(@RequestParam("menuNo") int menuNo, HttpServletRequest request, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
+	public String faqList(@RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, @ModelAttribute("searchVO") QnaVO qnaVO, ModelMap model) throws Exception {
 		
 		menu(model);
-		subBanner(model);
 		selectedMenu(model, menuNo);
+		subBanner(model, menuNo);	
 		
 		return "forward:/uss/olh/faq/selectFaqList.do";
 	}
@@ -319,63 +296,9 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		menuManageVO.setTmpUniqId(user == null ? "USRCNFRM_00000000001" : EgovStringUtil.isNullToString(user.getUniqId()));
 		
 		List<?> mainMenuList = menuManageService.selectMainMenu(menuManageVO);
-		model.addAttribute("mainMenuList", mainMenuList);	// 큰 타이틀만 들어옴
+		model.addAttribute("mainMenuList", mainMenuList);	// 큰 타이틀만 들어옴		
 		List<?> subMenuList = menuManageService.selectSubMenu(menuManageVO);
-		model.addAttribute("subMenuList", subMenuList);	// 서브메뉴
-	}
-	
-	/** [추가] 선택된 메뉴값의 세로메뉴들을 뽑아내기 위해 - 2021.05.10 **/
-	public void selectedMenu(ModelMap model, int menuNo) throws Exception{
-
-		List<Map<String, Object>> mainMenuMap = (List<Map<String, Object>>) model.get("mainMenuList");
-		List<Map<String, Object>> subMenuMap = (List<Map<String, Object>>) model.get("subMenuList");
-		HashMap<String, Object> selectedMainMenuMap = new HashMap<>();
-		List<Map<String,Object>> selectedSubMenuListMap = new ArrayList<>();
-		
-		int mainMenuNo = -1;
-		
-		for(int i=0; i<mainMenuMap.size(); i++) {
-			int num = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());			
-			if(menuNo == num) {				
-				mainMenuNo = menuNo;				
-				break;
-			}
-		}
-		
-		if(mainMenuNo == -1) {
-			for(int i=0; i<subMenuMap.size(); i++) {
-				int num = Integer.parseInt(subMenuMap.get(i).get("menuNo").toString());	
-				if(menuNo == num) {
-					mainMenuNo = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());					
-					break;
-				}			
-			}
-		}
-		
-		for(int i=0; i<mainMenuMap.size(); i++) {
-			int num = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());
-			if(mainMenuNo == num) {
-				for(Entry<String, Object> map : mainMenuMap.get(i).entrySet()) {
-					selectedMainMenuMap.put(map.getKey(), map.getValue());
-				}
-				break; 
-			}
-		}
-		
-		for(int i=0; i<subMenuMap.size(); i++) {
-			int upperMenuId = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());			
-			if(mainMenuNo != upperMenuId) continue; 
-			HashMap<String, Object> selectedMap = new HashMap<>();
-			for(Entry<String, Object> map : subMenuMap.get(i).entrySet()) {
-				selectedMap.put(map.getKey(), map.getValue());				
-			} 
-			selectedSubMenuListMap.add(selectedMap);
-		}	
-		
-		model.addAttribute("selectedMainMenuMap", selectedMainMenuMap);
-		model.addAttribute("selectedSubMenuListMap", selectedSubMenuListMap);
-		model.addAttribute("mainMenuNo", mainMenuNo);
-		model.addAttribute("menuNo", menuNo);
+		model.addAttribute("subMenuList", subMenuList);	// 서브메뉴		
 	}
 	
 	/** [추가] main.do에 있던 부분을 분리 - 2021.04.14 **/
@@ -396,22 +319,97 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		model.addAttribute("bannerList", bannerVO.getBannerList());
 	}
 	
-	/** [추가] 서브페이지 배너를 위해 추가 - 2021.05.07 **/
-	public void subBanner(ModelMap model) throws Exception{
-		
+	/** [추가] 서브페이지 배너를 위해 추가 - 2021.05.20 **/
+	public void subBanner (ModelMap model, Integer menuNo) throws Exception{
+	
 		BannerVO bannerVO = new BannerVO();
 		
-		PaginationInfo paginationInfoBanner = new PaginationInfo();
-		paginationInfoBanner.setCurrentPageNo(bannerVO.getPageIndex());
-		paginationInfoBanner.setRecordCountPerPage(bannerVO.getPageUnit());
-		paginationInfoBanner.setPageSize(bannerVO.getPageSize());
+		//메뉴번호가 있을 때
+		if(menuNo != -1) {
+			MenuManageVO menuManageVO = new MenuManageVO();
+			menuManageVO.setMenuNo(menuNo);
+			List<Map<String, Object>> selectedMenu = (List<Map<String, Object>>)menuManageService.selectedMenu(menuManageVO);	// 메뉴번호를 통해서 해당하는 메뉴에 대한 정보를 불러온다.
+			model.addAttribute("menuNm", selectedMenu.get(0).get("menuNm"));
+			model.addAttribute("menuDc", selectedMenu.get(0).get("menuDc"));
+			
 		
-		bannerVO.setFirstIndex(paginationInfoBanner.getFirstRecordIndex());
-		bannerVO.setLastIndex(paginationInfoBanner.getLastRecordIndex());
-		bannerVO.setRecordCountPerPage(paginationInfoBanner.getRecordCountPerPage());
-		bannerVO.setBannerList(BannerService.selectSubBannerResult(bannerVO));
+			bannerVO.setBannerId((String) selectedMenu.get(0).get("bannerId"));		// 선택된 메뉴정보에서 배너 ID를 저장해준다.
+			bannerVO.setBannerList(BannerService.selectedBannerResult(bannerVO));	// 배너 ID를 통해 해당하는 배너의 정보를 가져온다.
+			List<BannerVO> subBannerList = bannerVO.getBannerList();
+			model.addAttribute("bannerImageFile", subBannerList.get(0).getBannerImageFile());	//이미지 파일을 담는다.
+		}	
+		else {	// 메뉴번호가 없을 때
+			bannerVO.setBannerList(BannerService.selectSubBannerResult(bannerVO));	// 가장 마지막 배너를 가져오기 위해 sub배너의 전체 결과를 조회한다.
+			int bannerNum = bannerVO.getBannerList().size()-1;	
+			BannerVO noMenuBanner = bannerVO.getBannerList().get(bannerNum);
+			model.addAttribute("bannerImageFile", noMenuBanner.getBannerImageFile());
+		}
 		
-		model.addAttribute("subBannerList", bannerVO.getBannerList());
+	}
+	
+
+	/** [추가] 선택된 메뉴값의 세로메뉴들을 뽑아내기 위해 - 2021.05.10 **/
+	public void selectedMenu(ModelMap model, Integer menuNo) throws Exception{
+	
+		List<Map<String, Object>> mainMenuMap = (List<Map<String, Object>>) model.get("mainMenuList");	// 메인 메뉴 정보
+		List<Map<String, Object>> subMenuMap = (List<Map<String, Object>>) model.get("subMenuList");	// 서브 메뉴 정보
+		HashMap<String, Object> selectedMainMenuMap = new HashMap<>();
+		List<Map<String,Object>> selectedSubMenuListMap = new ArrayList<>();
+		int mainMenuNo = -1;	//메인 번호
+
+		// 메뉴 번호가 있을경우
+		if(menuNo != -1) {
+			// 메뉴 번호와 메인 메뉴 번호를 비교하여 메인 번호 설정   
+			for(int i=0; i<mainMenuMap.size(); i++) {
+				int selectedMainMenuNo = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());			
+				if(menuNo == selectedMainMenuNo) {				
+					mainMenuNo = menuNo;				
+					break;
+				}
+			}
+			
+			// 메뉴 번호와 메인 메뉴 번호가 일치하지 않을 때 서브 메뉴 번호와 비교하여 메인 번호 설정
+			if(mainMenuNo == -1) {
+				for(int i=0; i<subMenuMap.size(); i++) {
+					int selectedSubMenuNo = Integer.parseInt(subMenuMap.get(i).get("menuNo").toString());	
+					if(menuNo == selectedSubMenuNo) {
+						mainMenuNo = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());					
+						break;
+					}			
+				}
+			}
+
+			//메인 번호가 정해졌을 경우
+			if(mainMenuNo != -1) {
+				//메인 번호와 선택된 메뉴 번호가 같을 경우 메인 메뉴 정보를 map형태로 저장
+				for(int i=0; i<mainMenuMap.size(); i++) {
+					int selectedMainMenuNo = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());		
+					if(mainMenuNo == selectedMainMenuNo) {
+						for(Entry<String, Object> map : mainMenuMap.get(i).entrySet()) {
+							selectedMainMenuMap.put(map.getKey(), map.getValue());
+						}
+						selectedMainMenuMap.put("order", i);
+						break; 
+					}
+				}
+				
+				//메인 번호와 서브메뉴의 upperMenuId를 비교하여 서브 메뉴들을 저장
+				for(int i=0; i<subMenuMap.size(); i++) {
+					int upperMenuId = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());			
+					if(mainMenuNo != upperMenuId) continue; 
+					HashMap<String, Object> selectedMap = new HashMap<>();
+					for(Entry<String, Object> map : subMenuMap.get(i).entrySet()) {
+						selectedMap.put(map.getKey(), map.getValue());				
+					} 
+					selectedSubMenuListMap.add(selectedMap);
+				}				
+			}
+		}
+
+		model.addAttribute("selectedMainMenuMap", selectedMainMenuMap);
+		model.addAttribute("selectedSubMenuListMap", selectedSubMenuListMap);
+		model.addAttribute("mainMenuNo", mainMenuNo);
+		model.addAttribute("menuNo", menuNo);		
 	}
 	
 	/** [추가] 주소로 바로 접근 불가능하게 하기위해 추가 - 2021.05.03 **/

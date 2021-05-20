@@ -752,10 +752,7 @@ public class ProgrmManageController {
      * @exception Exception
      */
     @RequestMapping(value="/sym/prm/EgovProgramListSearchNew.do")
-    public String selectProgrmListSearchNew(
-    		@ModelAttribute("searchVO") ComDefaultVO searchVO,
-    		ModelMap model)
-            throws Exception {
+    public String selectProgrmListSearchNew(@ModelAttribute("searchVO") ComDefaultVO searchVO, ModelMap model) throws Exception {
         // 0. Spring Security 사용자권한 처리
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
@@ -782,7 +779,7 @@ public class ProgrmManageController {
         int totCnt = progrmManageService.selectProgrmListTotCnt(searchVO);
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
-
+    
       	return "egovframework/com/admin/sym/prm/EgovFileNmSearchNew";
 
     }

@@ -43,6 +43,16 @@ public class BannerDAO extends EgovComAbstractDAO {
     public int selectBannerListTotCnt(BannerVO bannerVO) throws Exception {
         return (Integer)selectOne("bannerDAO.selectBannerListTotCnt", bannerVO);
     }
+    
+    /** [추가] - 2021.05.17
+	 * 서브 배너목록 총 갯수를 조회한다.
+	 * @param bannerVO BannerVO
+	 * @return int
+	 * @exception Exception
+	 */
+    public int selectSubBannerListTotCnt(BannerVO bannerVO) throws Exception {
+        return (Integer)selectOne("bannerDAO.selectSubBannerListTotCnt", bannerVO);
+    }
 
 	/**
 	 * 등록된 배너의 상세정보를 조회한다.
@@ -108,6 +118,17 @@ public class BannerDAO extends EgovComAbstractDAO {
 	 */	
 	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception {
 		return selectList("bannerDAO.selectSubBannerResult", bannerVO);
+	}
+	
+	/**
+	 * [추가] - 2021.05.20
+	 * 특정 배너 ID를 통한 배너 정보를 조회한다.
+	 * @param bannerVO - 배너 VO
+	 * @return BannerVO - 배너 VO
+	 * @exception Exception
+	 */	
+	public List<BannerVO> selectedBannerResult(BannerVO bannerVO) throws Exception {
+		return selectList("bannerDAO.selectedBannerResult", bannerVO);
 	}
 
 }

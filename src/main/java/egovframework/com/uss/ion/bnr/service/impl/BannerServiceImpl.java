@@ -54,6 +54,15 @@ public class BannerServiceImpl extends EgovAbstractServiceImpl implements Banner
 		return bannerDAO.selectBannerListTotCnt(bannerVO);
 	}
 	
+	/** [추가] - 2021.05.17
+	 * 서브 배너목록 총 갯수를 조회한다.
+	 * @param bannerVO - 배너 VO
+	 * @return int - 배너 카운트 수
+	 */
+	public int selectSubBannerListTotCnt(BannerVO bannerVO) throws Exception {
+		return bannerDAO.selectSubBannerListTotCnt(bannerVO);
+	}
+	
 	/**
 	 * 등록된 배너의 상세정보를 조회한다.
 	 * @param bannerVO - 배너 VO
@@ -121,6 +130,16 @@ public class BannerServiceImpl extends EgovAbstractServiceImpl implements Banner
 	 */
 	public List<BannerVO> selectSubBannerResult(BannerVO bannerVO) throws Exception{
 		return bannerDAO.selectSubBannerResult(bannerVO);
+	}
+	
+	/**
+	 * [추가] - 2021.05.20
+	 * 특정 배너 ID를 통한 배너 정보를 조회한다.
+	 * @param bannerVO - 배너 VO
+	 * @return BannerVO - 배너 VO
+	 */
+	public List<BannerVO> selectedBannerResult(BannerVO bannerVO) throws Exception{
+		return bannerDAO.selectedBannerResult(bannerVO);
 	}
 
 }

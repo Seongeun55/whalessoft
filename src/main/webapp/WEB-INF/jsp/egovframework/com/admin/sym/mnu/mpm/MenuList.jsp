@@ -49,7 +49,7 @@ var imgpath = "<c:url value='/images/egovframework/com/cmm/utl/'/>";
 
 <script language="javascript1.2" type="text/javaScript" src="<c:url value='/js/egovframework/com/sym/mnu/mpm/EgovMenuList.js' />"></script>
 <script language="javascript1.2" type="text/javaScript">
-<!--
+
 /* ********************************************************
  * 메뉴등록 처리 함수
  ******************************************************** */
@@ -98,6 +98,7 @@ function initlMenuList() {
 	document.menuManageVO.relateImagePath.value="";
 	document.menuManageVO.relateImageNm.value="";
 	document.menuManageVO.progrmFileNm.value="";
+	document.menuManageVO.bannerId.value="";
 	document.menuManageVO.menuNo.readOnly=false;
 	document.menuManageVO.tmp_CheckVal.value = "";
 }
@@ -125,6 +126,7 @@ function selectMenuListTmp() {
 		document.menuManageVO.relateImagePath.value = nodeValues[9];
 		document.menuManageVO.relateImageNm.value = nodeValues[10];
 		document.menuManageVO.progrmFileNm.value = nodeValues[11];
+		document.menuManageVO.bannerId.value = nodeValues[12];
 		document.menuManageVO.menuNo.readOnly=true;
 		document.menuManageVO.tmp_CheckVal.value = "U";
 }
@@ -145,6 +147,8 @@ function fn_validatorMenuList() {
 
 	if(document.menuManageVO.progrmFileNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.progrmFileNm.notNull" />"); return false;} //프로그램파일명은 Not Null 항목입니다.
 	if(document.menuManageVO.menuNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.menuNm.notNull" />"); return false;} //메뉴명은 Not Null 항목입니다.
+	
+	//if(document.menuManageVO.bannerNm.value == ""){alert("<spring:message code="comSymMnuMpm.menuList.validate.bannerNm.notNull" />"); return false;} //배너명은 Not Null 항목입니다.
 
     return true;
 }
@@ -164,7 +168,7 @@ function checkNumber(str) {
     return flag;
 }
 <c:if test="${!empty resultMsg}">alert("${resultMsg}");</c:if>
--->
+
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -185,6 +189,25 @@ function checkNumber(str) {
         	});
         	$dialog.dialog('open');
     	});
+    	
+    	 //배너검색 화면 호출 함수
+        $('#popupBannerNm').click(function (e) {
+        	e.preventDefault();
+            //var page = $(this).attr("href");
+            var pagetitle = $(this).attr("title");
+            var page = "<c:url value='/uss/ion/bnr/BannerListSearchNew.do'/>";
+            var $dialog = $('<div></div>')
+            .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+            .dialog({
+            	autoOpen: false,
+                modal: true,
+                width: 550,
+                height: 650,
+                title: pagetitle
+        	});
+        	$dialog.dialog('open');
+    	});
+     
         // 메뉴이동 화면 호출 함수
         $('#popupUpperMenuId').click(function (e) {
         	e.preventDefault();
@@ -237,14 +260,6 @@ function checkNumber(str) {
 
 <div id="main" style="display:">
 
-<%-- <table width="717" cellpadding="8" class="table-search" border="0">
- <tr>
-  <td width="100%" class="title_left">
-   <h1><img src="<c:url value='/images/egovframework/com/cmm/icon/tit_icon.gif' />" width="16" height="16" hspace="3" alt="">&nbsp;메뉴 목록</h1></td>
- </tr>
-</table> --%>
-
-
 <table>
 	<colgroup>
 		<col style="width:240px" />
@@ -253,7 +268,7 @@ function checkNumber(str) {
   <tr>
    <td style="vertical-align:top">
 	<c:forEach var="result" items="${list_menulist}" varStatus="status" >
-	<input type="hidden" name="tmp_menuNmVal" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.progrmFileNm}|${result.menuNo}|${result.menuOrdr}|${result.menuNm}|${result.upperMenuId}|${result.menuDc}|${result.relateImagePath}|${result.relateImageNm}|${result.progrmFileNm}|">
+	<input type="hidden" name="tmp_menuNmVal" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.progrmFileNm}|${result.menuNo}|${result.menuOrdr}|${result.menuNm}|${result.upperMenuId}|${result.menuDc}|${result.relateImagePath}|${result.relateImageNm}|${result.progrmFileNm}|${result.bannerId}|">
 	</c:forEach>
 	
 	<div class="tree" style="overflow:scroll; width:218px; height:383px; padding:5px; border:1px solid #ddd">
@@ -288,22 +303,8 @@ function checkNumber(str) {
 		</script>
 	</div>
    </td>
-   <%-- <td width="*" class="title_left">
-	   <table border="0" cellspacing="0" cellpadding="0" align="left">
-		<tr>
-          <td width="90%"></td>
-          <td><span class="button"><a href="<c:url value='/admin/sym/mnu/mpm/AdminMenuListSelect.do'/>" onclick="initlMenuList(); return false;">초기화</a></span></td>
-          <td width="2%"></td>
-          <td><span class="button"><input type="submit" value="<spring:message code="button.save" />" onclick="insertMenuList(); return false;"></span></td>
-          <td width="2%"></td>
-          <td><span class="button"><a href="#LINK" onclick="updateMenuList(); return false;"><spring:message code="button.update" /></a></span></td>
-          <td width="2%"></td>
-          <td><span class="button"><a href="#LINK" onclick="deleteMenuList(); return false;"><spring:message code="button.delete" /></a></span></td>
-		</tr>
-	   </table>
-   </td> --%>
-   <td style="vertical-align:top">
 
+   	<td style="vertical-align:top">
 		<table class="wTable" >
 			<colgroup>
 				<col style="width:30%" />
@@ -341,6 +342,14 @@ function checkNumber(str) {
 	        <input name="progrmFileNm" type="text" size="30" value=""  maxlength="60" title="<spring:message code="comSymMnuMpm.menuList.progrmFileNm" />" style="width:190px"/>
 	        <a id="popupProgrmFileNm" href="/sym/prm/AdminProgramListSearch.do" target="_blank" title="<spring:message code="comSymMnuMpm.menuList.progrmFileNm" />" style="selector-dummy:expression(this.hideFocus=false);"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
 	         alt='' width="15" height="15" />(<spring:message code="comSymMnuMpm.menuList.searchFileNm" />)</a>
+		    </td>
+		  </tr>
+		  <tr>
+		    <th><spring:message code="comSymMnuMpm.menuList.bannerNm" /> <span class="pilsu">*</span></th><!-- [추가] 배너명 -->
+		    <td class="left">
+	        <input name="bannerId" type="text" size="30" value=""  maxlength="60" title="<spring:message code="comSymMnuMpm.menuList.bannerNm" />" style="width:190px"/>
+	        <a id="popupBannerNm" href="/uss/ion/bnr/AdminBannerListSearch.do" target="_blank" title="<spring:message code="comSymMnuMpm.menuList.bannerNm" />" style="selector-dummy:expression(this.hideFocus=false);"><img src="<c:url value='/images/egovframework/com/cmm/icon/search2.gif' />"
+	         alt='' width="15" height="15" />(<spring:message code="comSymMnuMpm.menuList.searchbannerNm" />)</a>
 		    </td>
 		  </tr>
 		  <tr>

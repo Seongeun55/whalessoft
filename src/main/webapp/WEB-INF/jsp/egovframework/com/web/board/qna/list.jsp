@@ -31,7 +31,7 @@ function linkPage(pageNo){
 function viewClick(qaId, pageNo) {
 	var searchWrd=document.getElementsByName("searchWrd")[0].value;
 	var searchCnd=$("select[name=searchCnd]").val();
-	location.href="/qna/view.do?qaId="+qaId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
+	location.href="/qna/view.do?qaId="+qaId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd+"&menuNo="+${param.menuNo};
 }
 </script>
 
@@ -46,6 +46,7 @@ function viewClick(qaId, pageNo) {
 	<!-- 게시판  시작 { -->
 	<div id="bo_list">   
 		<form name="qnaForm" id="fboardlist" action="/qna/list.do" onsubmit="return searchQna(this);" method="get">
+		<input type="hidden" name="menuNo" value="${param.menuNo}">
 		    <!-- 게시판 조회 및 버튼 시작 { -->
 		    <div class="search_box">
 			<ul>
@@ -59,7 +60,7 @@ function viewClick(qaId, pageNo) {
 				<li>
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />
-					<span class="btn_b"><a href="/qna/write.do"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
+					<span class="btn_b"><a href="/qna/write.do?menuNo=${param.menuNo}"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span>
 				</li>
 			</ul>
 			</div>

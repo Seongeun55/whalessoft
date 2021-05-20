@@ -185,25 +185,29 @@ function press() {
 		</colgroup>
 		<thead>
 			<tr>
-			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerNm"/></th><!-- 배너명 -->
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerType"/></th><!-- 배너 구분 -->
+			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerNm"/></th><!-- 배너명 -->			 
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.bannerDc"/></th><!-- 배너 설명 -->
 			   <th scope="col"><spring:message code="ussIonBnr.bannerList.reflctAtt"/></th><!-- 반영여부 -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="banner" items="${bannerList}" varStatus="status">
+			<c:set var="bannerType" value="메인배너" />
+			<c:if test="${banner.bannerType=='sub'}">
+				<c:set var="bannerType" value="서브배너"/>
+			</c:if>
 			<tr>
-				<td>
+				<td><c:out value="${bannerType}"/></td><!-- 배너 구분 -->
+				<td align="left">
 					<form name="item" method="post" action="<c:url value='/uss/ion/bnr/getBanner.do'/>">
 						<input type="hidden" name="bannerId" value="<c:out value="${banner.bannerId}"/>">
 						<input type="hidden" name="pageIndex" value="<c:out value='${bannerVO.pageIndex}'/>">
 						<input type="hidden" name="searchCondition" value="<c:out value='${bannerVO.searchCondition}'/>">
 						<input type="hidden" name="searchKeyword" value="<c:out value="${bannerVO.searchKeyword}"/>">
-						<input class="link" type="submit" value="<c:out value="${banner.bannerNm}"/>" onclick="fncSelectBanner('<c:out value="${banner.bannerId}"/>'); return false;">
+						<input class="link" type="submit" value="<c:out value="${banner.bannerNm}"/>" onclick="fncSelectBanner('<c:out value="${banner.bannerId}"/>'); return false;" style="text-align: center;">
 					</form>
-				</td><!-- 배너 명 -->
-				<td class="left"><c:out value="${banner.bannerType}"/></td><!-- 링크 URL -->
+				</td><!-- 배너 명 -->			
 				<td><c:out value="${banner.bannerDc}"/></td><!-- 배너 설명 -->
 				<td><c:out value="${banner.reflctAt}"/></td><!-- 반영여부 -->
 			</tr>

@@ -39,6 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
@@ -51,6 +52,7 @@ import egovframework.com.uss.ion.bnr.service.BannerVO;
 import egovframework.com.uss.ion.bnr.service.BannerService;
 import egovframework.com.utl.fcc.service.EgovStringUtil;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
@@ -72,6 +74,10 @@ public class AdminBannerController {
     @Resource(name="egovBannerIdGnrService")
     private EgovIdGnrService egovBannerIdGnrService;
 
+    /** EgovPropertyService */
+    @Resource(name = "propertiesService")
+    protected EgovPropertyService propertiesService;
+    
     @Autowired
 	private DefaultBeanValidator beanValidator;
 
@@ -339,4 +345,76 @@ public class AdminBannerController {
 
 		return "egovframework/com/admin/uss/ion/bnr/EgovBannerMainList";
 	}
+	
+	/**
+	 * [추가] - 2021.05.17
+     * 배너명을 조회한다.
+     */
+    @RequestMapping(value="/uss/ion/bnr/AdminBannerListSearch.do")
+    public String selectProgrmListSearch(@ModelAttribute("searchVO") ComDefaultVO searchVO, @ModelAttribute("bannerVO") BannerVO bannerVO, ModelMap model) throws Exception {
+        // 0. Spring Security 사용자권한 처리
+    	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+    	if(!isAuthenticated) {
+    		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
+    	}
+    	// 내역 조회
+    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
+
+    	/** pageing */
+    	PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+		paginationInfo.setPageSize(searchVO.getPageSize());
+
+		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+        List<?> bannerList = BannerService.selectSubBannerResult(bannerVO);
+        model.addAttribute("bannerList", bannerList);
+
+        int totCnt = BannerService.selectSubBannerListTotCnt(bannerVO);
+		paginationInfo.setTotalRecordCount(totCnt);
+        model.addAttribute("paginationInfo", paginationInfo);
+
+      	return "egovframework/com/admin/uss/ion/bnr/BannerNmSearch";
+    }
+    
+    /** [추가] - 2021.05.17
+     * 배너명 조회 팝업    
+     */
+    @RequestMapping(value="/uss/ion/bnr/BannerListSearchNew.do")
+    public String selectProgrmListSearchNew(@ModelAttribute("searchVO") ComDefaultVO searchVO, @ModelAttribute("bannerVO") BannerVO bannerVO, ModelMap model) throws Exception {
+    	// 0. Spring Security 사용자권한 처리
+    	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+    	if(!isAuthenticated) {
+    		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
+        	return "egovframework/com/admin/uat/uia/LoginUsr";
+    	}
+    	// 내역 조회
+    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
+
+    	/** pageing */
+    	PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+		paginationInfo.setPageSize(searchVO.getPageSize());
+
+		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+        List<?> bannerList = BannerService.selectSubBannerResult(bannerVO);
+        model.addAttribute("bannerList", bannerList);
+
+        int totCnt = BannerService.selectSubBannerListTotCnt(bannerVO);
+		paginationInfo.setTotalRecordCount(totCnt);
+        model.addAttribute("paginationInfo", paginationInfo);
+    
+      	return "egovframework/com/admin/uss/ion/bnr/BannerNmSearchNew";
+
+    }
 }

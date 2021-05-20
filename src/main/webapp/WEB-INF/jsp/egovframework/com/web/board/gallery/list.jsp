@@ -18,7 +18,7 @@ function searchArticle(){
 function viewClick(nttId, bbsId, pageNo) {
 	var searchWrd=document.getElementsByName("searchWrd")[0].value;
 	var searchCnd=$("select[name=searchCnd]").val();
-	location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
+	location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd+"&menuNo="+${param.menuNo};
 }
 
 </script>

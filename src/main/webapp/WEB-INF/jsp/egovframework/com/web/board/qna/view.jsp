@@ -29,7 +29,7 @@ function fn_egov_regist_qna(form){
 function delete_qna(pageNo, qaId){
 	if(confirm("<spring:message code="common.delete.msg" />")){	
 		// Delete하기 위한 키값을 셋팅
-		location.href="/qna/delete.do?qaId="+qaId+"&pageIndex="+pageNo;
+		location.href="/qna/delete.do?qaId="+qaId+"&pageIndex="+pageNo+"&menuNo="+${param.menuNo};
 	}	
 }
 </script>
@@ -81,14 +81,14 @@ function delete_qna(pageNo, qaId){
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
 			<c:if test="${user.uniqId==result.frstRegisterId || user.userSe == 'USR' }">		
-				<a href="/qna/modify.do?pageIndex=${param.pageIndex}&qaId=${result.qaId}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+				<a href="/qna/modify.do?pageIndex=${param.pageIndex}&qaId=${result.qaId}&menuNo=${param.menuNo}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 					<spring:message code="button.update" />
 				</a>
 				<a href="javascript:delete_qna('${param.pageIndex}', '${result.qaId}');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 					<spring:message code="button.delete" />
 				</a>
 			</c:if>
-			<a href="/qna/list.do?pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+			<a href="/qna/list.do?pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}&menuNo=${param.menuNo}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 				<spring:message code="button.list" />
 			</a>			
 		</div>

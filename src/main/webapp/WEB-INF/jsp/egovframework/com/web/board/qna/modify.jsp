@@ -82,13 +82,14 @@ function fn_egov_updt_qna(form){
 	    </div>
 	
 	    <div class="btn_confirm write_div">
-	        <a href="/qna/list.do" class="btn_cancel btn">취소</a>
+	        <a href="/qna/list.do?&menuNo=${param.menuNo}" class="btn_cancel btn">취소</a>
 	        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">수정완료</button>
 	    </div>
 	    
 	    <input name="answerCn" type="hidden" value="<c:out value='answer'/>">
 		<input name="qaId" type="hidden" value="<c:out value='${qnaVO.qaId}'/>">
 		<input name="pageIndex" type="hidden" value="<c:out value='${pageIndex}'/>">
+		<input name="menuNo" type="hidden" value="<c:out value='${param.menuNo}'/>">
     </form:form>
 	</section>
 <!-- } 게시물 작성/수정 끝 -->

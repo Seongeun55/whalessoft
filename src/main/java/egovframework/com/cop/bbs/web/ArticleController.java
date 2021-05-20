@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -597,7 +598,8 @@ public class ArticleController {
 	 */
 	@RequestMapping("/cop/bbs/insertArticle.do")
 	public String insertArticle(final MultipartHttpServletRequest multiRequest, @ModelAttribute("searchVO") BoardVO boardVO, 
-			@ModelAttribute("bdMstr") BoardMaster bdMstr, @ModelAttribute("board") BoardVO board, BindingResult bindingResult, ModelMap model) throws Exception {
+			@ModelAttribute("bdMstr") BoardMaster bdMstr, @ModelAttribute("board") BoardVO board, BindingResult bindingResult, ModelMap model,
+			HttpServletRequest request) throws Exception {
 		
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -663,7 +665,7 @@ public class ArticleController {
 		if (boardVO.getBlogAt().equals("Y")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
-			return "redirect:/board/list.do?bbsId=" + boardVO.getBbsId();
+			return "redirect:/board/list.do?bbsId=" + boardVO.getBbsId()+"&menuNo="+request.getParameter("menuNo");
 		}
 
 	}

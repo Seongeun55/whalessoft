@@ -1,9 +1,6 @@
 package egovframework.com.uss.olh.qna.web;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,16 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.cmm.service.CmmUseService;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.cmm.util.EgovXssChecker;
-import egovframework.com.cmm.web.ComUtlController;
 import egovframework.com.sym.mnu.mpm.service.MenuManageService;
-import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.uss.olh.qna.service.QnaService;
 import egovframework.com.uss.olh.qna.service.QnaDefaultVO;
 import egovframework.com.uss.olh.qna.service.QnaVO;
@@ -211,7 +205,7 @@ public class QnaController {
 	 */
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/uss/olh/qna/insertQna.do")
-	public String insertQna(@ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult, ModelMap model) throws Exception {
+	public String insertQna(HttpServletRequest request, @ModelAttribute("searchVO") QnaVO searchVO, @ModelAttribute("qnaVO") QnaVO qnaVO, BindingResult bindingResult, ModelMap model) throws Exception {
 		beanValidator.validate(qnaVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
@@ -234,7 +228,7 @@ public class QnaController {
 
 		QnaService.insertQna(qnaVO);
 
-		return "redirect:/qna/list.do";
+		return "redirect:/qna/list.do?menuNo="+request.getParameter("menuNo");
 	}
 	
 	/**
@@ -310,7 +304,7 @@ public class QnaController {
 
 		QnaService.updateQna(qnaVO);
 
-		return "redirect:/qna/view.do?qaId="+qnaVO.getQaId()+"&pageIndex="+qnaVO.getPageIndex();
+		return "redirect:/qna/view.do?qaId="+qnaVO.getQaId()+"&pageIndex="+qnaVO.getPageIndex()+"&menuNo="+request.getParameter("menuNo");
 
 	}
 	
@@ -342,6 +336,6 @@ public class QnaController {
     
 		QnaService.deleteQna(qnaVO);
 
-		return "redirect:/qna/list.do";
+		return "redirect:/qna/list.do?menuNo="+request.getParameter("menuNo");
 	}
 }

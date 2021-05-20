@@ -248,7 +248,7 @@ $(function() {
 		
 			<!-- 하단 버튼 -->
 			 <div class="btn_confirm write_div">
-		        <a href="/board/list.do?bbsId=${boardMasterVO.bbsId}" class="btn_cancel btn">취소</a>
+		        <a href="/board/list.do?bbsId=${boardMasterVO.bbsId}&menuNo=${param.menuNo}" class="btn_cancel btn">취소</a>
 		        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">작성완료</button>
 		    </div>	
 		</div>
@@ -264,6 +264,7 @@ $(function() {
 		<input type="hidden" name="blogAt" value="<c:out value='${articleVO.blogAt}'/>"/>
 		<input type="hidden" name="cmd" value="<c:out value='save'/>">
 		<input type="hidden" name="bbsId" value="<c:out value='${articleVO.bbsId}'/>">
+		<input type="hidden" name="menuNo" value="<c:out value='${param.menuNo}'/>">
 		</form:form>
 	</section>
 </div>

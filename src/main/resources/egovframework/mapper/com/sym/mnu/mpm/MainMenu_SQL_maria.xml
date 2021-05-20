@@ -15,6 +15,7 @@
 				, B.RELATE_IMAGE_NM AS relateImageNm
 				, B.PROGRM_FILE_NM AS progrmFileNm
 				, (SELECT C.URL FROM COMTNPROGRMLIST C WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM) AS chkURL
+				, B.BANNER_ID AS bannerId
 			FROM COMTNMENUCREATDTLS A, COMTNMENUINFO B 
 			WHERE  B.Menu_NO > 0 
 			AND    B.UPPER_MENU_NO = 0  
@@ -25,8 +26,26 @@
 		 
 	</select>
 	
-	<!-- [추가]하위메뉴 불러오기 -->
-	<select id="selectSubMenu" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
+	<!-- [추가]선택된 메뉴 불러오기 -->
+	<select id="selectedMenu" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
+		 
+            SELECT
+			      MENU_NO AS menuNo
+				, MENU_ORDR AS menuOrdr
+				, MENU_NM AS menuNm
+				, UPPER_MENU_NO AS upperMenuId
+				, MENU_DC AS menuDc
+				, RELATE_IMAGE_PATH AS relateImagePath
+				, RELATE_IMAGE_NM AS relateImageNm
+				, PROGRM_FILE_NM AS progrmFileNm
+				, BANNER_ID AS bannerId
+			FROM  COMTNMENUINFO 
+			WHERE MENU_NO = #{menuNo}
+		 
+	</select>	
+	
+	<!-- [추가]하위메뉴 불러오기-->
+	<select id="selectSubMenuHead" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
 		 
             SELECT
 			      B.MENU_NO AS menuNo
@@ -38,6 +57,7 @@
 				, B.RELATE_IMAGE_NM AS relateImageNm
 				, B.PROGRM_FILE_NM AS progrmFileNm
 				, (SELECT C.URL FROM COMTNPROGRMLIST C WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM) AS chkURL
+				, B.BANNER_ID AS bannerId
 			FROM COMTNMENUCREATDTLS A, COMTNMENUINFO B 
 			WHERE  B.Menu_NO > 0 
 			AND    B.UPPER_MENU_NO > 0  
@@ -46,7 +66,7 @@
 	                                WHERE  C.SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
 			ORDER BY MENU_ORDR
 		 
-	</select>	
+	</select>
 
 	<select id="selectMainMenuLeft" parameterType="egovframework.com.sym.mnu.mpm.service.MenuManageVO" resultType="egovMap">
 		 

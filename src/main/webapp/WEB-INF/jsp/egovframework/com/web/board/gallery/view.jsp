@@ -118,7 +118,7 @@ function fn_egov_select_commentList(pageNo) {
         <!-- } 본문 내용 끝 -->
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
-			<a href="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}" style="display:block; line-height:21px;" class="s_submit">
+			<a href="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}&menuNo=${param.menuNo}" style="display:block; line-height:21px;" class="s_submit">
 				<spring:message code="button.list" />
 			</a>	
 		</div>

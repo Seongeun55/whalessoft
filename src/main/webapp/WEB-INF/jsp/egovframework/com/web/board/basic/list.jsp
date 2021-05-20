@@ -22,7 +22,7 @@
 	function viewClick(nttId, bbsId, pageNo) {
 		var searchWrd=document.getElementsByName("searchWrd")[0].value;
 		var searchCnd=$("select[name=searchCnd]").val();
-		location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd;
+		location.href="/board/view.do?nttId="+nttId+"&bbsId="+bbsId+"&pageIndex="+pageNo+"&searchWrd="+searchWrd+"&searchCnd="+searchCnd+"&menuNo="+${param.menuNo};
 	}
 </script>
 
@@ -52,13 +52,14 @@
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />					
 					<c:if test="${user.userSe=='USR' }">
-						<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
+						<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}&menuNo=${param.menuNo}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
 					</c:if>
 				</li>
 			</ul>
 			</div>
 		<input name="bbsId" type="hidden" value="${boardMasterVO.bbsId}">
 		<input name="pageIndex" type="hidden" value="">
+		<input name="menuNo" type="hidden" value="${param.menuNo}">
 		</form>
     	<!-- } 게시판 조회 및 버튼 끝 -->
         

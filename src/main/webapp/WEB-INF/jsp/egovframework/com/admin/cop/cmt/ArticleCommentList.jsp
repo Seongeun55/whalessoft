@@ -98,11 +98,15 @@
 		</tbody>
 	</table>
 	</div>
-<input name="subPageIndex" type="hidden" value="<c:out value='${searchVO.subPageIndex}'/>">
-<input name="commentNo" type="hidden" value="<c:out value='${searchVO.commentNo}'/>">
-<input name="modified" type="hidden" value="false">
-<input name="nttId" type="hidden" value="<c:out value="${result.nttId}" />">
-<input name="bbsId" type="hidden" value="<c:out value="${boardMasterVO.bbsId}" />">
-</form:form>
+	<input name="subPageIndex" type="hidden" value="<c:out value='${searchVO.subPageIndex}'/>">
+	<input name="commentNo" type="hidden" value="<c:out value='${searchVO.commentNo}'/>">
+	<input name="modified" type="hidden" value="false">
+	<input name="nttId" type="hidden" value="<c:out value="${result.nttId}" />">
+	<input name="bbsId" type="hidden" value="<c:out value="${boardMasterVO.bbsId}" />">
+	<input name="menuNo" type="hidden" value="<c:out value="${param.menuNo}" />">
+	<input name="pageIndex" type="hidden" value="<c:out value="${param.pageIndex}" />">
+	<input name="searchWrd" type="hidden" value="<c:out value="${param.searchWrd}" />">
+	<input name="searchCnd" type="hidden" value="<c:out value="${param.searchWrd}" />">
+	</form:form>
 
 </c:if>

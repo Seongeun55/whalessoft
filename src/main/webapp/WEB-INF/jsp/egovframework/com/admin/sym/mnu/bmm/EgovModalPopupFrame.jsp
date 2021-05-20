@@ -38,7 +38,7 @@
 </script>
 <title>선택 목록</title>
 </head>
-<body>
-	<iframe id="popupFrame" src="<c:url value='<c:out value="${requestUrl}"/>' />" width="${width}" height="${height}" align="middle" frameborder="0" title="선택목록팝업창호출" ></iframe>
+<body>	<!-- 원래는 src="<c:url value='<c:out value=' ${requestUrl}' />' />" -->
+	<iframe id="popupFrame" src="<c:url value='${requestUrl}' />" width="${width}" height="${height}" align="middle" frameborder="0" title="선택목록팝업창호출" ></iframe>
 </body>
 </html>

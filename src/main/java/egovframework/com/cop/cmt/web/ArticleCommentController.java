@@ -1,5 +1,6 @@
 package egovframework.com.cop.cmt.web;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -124,6 +125,7 @@ public class ArticleCommentController {
 		
 		//[추가] 어디에서 들어왔는지에 따라 댓글 jsp 변경
  		String uri = request.getRequestURI();
+ 
 		if(uri.contains("/admin")) {
 			return "egovframework/com/admin/cop/cmt/AdminArticleCommentList";
 		}
@@ -144,7 +146,7 @@ public class ArticleCommentController {
      */
     @RequestMapping("/cop/cmt/insertArticleComment.do")
     public String insertArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
+	    BindingResult bindingResult, ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest request) throws Exception {
 		
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -173,7 +175,7 @@ public class ArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			return "forward:/cop/bbs/selectArticleDetail.do";
+			return "redirect:"+request.getHeader("referer");
 		}
     }
     
@@ -189,7 +191,7 @@ public class ArticleCommentController {
      */
     @RequestMapping("/cop/cmt/deleteArticleComment.do")
     public String deleteArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-    		ModelMap model, @RequestParam HashMap<String, String> map) throws Exception {
+    		ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest request) throws Exception {
 		@SuppressWarnings("unused")
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -206,7 +208,7 @@ public class ArticleCommentController {
 		if("Y".equals(chkBlog)){
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		}else{
-			return "forward:/board/view.do";
+			return "redirect:"+request.getHeader("referer");
 		}
     }
     
@@ -277,7 +279,7 @@ public class ArticleCommentController {
      */
     @RequestMapping("/cop/cmt/updateArticleComment.do")
     public String updateArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, 
-	    BindingResult bindingResult, ModelMap model) throws Exception {
+	    BindingResult bindingResult, ModelMap model, HttpServletRequest request) throws Exception {
     
 		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
@@ -297,6 +299,14 @@ public class ArticleCommentController {
 		    commentVO.setCommentCn("");
 		    commentVO.setCommentNo("");
 		}
-		return "forward:/board/view.do";
+		Enumeration<String> params = request.getParameterNames();
+		String strParam = "";
+		while(params.hasMoreElements()) {
+		    String name = (String)params.nextElement();
+		    String value = request.getParameter(name);
+		    strParam += name + "=" + value + "&";
+		}
+	
+		return "redirect:"+request.getHeader("referer");
     }	
 }

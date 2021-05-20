@@ -106,6 +106,15 @@ public interface MenuManageService {
 	 */
 	List<?> selectMainMenu(MenuManageVO vo) throws Exception;
 	
+	/**
+	 * [추가] - 2021.05.20
+	 * 선택된 메뉴 조회
+	 * @param vo MenuManageVO
+	 * @return List
+	 * @exception Exception
+	 */
+	List<?> selectedMenu(MenuManageVO vo) throws Exception;
+	
 	/**[추가] - 2021.04.07
 	 * SubMenu 조회
 	 * @param vo MenuManageVO
