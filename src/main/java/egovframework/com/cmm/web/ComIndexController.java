@@ -144,8 +144,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 
 		return link;
 	}
@@ -156,8 +155,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "forward:/cop/bbs/selectArticleList.do";		
 	}
@@ -168,8 +166,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		
 		menu(model);		
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "forward:/cop/bbs/selectArticleDetail.do";
 	}
@@ -180,8 +177,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);		
 		
 		return "forward:/cop/bbs/insertArticleView.do";
 	}
@@ -192,8 +188,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "";
 	}
@@ -204,8 +199,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "";
 	}
@@ -218,8 +212,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		this.checkSession(request);
 		
 		return "forward:/uss/olh/qna/selectQnaList.do";
@@ -231,8 +224,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 
 		return "forward:/uss/olh/qna/selectQnaDetail.do";
 	}
@@ -243,8 +235,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 
 		return "forward:/uss/olh/qna/insertQnaView.do";
 	
@@ -256,8 +247,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "forward:/uss/olh/qna/updateQnaView.do";
 	}
@@ -268,8 +258,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "forward:/uss/olh/qna/deleteQna.do";
 	}
@@ -282,8 +271,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);	
-		subHeader(model, menuNo);
+		subBanner(model, menuNo);			
 		
 		return "forward:/uss/olh/faq/selectFaqList.do";
 	}
@@ -355,38 +343,13 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		}
 		
 	}
-	
-	/** [추가] 서브헤더에 필요한 정보를 위한 작업 - 2021.05.24 **/
-	public void subHeader(ModelMap model, Integer menuNo) throws Exception{
-		List<Map<String, Object>> mainMenuMap = (List<Map<String, Object>>) model.get("mainMenuList");	// 메인 메뉴 정보
-		List<Map<String, Object>> subMenuMap = (List<Map<String, Object>>) model.get("subMenuList");	// 서브 메뉴 정보
-		HashMap<String, Object> menuInfoMap = null;
-		List<Map<String,Object>> subMenuListMap = new ArrayList<>();
-		
-		for(int i=0; i<mainMenuMap.size(); i++) {			
-			for(int j=0; j<subMenuMap.size(); j++) {
-				menuInfoMap = new HashMap<>();
-				int _main = Integer.parseInt(mainMenuMap.get(i).get("menuNo").toString());
-				int _sub = Integer.parseInt(subMenuMap.get(j).get("upperMenuId").toString());				
-				if(_main==_sub) {	//대메뉴의 메뉴번호와 서브메뉴의 상위메뉴가 같을경우 (ex. 회사소개(대메뉴번호 100)와 연혁(상위메뉴가 100)
-					menuInfoMap.put("upperMenuNo", _sub);
-					menuInfoMap.put("menuNo",  subMenuMap.get(j).get("menuNo"));
-					menuInfoMap.put("menuNm", subMenuMap.get(j).get("menuNm"));
-					menuInfoMap.put("chkURL", subMenuMap.get(j).get("chkURL"));
-					menuInfoMap.put("menuOrdr", subMenuMap.get(j).get("menuOrdr"));
-					subMenuListMap.add(menuInfoMap);
-				}				
-			}			
-		}
-		model.addAttribute("subMenuListMap", subMenuListMap);
-		model.addAttribute("menuNo", menuNo);		
-	}
 
 	/** [추가] 선택된 메뉴값의 상위메뉴번호를 얻기위한 작업 - 2021.05.10 **/
 	public void selectedMenu(ModelMap model, Integer menuNo) throws Exception{
 	
 		List<Map<String, Object>> mainMenuMap = (List<Map<String, Object>>) model.get("mainMenuList");	// 메인 메뉴 정보
 		List<Map<String, Object>> subMenuMap = (List<Map<String, Object>>) model.get("subMenuList");	// 서브 메뉴 정보
+		List<Map<String,Object>> selectedSubMenuListMap = new ArrayList<>();
 		int mainMenuNo = -1;	//메인 번호
 
 		// 메뉴 번호가 있을경우
@@ -409,8 +372,22 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 					}			
 				}
 			}
+			
+			if(mainMenuNo != -1) {
+				for(int i=0; i<subMenuMap.size(); i++) {
+					int upperMenuId = Integer.parseInt(subMenuMap.get(i).get("upperMenuId").toString());			
+					if(mainMenuNo != upperMenuId) continue; 
+					HashMap<String, Object> selectedMap = new HashMap<>();
+					for(Entry<String, Object> map : subMenuMap.get(i).entrySet()) {
+						selectedMap.put(map.getKey(), map.getValue());				
+					} 
+					selectedSubMenuListMap.add(selectedMap);
+				}	
+			}
 		}
+		model.addAttribute("selectedSubMenuListMap", selectedSubMenuListMap);	
 		model.addAttribute("mainMenuNo", mainMenuNo);	
+		model.addAttribute("menuNo", menuNo);
 	}
 	
 	/** [추가] 주소로 바로 접근 불가능하게 하기위해 추가 - 2021.05.03 **/

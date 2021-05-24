@@ -111,6 +111,7 @@ function fn_egov_regist_bbs(form){
    				<div><form:errors path="bbsNm" cssClass="error" /></div>     
 			</td>
 		</tr>
+		
 		<!-- 게시판 소개내용 -->
 		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.regist.bbsIntrcn"/> </c:set>
 		<tr>
@@ -118,6 +119,21 @@ function fn_egov_regist_bbs(form){
 			<td class="nopd">
 				<form:textarea path="bbsIntrcn" title="${title} ${inputTxt}" cols="300" rows="20" />   
 				<div><form:errors path="bbsIntrcn" cssClass="error" /></div>  
+			</td>
+		</tr>
+		
+		<!-- 권한관리 -->
+		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.regist.bbsAuth"/> </c:set>
+		<tr>
+			<th><label for="bbsAuth">${title } <span class="pilsu">*</span></label></th>
+			<td class="left">
+				<form:select path="bbsAuth" title="${title} ${inputTxt}" cssClass="txt">
+					<form:option value="" label="--선택하세요--" />
+					<c:forEach var="result" items="${resultList}" varStatus="status">
+						<option value='<c:out value="${result.tmplatId}"/>'><c:out value="${result.tmplatNm}"/></option>
+					</c:forEach>
+				</form:select>
+				<div><form:errors path="bbsAuth" cssClass="error" /></div>  
 			</td>
 		</tr>
 		
