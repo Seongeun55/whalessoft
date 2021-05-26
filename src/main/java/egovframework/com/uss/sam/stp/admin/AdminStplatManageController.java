@@ -179,7 +179,7 @@ public class AdminStplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/LoginUsr";
+        	return "forward:/uat/uia/LoginUsr.do";
         }
 
     	String	frstRegisterId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());
@@ -245,7 +245,7 @@ public class AdminStplatManageController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();	//KISA 보안취약점 조치 (2018-12-10, 이정은)
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/LoginUsr";
+        	return "forward:/uat/uia/LoginUsr.do";
         }
         
     	String	lastUpdusrId = loginVO == null ? "" : EgovStringUtil.isNullToString(loginVO.getUniqId());

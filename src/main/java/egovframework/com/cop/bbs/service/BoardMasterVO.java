@@ -75,7 +75,11 @@ public class BoardMasterVO extends BoardMaster implements Serializable {
     private String lastUpdusrNm = "";
 
     /** 권한지정 여부 */
-    private String authFlag = "";
+    private String authFlag = "";		
+    private String authList = "";		//목록
+    private String authRead = "";		//읽기
+    private String authWrite = "";		//글 작성
+    private String authComment = "";	//댓글
 
     /** 템플릿경로 */
     private String tmplatCours = "";
@@ -422,7 +426,39 @@ public class BoardMasterVO extends BoardMaster implements Serializable {
 	this.authFlag = authFlag;
     }
 
-    /**
+    public String getAuthList() {
+		return authList;
+	}
+
+	public void setAuthList(String authList) {
+		this.authList = authList;
+	}
+
+	public String getAuthRead() {
+		return authRead;
+	}
+
+	public void setAuthRead(String authRead) {
+		this.authRead = authRead;
+	}
+
+	public String getAuthWrite() {
+		return authWrite;
+	}
+
+	public void setAuthWrite(String authWrite) {
+		this.authWrite = authWrite;
+	}
+
+	public String getAuthComment() {
+		return authComment;
+	}
+
+	public void setAuthComment(String authComment) {
+		this.authComment = authComment;
+	}
+
+	/**
      * tmplatCours attribute를 리턴한다.
      * 
      * @return the tmplatCours

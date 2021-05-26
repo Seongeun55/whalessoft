@@ -356,7 +356,7 @@ public class AdminBannerController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/LoginUsr";
+    		return "forward:/uat/uia/LoginUsr.do";
     	}
     	// 내역 조회
     	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
@@ -391,7 +391,7 @@ public class AdminBannerController {
     	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
     	if(!isAuthenticated) {
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-        	return "egovframework/com/admin/uat/uia/LoginUsr";
+    		return "forward:/uat/uia/LoginUsr.do";
     	}
     	// 내역 조회
     	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));

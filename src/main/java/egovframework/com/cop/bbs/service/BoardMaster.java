@@ -81,6 +81,13 @@ public class BoardMaster implements Serializable {
     /** 템플릿 명 */
     private String tmplatNm = "";
     
+    /** 권한지정 여부 */
+    private String authFlag = "";		
+    private String authList = "";		//목록
+    private String authRead = "";		//읽기
+    private String authWrite = "";		//글 작성
+    private String authComment = "";	//댓글
+    
     /** 커뮤니티 ID */
     private String cmmntyId;
     
@@ -464,7 +471,47 @@ public class BoardMaster implements Serializable {
 	this.tmplatNm = tmplatNm;
     }
 
-    /**
+    public String getAuthFlag() {
+		return authFlag;
+	}
+
+	public void setAuthFlag(String authFlag) {
+		this.authFlag = authFlag;
+	}
+
+	public String getAuthList() {
+		return authList;
+	}
+
+	public void setAuthList(String authList) {
+		this.authList = authList;
+	}
+
+	public String getAuthRead() {
+		return authRead;
+	}
+
+	public void setAuthRead(String authRead) {
+		this.authRead = authRead;
+	}
+
+	public String getAuthWrite() {
+		return authWrite;
+	}
+
+	public void setAuthWrite(String authWrite) {
+		this.authWrite = authWrite;
+	}
+
+	public String getAuthComment() {
+		return authComment;
+	}
+
+	public void setAuthComment(String authComment) {
+		this.authComment = authComment;
+	}
+
+	/**
      * option attribute를 리턴한다.
      * @return the option
      */

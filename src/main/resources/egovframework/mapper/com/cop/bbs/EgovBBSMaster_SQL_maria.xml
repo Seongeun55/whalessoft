@@ -82,12 +82,14 @@
 			(BBS_ID, BBS_TY_CODE, BBS_NM, BBS_INTRCN, 
 			 REPLY_POSBL_AT, FILE_ATCH_POSBL_AT, ATCH_POSBL_FILE_NUMBER,
 			 TMPLAT_ID, USE_AT, CMMNTY_ID,
-			 FRST_REGISTER_ID, FRST_REGIST_PNTTM, BLOG_ID, BLOG_AT )
+			 FRST_REGISTER_ID, FRST_REGIST_PNTTM, BLOG_ID, BLOG_AT, 
+			 authList, authRead, authWrite, authComment )
 			VALUES
 			( #{bbsId}, #{bbsTyCode}, #{bbsNm}, #{bbsIntrcn}, 
 			  #{replyPosblAt}, #{fileAtchPosblAt}, #{atchPosblFileNumber}, 
-			  #{tmplatId}, #{useAt}, #{cmmntyId}, #{frstRegisterId}, SYSDATE(), #{blogId}, #{blogAt}  
-			 )			
+			  #{tmplatId}, #{useAt}, #{cmmntyId}, #{frstRegisterId}, SYSDATE(), #{blogId}, #{blogAt},
+			  #{authList}, #{authRead}, #{authWrite}, #{authComment}  
+			)			
 		
 	</insert>
 	
@@ -176,7 +178,7 @@
 	<select id="selectBBSMasterDetail" parameterType="egovframework.com.cop.bbs.service.BoardMasterVO" resultMap="boardMasterDetail">
 		
 			SELECT 
-				a.BBS_ID, a.BBS_TY_CODE, b.CODE_NM as BBS_TY_CODE_NM, a.BBS_INTRCN, 
+				a.authList, a.authWrite, a.authRead, a.authComment, a.BBS_ID, a.BBS_TY_CODE, b.CODE_NM as BBS_TY_CODE_NM, a.BBS_INTRCN, 
 				a.BBS_NM, 
 				a.TMPLAT_ID, d.TMPLAT_NM, d.TMPLAT_COURS, a.FILE_ATCH_POSBL_AT, a.ATCH_POSBL_FILE_NUMBER,
 				a.ATCH_POSBL_FILE_SIZE, a.REPLY_POSBL_AT, a.FRST_REGISTER_ID, e.USER_NM as FRST_REGISTER_NM, a.CMMNTY_ID,
@@ -209,7 +211,11 @@
 				TMPLAT_ID = #{tmplatId},		
 				LAST_UPDUSR_ID = #{lastUpdusrId},
 				LAST_UPDT_PNTTM = SYSDATE(),
-				USE_AT = #{useAt}
+				USE_AT = #{useAt},
+				authList = #{authList},
+				authRead = #{authRead},
+				authWrite = #{authWrite},
+				authComment = #{authComment}
 			WHERE BBS_ID = #{bbsId}
  		
  	</update>

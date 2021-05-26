@@ -59,7 +59,7 @@ function fn_egov_regist_qna(form){
 			<div style="width:50%;" class="three_div">
 				<!-- 전화번호 -->
 				<c:set var="title"><spring:message code="comUssOlhQna.qnaVO.telNo"/> </c:set>
-				
+
 				<label for="areaNo" class="sound_only">${title}<strong>필수</strong></label>
 			    <form:input type="text" path="areaNo" id="areaNo" required="required" class="frm_input three_input required" placeholder="010" />
 			    <Span>-</Span>

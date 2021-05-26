@@ -100,6 +100,9 @@ public class LoginController {
 		String message = (String)request.getParameter("message");
 		if (message!=null) model.addAttribute("message", message);
 		
+		String referrer = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", referrer);
+		
 		return "egovframework/com/admin/uat/uia/LoginUsr";
 	}
 
@@ -182,7 +185,7 @@ public class LoginController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "egovframework/com/admin/uat/uia/LoginUsr";
+			return "forward:/uat/uia/LoginUsr.do";
 		}
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		
@@ -388,12 +391,9 @@ public class LoginController {
 	
 		request.getSession().setAttribute("loginVO", user);
 		request.getSession().setAttribute("accessUser", user.getUserSe().concat(user.getId()));
-		
-		if(user.getUserSe().equals("USR")) {
-			return "redirect:/admin/index.do";
-		}else {
-			return "redirect:/main.do";
-		}	
+		String url = (String) request.getSession().getAttribute("prevPage");
+
+		return "redirect:" + url;		
 	}
 	
 	@RequestMapping(value = "/uat/uia/securityLogout.do")

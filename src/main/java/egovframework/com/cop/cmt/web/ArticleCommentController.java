@@ -89,7 +89,7 @@ public class ArticleCommentController {
         Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
         if(!isAuthenticated) {
-            return "egovframework/com/admin/uat/uia/LoginUsr";
+        	return "forward:/uat/uia/LoginUsr.do";
         }
 		
 		model.addAttribute("sessionUniqId", user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -229,7 +229,7 @@ public class ArticleCommentController {
 	    Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	
 	    if(!isAuthenticated) {
-	        return "egovframework/com/admin/uat/uia/LoginUsr";
+	    	return "forward:/uat/uia/LoginUsr.do";
 	    }
 	
 		CommentVO articleCommentVO = new CommentVO();

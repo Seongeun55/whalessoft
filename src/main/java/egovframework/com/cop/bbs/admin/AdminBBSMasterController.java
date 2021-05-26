@@ -223,7 +223,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) {
-			return "egovframework/com/admin/uat/uia/LoginUsr";
+			return "forward:/uat/uia/LoginUsr.do";
 		}
 
 		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
@@ -313,7 +313,7 @@ public class AdminBBSMasterController {
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
 		if (!isAuthenticated) { // KISA 보안약점 조치 (2018-12-10, 신용호)
-			return "egovframework/com/admin/uat/uia/LoginUsr";
+			return "forward:/uat/uia/LoginUsr.do";
 		}
 
 		blogVO.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
@@ -367,6 +367,31 @@ public class AdminBBSMasterController {
 	@RequestMapping("/cop/bbs/selectBBSMasterDetail.do")
 	public String selectBBSMasterDetail(@ModelAttribute("searchVO") BoardMasterVO searchVO, ModelMap model) throws Exception {
 		BoardMasterVO vo = BBSMasterService.selectBBSMasterInf(searchVO);
+		String resultList = "";
+		String resultWrite = "";
+		String resultRead = "";
+		String resultComment = "";
+		
+		if(vo.getAuthList().equals("ALL")) resultList = "비회원";
+		else if (vo.getAuthList().equals("GNR")) resultList = "회원";
+		else if (vo.getAuthList().equals("USR")) resultList = "관리자";
+		
+		if(vo.getAuthWrite().equals("ALL")) resultWrite = "비회원";
+		else if (vo.getAuthWrite().equals("GNR")) resultWrite = "회원";
+		else if (vo.getAuthWrite().equals("USR")) resultWrite = "관리자";
+		
+		if(vo.getAuthRead().equals("ALL")) resultRead = "비회원";
+		else if (vo.getAuthRead().equals("GNR")) resultRead = "회원";
+		else if (vo.getAuthRead().equals("USR")) resultRead = "관리자";
+		
+		if(vo.getAuthComment().equals("ALL")) resultComment = "비회원";
+		else if (vo.getAuthComment().equals("GNR"))	resultComment = "회원";
+		else if (vo.getAuthComment().equals("USR")) resultComment = "관리자";
+		
+		model.addAttribute("resultList", resultList);
+		model.addAttribute("resultWrite", resultWrite);
+		model.addAttribute("resultRead", resultRead);
+		model.addAttribute("resultComment", resultComment);
 		model.addAttribute("result", vo);
 
 		// ---------------------------------

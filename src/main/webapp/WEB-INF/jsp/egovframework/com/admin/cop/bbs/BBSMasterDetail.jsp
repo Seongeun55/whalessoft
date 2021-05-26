@@ -91,6 +91,13 @@
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.atchPosblFileNumber" /></th>
 			<td class="left"><c:out value="${result.atchPosblFileNumber}"/></td>
 		</tr>
+		<!-- 게시판 권한 -->
+		<tr>
+			<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsAuth" /></th>
+			<td colspan="5" class="cnt">
+				<b>목록 :</b> <c:out value="${resultList}" /> /<b> 읽기 :</b> <c:out value="${resultRead}" /> /<b> 글 작성 :</b> <c:out value="${resultWrite}" /> /<b> 댓글 :</b> <c:out value="${resultComment}" />
+			</td>
+		</tr>
 		<!-- 게시판 소개내용 -->
 		<tr>
 			<th><spring:message code="comCopBbs.boardMasterVO.detail.bbsIntrcn" /></th>
@@ -120,7 +127,7 @@
 	<!-- 하단 버튼 -->
 	<div class="btn">
 		<input type="submit" class="s_submit" value="<spring:message code="button.update" />" title="<spring:message code="title.update" /> <spring:message code="input.button" />" /><!-- 수정 -->
-		<!-- <span class="btn_s"><a href="" title="삭제" onclick="fn_egov_delete_bbs('${result.bbsId}'); return false;">삭제</a></span><!-- 삭제기능 추가 - 2021.04.19 -->
+		<span class="btn_s"><a href="" title="삭제" onclick="fn_egov_delete_bbs('${result.bbsId}'); return false;">삭제</a></span><!-- 삭제기능 추가 - 2021.04.19 -->
 		<span class="btn_s"><a href="<c:url value='/admin/cop/bbs/selectBBSMasterInfs.do' /><c:if test='${result.cmmntyId != null}'>?cmmntyId=${result.cmmntyId}</c:if>"  title="<spring:message code="title.list" /> <spring:message code="input.button" />"><spring:message code="button.list" /></a></span><!-- 목록 -->
 	</div><div style="clear:both;"></div>
 	

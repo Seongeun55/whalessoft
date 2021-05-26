@@ -121,6 +121,44 @@ function fn_egov_inqire_bbslist() {
 			</td>
 		</tr>
 		
+		<!-- 권한관리 -->
+		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.updt.bbsAuth"/> </c:set>
+		<tr>
+			<th><label for="authFlag">${title } <span class="pilsu">*</span></label></th>
+			<td class="left">
+				목록 : 
+				<form:select path="authList" title="${title} ${inputTxt}" cssClass="txt" style="margin-left:16px;">
+					<form:option value="" label="--선택하세요--" />				
+					<form:option value="ALL">비회원</form:option>
+	  		   		<form:option value='GNR'>회원</form:option>
+	  		   		<form:option value='USR'>관리자</form:option>
+				</form:select>
+				&nbsp;읽기 : 
+				<form:select path="authRead" title="${title} ${inputTxt}" cssClass="txt">
+					<form:option value="" label="--선택하세요--" />		
+					<form:option value="ALL">비회원</form:option>
+	  		   		<form:option value='GNR'>회원</form:option>
+	  		   		<form:option value='USR'>관리자</form:option>		
+				</form:select>
+				<br><br>
+				글 작성 : 
+				<form:select path="authWrite" title="${title} ${inputTxt}" cssClass="txt">
+					<form:option value="" label="--선택하세요--" />		
+					<form:option value="ALL">비회원</form:option>
+	  		   		<form:option value='GNR'>회원</form:option>
+	  		   		<form:option value='USR'>관리자</form:option>		
+				</form:select>
+				&nbsp;댓글 : 
+				<form:select path="authComment" title="${title} ${inputTxt}" cssClass="txt">
+					<form:option value="" label="--선택하세요--" />		
+					<form:option value="ALL">비회원</form:option>
+	  		   		<form:option value='GNR'>회원</form:option>
+	  		   		<form:option value='USR'>관리자</form:option>		
+				</form:select>
+				<div><form:errors path="authFlag" cssClass="error" /></div>  
+			</td>
+		</tr>
+		
 		<!-- 게시판 유형 
 		<c:set var="title"><spring:message code="comCopBbs.boardMasterVO.updt.bbsTyCode"/> </c:set>
 		<tr>
