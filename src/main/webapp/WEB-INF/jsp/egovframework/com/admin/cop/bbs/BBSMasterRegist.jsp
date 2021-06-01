@@ -130,14 +130,14 @@ function fn_egov_regist_bbs(form){
 				목록 : 
 				<form:select path="authList" title="${title} ${inputTxt}" cssClass="txt" style="margin-left:16px;">
 					<form:option value="" label="--선택하세요--" />				
-					<form:option value="ALL">비회원</form:option>
+					<form:option value="GUE">비회원</form:option>
 	  		   		<form:option value='GNR'>회원</form:option>
 	  		   		<form:option value='USR'>관리자</form:option>
 				</form:select>
 				&nbsp;읽기 : 
 				<form:select path="authRead" title="${title} ${inputTxt}" cssClass="txt">
 					<form:option value="" label="--선택하세요--" />		
-					<form:option value="ALL">비회원</form:option>
+					<form:option value="GUE">비회원</form:option>
 	  		   		<form:option value='GNR'>회원</form:option>
 	  		   		<form:option value='USR'>관리자</form:option>		
 				</form:select>
@@ -145,14 +145,14 @@ function fn_egov_regist_bbs(form){
 				글 작성 : 
 				<form:select path="authWrite" title="${title} ${inputTxt}" cssClass="txt">
 					<form:option value="" label="--선택하세요--" />		
-					<form:option value="ALL">비회원</form:option>
+					<form:option value="GUE">비회원</form:option>
 	  		   		<form:option value='GNR'>회원</form:option>
 	  		   		<form:option value='USR'>관리자</form:option>		
 				</form:select>
 				&nbsp;댓글 : 
 				<form:select path="authComment" title="${title} ${inputTxt}" cssClass="txt">
 					<form:option value="" label="--선택하세요--" />		
-					<form:option value="ALL">비회원</form:option>
+					<form:option value="GUE">비회원</form:option>
 	  		   		<form:option value='GNR'>회원</form:option>
 	  		   		<form:option value='USR'>관리자</form:option>		
 				</form:select>

@@ -18,12 +18,16 @@
 function fn_egov_deleteCommentList(commentNo) {
 
 	var form = document.getElementById("articleCommentVO");
-	
-	if (confirm('<spring:message code="common.delete.msg" />')) {
-		form.modified.value = "true";
-		form.commentNo.value = commentNo;
-		form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
-		form.submit();
+	var loginVo = "<c:out value='${loginVO}'/>";
+	if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+		window.open("<c:url value='/cop/cmt/deleteArticleCommentPre.do?'/>", "", "width=500, height=240");
+	}else{
+		if (confirm('<spring:message code="common.delete.msg" />')) {
+			form.modified.value = "true";
+			form.commentNo.value = commentNo;
+			form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
+			form.submit();
+		}
 	}
 }
 
@@ -43,10 +47,20 @@ function fn_egov_insert_commentList() {
 function fn_egov_selectCommentForupdt(commentNo) {
 	
 	var form = document.getElementById("articleCommentVO");
+	var commentInsert = document.getElementById("commentInsert");
+	var commentUpdate = document.getElementById("commentUpdate");	
+	var _commentCn = document.getElementById("_commentCn"+commentNo);
+	var loginVo = "<c:out value='${loginVO}'/>";
 	
-	form.commentNo.value = commentNo;
-	form.action = "<c:url value='/board/view.do'/>";
-	form.submit();
+	form.commentNo.value = commentNo;	
+	form.commentCn.value = _commentCn.value;	
+	
+	if(loginVo==null || loginVo==""){
+		var _wrterNm = document.getElementById("_wrterNm"+commentNo);
+		form.wrterNm.value = _wrterNm.value;
+	}	
+	commentInsert.style.display = "none";
+	commentUpdate.style.display = "";
 }
 
 //댓글 수정
@@ -60,6 +74,7 @@ function fn_egov_updt_commentList() {
 
 	if (confirm('<spring:message code="common.update.msg" />')) {
 		form.modified.value = "true";
+		form.method = "post";
 		form.action = "<c:url value='/cop/cmt/updateArticleComment.do'/>";
 		form.submit();
 	}
@@ -119,6 +134,7 @@ function fn_egov_select_commentList(pageNo) {
 				<spring:message code="comCopBbs.articleVO.detail.atchFile" />			
 				<c:import url="/cmm/fms/selectFileInfs.do" charEncoding="utf-8">
 					<c:param name="param_atchFileId" value="${result.atchFileId}" />
+					<c:param name="_bbsId" value="${param.bbsId}" />
 				</c:import>	
 			<hr>
 		  	</c:if>

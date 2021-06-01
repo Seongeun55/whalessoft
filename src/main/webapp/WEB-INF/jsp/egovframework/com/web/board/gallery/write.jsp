@@ -161,22 +161,37 @@ $(function() {
 					<col style="width: ;">
 				</colgroup>
 				<tbody>
+					<!-- 비회원 글쓰기일 경우 -->
+					<c:if test="${loginVO == null}">
+					<tr>
+						<th><label for="frstRegisterNm">이름 <span class="pilsu">*</span></label></th>
+						<td>
+						    <form:input path="frstRegisterNm" title="이름" size="50" maxlength="50" />
+			   				<div><form:errors path="frstRegisterNm" cssClass="error" /></div>     
+			   			</td>
+			   			<th><label for="frstRegisterId">비밀번호 <span class="pilsu">*</span></label></th>
+						<td>
+						    <form:input path="frstRegisterId" title="비밀번호" size="50" maxlength="50" />
+			   				<div><form:errors path="frstRegisterId" cssClass="error" /></div>     
+						</td>
+					</tr>
+					</c:if>
 					<!-- 입력 -->
 					<c:set var="inputTxt"><spring:message code="input.input" /></c:set>
 					<!-- 글 제목, 제목 Bold여부   -->
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttSj"/> </c:set>
 					<tr>
 						<th><label for="nttSj">${title} <span class="pilsu">*</span></label></th>
-						<td class="left" >
+						<td class="left" colspan="3">
 						    <form:input path="nttSj" title="${title} ${inputTxt}" size="100" maxlength="100" />
 			   				<div><form:errors path="nttSj" cssClass="error" /></div>     
 						</td>
-						<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.sjBoldAt"/> </c:set>
+						<!--<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.sjBoldAt"/> </c:set>
 						<th><label for="sjBoldAt">${title}</label></th>
 						<td class="left">
 						    <form:checkbox path="sjBoldAt" value="Y"/>
 			   				<div><form:errors path="sjBoldAt" cssClass="error" /></div>     
-						</td>
+						</td>-->
 					</tr>
 					<!-- 글 내용  -->
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.nttCn"/> </c:set>
@@ -189,7 +204,8 @@ $(function() {
 						</td>
 					</tr>
 					
-					<!-- 공지신청 여부  -->
+					<!-- 공지신청 여부  
+					<c:if test="${loginVO.userSe == 'USR'}">	
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.noticeAt"/> </c:set>
 					<tr>
 						<th><label for="noticeAt">${title}</label></th>
@@ -197,7 +213,8 @@ $(function() {
 							<form:checkbox path="noticeAt" value="Y"/>
 							<div><form:errors path="noticeAt" cssClass="error" /></div>       
 						</td>
-					</tr>
+					</tr>					
+					</c:if>-->
 					
 					<!-- 비밀글 여부 -->
 					<c:set var="title"><spring:message code="comCopBbs.articleVO.regist.secretAt"/> </c:set>
@@ -248,7 +265,7 @@ $(function() {
 		
 			<!-- 하단 버튼 -->
 			 <div class="btn_confirm write_div">
-		        <a href="/board/list.do?bbsId=${boardMasterVO.bbsId}" class="btn_cancel btn">취소</a>
+		        <a href="/board/list.do?bbsId=${boardMasterVO.bbsId}&menuNo=${param.menuNo}" class="btn_cancel btn">취소</a>
 		        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">작성완료</button>
 		    </div>	
 		</div>
@@ -264,6 +281,7 @@ $(function() {
 		<input type="hidden" name="blogAt" value="<c:out value='${articleVO.blogAt}'/>"/>
 		<input type="hidden" name="cmd" value="<c:out value='save'/>">
 		<input type="hidden" name="bbsId" value="<c:out value='${articleVO.bbsId}'/>">
+		<input type="hidden" name="menuNo" value="<c:out value='${param.menuNo}'/>">
 		</form:form>
 	</section>
 </div>

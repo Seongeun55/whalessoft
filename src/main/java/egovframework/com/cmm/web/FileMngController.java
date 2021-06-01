@@ -52,7 +52,8 @@ public class FileMngController {
     @RequestMapping("/cmm/fms/selectFileInfs.do")
     public String selectFileInfs(@ModelAttribute("searchVO") FileVO fileVO, @RequestParam Map<String, Object> commandMap, ModelMap model) throws Exception {
 		String atchFileId = (String)commandMap.get("param_atchFileId");
-	
+		String _bbsId = (String)commandMap.get("_bbsId");
+
 		fileVO.setAtchFileId(atchFileId);
 		List<FileVO> result = fileService.selectFileInfs(fileVO);
 	
@@ -60,6 +61,7 @@ public class FileMngController {
 		model.addAttribute("updateFlag", "N");
 		model.addAttribute("fileListCnt", result.size());
 		model.addAttribute("atchFileId", atchFileId);
+		model.addAttribute("_bbsId", _bbsId);
 	
 		return "egovframework/com/admin/cmm/fms/EgovFileList";
     }

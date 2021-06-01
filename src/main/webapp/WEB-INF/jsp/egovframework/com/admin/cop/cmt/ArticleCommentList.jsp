@@ -38,12 +38,14 @@
 					<strong><c:out value="${result.wrterNm}" /></strong>
 					<span class="bar"> | </span>
 					<span class="date"><c:out value="${result.frstRegisterPnttm}" /></span>
+					<textarea id="_wrterNm<c:out value="${result.commentNo}" />" style="display:none;"><c:out value="${result.wrterNm}" /></textarea>
 				</div>
 				<p class="txt" style="margin-left:5px;">
 					<c:out value="${fn:replace(result.commentCn , crlf , '<br/>')}" escapeXml="false" />
+					<textarea id="_commentCn<c:out value="${result.commentNo}" />" style="display:none;"><c:out value="${result.commentCn}" /></textarea>
 				</p>
 				<div class="bottom">
-					<c:if test="${result.wrterId == sessionUniqId}">
+					<c:if test="${result.wrterId == sessionUniqId || loginVO == null}">
 					<span class="btn_s"><a href="javascript:fn_egov_selectCommentForupdt(${result.commentNo})"  title="<spring:message code="button.update" /> <spring:message code="input.button" />"><spring:message code="button.update" /> </a></span>&nbsp;
 					<span class="btn_s"><a href="javascript:fn_egov_deleteCommentList(${result.commentNo})"  title="<spring:message code="button.delete" /> <spring:message code="input.button" />"><spring:message code="button.delete" /></a></span>
 					</c:if>
@@ -76,17 +78,30 @@
 		<tbody>
 			<!-- 댓글 내용  -->
 			<c:set var="title"><spring:message code="comCopCmt.articleCommentVO.commentCn"/> </c:set>
+			<c:if test="${loginVO == null}">
+				<tr>
+					<th><label for="wrterNm">이름 <span class="pilsu">*</span></label></th>
+					<td>
+					    <form:input path="wrterNm" title="이름" size="50" maxlength="50" />
+		   				<div><form:errors path="wrterNm" cssClass="error" /></div>     
+		   			</td>
+		   			<th><label for="wrterId">비밀번호 <span class="pilsu">*</span></label></th>
+					<td>
+					    <form:input path="wrterId" title="비밀번호" size="50" maxlength="50" />
+		   				<div><form:errors path="wrterId" cssClass="error" /></div>     
+					</td>
+				</tr>
+			</c:if>
 			<tr>
-				<th><label for="commentCn">${title } <span class="pilsu">*</span></label></th>
-				<td class="nopd">
+				<th><label for="commentCn">${title } <span class="pilsu">*</span></label></th>				
+				<td class="nopd" colspan="3">					
 					<form:textarea path="commentCn" title="${title} ${inputTxt}" cols="100" rows="10" cssClass="re_txt"/>   
 					<div><form:errors path="commentCn" cssClass="error" /></div>
 					<c:choose>
 						<c:when test="${searchVO.commentNo == '' }">							
 							<span style="float:left;">
-								<a href="javascript:fn_egov_insert_commentList(); " class="btn_s re_btn" title="<spring:message code="button.comment" /><spring:message code="input.button" />">
-									<spring:message code="button.comment" /><spring:message code="button.create" />
-								</a>
+								<a href="javascript:fn_egov_insert_commentList();" id="commentInsert" class="btn_s re_btn" title="<spring:message code="button.comment" /><spring:message code="input.button" />"><spring:message code="button.comment" /><spring:message code="button.create" /></a>
+								<a href="javascript:fn_egov_updt_commentList(); "id="commentUpdate" style="display:none;" class="btn_s re_btn" title="<spring:message code="button.update" /> <spring:message code="input.button" />"><spring:message code="button.comment" /><spring:message code="button.update" /></a>
 							</span>
 						</c:when>
 						<c:otherwise>
@@ -103,10 +118,11 @@
 	<input name="modified" type="hidden" value="false">
 	<input name="nttId" type="hidden" value="<c:out value="${result.nttId}" />">
 	<input name="bbsId" type="hidden" value="<c:out value="${boardMasterVO.bbsId}" />">
+	<!-- 여기부터 추가 -->
 	<input name="menuNo" type="hidden" value="<c:out value="${param.menuNo}" />">
 	<input name="pageIndex" type="hidden" value="<c:out value="${param.pageIndex}" />">
 	<input name="searchWrd" type="hidden" value="<c:out value="${param.searchWrd}" />">
-	<input name="searchCnd" type="hidden" value="<c:out value="${param.searchWrd}" />">
+	<input name="searchCnd" type="hidden" value="<c:out value="${param.searchCnd}" />">
 	</form:form>
 
 </c:if>

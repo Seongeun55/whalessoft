@@ -14,6 +14,11 @@ function searchArticle(){
 	document.articleForm.submit();
 }
 
+function linkPage(pageNo){	
+	document.articleForm.pageIndex.value = pageNo;		
+   	document.articleForm.submit();
+}
+
 //[추가] 검색 후 다시 목록으로 돌아올 때 조건을 넘겨주기위해 추가 - 2021.05.04
 function viewClick(nttId, bbsId, pageNo) {
 	var searchWrd=document.getElementsByName("searchWrd")[0].value;
@@ -29,7 +34,7 @@ function viewClick(nttId, bbsId, pageNo) {
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
     
     <div class="sub-con">
-    	<div class="title-wrap">갤러리</div>
+    	<div class="title-wrap"><c:out value="${menuNm}" /></div>
 	</div>
 	
 	<!-- 게시판 목록 시작 { -->
@@ -51,14 +56,13 @@ function viewClick(nttId, bbsId, pageNo) {
 					<li>
 						<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 						<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />					
-						<c:if test="${user.userSe=='USR' }">
-							<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
-						</c:if>
+						<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}&menuNo=${param.menuNo}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
 					</li>
 				</ul>
 			</div>
 		<input name="bbsId" type="hidden" value="${boardMasterVO.bbsId}">
 		<input name="pageIndex" type="hidden" value="">
+		<input name="menuNo" type="hidden" value="${param.menuNo}">
 		</form>
 		
 		<!-- 게시판 페이지 정보 및 버튼 시작 { -->

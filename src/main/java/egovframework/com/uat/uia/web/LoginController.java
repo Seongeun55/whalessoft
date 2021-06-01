@@ -393,6 +393,9 @@ public class LoginController {
 		request.getSession().setAttribute("accessUser", user.getUserSe().concat(user.getId()));
 		String url = (String) request.getSession().getAttribute("prevPage");
 
+		if(user.getUserSe().equals("USR")) {
+			return "redirect:/admin/index.do";
+		}
 		return "redirect:" + url;		
 	}
 	

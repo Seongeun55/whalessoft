@@ -223,32 +223,20 @@ public class ArticleController {
 	public String ArticleList(@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model) throws Exception {
 		
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); 
+		
 		BoardMasterVO vo = new BoardMasterVO();
 
 		vo.setBbsId(boardVO.getBbsId());
 		vo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 		BoardMasterVO master = BBSMasterService.selectBBSMasterInf(vo);
 
-		if(master.getAuthList().equals("ALL")) {
-			System.out.println("확인 : ALL");
-		}else if(master.getAuthList().equals("GNR")) {
-			System.out.println("확인 : GNR");
-			Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); 
-			
-			if (!isAuthenticated ) {
+		if(!master.getAuthList().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
 				return "forward:/uat/uia/LoginUsr.do";
 			}
-		}else if(master.getAuthList().equals("USR")) {			
-			System.out.println("확인 : USR");
-			Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); 
-			
-			if (!isAuthenticated ) {
-				return "forward:/uat/uia/LoginUsr.do";
-			}
-			
-			if(user.getUserSe().equals("USR")) {
-				
+			if(!master.getAuthList().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { // 관리자가 아니고 회원 권한이 맞지 않을 경우
+				return "egovframework/com/admin/cmm/error/accessDenied";
 			}
 		}
 		
@@ -386,14 +374,26 @@ public class ArticleController {
 	 */
 	@RequestMapping("/cop/bbs/selectArticleDetail.do")
 	public String selectArticleDetail(@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model) throws Exception {
+		
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated(); // KISA 보안취약점 조치 (2018-12-10, 이정은)
-
-		if (!isAuthenticated) {
-			return "forward:/uat/uia/LoginUsr.do";
-		}
 	
+		BoardMasterVO master = new BoardMasterVO();
+
+		master.setBbsId(boardVO.getBbsId());
+		master.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		BoardMasterVO masterVo = BBSMasterService.selectBBSMasterInf(master);
+		
+		if(!masterVo.getAuthRead().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!masterVo.getAuthRead().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { // 관리자가 아니고 회원 권한이 맞지 않을 경우
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+		
 		boardVO.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 		BoardVO vo = ArticleService.selectArticleDetail(boardVO);
 		model.addAttribute("result", vo);
@@ -407,13 +407,7 @@ public class ArticleController {
 		// ----------------------------
 		// template 처리 (기본 BBS template 지정 포함)
 		// ----------------------------
-		BoardMasterVO master = new BoardMasterVO();
-
-		master.setBbsId(boardVO.getBbsId());
-		master.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
-
-		BoardMasterVO masterVo = BBSMasterService.selectBBSMasterInf(master);
-		
+	
 		if (masterVo.getTmplatCours() == null || masterVo.getTmplatCours().equals("")) {
 			masterVo.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
 			return "egovframework/com/admin/cop/bbs/ArticleDetail";
@@ -494,25 +488,38 @@ public class ArticleController {
 
 		BoardMasterVO bdMstr = new BoardMasterVO();
 
-		if (isAuthenticated) {
+		bdMstr.setBbsId(boardVO.getBbsId());
+		bdMstr.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+		BoardMasterVO master = BBSMasterService.selectBBSMasterInf(bdMstr);
+
+		if(!master.getAuthWrite().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!master.getAuthWrite().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { 
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+		
+		/*if (isAuthenticated) {
 
 			BoardMasterVO vo = new BoardMasterVO();
 			vo.setBbsId(boardVO.getBbsId());
 			vo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
 
 			bdMstr = BBSMasterService.selectBBSMasterInf(vo);
-		}
+		}*/
 
 		// ----------------------------
 		// 기본 BBS template 지정
 		// ----------------------------
-		if (bdMstr.getTmplatCours() == null || bdMstr.getTmplatCours().equals("")) {
-			bdMstr.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
+		if (master.getTmplatCours() == null || master.getTmplatCours().equals("")) {
+			master.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
 		}
-		String link = bdMstr.getTmplatCours() + "/write";
+		String link = master.getTmplatCours() + "/write";
 		
 		model.addAttribute("articleVO", boardVO);
-		model.addAttribute("boardMasterVO", bdMstr);
+		model.addAttribute("boardMasterVO", master);
 		//// -----------------------------
 
 		return link;
@@ -617,12 +624,7 @@ public class ArticleController {
 			HttpServletRequest request) throws Exception {
 		
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-
-		if (!isAuthenticated) { // KISA 보안취약점 조치 (2018-12-10, 이정은)
-			return "forward:/uat/uia/LoginUsr.do";
-		}
-
+	
 		beanValidator.validate(board, bindingResult);
 		if (bindingResult.hasErrors()) {
 
@@ -645,37 +647,36 @@ public class ArticleController {
 
 			return "egovframework/com/admin/cop/bbs/ArticleRegist";
 		}
+		
+		List<FileVO> result = null;
+		String atchFileId = "";
 
-		if (isAuthenticated) {
-			List<FileVO> result = null;
-			String atchFileId = "";
-
-			final Map<String, MultipartFile> files = multiRequest.getFileMap();
-			if (!files.isEmpty()) {
-				result = fileUtil.parseFileInf(files, "BBS_", 0, "", "");
-				atchFileId = fileMngService.insertFileInfs(result);
-			}
-			board.setAtchFileId(atchFileId);
-			board.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
-			board.setBbsId(boardVO.getBbsId());
-			board.setBlogId(boardVO.getBlogId());
-
-			// 익명등록 처리
-			if (board.getAnonymousAt() != null && board.getAnonymousAt().equals("Y")) {
-				board.setNtcrId("anonymous"); // 게시물 통계 집계를 위해 등록자 ID 저장
-				board.setNtcrNm("익명"); // 게시물 통계 집계를 위해 등록자 Name 저장
-				board.setFrstRegisterId("anonymous");
-
-			} else {
-				board.setNtcrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId()); // 게시물 통계 집계를 위해
-																										// 등록자 ID 저장
-				board.setNtcrNm((user == null || user.getName() == null) ? "" : user.getName()); // 게시물 통계 집계를 위해 등록자
-																									// Name 저장
-			}
-
-			board.setNttCn(unscript(board.getNttCn())); // XSS 방지
-			ArticleService.insertArticle(board);
+		final Map<String, MultipartFile> files = multiRequest.getFileMap();
+		if (!files.isEmpty()) {
+			result = fileUtil.parseFileInf(files, "BBS_", 0, "", "");
+			atchFileId = fileMngService.insertFileInfs(result);
 		}
+		board.setAtchFileId(atchFileId);
+		board.setFrstRegisterId((user == null || user.getUniqId() == null) ? boardVO.getFrstRegisterId() : user.getUniqId());		//비회원으로 등록할 경우 비밀번호로 설정한 값이 FrstRegistId값이된다.
+		board.setBbsId(boardVO.getBbsId());
+		board.setBlogId(boardVO.getBlogId());
+
+		// 익명등록 처리
+		if (board.getAnonymousAt() != null && board.getAnonymousAt().equals("Y")) {
+			board.setNtcrId("anonymous"); // 게시물 통계 집계를 위해 등록자 ID 저장
+			board.setNtcrNm("익명"); // 게시물 통계 집계를 위해 등록자 Name 저장
+			board.setFrstRegisterId("anonymous");
+
+		} else {
+			board.setNtcrId((user == null || user.getUniqId() == null) ? boardVO.getFrstRegisterId() : user.getUniqId()); // 게시물 통계 집계를 위해
+																									// 등록자 ID 저장
+			board.setNtcrNm((user == null || user.getName() == null) ? boardVO.getFrstRegisterNm() : user.getName()); // 게시물 통계 집계를 위해 등록자
+																								// Name 저장
+		}
+
+		board.setNttCn(unscript(board.getNttCn())); // XSS 방지
+		ArticleService.insertArticle(board);
+		
 		// status.setComplete();
 		if (boardVO.getBlogAt().equals("Y")) {
 			return "forward:/cop/bbs/selectArticleBlogList.do";

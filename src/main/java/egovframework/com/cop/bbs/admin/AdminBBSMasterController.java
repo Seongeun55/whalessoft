@@ -372,19 +372,19 @@ public class AdminBBSMasterController {
 		String resultRead = "";
 		String resultComment = "";
 		
-		if(vo.getAuthList().equals("ALL")) resultList = "비회원";
+		if(vo.getAuthList().equals("GUE")) resultList = "비회원";
 		else if (vo.getAuthList().equals("GNR")) resultList = "회원";
 		else if (vo.getAuthList().equals("USR")) resultList = "관리자";
 		
-		if(vo.getAuthWrite().equals("ALL")) resultWrite = "비회원";
+		if(vo.getAuthWrite().equals("GUE")) resultWrite = "비회원";
 		else if (vo.getAuthWrite().equals("GNR")) resultWrite = "회원";
 		else if (vo.getAuthWrite().equals("USR")) resultWrite = "관리자";
 		
-		if(vo.getAuthRead().equals("ALL")) resultRead = "비회원";
+		if(vo.getAuthRead().equals("GUE")) resultRead = "비회원";
 		else if (vo.getAuthRead().equals("GNR")) resultRead = "회원";
 		else if (vo.getAuthRead().equals("USR")) resultRead = "관리자";
 		
-		if(vo.getAuthComment().equals("ALL")) resultComment = "비회원";
+		if(vo.getAuthComment().equals("GUE")) resultComment = "비회원";
 		else if (vo.getAuthComment().equals("GNR"))	resultComment = "회원";
 		else if (vo.getAuthComment().equals("USR")) resultComment = "관리자";
 		

@@ -31,7 +31,7 @@
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
         
 	<div class="sub-con">
-    	<div class="title-wrap">공지사항</div>
+    	<div class="title-wrap"><c:out value="${menuNm}" /></div>
 	</div>
 	
 	<!-- 게시판  시작 { -->
@@ -51,9 +51,7 @@
 				<li>
 					<input class="s_input" name="searchWrd" type="text"  size="35" title="<spring:message code="title.search" /> <spring:message code="input.input" />" value='<c:out value="${searchVO.searchWrd}"/>'  maxlength="155" >
 					<input type="submit" class="s_btn" value="<spring:message code="button.inquire" />" title="<spring:message code="title.inquire" /> <spring:message code="input.button" />" />					
-					<c:if test="${user.userSe=='USR' }">
-						<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}&menuNo=${param.menuNo}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
-					</c:if>
+					<span class="btn_b"><a href="<c:url value='/board/write.do?bbsId=${param.bbsId}&menuNo=${param.menuNo}' />"  title="<spring:message code="button.create" /> <spring:message code="input.button" />"><spring:message code="button.create" /></a></span><!-- 등록 -->
 				</li>
 			</ul>
 			</div>

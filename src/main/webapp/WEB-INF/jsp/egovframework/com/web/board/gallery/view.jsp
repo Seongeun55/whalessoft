@@ -44,10 +44,14 @@ function fn_egov_insert_commentList() {
 function fn_egov_selectCommentForupdt(commentNo) {
 	
 	var form = document.getElementById("articleCommentVO");
+	var commentInsert = document.getElementById("commentInsert");
+	var commentUpdate = document.getElementById("commentUpdate");	
+	var _commentCn = document.getElementById("_commentCn"+commentNo);
 	
 	form.commentNo.value = commentNo;
-	form.action = "<c:url value='/board/view.do'/>";
-	form.submit();
+	form.commentCn.value = _commentCn.value;
+	commentInsert.style.display = "none";
+	commentUpdate.style.display = "";
 }
 
 //댓글 수정
@@ -85,7 +89,6 @@ function fn_egov_select_commentList(pageNo) {
     	<div class="title-wrap">갤러리</div>
 	</div>
 	<!-- 게시물 읽기 시작 { -->
-
 	<article id="bo_v">
     <div class="bo_v_header">
         <h2 id="bo_v_title">
