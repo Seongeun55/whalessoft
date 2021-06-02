@@ -18,7 +18,9 @@ function passCheck() {
 <body>
 	<div align="center">
 		<h1>비밀번호 확인</h1>
-		<form action="/cop/cmt/deleteArticleComment.do" name="frm" method="get">
+		<form action="/cop/cmt/guestDeleteArticleComment.do" name="frm" method="post">
+		<input type="hidden" name="bbsId" value="${bbsId}" >
+		<input type="hidden" name="commnetNo" value="${commnetNo}" >
 			<table style="width: 80%;">
 				<tr>
 					<th>비밀번호</th>
@@ -27,6 +29,8 @@ function passCheck() {
 			</table>
 			<br>
 			<input type="submit" value=" 확 인 " onclick="return passCheck()">
+			<br><br>
+			${msg}
 		</form>
 	</div>
 </body>

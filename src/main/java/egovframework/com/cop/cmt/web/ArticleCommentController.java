@@ -190,14 +190,15 @@ public class ArticleCommentController {
 		}
 		
 	    comment.setFrstRegisterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
-	    comment.setWrterId(user == null ? commentVO.getWrterId() : EgovStringUtil.isNullToString(user.getUniqId()));
+	    comment.setWrterId(user == null ? "" : EgovStringUtil.isNullToString(user.getUniqId()));
 	    comment.setWrterNm(user == null ? commentVO.getWrterNm() : EgovStringUtil.isNullToString(user.getName()));
-
+	    if(user==null) {
+	    	comment.setCommentPassword(commentVO.getCommentPassword());
+	    }
 	    ArticleCommentService.insertArticleComment(comment);
 	    
 	    commentVO.setCommentCn("");
 	    commentVO.setCommentNo("");
-
 		
 		String chkBlog = map.get("blogAt");
 		
@@ -239,14 +240,7 @@ public class ArticleCommentController {
 				return "egovframework/com/admin/cmm/error/accessDenied";
 			}
 		}
-		
-		if(user==null) {
-			System.out.println("확인 : 여기까진옴");
-			String password = request.getParameter("pass");
-			System.out.println("확인 : " + password);
-			return "egovframework/com/admin/cmm/error/accessDenied";
-		}
-		
+	
 		if (isAuthenticated) {
 		    ArticleCommentService.deleteArticleComment(commentVO);
 		}
@@ -269,8 +263,79 @@ public class ArticleCommentController {
      *
      */
     @RequestMapping("/cop/cmt/deleteArticleCommentPre.do")
-    public String deleteArticleCommentPre() {
+    public String deleteArticleCommentPre(ModelMap model, HttpServletRequest request) {
+    	model.addAttribute("bbsId", request.getParameter("bbsId"));
+    	model.addAttribute("commnetNo", request.getParameter("commnetNo"));
+
     	return "egovframework/com/web/board/passwordCheck";
+    }
+    
+    /**
+     * 비회원 댓글을 삭제한다.
+     * 
+     * @param commentVO
+     * @param comment
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/cop/cmt/guestDeleteArticleComment.do")
+    public String guestDeleteArticleComment(@ModelAttribute("searchVO") CommentVO commentVO, @ModelAttribute("comment") Comment comment, BoardVO boardVO,
+    		ModelMap model, @RequestParam HashMap<String, String> map, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		@SuppressWarnings("unused")
+		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+
+		/****************************************************/
+		// 해당 게시판의 댓글에 대한 권한을 확인하기 위해서
+		BoardMasterVO vo = new BoardMasterVO();
+
+		vo.setBbsId(request.getParameter("bbsId"));
+		vo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+		BoardMasterVO master = BBSMasterService.selectBBSMasterInf(vo);
+
+		if(!master.getAuthComment().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!master.getAuthComment().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { 
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+		/****************************************************/
+			
+		String password = request.getParameter("pass");	// 비밀번호 확인창에서 입력한 비밀번호
+		String commentNo = request.getParameter("commnetNo");	// 댓글의 고유 번호
+		
+		commentVO.setCommentNo(commentNo);
+		
+		CommentVO articleCommentVO = new CommentVO();
+		articleCommentVO = ArticleCommentService.selectArticleCommentDetail(commentVO);
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+		
+		if (articleCommentVO.getCommentPassword().equals(password)) {
+		    ArticleCommentService.deleteArticleComment(commentVO);
+		    commentVO.setCommentCn("");
+			commentVO.setCommentNo("");
+			out.print("<script lauguage='javascript'>");
+			out.print("alert('삭제되었습니다.');");
+			out.print("opener.document.location.reload();");
+			out.print("self.close();");
+			out.print("</script>");
+			out.flush();
+			out.close();
+			return "blank";
+		}else {			
+			out.print("<script lauguage='javascript'>");
+			out.print("alert('비밀번호가 일치하지 않습니다.');");
+			out.print("location.href='"+request.getHeader("referer")+"';");
+			out.print("</script>");
+			out.flush();
+			out.close();
+			return "blank";
+		}
     }
     
     
@@ -351,14 +416,14 @@ public class ArticleCommentController {
 		    return "forward:/cop/bbs/selectArticleDetail.do";
 		}
 		
-		if(user==null) {	//로그인 안되어있을 때
-			String wrterId = comment.getWrterId();		// 이름
-			String wrterNm = comment.getWrterNm();		// 비밀번호
+		if(user==null) {	//로그인 안되어있을 때			
+			String wrterNm = comment.getWrterNm();		// 이름
+			String commentPassword = comment.getCommentPassword();		// 비밀번호
 			
 			CommentVO articleCommentVO = new CommentVO();
 			articleCommentVO = ArticleCommentService.selectArticleCommentDetail(commentVO);
-			
-			if(!articleCommentVO.getWrterId().equals(wrterId) || !articleCommentVO.getWrterNm().equals(wrterNm)) {
+
+			if(!articleCommentVO.getCommentPassword().equals(commentPassword) || !articleCommentVO.getWrterNm().equals(wrterNm)) {
 				PrintWriter out = response.getWriter();
 				response.setContentType("text/html; charset=UTF-8");
 				out.print("<script lauguage='javascript'>");

@@ -19,8 +19,9 @@ function fn_egov_deleteCommentList(commentNo) {
 
 	var form = document.getElementById("articleCommentVO");
 	var loginVo = "<c:out value='${loginVO}'/>";
+	var bbsId = "<c:out value='${param.bbsId}'/>";
 	if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
-		window.open("<c:url value='/cop/cmt/deleteArticleCommentPre.do?'/>", "", "width=500, height=240");
+		window.open("<c:url value='/cop/cmt/deleteArticleCommentPre.do?bbsId="+bbsId+"&commnetNo="+commentNo+"'/>", "", "width=500, height=230");
 	}else{
 		if (confirm('<spring:message code="common.delete.msg" />')) {
 			form.modified.value = "true";

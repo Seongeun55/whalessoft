@@ -38,14 +38,14 @@
 					<strong><c:out value="${result.wrterNm}" /></strong>
 					<span class="bar"> | </span>
 					<span class="date"><c:out value="${result.frstRegisterPnttm}" /></span>
-					<textarea id="_wrterNm<c:out value="${result.commentNo}" />" style="display:none;"><c:out value="${result.wrterNm}" /></textarea>
+					<input type="hidden" id="_wrterNm<c:out value="${result.commentNo}" />" value="<c:out value="${result.wrterNm}" />" />
 				</div>
 				<p class="txt" style="margin-left:5px;">
 					<c:out value="${fn:replace(result.commentCn , crlf , '<br/>')}" escapeXml="false" />
 					<textarea id="_commentCn<c:out value="${result.commentNo}" />" style="display:none;"><c:out value="${result.commentCn}" /></textarea>
 				</p>
 				<div class="bottom">
-					<c:if test="${result.wrterId == sessionUniqId || loginVO == null}">
+					<c:if test="${result.wrterId == sessionUniqId || loginVO==null || loginVO.userSe == 'USR'}">
 					<span class="btn_s"><a href="javascript:fn_egov_selectCommentForupdt(${result.commentNo})"  title="<spring:message code="button.update" /> <spring:message code="input.button" />"><spring:message code="button.update" /> </a></span>&nbsp;
 					<span class="btn_s"><a href="javascript:fn_egov_deleteCommentList(${result.commentNo})"  title="<spring:message code="button.delete" /> <spring:message code="input.button" />"><spring:message code="button.delete" /></a></span>
 					</c:if>
@@ -85,10 +85,10 @@
 					    <form:input path="wrterNm" title="이름" size="50" maxlength="50" />
 		   				<div><form:errors path="wrterNm" cssClass="error" /></div>     
 		   			</td>
-		   			<th><label for="wrterId">비밀번호 <span class="pilsu">*</span></label></th>
+		   			<th><label for="commentPassword">비밀번호 <span class="pilsu">*</span></label></th>
 					<td>
-					    <form:input path="wrterId" title="비밀번호" size="50" maxlength="50" />
-		   				<div><form:errors path="wrterId" cssClass="error" /></div>     
+					    <form:input type="password" path="commentPassword" title="비밀번호" size="50" maxlength="50" />
+		   				<div><form:errors path="commentPassword" cssClass="error" /></div>     
 					</td>
 				</tr>
 			</c:if>
