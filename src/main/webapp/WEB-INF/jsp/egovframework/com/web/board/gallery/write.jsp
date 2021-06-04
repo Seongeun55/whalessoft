@@ -71,73 +71,117 @@ $(function() {
 	document.getElementById("articleVO").nttSj.focus();
 	
 
-	}
-	/* ********************************************************
-	 * 저장처리화면
-	 ******************************************************** */
-	function fn_egov_regist_article(form) {
-		CKEDITOR.instances.nttCn.updateElement();
-		//input item Client-Side validate
-		if (!validateArticleVO(form)) {
-			return false;
-		} else {
-			var validateForm = document.getElementById("articleVO");
+}
+/* ********************************************************
+ * 저장처리화면
+ ******************************************************** */
+function fn_egov_regist_article(form) {
+	CKEDITOR.instances.nttCn.updateElement();
+	//input item Client-Side validate
+	if (!validateArticleVO(form)) {
+		return false;
+	} else {
+		var validateForm = document.getElementById("articleVO");
 
-			//비밀글은 제목 진하게 할 수 없음.
-			//비밀글은 익명게시 불가.
-			//비밀글은 공지게시 불가.
-			if (validateForm.secretAt.checked) {
-				if (validateForm.sjBoldAt.checked) {
-					alert("<spring:message code="comCopBbs.articleVO.secretBold" />");
-					return;
-				}
-				if (validateForm.anonymousAt.checked) {
-					alert("<spring:message code="comCopBbs.articleVO.secretAnonymous" />");
-					return;
-				}
-				if (validateForm.noticeAt.checked) {
-					alert("<spring:message code="comCopBbs.articleVO.secretNotice" />");
-					return;
-				}
-			}
-
-			//익명글은 공지게시 불가.
-			if (validateForm.anonymousAt.checked) {
-				if (validateForm.noticeAt.checked) {
-					alert("<spring:message code="comCopBbs.articleVO.anonymousNotice" />");
-					return;
-				}
-			}
-			
-			if (confirm("<spring:message code="common.regist.msg" />")) {
-				form.submit();
-			}
-
-			/*게시기간 
-			var ntceBgnde = getRemoveFormat(validateForm.ntceBgnde.value);
-			var ntceEndde = getRemoveFormat(validateForm.ntceEndde.value);
-
-			if (ntceBgnde == '' && ntceEndde != '') {
-				validateForm.ntceBgnde.value = '1900-01-01';
-			}
-			if (ntceBgnde != '' && ntceEndde == '') {
-				validateForm.ntceEndde.value = '9999-12-31';
-			}
-			if (ntceBgnde == '' && ntceEndde == '') {
-				validateForm.ntceBgnde.value = '1900-01-01';
-				validateForm.ntceEndde.value = '9999-12-31';
-			}
-
-			ntceBgnde = getRemoveFormat(validateForm.ntceBgnde.value);
-			ntceEndde = getRemoveFormat(validateForm.ntceEndde.value);
-
-			if (ntceBgnde > ntceEndde) {
-				alert("<spring:message code="comCopBbs.articleVO.ntceDeError" />");
+		//비밀글은 제목 진하게 할 수 없음.
+		//비밀글은 익명게시 불가.
+		//비밀글은 공지게시 불가.
+		if (validateForm.secretAt.checked) {
+			if (validateForm.sjBoldAt.checked) {
+				alert("<spring:message code="comCopBbs.articleVO.secretBold" />");
 				return;
 			}
-			*/			
+			if (validateForm.anonymousAt.checked) {
+				alert("<spring:message code="comCopBbs.articleVO.secretAnonymous" />");
+				return;
+			}
+			if (validateForm.noticeAt.checked) {
+				alert("<spring:message code="comCopBbs.articleVO.secretNotice" />");
+				return;
+			}
 		}
+
+		//익명글은 공지게시 불가.
+		if (validateForm.anonymousAt.checked) {
+			if (validateForm.noticeAt.checked) {
+				alert("<spring:message code="comCopBbs.articleVO.anonymousNotice" />");
+				return;
+			}
+		}
+		
+		if (confirm("<spring:message code="common.regist.msg" />")) {
+			var result = check();
+			if(result=="empty"){
+				alert("보안숫자를 입력해 주세요.");
+				answer.focus();
+				return;
+			}else if(result=="correct"){
+				form.submit();
+			}else{
+				alert('보안숫자값이 일치하지 않습니다.'); 
+				getImage(); 
+				answer.focus();
+				return;
+			}
+		}	
 	}
+}
+
+/*스팸 방지 관련*/
+function check(){
+	getImage(); // 이미지 가져오기 
+	var answer = document.getElementById('answer');
+	var result;
+	if(answer.value==""){
+		result="empty";
+	}else{
+		$.ajax({
+			url:"/chkAnswer.do",
+			type:"POST",
+			dataType:"text",
+			data:{"answer" : answer.value},
+			async:false,	//ajax는 기본적으로 비동기 통신이라 값을 전달하지 못한다. 그래서 동기식으로 전환하기위해 추가
+			success:function(returnData){
+				if(returnData == 200){	//보안값이 일치할 때
+					result="correct";
+				}else{ 
+					result="wrong";
+				} 
+			}
+		})	
+	}
+	return result;
+}
+
+/*매번 랜덤값을 파라미터로 전달하는 이유 : IE의 경우 매번 다른 임의 값을 전달하지 않으면 '새로고침' 클릭해도 정상 호출되지 않아 이미지가 변경되지 않는 문제가 발생된다*/ 
+function audio(){ 
+	var rand = Math.random(); 
+	var uAgent = navigator.userAgent; 
+	var soundUrl = '${ctx}/captchaAudio.do?rand='+rand; 
+	if(uAgent.indexOf('Trident')>-1 || uAgent.indexOf('MISE')>-1){ /*IE 경우 */ 
+		audioPlayer(soundUrl); 
+	}else if(!!document.createElement('audio').canPlayType){ /*Chrome 경우 */ 
+		try { 
+			new Audio(soundUrl).play(); 
+		} catch (e) { 
+			audioPlayer(soundUrl); 
+		} 
+	}else{ 
+		window.open(soundUrl,'','width=1,height=1'); 
+	} 
+} 
+
+function getImage(){ 
+	var rand = Math.random(); 
+	var url = '${ctx}/captchaImg.do?rand='+rand;
+	document.querySelector('img').setAttribute('src', url); 
+} 
+
+function audioPlayer(objUrl){ 
+	document.querySelector('#ccaudio').innerHTML = '<bgsoun src="' +objUrl +'">'; 
+}
+
+
 </script>
 
 <!-- 콘텐츠 시작 -->
@@ -169,10 +213,10 @@ $(function() {
 						    <form:input path="frstRegisterNm" title="이름" size="50" maxlength="50" />
 			   				<div><form:errors path="frstRegisterNm" cssClass="error" /></div>     
 			   			</td>
-			   			<th><label for="frstRegisterId">비밀번호 <span class="pilsu">*</span></label></th>
+			   			<th><label for="password">비밀번호 <span class="pilsu">*</span></label></th>
 						<td>
-						    <form:input path="frstRegisterId" title="비밀번호" size="50" maxlength="50" />
-			   				<div><form:errors path="frstRegisterId" cssClass="error" /></div>     
+						    <form:input path="password" type="password" title="비밀번호" size="50" maxlength="50" />
+			   				<div><form:errors path="password" cssClass="error" /></div>     
 						</td>
 					</tr>
 					</c:if>
@@ -258,10 +302,26 @@ $(function() {
 						    <div id="egovComFileList"></div>
 						</td>
 					</tr>
-				  	</c:if>
-			
+				  	</c:if>				  				
 				</tbody>
 			</table>
+			
+			<label for="captcha" style="display:block">보안숫자입력</label> 
+			<div style="overflow:hidden"> 
+				<div style="float:left"> 
+					<img title="캡차이미지" src="/captchaImg.do" alt="캡차이미지"/> 
+					<div id="ccaudio" style="display:none"></div> 
+				</div> 			
+			
+				<div style="padding:3px 0 0 155px"> 
+					<input id="reload" type="button" onclick="javaScript:getImage()" value="새로고침" /> 
+					<input id="soundOn" type="button" onclick="javaScript:audio()" value="음성듣기"/> 
+				</div> 
+				
+				<div style="padding:3px 0 0 155px"> 
+					<input id="answer" type="text" value=""> 
+				</div>
+			</div> 
 		
 			<!-- 하단 버튼 -->
 			 <div class="btn_confirm write_div">

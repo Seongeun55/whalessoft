@@ -657,9 +657,10 @@ public class ArticleController {
 			atchFileId = fileMngService.insertFileInfs(result);
 		}
 		board.setAtchFileId(atchFileId);
-		board.setFrstRegisterId((user == null || user.getUniqId() == null) ? boardVO.getFrstRegisterId() : user.getUniqId());		//비회원으로 등록할 경우 비밀번호로 설정한 값이 FrstRegistId값이된다.
+		board.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());		
 		board.setBbsId(boardVO.getBbsId());
 		board.setBlogId(boardVO.getBlogId());
+		board.setPassword(boardVO.getPassword());
 
 		// 익명등록 처리
 		if (board.getAnonymousAt() != null && board.getAnonymousAt().equals("Y")) {
@@ -668,7 +669,7 @@ public class ArticleController {
 			board.setFrstRegisterId("anonymous");
 
 		} else {
-			board.setNtcrId((user == null || user.getUniqId() == null) ? boardVO.getFrstRegisterId() : user.getUniqId()); // 게시물 통계 집계를 위해
+			board.setNtcrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId()); // 게시물 통계 집계를 위해
 																									// 등록자 ID 저장
 			board.setNtcrNm((user == null || user.getName() == null) ? boardVO.getFrstRegisterNm() : user.getName()); // 게시물 통계 집계를 위해 등록자
 																								// Name 저장
