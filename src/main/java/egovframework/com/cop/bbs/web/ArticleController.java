@@ -1,5 +1,6 @@
 package egovframework.com.cop.bbs.web;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,8 +8,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -521,6 +522,7 @@ public class ArticleController {
 		model.addAttribute("articleVO", boardVO);
 		model.addAttribute("boardMasterVO", master);
 		//// -----------------------------
+		System.out.println("확인 : " + link);
 
 		return link;
 	}
@@ -814,7 +816,7 @@ public class ArticleController {
 	}
 
 	/**
-	 * 게시물 수정을 위한 수정페이지로 이동한다.
+	 * 관리자페이지에서 게시물 수정을 위한 수정페이지로 이동한다.
 	 * 
 	 * @param boardVO
 	 * @param vo
@@ -822,8 +824,8 @@ public class ArticleController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/cop/bbs/updateArticleView.do")
-	public String updateArticleView(@ModelAttribute("searchVO") BoardVO boardVO, @ModelAttribute("board") BoardVO vo,
+	@RequestMapping("/admin/cop/bbs/updateArticleView.do")
+	public String adminUpdateArticleView(@ModelAttribute("searchVO") BoardVO boardVO, @ModelAttribute("board") BoardVO vo,
 			ModelMap model) throws Exception {
 
 		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
@@ -868,9 +870,73 @@ public class ArticleController {
 		}
 
 	}
+	
+	/**
+	 * [추가] 게시물 수정을 위한 수정페이지로 이동한다. - 2021.06.04
+	 * 
+	 * @param boardVO
+	 * @param vo
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/cop/bbs/updateArticleView.do")
+	public String updateArticleView(@ModelAttribute("searchVO") BoardVO boardVO, @ModelAttribute("board") BoardVO vo,
+			ModelMap model) throws Exception {
+
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+
+		boardVO.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		BoardMasterVO bmvo = new BoardMasterVO();	//게시판 관련
+		BoardVO bdvo = new BoardVO();			//게시물 관련
+
+		vo.setBbsId(boardVO.getBbsId());
+
+		bmvo.setBbsId(boardVO.getBbsId());
+		bmvo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		bmvo = BBSMasterService.selectBBSMasterInf(bmvo);
+		bdvo = ArticleService.selectArticleDetail(boardVO);
+
+		if(!bmvo.getAuthWrite().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!bmvo.getAuthWrite().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { // 관리자가 아니고 회원 권한이 맞지 않을 경우
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+
+		// ----------------------------
+		// 기본 BBS template 지정
+		// ----------------------------
+		if (bmvo.getTmplatCours() == null || bmvo.getTmplatCours().equals("")) {
+			bmvo.setTmplatCours("/css/egovframework/com/cop/tpl/egovBaseTemplate.css");
+		}
+
+		String link = bmvo.getTmplatCours() + "/modify";
+		
+		// 익명 등록글인 경우 수정 불가
+		if (bdvo.getNtcrId().equals("anonymous")) {
+			model.addAttribute("result", bdvo);
+			model.addAttribute("boardMasterVO", bmvo);
+			return "egovframework/com/admin/cop/bbs/ArticleDetail";
+		}
+
+		model.addAttribute("articleVO", bdvo);
+		model.addAttribute("boardMasterVO", bmvo);
+
+		if (boardVO.getBlogAt().equals("chkBlog")) {
+			return "egovframework/com/admin/cop/bbs/EgovArticleBlogUpdt";
+		} else {
+			return link;
+		}
+	}
 
 	/**
-	 * 게시물에 대한 내용을 수정한다.
+	 * 관리자 게시물에 대한 내용을 수정한다.
 	 * 
 	 * @param boardVO
 	 * @param board
@@ -878,8 +944,8 @@ public class ArticleController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/cop/bbs/updateArticle.do")
-	public String updateBoardArticle(final MultipartHttpServletRequest multiRequest,
+	@RequestMapping("/admin/cop/bbs/updateArticle.do")
+	public String updateAdminBoardArticle(final MultipartHttpServletRequest multiRequest,
 			@ModelAttribute("searchVO") BoardVO boardVO, @ModelAttribute("bdMstr") BoardMaster bdMstr,
 			@ModelAttribute("board") Board board, BindingResult bindingResult, ModelMap model) throws Exception {
 
@@ -924,7 +990,7 @@ public class ArticleController {
 			model.addAttribute("articleVO", bdvo);
 			model.addAttribute("boardMasterVO", bmvo);
 
-			return "egovframework/com/admin/cop/bbs/ArticleUpdt";
+			return "egovframework/com/web/board/bbs/ArticleUpdt";
 		}
 
 		if (isAuthenticated) {
@@ -957,7 +1023,7 @@ public class ArticleController {
 	}
 
 	/**
-	 * 게시물에 대한 내용을 삭제한다.
+	 * [추가] 게시물에 대한 내용을 수정한다. - 2021.06.07
 	 * 
 	 * @param boardVO
 	 * @param board
@@ -965,8 +1031,160 @@ public class ArticleController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/cop/bbs/deleteArticle.do")
-	public String deleteBoardArticle(HttpServletRequest request, @ModelAttribute("searchVO") BoardVO boardVO,
+	@RequestMapping("/cop/bbs/updateArticle.do")
+	public String updateBoardArticle(final MultipartHttpServletRequest multiRequest, HttpServletRequest request,
+			@ModelAttribute("searchVO") BoardVO boardVO, @ModelAttribute("bdMstr") BoardMaster bdMstr,
+			@ModelAttribute("board") Board board, BindingResult bindingResult, ModelMap model) throws Exception {
+
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+
+		// --------------------------------------------------------------------------------------------
+		// @ XSS 대응 권한체크 체크 START
+		// param1 : 사용자고유ID(uniqId,esntlId)
+		// --------------------------------------------------------
+		LOGGER.debug("@ XSS 권한체크 START ----------------------------------------------");
+		// step1 DB에서 해당 게시물의 uniqId 조회
+		BoardVO vo = ArticleService.selectArticleDetail(boardVO);
+
+		// step2 EgovXssChecker 공통모듈을 이용한 권한체크
+		EgovXssChecker.checkerUserXss(multiRequest, vo.getFrstRegisterId());
+		LOGGER.debug("@ XSS 권한체크 END ------------------------------------------------");
+		// --------------------------------------------------------
+		// @ XSS 대응 권한체크 체크 END
+		// --------------------------------------------------------------------------------------------
+		String atchFileId = boardVO.getAtchFileId();
+		boardVO.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+		BoardMasterVO bmvo = new BoardMasterVO();
+
+		bmvo.setBbsId(boardVO.getBbsId());
+		bmvo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		bmvo = BBSMasterService.selectBBSMasterInf(bmvo);
+
+		beanValidator.validate(board, bindingResult);
+		if (bindingResult.hasErrors()) {
+
+			BoardVO bdvo = new BoardVO();
+			bdvo = ArticleService.selectArticleDetail(boardVO);
+
+			model.addAttribute("articleVO", bdvo);
+			model.addAttribute("boardMasterVO", bmvo);
+
+			return bmvo.getTmplatCours() + "/modify";
+		}
+
+		if(!bmvo.getAuthWrite().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!bmvo.getAuthWrite().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { // 관리자가 아니고 회원 권한이 맞지 않을 경우
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+
+		final Map<String, MultipartFile> files = multiRequest.getFileMap();
+		if (!files.isEmpty()) {
+			if ("".equals(atchFileId)) {
+				List<FileVO> result = fileUtil.parseFileInf(files, "BBS_", 0, atchFileId, "");
+				atchFileId = fileMngService.insertFileInfs(result);
+				board.setAtchFileId(atchFileId);
+			} else {
+				FileVO fvo = new FileVO();
+				fvo.setAtchFileId(atchFileId);
+				int cnt = fileMngService.getMaxFileSN(fvo);
+				List<FileVO> _result = fileUtil.parseFileInf(files, "BBS_", cnt, atchFileId, "");
+				fileMngService.updateFileInfs(_result);
+			}
+		}
+
+		board.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		board.setNtcrNm(""); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
+		board.setPassword(""); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
+
+		board.setNttCn(unscript(board.getNttCn())); // XSS 방지
+
+		ArticleService.updateArticle(board);
+
+		return "redirect:/board/list.do?bbsId=" + boardVO.getBbsId()+"&menuNo="+request.getParameter("menuNo");
+	}
+	
+	  
+    /**
+     * [추가]-2021.06.07
+     * 비회원이 게시물 수정,삭제하기위한 페이지를 이동하기 위해
+     *
+     */
+    @RequestMapping("/cop/bbs/guestArticlePre.do")
+    public String guestArticlePre(ModelMap model, HttpServletRequest request) {
+    	model.addAttribute("bbsId", request.getParameter("bbsId"));
+    	model.addAttribute("nttId", request.getParameter("nttId"));
+    	model.addAttribute("state", request.getParameter("state"));
+    	model.addAttribute("menuNo", request.getParameter("menuNo"));
+    	
+    	return "egovframework/com/web/board/articlePasswordCheck";
+    }
+    
+    /**
+     * [추가]-2021.06.07
+     * 비회원게시글 비밀번호 체크
+     * @throws Exception 
+     *
+     */
+    @RequestMapping("/cop/bbs/guestArticle.do")
+    public String guestArticle(ModelMap model, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("searchVO") BoardVO boardVO) throws Exception {
+    
+    	BoardVO vo = ArticleService.selectArticleDetail(boardVO);
+    	
+    	String password = request.getParameter("pass");	// 비밀번호 확인창에서 입력한 비밀번호		
+		String state = request.getParameter("state");
+		String menuNo = request.getParameter("menuNo");
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+
+		if(password.equals(vo.getPassword())) {
+			if(state.equals("update")) {	//수정일 때
+				out.print("<script lauguage='javascript'>");
+				out.print("opener.location.href='/board/modify.do?parnts="+vo.getParnts()+"&sortOrdr="+vo.getSortOrdr()+"&replyLc="+vo.getReplyLc()+"&nttSj="+vo.getNttSj()
+											+"&nttId="+vo.getNttId()+"&bbsId="+vo.getBbsId()+"&menuNo="+menuNo+"';");
+				out.print("self.close();");
+				out.print("</script>");
+				out.flush();
+				out.close();		
+				return "blank";
+			}else {	//삭제 
+				out.print("<script lauguage='javascript'>");
+				out.print("opener.location.href='/board/delete.do?&nttId="+vo.getNttId()+"&bbsId="+vo.getBbsId()+"&menuNo="+menuNo+"';");
+				out.print("self.close();");
+				out.print("</script>");
+				out.flush();
+				out.close();		
+				return "blank";
+			}
+		}else {
+			out.print("<script lauguage='javascript'>");
+			out.print("alert('비밀번호가 일치하지 않습니다.');");
+			out.print("location.href='"+request.getHeader("referer")+"';");
+			out.print("</script>");
+			out.flush();
+			out.close();
+			return "blank";
+		}    	
+    }
+	
+	/**
+	 * 관리자에서 게시물에 대한 내용을 삭제한다.
+	 * 
+	 * @param boardVO
+	 * @param board
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/admin/cop/bbs/deleteArticle.do")
+	public String deleteAdminBoardArticle(HttpServletRequest request, @ModelAttribute("searchVO") BoardVO boardVO,
 			@ModelAttribute("board") Board board, @ModelAttribute("bdMstr") BoardMaster bdMstr, ModelMap model)
 			throws Exception {
 
@@ -1006,6 +1224,73 @@ public class ArticleController {
 			return "forward:/cop/bbs/selectArticleBlogList.do";
 		} else {
 			return "forward:/admin/cop/bbs/allArticleList.do";
+		}
+	}
+	
+	/**
+	 * [추가] 게시물에 대한 내용을 삭제한다. - 2021.06.08
+	 * 
+	 * @param boardVO
+	 * @param board
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/cop/bbs/deleteArticle.do")
+	public String deleteBoardArticle(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("searchVO") BoardVO boardVO,
+			@ModelAttribute("board") Board board, @ModelAttribute("bdMstr") BoardMaster bdMstr, ModelMap model)
+			throws Exception {
+
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+
+		// --------------------------------------------------------------------------------------------
+		// @ XSS 대응 권한체크 체크 START
+		// param1 : 사용자고유ID(uniqId,esntlId)
+		// --------------------------------------------------------
+		LOGGER.debug("@ XSS 권한체크 START ----------------------------------------------");
+		// step1 DB에서 해당 게시물의 uniqId 조회
+		BoardVO vo = ArticleService.selectArticleDetail(boardVO);
+
+		// step2 EgovXssChecker 공통모듈을 이용한 권한체크
+		EgovXssChecker.checkerUserXss(request, vo.getFrstRegisterId());
+		LOGGER.debug("@ XSS 권한체크 END ------------------------------------------------");
+		// --------------------------------------------------------
+		// @ XSS 대응 권한체크 체크 END
+		// --------------------------------------------------------------------------------------------
+		boardVO.setFrstRegisterId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+		BoardMasterVO bmvo = new BoardMasterVO();
+
+		bmvo.setBbsId(boardVO.getBbsId());
+		bmvo.setUniqId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		bmvo = BBSMasterService.selectBBSMasterInf(bmvo);
+		
+		if(!bmvo.getAuthRead().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
+				return "forward:/uat/uia/LoginUsr.do";
+			}
+			if(!bmvo.getAuthRead().equals(user.getUserSe()) && !user.getUserSe().equals("USR")) { // 관리자가 아니고 회원 권한이 맞지 않을 경우
+				return "egovframework/com/admin/cmm/error/accessDenied";
+			}
+		}
+		
+		BoardVO bdvo = ArticleService.selectArticleDetail(boardVO);
+		// 익명 등록글인 경우 수정 불가
+		if (bdvo.getNtcrId().equals("anonymous")) {
+			model.addAttribute("result", bdvo);
+			model.addAttribute("boardMasterVO", bdMstr);
+			return "egovframework/com/admin/cop/bbs/ArticleDetail";
+		}
+
+		board.setLastUpdusrId((user == null || user.getUniqId() == null) ? "" : user.getUniqId());
+
+		ArticleService.deleteArticle(board);
+
+		if (boardVO.getBlogAt().equals("chkBlog")) {
+			return "forward:/cop/bbs/selectArticleBlogList.do";
+		} else {
+			return "redirect:/board/list.do?bbsId=" + boardVO.getBbsId()+"&menuNo="+request.getParameter("menuNo");
 		}
 	}
 

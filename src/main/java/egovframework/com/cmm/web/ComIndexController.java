@@ -40,7 +40,18 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.service.EgovFileMngUtil;
+import egovframework.com.cmm.service.FileMngService;
+import egovframework.com.cmm.service.FileVO;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
+import egovframework.com.cmm.util.EgovXssChecker;
+import egovframework.com.cop.bbs.service.ArticleService;
+import egovframework.com.cop.bbs.service.BBSMasterService;
+import egovframework.com.cop.bbs.service.Board;
+import egovframework.com.cop.bbs.service.BoardMaster;
+import egovframework.com.cop.bbs.service.BoardMasterVO;
+import egovframework.com.cop.bbs.service.BoardVO;
+import egovframework.com.cop.bbs.web.ArticleController;
 import egovframework.com.sym.mnu.mpm.service.MenuManageService;
 import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.com.uss.ion.bnr.service.BannerService;
@@ -60,13 +71,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springmodules.validation.commons.DefaultBeanValidator;
 
 @Controller
 public class ComIndexController implements ApplicationContextAware, InitializingBean {
@@ -83,6 +99,12 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	@Resource(name = "PopupManageService")
 	private PopupManageService PopupManageService;
 	
+	@Resource(name = "ArticleService")
+	private ArticleService ArticleService;
+
+	@Resource(name = "BBSMasterService")
+	private BBSMasterService BBSMasterService;
+	
 	@Resource(name = "QnaService")
 	private QnaService QnaService;
 	
@@ -91,6 +113,15 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
     @Resource(name = "propertiesService")
     protected EgovPropertyService propertiesService;
+    
+	@Resource(name = "EgovFileMngUtil")
+	private EgovFileMngUtil fileUtil;
+    
+	@Resource(name = "FileMngService")
+	private FileMngService fileMngService;
+	
+    @Autowired
+	private DefaultBeanValidator beanValidator;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ComIndexController.class);
 
@@ -184,13 +215,13 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 	
 	/*[추가] boardModify 이동메소드 - 2021.04.15*/
 	@RequestMapping(value = "/board/modify.do")
-	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model) throws Exception {
+	public String boardModify(@RequestParam("bbsId") String bbsId, @RequestParam(value="menuNo", required=false, defaultValue="-1") Integer menuNo, ModelMap model, HttpServletRequest request) throws Exception {
 
 		menu(model);
 		selectedMenu(model, menuNo);
-		subBanner(model, menuNo);			
+		subBanner(model, menuNo);	
 		
-		return "";
+		return "forward:/cop/bbs/updateArticleView.do";
 	}
 	
 	/*[추가] boardDelete 이동메소드 - 2021.04.15*/
@@ -201,7 +232,7 @@ public class ComIndexController implements ApplicationContextAware, Initializing
 		selectedMenu(model, menuNo);
 		subBanner(model, menuNo);			
 		
-		return "";
+		return "forward:/cop/bbs/deleteArticle.do";
 	}
 	
 	/**********************************************************baord끝, Q&A 시작*****************************************************************/

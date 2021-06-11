@@ -103,7 +103,7 @@ public class ArticleCommentController {
 
 		BoardMasterVO masterVo = BBSMasterService.selectBBSMasterInf(master);
 		
-		if(!masterVo.getAuthRead().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자)			
+		if(!masterVo.getAuthRead().equals("GUE")) { // 접근 권한 비회원 이상(회원 & 관리자), 글 읽을 수 있으면 댓글도 보여지게 하기위해 read권한을 따름	
 			if (!isAuthenticated ) { // 로그인이 안되어 있을 경우
 				return "forward:/uat/uia/LoginUsr.do";
 			}
@@ -267,7 +267,7 @@ public class ArticleCommentController {
     	model.addAttribute("bbsId", request.getParameter("bbsId"));
     	model.addAttribute("commnetNo", request.getParameter("commnetNo"));
 
-    	return "egovframework/com/web/board/passwordCheck";
+    	return "egovframework/com/web/board/commentPasswordCheck";
     }
     
     /**
