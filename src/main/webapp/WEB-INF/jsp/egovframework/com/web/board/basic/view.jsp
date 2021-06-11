@@ -91,13 +91,41 @@ function fn_egov_select_commentList(pageNo) {
 	form.action = "<c:url value='/board/view.do'/>";
 	form.submit();
 }
+
+function guestPasswordCheck(menuNo, state){
+	var loginVo = "<c:out value='${loginVO}'/>";
+	var parnts = "<c:out value='${result.parnts}'/>";
+	var sortOrdr = "<c:out value='${result.sortOrdr}'/>";
+	var replyLc = "<c:out value='${result.replyLc}'/>";
+	var nttSj = "<c:out value='${result.nttSj}'/>";
+	var nttId = "<c:out value='${result.nttId}'/>";
+	var bbsId = "<c:out value='${boardMasterVO.bbsId}'/>";
+
+	if(state=="update"){	// 수정 눌렀을 때
+		if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+			window.open("<c:url value='/cop/bbs/guestArticlePre.do?bbsId="+bbsId+"&nttId="+nttId+"&state="+state+"&menuNo="+menuNo+"'/>", "", "width=500, height=230");
+		}else{
+			location.href="/board/modify.do?parnts="+parnts+"&sortOrdr="+sortOrdr+"&replyLc="+replyLc+"&nttSj="+nttSj+"&nttId="+nttId+"&bbsId="+bbsId+"&menuNo="+menuNo;
+		}
+	}else{		// 삭제 눌렀을 때
+		if(confirm("<spring:message code="common.delete.msg" />")){	
+			if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+				window.open("<c:url value='/cop/bbs/guestArticlePre.do?bbsId="+bbsId+"&nttId="+nttId+"&state="+state+"&menuNo="+menuNo+"'/>", "", "width=500, height=230");
+			}else{
+				location.href="/board/delete.do?nttId="+nttId+"&bbsId="+bbsId+"&menuNo="+menuNo;
+			}	
+		}		
+	}
+	
+}
+
 </script>
 <!-- 콘텐츠 시작 { -->
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
         
 	<div class="sub-con">
-    	<div class="title-wrap">공지사항</div>
+    	<div class="title-wrap"><c:out value="${menuNm}"/></div>
 	</div>
 	<!-- 게시물 읽기 시작 { -->
 
@@ -138,22 +166,30 @@ function fn_egov_select_commentList(pageNo) {
 					<c:param name="_bbsId" value="${param.bbsId}" />
 				</c:import>	
 			<hr>
-		  	</c:if>
-	
+		  	</c:if>	
 	        <!-- } 본문 내용 끝 -->
+	        
 	        <!-- 하단 버튼 -->
 			<div class="btn" style="float:right">
-				<a href="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}&menuNo=${param.menuNo}" style="display:block; line-height:21px;" class="s_submit">
+				<c:if test="${result.ntcrId == sessionUniqId || loginVO==null || loginVO.userSe == 'USR'}">		
+					<a href="javascript:guestPasswordCheck('${param.menuNo}', 'update');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+						<spring:message code="button.update" />
+					</a>
+					<a href="javascript:guestPasswordCheck('${param.menuNo}', 'delete');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+						<spring:message code="button.delete" />
+					</a>
+				</c:if>
+				<a href="/board/list.do?bbsId=${param.bbsId}&pageIndex=${param.pageIndex}&searchWrd=${param.searchWrd}&searchCnd=${param.searchCnd}&menuNo=${param.menuNo}" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 					<spring:message code="button.list" />
-				</a>			
+				</a>				
 			</div>
 			<div style="clear:both;"></div>
+			
 		  	<!-- 댓글 -->
 			<c:if test="${useComment == 'true'}">
 				<c:import url="/cop/cmt/selectArticleCommentList.do" charEncoding="utf-8" />	
 			</c:if>
 			
-		  	<input name="cmd" type="hidden" value="">
 	    </section>
     </article>
 <!-- } 게시판 읽기 끝 -->

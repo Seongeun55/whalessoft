@@ -17,14 +17,19 @@
 
 //댓글 삭제
 function fn_egov_deleteCommentList(commentNo) {
-
-	var form = document.getElementById("articleCommentVO");
 	
-	if (confirm('<spring:message code="common.delete.msg" />')) {
-		form.modified.value = "true";
-		form.commentNo.value = commentNo;
-		form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
-		form.submit();
+	var form = document.getElementById("articleCommentVO");
+	var loginVo = "<c:out value='${loginVO}'/>";
+	var bbsId = "<c:out value='${param.bbsId}'/>";
+	if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+		window.open("<c:url value='/cop/cmt/deleteArticleCommentPre.do?bbsId="+bbsId+"&commnetNo="+commentNo+"'/>", "", "width=500, height=230");
+	}else{
+		if (confirm('<spring:message code="common.delete.msg" />')) {
+			form.modified.value = "true";
+			form.commentNo.value = commentNo;
+			form.action = "<c:url value='/cop/cmt/deleteArticleComment.do'/>";
+			form.submit();
+		}
 	}
 }
 
@@ -47,9 +52,15 @@ function fn_egov_selectCommentForupdt(commentNo) {
 	var commentInsert = document.getElementById("commentInsert");
 	var commentUpdate = document.getElementById("commentUpdate");	
 	var _commentCn = document.getElementById("_commentCn"+commentNo);
+	var loginVo = "<c:out value='${loginVO}'/>";
 	
-	form.commentNo.value = commentNo;
-	form.commentCn.value = _commentCn.value;
+	form.commentNo.value = commentNo;	
+	form.commentCn.value = _commentCn.value;	
+	
+	if(loginVo==null || loginVo==""){
+		var _wrterNm = document.getElementById("_wrterNm"+commentNo);
+		form.wrterNm.value = _wrterNm.value;
+	}	
 	commentInsert.style.display = "none";
 	commentUpdate.style.display = "";
 }
@@ -80,13 +91,40 @@ function fn_egov_select_commentList(pageNo) {
 	form.action = "<c:url value='/board/view.do'/>";
 	form.submit();
 }
+
+function guestPasswordCheck(menuNo, state){
+	var loginVo = "<c:out value='${loginVO}'/>";
+	var parnts = "<c:out value='${result.parnts}'/>";
+	var sortOrdr = "<c:out value='${result.sortOrdr}'/>";
+	var replyLc = "<c:out value='${result.replyLc}'/>";
+	var nttSj = "<c:out value='${result.nttSj}'/>";
+	var nttId = "<c:out value='${result.nttId}'/>";
+	var bbsId = "<c:out value='${boardMasterVO.bbsId}'/>";
+
+	if(state=="update"){	// 수정 눌렀을 때
+		if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+			window.open("<c:url value='/cop/bbs/guestArticlePre.do?bbsId="+bbsId+"&nttId="+nttId+"&state="+state+"&menuNo="+menuNo+"'/>", "", "width=500, height=230");
+		}else{
+			location.href="/board/modify.do?parnts="+parnts+"&sortOrdr="+sortOrdr+"&replyLc="+replyLc+"&nttSj="+nttSj+"&nttId="+nttId+"&bbsId="+bbsId+"&menuNo="+menuNo;
+		}
+	}else{		// 삭제 눌렀을 때
+		if(confirm("<spring:message code="common.delete.msg" />")){	
+			if(loginVo==null || loginVo==""){	//로그인이 안되어있을 때 새창에 비밀번호 확인 띄우기 위해서
+				window.open("<c:url value='/cop/bbs/guestArticlePre.do?bbsId="+bbsId+"&nttId="+nttId+"&state="+state+"&menuNo="+menuNo+"'/>", "", "width=500, height=230");
+			}else{
+				location.href="/board/delete.do?nttId="+nttId+"&bbsId="+bbsId+"&menuNo="+menuNo;
+			}	
+		}		
+	}
+	
+}
 </script>
 <!-- 콘텐츠 시작 { -->
 <div class="container">
 	<%@include file="/WEB-INF/jsp/egovframework/com/web/subheader.jsp" %>
         
 	<div class="sub-con">
-    	<div class="title-wrap">갤러리</div>
+    	<div class="title-wrap"><c:out value="${menuNm}"/></div>
 	</div>
 	<!-- 게시물 읽기 시작 { -->
 	<article id="bo_v">
@@ -117,15 +155,16 @@ function fn_egov_select_commentList(pageNo) {
         	<img src="<c:url value='/cmm/fms/getImage.do'/>?atchFileId=<c:out value='${result.atchFileId}'/>" alt="">
         	<br /><br /><br />
         	${fn:replace(result.nttCn , crlf , '<br/>')}
-		</div>
+		</div>		
         <!-- } 본문 내용 끝 -->
+        
         <!-- 하단 버튼 -->
 		<div class="btn" style="float:right">
 			<c:if test="${result.ntcrId == sessionUniqId || loginVO==null || loginVO.userSe == 'USR'}">		
-				<a href="" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+				<a href="javascript:guestPasswordCheck('${param.menuNo}', 'update');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 					<spring:message code="button.update" />
 				</a>
-				<a href="" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
+				<a href="javascript:guestPasswordCheck('${param.menuNo}', 'delete');" style="display:block; line-height:21px; float:left; margin:0 0 0 3px;" class="s_submit">
 					<spring:message code="button.delete" />
 				</a>
 			</c:if>
